@@ -5,13 +5,15 @@ import './App.css';
 import Button from './components/UI/atoms/Button';
 import GridContainer from './components/UI/molecules/GridContainer';
 import GridCell from './components/UI/atoms/GridCell';
-import Card from './components/UI/atoms/Card';
+import Card from './components/UI/molecules/Card';
 
 function App() {
   return (
     <GridContainer templateColumns={2}>
       <GridCell>
-        <Card>Teste</Card>
+        <Card 
+          bgImg="https://play-lh.googleusercontent.com/V_P-I-UENK93ahkQgOWel8X8yFxjhOOfMAZjxXrqp311Gm_RBtlDXHLQhwFZN8n4aIQ"
+        >Teste</Card>
       </GridCell>
       {/* <GridCell>
         <div className="App">
