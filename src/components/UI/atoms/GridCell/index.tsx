@@ -3,7 +3,7 @@ import React, { PropsWithChildren } from "react";
 import { Container } from "./styles";
 import { GridCellProps } from "./types";
 
-const Button: React.FC<PropsWithChildren<GridCellProps>> = ({
+const GridCell: React.FC<PropsWithChildren<GridCellProps>> = ({
   bgImg = {
     source: "",
     size: "contain"
@@ -15,4 +15,4 @@ const Button: React.FC<PropsWithChildren<GridCellProps>> = ({
   {children}
 </Container>;
 
-export default Button;
+export default GridCell;
