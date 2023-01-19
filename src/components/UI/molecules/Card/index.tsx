@@ -21,7 +21,7 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
         size: "cover" 
       }}
       style={{
-        minHeight: 100,
+        // minHeight: 100
       }}
     ></GridCell>
     <GridCell>{children}</GridCell>
