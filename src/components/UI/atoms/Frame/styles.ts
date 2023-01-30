@@ -9,7 +9,7 @@ const gradientTransition = keyframes`
 
 export const Container = styled.div<FrameProps>`
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
   background: linear-gradient(315deg, #0422ce, #6b04ce);
   background-size: 400% 400%;
