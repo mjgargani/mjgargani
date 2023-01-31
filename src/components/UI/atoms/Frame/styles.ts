@@ -16,7 +16,7 @@ export const Tiles = styled.div`
   background-repeat: repeat;
   background-size: 8%;
   opacity: 0.015;
-  animation: ${gradientTransition} 120s ease infinite;
+  animation: ${gradientTransition} 120s alternate-reverse ease infinite;
 `
 
 export const Frame = styled.div`
@@ -31,6 +31,7 @@ export const Frame = styled.div`
 `
 
 export const Container = styled.div<FrameProps>`
+  font-family : "mjgarganis Lab";
   position: fixed;
   min-width: 100vw;
   min-height: 100vh;
