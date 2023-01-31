@@ -12,9 +12,9 @@ import Potion from './components/UI/atoms/Potion';
 function App() {
   return (
     <Frame>
+      <Potion />
       <GridContainer>
         <GridCell>
-          <Potion />
         </GridCell>
       </GridContainer>
     </Frame>
