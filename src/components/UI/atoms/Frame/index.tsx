@@ -6,11 +6,10 @@ import { FrameProps } from "./types";
 const Frame: React.FC<PropsWithChildren<FrameProps>> = ({
   style,
   children
-}) => <Container style={style}>
-      <Shadow>
-        {children}
-        <Tiles />
-      </Shadow>
-</Container>;
+}) =><Container style={style}>
+      <Shadow />
+      <Tiles />
+      {children}
+    </Container>;
 
 export default Frame;

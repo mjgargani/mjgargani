@@ -61,6 +61,16 @@ const moveAnim = keyframes`
     left:10vw; top:10vh;
   }
 `
+const shadowAnim = keyframes`
+  to{
+    -webkit-filter: drop-shadow(0 0 50px rgba(255, 255, 255, .25));
+    filter: drop-shadow(0 0 50px rgba(255, 255, 255, .25));
+  }
+  from{
+    -webkit-filter: drop-shadow(0 0 50px rgba(255, 255, 255, .75));
+    filter: drop-shadow(0 0 50px rgba(255, 255, 255, .75));
+  }
+`
 
 export const Container = styled.div<PotionProps>`
   position: fixed;
@@ -72,7 +82,5 @@ export const Container = styled.div<PotionProps>`
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  animation: ${rotateAnim} 60s infinite alternate ease-in-out, ${moveAnim} 120s infinite ease-in-out;
-  -webkit-filter: drop-shadow(0 0 100px rgba(0, 0, 0));
-  filter: drop-shadow(0 0 100px rgba(0, 0, 0));
+  animation: ${shadowAnim} 5s infinite alternate ease-in-out, ${rotateAnim} 60s infinite alternate ease-in-out, ${moveAnim} 120s infinite ease-in-out;
 `;

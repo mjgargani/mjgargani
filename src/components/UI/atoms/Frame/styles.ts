@@ -8,17 +8,6 @@ const gradientTransition = keyframes`
   100%{background-position:5% 0%}
 `
 
-export const Tiles = styled.div`
-  position: fixed;
-  min-width: 100vw;
-  min-height: 100vh;
-  background-image: url(${tile});
-  background-repeat: repeat;
-  background-size: 8%;
-  opacity: 0.015;
-  animation: ${gradientTransition} 120s alternate-reverse ease infinite;
-`
-
 export const Frame = styled.div`
   position: fixed;
   min-width: 100vw;
@@ -28,6 +17,21 @@ export const Frame = styled.div`
   background:-o-radial-gradient(ellipse at 50% 50%, rgba(255, 255, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
   background:-ms-radial-gradient(ellipse at 50% 50%, rgba(255, 255, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
   background:radial-gradient(ellipse at 50% 50%, rgba(255, 255, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+  pointer-events: none;
+  z-index: -1500;
+`
+
+export const Tiles = styled.div`
+  position: fixed;
+  min-width: 100vw;
+  min-height: 100vh;
+  background-image: url(${tile});
+  background-repeat: repeat;
+  background-size: 8%;
+  opacity: 0.015;
+  animation: ${gradientTransition} 120s alternate-reverse ease infinite;
+  pointer-events: none;
+  z-index: -1000;
 `
 
 export const Container = styled.div<FrameProps>`
@@ -38,5 +42,6 @@ export const Container = styled.div<FrameProps>`
   margin: 0;
   background: linear-gradient(315deg, #0422ce, #6b04ce);
   background-size: 200% 200%;
-  animation: ${gradientTransition} 15s ease infinite
+  animation: ${gradientTransition} 15s ease infinite;
+  z-index: -500;
 `;
