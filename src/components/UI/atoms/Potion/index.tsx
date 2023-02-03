@@ -5,6 +5,7 @@ import { PotionProps } from "./types";
 
 const Potion: React.FC<PropsWithChildren<PotionProps>> = ({
   speed = 10,
-}) => <Container speed={speed} />;
+  transparent = false
+}) => <Container speed={speed} transparent={transparent}/>;
 
 export default Potion;

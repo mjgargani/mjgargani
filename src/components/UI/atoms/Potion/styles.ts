@@ -78,6 +78,7 @@ export const Container = styled.div<PotionProps>`
   left: calc(50% - 25vw);
   width: 50vw;
   height: 50vh;
+  opacity: ${props => !!props.transparent ? '0.1' : '1'};
   background-image: url(${potion});
   background-size: contain;
   background-position: center;
