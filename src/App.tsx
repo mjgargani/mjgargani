@@ -9,8 +9,8 @@ function App() {
   const [page, setPage] = useState<number>(0);
 
   return (
-    <Frame>
-      <Potion transparent={true}/>
+    <Frame onHome={page === 0}>
+      <Potion transparent={page !== 0}/>
       <Home show={page === 0} />
       <Navigation setPage={setPage}/>
     </Frame>

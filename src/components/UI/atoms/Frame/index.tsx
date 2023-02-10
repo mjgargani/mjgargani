@@ -4,10 +4,11 @@ import { Frame as Shadow, Tiles, Container } from "./styles";
 import { FrameProps } from "./types";
 
 const Frame: React.FC<PropsWithChildren<FrameProps>> = ({
+  onHome,
   style,
   children
 }) =><Container style={style}>
-      <Shadow />
+      <Shadow onHome={onHome}/>
       <Tiles />
       {children}
     </Container>;
