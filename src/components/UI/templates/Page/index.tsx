@@ -3,11 +3,11 @@ import React, { PropsWithChildren } from "react";
 import { Container } from "./styles";
 import { PageProps } from "./types";
 
-const Button: React.FC<PropsWithChildren<PageProps>> = ({
+const Page: React.FC<PropsWithChildren<PageProps>> = ({
   show = false,
   children
 }) => <Container show={show}>
   {children}
 </Container>;
 
-export default Button;
+export default Page;

@@ -6,8 +6,13 @@ import { ButtonProps } from "./types";
 const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
   backgroundColor = "darkblue",
   hoverColor = "blue",
+  onClick,
   children
-}) => <Container backgroundColor={backgroundColor} hoverColor={hoverColor}>
+}) => <Container 
+  backgroundColor={backgroundColor} 
+  hoverColor={hoverColor} 
+  onClick={onClick}
+>
   {children}
 </Container>;
 
