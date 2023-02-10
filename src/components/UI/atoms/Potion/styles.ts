@@ -93,4 +93,5 @@ export const Container = styled.div<PotionProps>`
   background-repeat: no-repeat;
   opacity: ${props => !!props.transparent ? transparencyAlpha[0] : transparencyAlpha[1]};
   animation: ${props => opacityTransition(!!props.transparent)} .75s ease, ${shadowAnim} 5s infinite alternate ease-in-out, ${rotateAnim} 60s infinite alternate ease-in-out, ${moveAnim} 120s infinite ease-in-out;
+  z-index: 0;
 `;

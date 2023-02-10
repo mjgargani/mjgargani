@@ -16,7 +16,13 @@ const Repos: React.FC<PageProps> = ({ show }) => {
     })
       .then(response => response.json())
       .then((data: Partial<GitHubRepoItem>[]) => {
-        const newRepos: Partial<GitHubRepoItem>[] = data.map(el => ({ description: el.description }));
+        const newRepos: Partial<GitHubRepoItem>[] = data.map(el => (
+          { 
+            name: el.name,
+            description: el.description,
+            html_url: el.html_url
+          }
+        ));
         setRepos(newRepos);
       });
   }, []);
@@ -25,7 +31,10 @@ const Repos: React.FC<PageProps> = ({ show }) => {
     <GridContainer templateColumns={3}>
       { repos.length > 0 && repos.map(el => (
         <GridCell>
-          <Card>{el.description}</Card>
+          <Card url={el.html_url}>
+            <p>{el.name}</p>
+            <p>{el.description}</p>
+          </Card>
         </GridCell>
       ))}
     </GridContainer>

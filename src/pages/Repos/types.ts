@@ -1,3 +1,5 @@
 export interface GitHubRepoItem {
-  description: string
+  name: string,
+  description: string,
+  html_url: string
 }
