@@ -6,6 +6,7 @@ import GridContainer from "../../components/UI/molecules/GridContainer";
 import Page from "../../components/UI/templates/Page";
 import { PageProps } from "../../components/UI/templates/Page/types";
 import { GitHubRepoItem } from "./types";
+import CardTitle from "../../components/UI/atoms/CardTitle";
 
 const Repos: React.FC<PageProps> = ({ show }) => {
   const [repos, setRepos] = useState<Partial<GitHubRepoItem>[]>([]);
@@ -28,12 +29,26 @@ const Repos: React.FC<PageProps> = ({ show }) => {
   }, []);
 
   return (<Page show={show}>
-    <GridContainer templateColumns={3}>
+    <GridContainer 
+      templateColumns={2}
+      style={{
+        position: "fixed",
+        overflow: "auto",
+        width: "80vw",
+        marginLeft: "10vw",
+        height: "60vh",
+        top: "10vh"
+      }}
+    >
       { repos.length > 0 && repos.map(el => (
         <GridCell>
           <Card url={el.html_url}>
-            <p>{el.name}</p>
-            <p>{el.description}</p>
+            <CardTitle>{el.name}</CardTitle>
+            <p style={{
+              fontFamily: "sans-serif",
+              fontWeight: "normal",
+              fontSize: "1.5vw",
+            }}>{el.description}</p>
           </Card>
         </GridCell>
       ))}

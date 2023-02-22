@@ -18,8 +18,8 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
   <a href={url} target="_blank" rel="noreferrer" style={{ 
     color: "black", textDecoration: "none"
   }}>
-    <GridContainer templateRows={2}>
-      <GridCell 
+    <GridContainer>
+      {/* <GridCell 
         bgImg={{ 
           source: bgImg,
           size: "cover" 
@@ -27,8 +27,10 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
         style={{
           // minHeight: 100
         }}
-      ></GridCell>
-      <GridCell>{children}</GridCell>
+      ></GridCell> */}
+      <GridCell style={{
+        padding: "3%"
+      }}>{children}</GridCell>
     </GridContainer>
   </a>
 </Container>;
