@@ -5,7 +5,7 @@ import { GridContainerProps } from "./types";
 
 const GridContainer: React.FC<PropsWithChildren<GridContainerProps>> = ({
   templateColumns = 1,
-  templateRows = 1,
+  templateRows = 0,
   columnGap = 0,
   rowGap = 0,
   style,

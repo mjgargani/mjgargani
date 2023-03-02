@@ -6,27 +6,31 @@ import GridContainer from "../../components/UI/molecules/GridContainer";
 import Page from "../../components/UI/templates/Page";
 import { PageProps } from "../../components/UI/templates/Page/types";
 import { GitHubRepoItem } from "./types";
-import CardTitle from "../../components/UI/atoms/CardTitle";
+
+let loadedContent: boolean = false;
 
 const Repos: React.FC<PageProps> = ({ show }) => {
   const [repos, setRepos] = useState<Partial<GitHubRepoItem>[]>([]);
 
   useEffect(()=>{
-    fetch("https://api.github.com/users/mjgargani/repos", {
-      method: "GET"
-    })
-      .then(response => response.json())
-      .then((data: Partial<GitHubRepoItem>[]) => {
-        const newRepos: Partial<GitHubRepoItem>[] = data.map(el => (
-          { 
-            name: el.name,
-            description: el.description,
-            html_url: el.html_url
-          }
-        ));
-        setRepos(newRepos);
-      });
-  }, []);
+    if(!!!loadedContent && !!!repos.length){
+      loadedContent = true;
+      fetch("https://api.github.com/users/mjgargani/repos", {
+        method: "GET"
+      })
+        .then(response => response.json())
+        .then((data: Partial<GitHubRepoItem>[]) => {
+          const newRepos: Partial<GitHubRepoItem>[] = data.map(el => (
+            { 
+              name: el.name,
+              description: el.description,
+              html_url: el.html_url
+            }
+          ));
+          setRepos(newRepos);
+        });
+    }
+  }, [repos, setRepos]);
 
   return (<Page show={show}>
     <GridContainer 
@@ -42,14 +46,11 @@ const Repos: React.FC<PageProps> = ({ show }) => {
     >
       { repos.length > 0 && repos.map(el => (
         <GridCell>
-          <Card url={el.html_url}>
-            <CardTitle>{el.name}</CardTitle>
-            <p style={{
-              fontFamily: "sans-serif",
-              fontWeight: "normal",
-              fontSize: "1.5vw",
-            }}>{el.description}</p>
-          </Card>
+          <Card 
+            url={el.html_url}
+            title={el.name}
+            description={el.description}
+          />
         </GridCell>
       ))}
     </GridContainer>

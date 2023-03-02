@@ -2,16 +2,10 @@ import React from "react";
 import Button from "../../atoms/Button";
 import GridCell from "../../atoms/GridCell";
 import GridContainer from "../GridContainer";
+import { Container } from "./styles";
 import { NavigationProps } from "./types";
 
-const Navigation: React.FC<NavigationProps> = ({ setPage }) => <div style={{
-  position: "fixed",
-  minWidth: "60vw",
-  top: "75vh",
-  left: "20vw",
-  textAlign: "center",
-  fontSize: "2vw",
-}}>
+const Navigation: React.FC<NavigationProps> = ({ setPage }) => <Container>
   <GridContainer templateColumns={3} columnGap={10}>
     <GridCell>
       <Button onClick={() => setPage(0)}> início</Button>
@@ -23,6 +17,6 @@ const Navigation: React.FC<NavigationProps> = ({ setPage }) => <div style={{
       <Button onClick={() => setPage(2)}> sobre</Button>
     </GridCell>
   </GridContainer>
-</div>;
+</Container>;
 
 export default Navigation;

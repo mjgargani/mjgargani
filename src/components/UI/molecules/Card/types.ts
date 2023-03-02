@@ -3,4 +3,6 @@ export interface CardProps {
   hoverColor?: string;
   bgImg?: string;
   url?: string;
+  title?: string;
+  description?: string;
 }

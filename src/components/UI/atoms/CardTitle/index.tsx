@@ -5,7 +5,7 @@ import { DiWordpress } from "react-icons/di";
 import { IoLogoNodejs } from "react-icons/io"
 import { RiReactjsLine } from "react-icons/ri"
 
-import { Container } from "./styles";
+import { MainContainer, IconContainer } from "./styles";
 import { CardTitleProps } from "./types";
 
 const icons = {
@@ -17,10 +17,7 @@ const icons = {
   "reactjs": <RiReactjsLine />
 }
 
-const IconReplacer: React.FC<CardTitleProps> = ({ text }) => <div style={{
-  fontSize: "1.5vw",
-  marginTop: "2%"
-}}>
+const IconReplacer: React.FC<CardTitleProps> = ({ text }) => <IconContainer>
   {
     Object.entries(icons).map(entry => {
       if(text.includes(entry[0])) {
@@ -29,15 +26,15 @@ const IconReplacer: React.FC<CardTitleProps> = ({ text }) => <div style={{
       return false
     })
   }
-</ div>
+</ IconContainer>
 
 const replaceRegExp = new RegExp(".+(?<=_)", "gi");
 
 const CardTitle: React.FC<PropsWithChildren> = ({
   children
-}) => <Container>
-  {(children as string).replaceAll(replaceRegExp, "")}<br />
+}) => <MainContainer>
+  {(children as string).replaceAll(replaceRegExp, "").replaceAll("-"," ")}<br />
   <IconReplacer text={children as string} />
-</Container>;
+</MainContainer>;
 
 export default CardTitle;
