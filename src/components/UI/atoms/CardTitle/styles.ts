@@ -34,6 +34,7 @@ export const MainContainer = styled.p`
 
 export const IconContainer = styled.p`
   margin-top: 2%;
+  text-align: center;
 
   font-size: ${iconFontSizeBase}vw;
   @media ${device.mobileS} {

@@ -1,7 +1,7 @@
 import React from "react";
 
 export interface FrameProps {
-  onHome: boolean;
   page: number;
+  prevPage?: number;
   style?: React.CSSProperties;
 }

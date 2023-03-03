@@ -6,11 +6,11 @@ import { FrameProps } from "./types";
 const Frame: React.FC<PropsWithChildren<FrameProps>> = ({
   style,
   page,
-  onHome,
+  prevPage = 0,
   children
 }) =><Container style={style} page={page}>
       <Tiles />
-      <Shadow onHome={onHome}/>
+      <Shadow page={page} prevPage={prevPage}/>
       {children}
     </Container>;
 

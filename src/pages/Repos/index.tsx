@@ -44,8 +44,8 @@ const Repos: React.FC<PageProps> = ({ show }) => {
         top: "10vh"
       }}
     >
-      { repos.length > 0 && repos.map(el => (
-        <GridCell>
+      { repos.length > 0 && repos.map((el, i) => (
+        <GridCell key={i}>
           <Card 
             url={el.html_url}
             title={el.name}

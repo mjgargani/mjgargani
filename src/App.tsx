@@ -5,12 +5,14 @@ import Potion from './components/UI/atoms/Potion';
 import Navigation from './components/UI/molecules/Navigation';
 import Home from './pages/Home';
 import Repos from './pages/Repos';
+import usePrevious from './hooks/usePrevious';
 
 function App() {
   const [page, setPage] = useState<number>(0);
+  const prevPage = usePrevious(page);
 
   return (
-    <Frame onHome={page === 0} page={page}>
+    <Frame page={page} prevPage={prevPage}>
       <Potion transparent={page !== 0}/>
       <Home show={page === 0} />
       <Repos show={page === 1} />

@@ -7,7 +7,7 @@ const Page: React.FC<PropsWithChildren<PageProps>> = ({
   show = false,
   children
 }) => <Container show={show}>
-  {children}
+  {show && children}
 </Container>;
 
 export default Page;

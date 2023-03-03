@@ -19,9 +19,9 @@ const icons = {
 
 const IconReplacer: React.FC<CardTitleProps> = ({ text }) => <IconContainer>
   {
-    Object.entries(icons).map(entry => {
+    Object.entries(icons).map((entry, i) => {
       if(text.includes(entry[0])) {
-        return (<> {entry[1]} </>); 
+        return (<span key={i}> {entry[1]} </span>); 
       }
       return false
     })
@@ -32,9 +32,11 @@ const replaceRegExp = new RegExp(".+(?<=_)", "gi");
 
 const CardTitle: React.FC<PropsWithChildren> = ({
   children
-}) => <MainContainer>
-  {(children as string).replaceAll(replaceRegExp, "").replaceAll("-"," ")}<br />
+}) => <>
+  <MainContainer>
+    {(children as string).replaceAll(replaceRegExp, "").replaceAll("-"," ")}
+  </MainContainer>
   <IconReplacer text={children as string} />
-</MainContainer>;
+</>;
 
 export default CardTitle;

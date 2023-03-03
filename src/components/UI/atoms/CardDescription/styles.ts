@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { device } from "../../../utils/devices";
 
-const fontSizeBase = 3.6;
+const fontSizeBase = 3.5;
 
 export const Container = styled.p`
   font-family: sans-serif;
@@ -22,11 +22,5 @@ export const Container = styled.p`
   }
   @media ${device.laptopL} {
     font-size: ${fontSizeBase-2.5}vw;
-  }
-  @media ${device.desktop} {
-    font-size: ${fontSizeBase-3}vw;
-  }
-  @media (min-width: ${device.desktopL}) {
-    font-size: ${fontSizeBase-3.5}vw;
   }
 `;
