@@ -18,8 +18,8 @@ const About: React.FC<PageProps> = ({ show }) => {
         position: "fixed",
         width: "80vw",
         marginLeft: "10vw",
-        height: "60vh",
-        top: "10vh",
+        height: "55vh",
+        top: "15vh",
         overflow: "auto"
       }}
     >

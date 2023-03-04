@@ -17,15 +17,15 @@ export const Container = styled.button<ButtonProps>`
   border-style: none;
   border-width: 0px;
   border-radius: 5px;
-  color: white;
-  background-color: rgba(255, 255, 255, .1);
+  color: ${props => props.active ? "black" : "white"};
+  background-color: rgba(255, 255, 255, ${props => props.active ? ".7" : ".1"});
   -webkit-filter: drop-shadow(0 5px 5px rgba(0, 0, 0, .1));
   filter: drop-shadow(0 5px 5px rgba(0, 0, 0, .1));
-  animation: ${ colorTransition("rgba(255, 255, 255, .25)", "rgba(255, 255, 255, .1)") } .25s;
+  animation: ${ props => !props.active ? colorTransition("rgba(255, 255, 255, .25)", "rgba(255, 255, 255, .1)") : "none" } .25s;
 
   &:hover {
-    cursor: pointer;
-    background-color: rgba(255, 255, 255, .25);
-    animation: ${ colorTransition("rgba(255, 255, 255, .1)", "rgba(255, 255, 255, .25)") } .25s;
+    cursor: ${props => props.active ? "default" : "pointer"};
+    background-color: rgba(255, 255, 255, ${props => props.active ? ".7" : ".25"});
+    animation: ${ props => !props.active ? colorTransition("rgba(255, 255, 255, .1)", "rgba(255, 255, 255, .25)") : "none" } .25s;
   }
 `;

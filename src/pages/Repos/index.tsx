@@ -42,8 +42,8 @@ const Repos: React.FC<PageProps> = ({ show }) => {
         overflow: "auto",
         width: "80vw",
         marginLeft: "10vw",
-        height: "60vh",
-        top: "10vh"
+        height: "55vh",
+        top: "15vh"
       }}
     >
       { repos.length > 0 && repos.map((el, i) => (

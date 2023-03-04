@@ -18,7 +18,7 @@ function App() {
       <Home show={page === 0} />
       <Repos show={page === 1} />
       <About show={page === 2} />
-      <Navigation setPage={setPage}/>
+      <Navigation page={page} setPage={setPage}/>
     </Frame>
   );
 }

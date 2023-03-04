@@ -5,16 +5,16 @@ import GridContainer from "../GridContainer";
 import { Container } from "./styles";
 import { NavigationProps } from "./types";
 
-const Navigation: React.FC<NavigationProps> = ({ setPage }) => <Container>
+const Navigation: React.FC<NavigationProps> = ({ page, setPage }) => <Container>
   <GridContainer templateColumns={{desktop: ["repeat(3, 1fr)"]}} columnGap={10}>
     <GridCell>
-      <Button onClick={() => setPage(0)}> início</Button>
+      <Button active={page === 0} onClick={() => setPage(0)}> início</Button>
     </GridCell>
     <GridCell>
-      <Button onClick={() => setPage(1)}> projetos</Button>
+      <Button active={page === 1} onClick={() => setPage(1)}> projetos</Button>
     </GridCell>
     <GridCell>
-      <Button onClick={() => setPage(2)}> sobre</Button>
+      <Button active={page === 2} onClick={() => setPage(2)}> sobre</Button>
     </GridCell>
   </GridContainer>
 </Container>;
