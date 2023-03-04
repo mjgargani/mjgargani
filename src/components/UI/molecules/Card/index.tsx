@@ -11,32 +11,33 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
   backgroundColor = "white",
   hoverColor = "whitesmoke",
   bgImg,
-  url = "",
+  url,
   title = "",
+  content = false,
   children
-}) => <Container 
-  backgroundColor={backgroundColor} 
-  hoverColor={hoverColor}
->
-  <a href={url} target="_blank" rel="noreferrer" style={{ 
-    color: "black", textDecoration: "none"
-  }}>
-    <GridContainer>
-      {bgImg && <GridCell 
-        bgImg={{ 
-          source: bgImg,
-          size: "cover" 
-        }}
-        style={{
-          // minHeight: 100
-        }}
-      ></GridCell>}
-      <GridCell style={{ padding: "3%" }}>
-        <CardTitle>{title}</CardTitle>
-        <CardDescription>{children}</CardDescription>
-      </GridCell>
-    </GridContainer>
-  </a>
-</Container>;
+}) => { 
+  const cardContent = <GridContainer>
+    {bgImg && <GridCell 
+      bgImg={{ 
+        source: bgImg,
+        size: "cover" 
+      }}
+    ></GridCell>}
+    <GridCell style={{ padding: "3%" }}>
+      <CardTitle>{title}</CardTitle>
+      <CardDescription>{children}</CardDescription>
+    </GridCell>
+  </GridContainer>
+
+  return <Container 
+    backgroundColor={backgroundColor} 
+    hoverColor={hoverColor}
+    content={content}
+  >
+    {url ? <a href={url} target="_blank" rel="noreferrer" style={{ 
+      color: "black", textDecoration: "none"
+    }}>{cardContent}</a> : cardContent}
+  </Container>
+};
 
 export default Card;

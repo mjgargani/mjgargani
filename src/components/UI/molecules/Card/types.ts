@@ -4,4 +4,5 @@ export interface CardProps {
   bgImg?: string;
   url?: string;
   title?: string;
+  content?: boolean;
 }
