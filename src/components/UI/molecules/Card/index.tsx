@@ -22,7 +22,10 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
         source: bgImg,
         size: "cover" 
       }}
-    ></GridCell>}
+      style={{
+        minHeight: "20vh"
+      }}
+    />}
     <GridCell style={{ padding: "3%" }}>
       <CardTitle>{title}</CardTitle>
       <CardDescription>{children}</CardDescription>

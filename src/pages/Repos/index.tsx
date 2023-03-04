@@ -48,7 +48,8 @@ const Repos: React.FC<PageProps> = ({ show }) => {
     >
       { repos.length > 0 && repos.map((el, i) => (
         <GridCell key={i}>
-          <Card 
+          <Card
+            bgImg={`https://raw.githubusercontent.com/mjgargani/${el.name}/main/thumbnail.gif`}
             url={el.html_url}
             title={el.name}
           >{el.description}</Card>
