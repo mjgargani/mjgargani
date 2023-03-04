@@ -51,8 +51,7 @@ const Repos: React.FC<PageProps> = ({ show }) => {
           <Card 
             url={el.html_url}
             title={el.name}
-            description={el.description}
-          />
+          >{el.description}</Card>
         </GridCell>
       ))}
     </GridContainer>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import GridCell from "../../components/UI/atoms/GridCell";
 import Card from "../../components/UI/molecules/Card";
 import GridContainer from "../../components/UI/molecules/GridContainer";
@@ -6,11 +6,6 @@ import Vakinha from "../../assets/vakinha.jpeg"
 
 import Page from "../../components/UI/templates/Page";
 import { PageProps } from "../../components/UI/templates/Page/types";
-
-const message = {
-  title: "Sobre",
-  description: `Olá! Meu nome é Rodrigo Gargani. Sou desenvolvedor web há cinco anos e atualmente estou me aventurando como autônomo! Meu e-mail para contato é o mjgargani@gmail.com!`
-}
 
 const About: React.FC<PageProps> = ({ show }) => {
   return (<Page show={show}>
@@ -30,10 +25,9 @@ const About: React.FC<PageProps> = ({ show }) => {
       }}
     >
         <GridCell>
-          <Card 
-            title={message.title}
-            description={message.description}
-          />
+          <Card title="Sobre">
+            Olá! Meu nome é Rodrigo Gargani. Sou desenvolvedor web há cinco anos e atualmente estou me aventurando como autônomo! Meu e-mail para contato é o <a href="mailto:mjgargani@gmail.com">mjgargani@gmail.com</a> !
+          </Card>
         </GridCell>
         <a href="https://www.vakinha.com.br/3539654" target="_blank" rel="noreferrer">
           <GridCell bgImg={{ source: Vakinha, size: "contain" }} style={{minHeight:"100%"}} />

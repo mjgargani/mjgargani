@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 
 import { Container } from "./styles";
 import { CardProps } from "./types";
@@ -7,13 +7,13 @@ import GridCell from "../../atoms/GridCell";
 import CardDescription from "../../atoms/CardDescription";
 import CardTitle from "../../atoms/CardTitle";
 
-const Card: React.FC<CardProps> = ({
+const Card: React.FC<PropsWithChildren<CardProps>> = ({
   backgroundColor = "white",
   hoverColor = "whitesmoke",
-  bgImg = "",
+  bgImg,
   url = "",
   title = "",
-  description = "",
+  children
 }) => <Container 
   backgroundColor={backgroundColor} 
   hoverColor={hoverColor}
@@ -22,7 +22,7 @@ const Card: React.FC<CardProps> = ({
     color: "black", textDecoration: "none"
   }}>
     <GridContainer>
-      {/* <GridCell 
+      {bgImg && <GridCell 
         bgImg={{ 
           source: bgImg,
           size: "cover" 
@@ -30,10 +30,10 @@ const Card: React.FC<CardProps> = ({
         style={{
           // minHeight: 100
         }}
-      ></GridCell> */}
+      ></GridCell>}
       <GridCell style={{ padding: "3%" }}>
         <CardTitle>{title}</CardTitle>
-        <CardDescription>{description}</CardDescription>
+        <CardDescription>{children}</CardDescription>
       </GridCell>
     </GridContainer>
   </a>
