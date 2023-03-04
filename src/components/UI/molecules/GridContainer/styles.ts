@@ -5,11 +5,11 @@ import { GridContainerProps } from "./types";
 export const Container = styled.div<GridContainerProps>`
   display: grid;
   
-  grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: auto;
-  @media ${device.mobileL} {
-    grid-template-columns: repeat(${props => props.templateColumns}, 1fr);
-    grid-template-rows: ${props => props.templateRows ? `repeat(${props.templateRows}, 1fr)` : "auto"};  
+  grid-template-columns: ${props => props.templateColumns?.mobile ? props.templateColumns.mobile.join(" ") : "repeat(1, 1fr)"};
+  grid-template-rows: ${props => props.templateRows?.mobile ? props.templateRows.mobile.join(" ") : "auto"};
+  @media ${device.tablet} {
+    grid-template-columns: ${props => props.templateColumns?.desktop ? props.templateColumns.desktop.join(" ") : "repeat(1, 1fr)"};
+    grid-template-rows: ${props => props.templateRows?.desktop ? props.templateRows.desktop.join(" ") : "auto"};  
   }
 
   grid-column-gap: ${props => props.columnGap}px;

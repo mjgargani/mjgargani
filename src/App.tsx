@@ -6,6 +6,7 @@ import Navigation from './components/UI/molecules/Navigation';
 import Home from './pages/Home';
 import Repos from './pages/Repos';
 import usePrevious from './hooks/usePrevious';
+import About from './pages/About';
 
 function App() {
   const [page, setPage] = useState<number>(0);
@@ -16,6 +17,7 @@ function App() {
       <Potion transparent={page !== 0}/>
       <Home show={page === 0} />
       <Repos show={page === 1} />
+      <About show={page === 2} />
       <Navigation setPage={setPage}/>
     </Frame>
   );

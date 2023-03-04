@@ -6,7 +6,7 @@ import { Container } from "./styles";
 import { NavigationProps } from "./types";
 
 const Navigation: React.FC<NavigationProps> = ({ setPage }) => <Container>
-  <GridContainer templateColumns={3} columnGap={10}>
+  <GridContainer templateColumns={{desktop: ["repeat(3, 1fr)"]}} columnGap={10}>
     <GridCell>
       <Button onClick={() => setPage(0)}> início</Button>
     </GridCell>
