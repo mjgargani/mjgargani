@@ -1,4 +1,5 @@
 import React, { PropsWithChildren } from "react";
+import Potion from "../Potion";
 
 import { Tiles, Shadow, Container } from "./styles";
 import { FrameProps } from "./types";
@@ -11,6 +12,7 @@ const Frame: React.FC<PropsWithChildren<FrameProps>> = ({
 }) =><Container style={style} page={page}>
       <Tiles />
       <Shadow page={page} prevPage={prevPage}/>
+      <Potion transparent={page !== 0}/>
       {children}
     </Container>;
 

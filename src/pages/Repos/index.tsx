@@ -35,7 +35,7 @@ const Repos: React.FC<PageProps> = ({ show }) => {
   return (<Page show={show}>
     <GridContainer 
       templateColumns={{
-        desktop: ["repeat(2, 1fr)"],
+        desktop: ["repeat(3, 1fr)"],
       }}
       style={{
         position: "fixed",

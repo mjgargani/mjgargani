@@ -6,6 +6,7 @@ import GridContainer from "../GridContainer";
 import GridCell from "../../atoms/GridCell";
 import CardDescription from "../../atoms/CardDescription";
 import CardTitle from "../../atoms/CardTitle";
+import CardThumbnail from "../../atoms/CardThumbnail";
 
 const Card: React.FC<PropsWithChildren<CardProps>> = ({
   backgroundColor = "white",
@@ -16,18 +17,20 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
   content = false,
   children
 }) => { 
-  const cardContent = <GridContainer>
-    {bgImg && <GridCell 
-      bgImg={{ 
-        source: bgImg,
-        size: "cover" 
-      }}
-      style={{
-        minHeight: "20vh"
-      }}
-    />}
-    <GridCell style={{ padding: "3%" }}>
+  const cardContent: JSX.Element = <GridContainer>
+    {bgImg && <GridCell>
+      <CardThumbnail bgImg={bgImg} />
+    </GridCell>}
+    <GridCell style={{ padding: "0 2%" }}>
       <CardTitle>{title}</CardTitle>
+    </GridCell>
+    <GridCell 
+      style={{ 
+        padding: "0 3%",
+        backgroundColor: "whitesmoke",
+        borderRadius: "0 0 5px 5px",
+      }}
+    >
       <CardDescription>{children}</CardDescription>
     </GridCell>
   </GridContainer>
