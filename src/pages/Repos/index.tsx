@@ -1,37 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import GridCell from "../../components/UI/atoms/GridCell";
 import Card from "../../components/UI/molecules/Card";
 import GridContainer from "../../components/UI/molecules/GridContainer";
 
 import Page from "../../components/UI/templates/Page";
 import { PageProps } from "../../components/UI/templates/Page/types";
+import { GitHubDataContext } from "../../context/GitHubData";
 import mdParser from "../../utils/mdParser";
-import { GitHubRepoItem } from "./types";
-
-let loadedContent: boolean = false;
 
 const Repos: React.FC<PageProps> = ({ show }) => {
-  const [repos, setRepos] = useState<Partial<GitHubRepoItem>[]>([]);
-
-  useEffect(()=>{
-    if(!!!loadedContent && !!!repos.length){
-      loadedContent = true;
-      fetch("https://api.github.com/users/mjgargani/repos", {
-        method: "GET"
-      })
-        .then(response => response.json())
-        .then((data: Partial<GitHubRepoItem>[]) => {
-          const newRepos: Partial<GitHubRepoItem>[] = data.map(el => (
-            { 
-              name: el.name,
-              description: el.description,
-              html_url: el.html_url
-            }
-          ));
-          setRepos(newRepos);
-        });
-    }
-  }, [repos, setRepos]);
+  const { repos } = useContext(GitHubDataContext);
 
   return (<Page show={show}>
     <GridContainer 
@@ -47,13 +25,13 @@ const Repos: React.FC<PageProps> = ({ show }) => {
         top: "15vh"
       }}
     >
-      { repos.length > 0 && repos.map((el, i) => (
+      { repos && repos.length > 0 && repos.map((el, i) => (
         <GridCell key={i}>
           <Card
-            bgImg={`https://raw.githubusercontent.com/mjgargani/${el.name}/main/thumbnail.gif`}
-            url={el.html_url}
-            title={el.name}
-          >{mdParser(el.description!, ["<p>", "</p>"])}</Card>
+            bgImg={`https://raw.githubusercontent.com/mjgargani/${el!.name}/main/thumbnail.gif`}
+            url={el!.html_url}
+            title={el!.name}
+          >{mdParser(el!.description!, ["<p>", "</p>"])}</Card>
         </GridCell>
       ))}
     </GridContainer>

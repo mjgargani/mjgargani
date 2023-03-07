@@ -22,15 +22,15 @@ export const Container = styled.p`
     font-size: ${fontSizeBase-1}vw;
   }
   @media ${device.mobileL} {
-    height: ${heightBase+3}px;
+    height: ${heightBase+6}px;
     font-size: ${fontSizeBase-1.3}vw;
   }
   @media ${device.laptop} {
-    height: ${heightBase+9}px;
+    height: ${heightBase+12}px;
     font-size: ${fontSizeBase-1.5}vw;
   }
   @media ${device.laptopL} {
-    height: ${heightBase+16}px;
+    height: ${heightBase+25}px;
     font-size: ${fontSizeBase-1.7}vw;
   }
 `;
