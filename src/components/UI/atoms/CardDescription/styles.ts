@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { device } from "../../../utils/devices";
 
 const fontSizeBase = 2.6;
+const heightBase = 35;
 
 export const Container = styled.p`
   display: table-cell;
@@ -10,26 +11,26 @@ export const Container = styled.p`
   vertical-align: middle;
   margin: 10px 0;
   
-  height: 50px;
+  height: ${heightBase}px;
   font-size: ${fontSizeBase}vw;
   @media ${device.mobileS} {
-    height: 25px;
+    height: ${heightBase-16}px;
     font-size: ${fontSizeBase-0.5}vw;
   }
   @media ${device.mobileM} {
-    height: 30px;
+    height: ${heightBase-9}px;
     font-size: ${fontSizeBase-1}vw;
   }
   @media ${device.mobileL} {
-    height: 40px;
+    height: ${heightBase+3}px;
     font-size: ${fontSizeBase-1.3}vw;
   }
   @media ${device.laptop} {
-    height: 50px;
+    height: ${heightBase+9}px;
     font-size: ${fontSizeBase-1.5}vw;
   }
   @media ${device.laptopL} {
-    height: 60px;
+    height: ${heightBase+16}px;
     font-size: ${fontSizeBase-1.7}vw;
   }
 `;
