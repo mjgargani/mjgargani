@@ -11,7 +11,7 @@ const CardTitle: React.FC<PropsWithChildren> = ({
 }) => <>
   <Container>
     {(children as string).replaceAll(replaceRegExpTitle, "").replaceAll("-"," ")}<br />
-    <IconReplacer text={(children as string).replaceAll(replaceRegExpIcons, "")} darker={true}/>
+    <h2 style={{ margin: "1%" }}><IconReplacer text={(children as string).replaceAll(replaceRegExpIcons, "")} darker={true}/></h2>
   </Container>
 </>;
 

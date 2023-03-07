@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import 'normalize.css';
-import Frame from './components/UI/atoms/Frame';
+import Frame from './components/UI/molecules/Frame';
 import Navigation from './components/UI/molecules/Navigation';
 import { GitHubDataContext, useGitHubDataValues } from './context/GitHubData';
 import Home from './pages/Home';
