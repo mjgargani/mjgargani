@@ -5,6 +5,7 @@ import GridContainer from "../../components/UI/molecules/GridContainer";
 
 import Page from "../../components/UI/templates/Page";
 import { PageProps } from "../../components/UI/templates/Page/types";
+import mdParser from "../../utils/mdParser";
 import { GitHubRepoItem } from "./types";
 
 let loadedContent: boolean = false;
@@ -52,7 +53,7 @@ const Repos: React.FC<PageProps> = ({ show }) => {
             bgImg={`https://raw.githubusercontent.com/mjgargani/${el.name}/main/thumbnail.gif`}
             url={el.html_url}
             title={el.name}
-          >{el.description}</Card>
+          >{mdParser(el.description!, ["<p>", "</p>"])}</Card>
         </GridCell>
       ))}
     </GridContainer>

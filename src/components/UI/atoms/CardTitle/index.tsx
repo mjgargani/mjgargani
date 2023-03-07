@@ -3,14 +3,15 @@ import IconReplacer from "../IconReplacer";
 
 import { Container } from "./styles";
 
-const replaceRegExp = new RegExp(".+(?<=_)", "gi");
+const replaceRegExpTitle = new RegExp(".+(?<=_)", "gi");
+const replaceRegExpIcons = new RegExp("(?=_).+", "gi");
 
 const CardTitle: React.FC<PropsWithChildren> = ({
   children
 }) => <>
   <Container>
-    {(children as string).replaceAll(replaceRegExp, "").replaceAll("-"," ")}<br />
-    <IconReplacer text={children as string} />
+    {(children as string).replaceAll(replaceRegExpTitle, "").replaceAll("-"," ")}<br />
+    <IconReplacer text={(children as string).replaceAll(replaceRegExpIcons, "")} />
   </Container>
 </>;
 

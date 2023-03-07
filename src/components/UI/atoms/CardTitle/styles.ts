@@ -7,7 +7,8 @@ export const Container = styled.p`
   text-transform: uppercase;
   text-align: center;
   line-height: 200%;
-  margin: .5% 0;
+  margin-top: 3.5%;
+  margin-bottom: 0;
 
   font-size: ${fontSizeBase}vw;
   @media ${device.mobileS} {
@@ -17,7 +18,7 @@ export const Container = styled.p`
     font-size: ${fontSizeBase-1}vw;
   }
   @media ${device.mobileL} {
-    font-size: ${fontSizeBase-1.5}vw;
+    font-size: ${fontSizeBase-1.8}vw;
   }
   @media ${device.laptop} {
     font-size: ${fontSizeBase-2}vw;

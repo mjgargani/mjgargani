@@ -6,6 +6,9 @@ const FontStyles = createGlobalStyle`
     font-family : "mjgarganis Lab";
     src: url(${mjgarganisLabWoff}) format('woff2');
   }
+  code {
+    color: #3e47f7;
+  }
 `
 
 export default FontStyles;

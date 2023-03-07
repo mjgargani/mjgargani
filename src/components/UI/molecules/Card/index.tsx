@@ -27,7 +27,6 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
     <GridCell 
       style={{ 
         padding: "0 3%",
-        backgroundColor: "whitesmoke",
         borderRadius: "0 0 5px 5px",
       }}
     >

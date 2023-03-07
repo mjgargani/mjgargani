@@ -1,8 +1,10 @@
 import { FaArchive } from "react-icons/fa";
 import { SiPhp, SiJest } from "react-icons/si";
 import { DiWordpress } from "react-icons/di";
-import { IoLogoNodejs } from "react-icons/io"
-import { RiReactjsLine } from "react-icons/ri"
+import { IoLogoNodejs } from "react-icons/io";
+import { RiReactjsLine } from "react-icons/ri";
+import { SiSocketdotio } from "react-icons/si";
+import { SiTypescript } from "react-icons/si";
 import { IconReplacerProps } from "./types";
 import { Container } from "./styles";
 
@@ -12,7 +14,9 @@ const icons = {
   "wp": <DiWordpress />,
   "nodejs": <IoLogoNodejs />,
   "jest": <SiJest />,
-  "reactjs": <RiReactjsLine />
+  "reactjs": <RiReactjsLine />,
+  "socketio": <SiSocketdotio />,
+  "ts": <SiTypescript />
 }
 
 const IconReplacer: React.FC<IconReplacerProps> = ({ text }) => <Container>

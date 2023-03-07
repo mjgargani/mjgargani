@@ -1,6 +1,15 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { device } from "../../../utils/devices";
 import { CardProps } from "./types";
+
+const opacityTransition = (from: number, to: number) => keyframes`
+  from{
+    opacity: ${from};
+  }
+  to{
+    opacity: ${to};
+  }
+`
 
 export const Container = styled.div<CardProps>`
   margin: 10px;
@@ -34,10 +43,16 @@ export const Container = styled.div<CardProps>`
   border-radius: 5px;
   color: black;
   font-weight: bold;
-  background-color: ${props => props.backgroundColor!};
+  background-color: rgba(255,255,255,1);
+  background: linear-gradient(180deg, rgba(255,255,255,1) 50%, rgba(217,217,217,1) 100%);
+  opacity: ${props => !!props.content ? 1 : 0.85};
+  animation: ${props => !!!props.content ? opacityTransition(1, 0.85) : "none"} .5s ease;
 
   &:hover {
-    background-color: ${props => !!props.content ? props.backgroundColor! : props.hoverColor!};
+    background-color: rgba(255,255,255,1);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 50%, rgba(217,217,217,1) 100%);
+    opacity: 1;
+    animation: ${props => !!!props.content ? opacityTransition(0.85, 1) : "none"} .5s ease;
     cursor: ${props => !!props.content ? "default" : "pointer"};
   }
 `;
