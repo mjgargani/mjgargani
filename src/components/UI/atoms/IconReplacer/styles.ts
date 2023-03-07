@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import { device } from "../../../utils/devices";
+import { IconReplacerProps } from "./types";
 
 const fontSizeBase = 3.7;
 
-export const Container = styled.span`
+export const Container = styled.span<Partial<IconReplacerProps>>`
+  ${props => props.darker && "filter: brightness(0.8)"};
   font-size: ${fontSizeBase}vw;
   
   @media ${device.mobileS} {
