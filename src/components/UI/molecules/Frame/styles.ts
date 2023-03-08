@@ -24,6 +24,16 @@ const frameShadowTransition = (page: number, prevPage: number) => keyframes`
     opacity: ${shadowAlpha[page]};
   }
 `
+
+const opacityTransition = keyframes`
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+`
+
 export const Shadow = styled.div<Partial<FrameProps>>`
   position: fixed;
   min-width: 100vw;
@@ -53,7 +63,6 @@ export const Tiles = styled.div`
 `
 
 export const Container = styled.div<Partial<FrameProps>>`
-  font-family : "mjgarganis Lab";
   position: fixed;
   margin: 0;
   min-width: 100vw;
@@ -61,6 +70,6 @@ export const Container = styled.div<Partial<FrameProps>>`
   background-color: #000;
   background: linear-gradient(315deg, ${props => linearGradientColors[props.page!].join(', ')});
   background-size: 200% 200%;
-  animation: ${gradientTransition} 15s ease infinite;
+  animation: ${gradientTransition} 15s ease infinite, ${opacityTransition} 2s ease;
   z-index: -400;
 `;

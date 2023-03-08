@@ -11,9 +11,9 @@ const colorTransition = (from:string, to: string) =>  keyframes`
 `
 
 export const Container = styled.button<ButtonProps>`
-  margin-bottom: 1vh;
+  margin-bottom: 2vh;
   min-width: 100%;
-  min-height: 5vh;
+  min-height: 6vh;
   border-style: none;
   border-width: 0px;
   border-radius: 5px;

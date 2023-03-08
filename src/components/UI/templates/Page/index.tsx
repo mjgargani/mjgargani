@@ -1,4 +1,6 @@
-import React, { PropsWithChildren } from "react";
+import React, { PropsWithChildren, useContext } from "react";
+import { GitHubDataContext } from "../../../../context/GitHubData";
+import Loading from "../../atoms/Loading";
 
 import { Container } from "./styles";
 import { PageProps } from "./types";
@@ -6,8 +8,13 @@ import { PageProps } from "./types";
 const Page: React.FC<PropsWithChildren<PageProps>> = ({
   show = false,
   children
-}) => <Container show={show}>
-  {show && children}
-</Container>;
+}) => {
+  const { loading } = useContext(GitHubDataContext);
+
+  return <Container show={show}>
+    {loading && <Loading />}
+    {!loading && show && children}
+  </Container>
+};
 
 export default Page;

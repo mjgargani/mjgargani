@@ -4,10 +4,13 @@ import { device } from "../../components/utils/devices";
 const fontSizeBase = 6;
 
 export const Container = styled.div`
-  position: fixed;
-  min-width: 100vw;
-  top: 60vh;
+  position: relative;
+  height: inherit;
+  width: inherit;
+  display: table-cell;
+  vertical-align: bottom;
   color: white;
+  line-height: 180%;
   text-align: center;
   font-weight: bold;
   pointer-events: none;

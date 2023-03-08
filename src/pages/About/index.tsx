@@ -35,14 +35,6 @@ const About: React.FC<PageProps> = ({ show }) => {
       templateRows={{ mobile: ["1fr", "300px"] }}
       columnGap={20}
       rowGap={10}
-      style={{
-        position: "fixed",
-        width: "80vw",
-        marginLeft: "10vw",
-        height: "55vh",
-        top: "15vh",
-        overflow: "auto"
-      }}
     >
         <GridCell>
           <Card title={`Olá! Sou ${profile?.name}`} content={true}>

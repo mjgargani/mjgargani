@@ -16,14 +16,6 @@ const Repos: React.FC<PageProps> = ({ show }) => {
       templateColumns={{
         desktop: ["repeat(3, 1fr)"],
       }}
-      style={{
-        position: "fixed",
-        overflow: "auto",
-        width: "80vw",
-        marginLeft: "10vw",
-        height: "55vh",
-        top: "15vh"
-      }}
     >
       { repos && repos.length > 0 && repos.map((el, i) => (
         <GridCell key={i}>

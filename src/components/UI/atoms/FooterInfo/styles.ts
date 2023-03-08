@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { device } from "../../../utils/devices";
 
-const fontSizeBase = 3;
+const fontSizeBase = 2.5;
 
 export const Container = styled.div`
   position: fixed;
@@ -23,12 +23,12 @@ export const Container = styled.div`
     font-size: ${fontSizeBase-1}vw;
   }
   @media ${device.mobileL} {
-    font-size: ${fontSizeBase-1.3}vw;
+    font-size: ${fontSizeBase-1.6}vw;
   }
   @media ${device.laptop} {
     font-size: ${fontSizeBase-1}vh;
   }
   @media ${device.laptopL} {
-    font-size: ${fontSizeBase-.5}vh;
+    font-size: ${fontSizeBase-.7}vh;
   }
 `;
