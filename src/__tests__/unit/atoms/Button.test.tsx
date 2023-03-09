@@ -37,6 +37,4 @@ test.each([
   expect(button).toBeInTheDocument();
 
   expect(button).toHaveStyle(`background-color: rgba(255, 255, 255, ${expectedOpacity})`);
-
-  cleanup();
 });
