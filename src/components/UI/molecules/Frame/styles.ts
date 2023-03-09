@@ -35,9 +35,13 @@ const opacityTransition = keyframes`
 `
 
 export const Shadow = styled.div<Partial<FrameProps>>`
-  position: fixed;
-  min-width: 100vw;
-  min-height: 100vh;
+  position: inherit;
+  top: inherit;
+  left: inherit;
+  margin: inherit;
+  padding: inherit;
+  width: inherit;
+  height: inherit;
   background:-moz-radial-gradient(ellipse at 50% 50%, rgba(255, 255, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
   background:-webkit-radial-gradient(ellipse at 50% 50%, rgba(255, 255, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
   background:-o-radial-gradient(ellipse at 50% 50%, rgba(255, 255, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
@@ -50,9 +54,13 @@ export const Shadow = styled.div<Partial<FrameProps>>`
 `
 
 export const Tiles = styled.div`
-  position: fixed;
-  min-width: 100vw;
-  min-height: 100vh;
+  position: inherit;
+  top: inherit;
+  left: inherit;
+  margin: inherit;
+  padding: inherit;
+  width: inherit;
+  height: inherit;
   background-image: url(${tile});
   background-repeat: repeat;
   background-size: 8%;
@@ -64,9 +72,12 @@ export const Tiles = styled.div`
 
 export const Container = styled.div<Partial<FrameProps>>`
   position: fixed;
+  top: 0;
+  left: 0;
   margin: 0;
-  min-width: 100vw;
-  min-height: 100vh;
+  padding: 0;
+  width: 100vw;
+  height: 100%;
   background-color: #000;
   background: linear-gradient(315deg, ${props => linearGradientColors[props.page!].join(', ')});
   background-size: 200% 200%;

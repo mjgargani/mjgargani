@@ -19,15 +19,15 @@ function App() {
     }
   }, [gitHubDataValues])
 
-  return (
-    <Frame page={page} prevPage={prevPage}>
-      <Home show={page === 0} />
-      <GitHubDataContext.Provider value={gitHubDataValues}>
-        <Repos show={page === 1} />
-        <About show={page === 2} />
-      </GitHubDataContext.Provider>
-      <Navigation page={page} setPage={setPage}/>
-    </Frame>
+  return (<>
+    <Frame page={page} prevPage={prevPage} />
+    <Home show={page === 0} />
+    <GitHubDataContext.Provider value={gitHubDataValues}>
+      <Repos show={page === 1} />
+      <About show={page === 2} />
+    </GitHubDataContext.Provider>
+    <Navigation page={page} setPage={setPage}/>
+  </>
   );
 }
 

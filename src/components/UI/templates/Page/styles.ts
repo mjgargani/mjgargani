@@ -15,14 +15,14 @@ const heightBase = 60;
 const marginBase = [4,8,0,8];
 
 export const Container = styled.div<PageProps>`
-  position: fixed;
   z-index: 1000;
   overflow: auto;
-  width: 84vw;
+  width: inherit;
+  /* width: 84vw; */
   display:  ${props => !!props.show ? 'block' : 'none'};
   animation: ${opacityTransition} .5s ease;
   
-  height: ${heightBase}vh;
+  /* height: ${heightBase}vh;
   margin: ${marginBase[0]}vh ${marginBase[1]}vw ${marginBase[2]}vh ${marginBase[3]}vw;
   @media ${device.mobileS} {
     height: ${heightBase}vh;
@@ -55,5 +55,5 @@ export const Container = styled.div<PageProps>`
   @media ${device.desktopL} {
     height: ${heightBase-14}vh;
     margin: ${marginBase[0]+14}vh ${marginBase[1]}vw ${marginBase[2]}vh ${marginBase[3]}vw;
-  }
+  } */
 `;

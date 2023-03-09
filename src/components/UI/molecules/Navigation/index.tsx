@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../../atoms/Button";
 import GridCell from "../../atoms/GridCell";
-import GridContainer from "../GridContainer";
+import GridContainer from "../../atoms/GridContainer";
 import { Container } from "./styles";
 import { NavigationProps } from "./types";
 

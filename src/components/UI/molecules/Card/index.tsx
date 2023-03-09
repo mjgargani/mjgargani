@@ -2,7 +2,7 @@ import React, { PropsWithChildren } from "react";
 
 import { Container } from "./styles";
 import { CardProps } from "./types";
-import GridContainer from "../GridContainer";
+import GridContainer from "../../atoms/GridContainer";
 import GridCell from "../../atoms/GridCell";
 import CardDescription from "../../atoms/CardDescription";
 import CardTitle from "../../atoms/CardTitle";

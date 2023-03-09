@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import GridCell from "../../components/UI/atoms/GridCell";
 import Card from "../../components/UI/molecules/Card";
-import GridContainer from "../../components/UI/molecules/GridContainer";
+import GridContainer from "../../components/UI/atoms/GridContainer";
 import Vakinha from "../../assets/vakinha.jpeg"
 import AboutDescription from "../../assets/about.md";
 
