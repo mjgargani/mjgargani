@@ -15,7 +15,7 @@ const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
   onClick={onClick}
   active={active}
 >
-  {children}
+  <h1>{children}</h1>
 </Container>;
 
 export default Button;

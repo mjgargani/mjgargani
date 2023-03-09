@@ -7,12 +7,16 @@ import { SiSocketdotio } from "react-icons/si";
 import { SiTypescript } from "react-icons/si";
 import { SiStyledcomponents } from "react-icons/si";
 import { GiHeartOrgan } from "react-icons/gi";
+import { FaLinkedin } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
 import { IconList, IconReplacerProps } from "./types";
 import { Container } from "./styles";
 
 const icons: IconList = {
   "archive": ["#575100", <FaArchive title="Arquivo" />],
+  "linkedin": ["#0A66C2", <FaLinkedin title="LinkedIn" />],
+  "email": ["#000", <MdEmail title="E-mail" />],
   "nodejs": ["#7CB73F", <IoLogoNodejs title="Node.js" />],
   "ts": ["#2F74C0", <SiTypescript title="TypeScript" />],
   "reactjs": ["#5ED3F3", <RiReactjsLine title="ReactJS" />],

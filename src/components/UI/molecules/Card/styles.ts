@@ -12,8 +12,6 @@ const opacityTransition = (from: number, to: number) => keyframes`
 `
 
 export const Container = styled.div<CardProps>`
-  margin: 10px;
-  
   ${props => !props.content ? 
   `min-height: 50px;
     @media ${device.mobileS} {
@@ -42,7 +40,6 @@ export const Container = styled.div<CardProps>`
   border-width: 0px;
   border-radius: 5px;
   color: black;
-  font-weight: bold;
   background-color: rgba(255,255,255,1);
   background: linear-gradient(180deg, rgba(255,255,255,1) 50%, rgba(217,217,217,1) 100%);
   opacity: ${props => !!props.content ? 1 : 0.85};

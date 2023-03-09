@@ -9,14 +9,13 @@ export const Container = styled.div`
   width: inherit;
   display: table-cell;
   vertical-align: bottom;
-  color: white;
+  color: black;
   line-height: 180%;
   text-align: center;
   font-weight: bold;
   pointer-events: none;
-  -webkit-text-fill-color: black !important;
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: white !important;
+  -webkit-text-stroke-color: white;
   text-shadow: ${[
     "-3px  -3px 0 #fff",
     "-2px  -2px 0 #fff",

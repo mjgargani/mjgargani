@@ -5,7 +5,7 @@ import { PageProps } from "../../components/UI/templates/Page/types";
 import { Container } from "./styles";
 
 const Home: React.FC<PageProps> = ({ show }) => <Page show={show}>
-  <Container>mjgargani's Lab </Container>
+  <Container>mjgargani's Lab <span style={{ color: "darkblue" }}></span></Container>
 </Page>;
 
 export default Home;
