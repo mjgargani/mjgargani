@@ -4,10 +4,12 @@ import profile from '../../mock/profile.json';
 
 afterEach(cleanup);
 
-test('renders learn react link', () => {
-  render(<Avatar src={profile.avatar_url}/>);
+test('verify if component receives the `src` prop correctly', () => {
+  const currentDataTestId = "avatar__rtl";
 
-  expect(screen.getByTestId("about__avatar")).toBeInTheDocument();
-  expect(screen.getByTestId("about__avatar"))
+  render(<Avatar dataTestId={currentDataTestId} src={profile.avatar_url}/>);
+
+  expect(screen.getByTestId(currentDataTestId)).toBeInTheDocument();
+  expect(screen.getByTestId(currentDataTestId))
     .toHaveStyle(`background-image: url(${profile.avatar_url})`);
 });

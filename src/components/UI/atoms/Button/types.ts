@@ -1,6 +1,5 @@
 export interface ButtonProps {
-  backgroundColor?: string;
-  hoverColor?: string;
+  dataTestId?: string,
   active?: boolean;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }

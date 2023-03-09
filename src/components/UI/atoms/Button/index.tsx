@@ -4,14 +4,12 @@ import { Container } from "./styles";
 import { ButtonProps } from "./types";
 
 const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
-  backgroundColor = "darkblue",
-  hoverColor = "blue",
+  dataTestId = `button_${Date.now()}`,
   active = false,
   onClick,
   children
-}) => <Container 
-  backgroundColor={backgroundColor} 
-  hoverColor={hoverColor} 
+}) => <Container
+  data-testid={dataTestId}
   onClick={onClick}
   active={active}
 >
