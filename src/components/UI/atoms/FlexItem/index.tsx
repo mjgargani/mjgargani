@@ -3,9 +3,10 @@ import Container from './styles';
 import { FlexItemProps } from './types';
 
 const FlexItem: React.FC<PropsWithChildren<FlexItemProps>> = ({ 
-  flex = ["auto"],
+  flex = ["1"],
+  style,
   children
-}) => <Container flex={flex}>
+}) => <Container style={style} flex={flex}>
   { children }
 </Container>
 

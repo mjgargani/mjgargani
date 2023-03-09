@@ -3,9 +3,10 @@ import Container from './styles';
 import { FlexContainerProps } from './types';
 
 const FlexContainer: React.FC<PropsWithChildren<FlexContainerProps>> = ({ 
-  direction = "row",
+  direction = "column",
+  style,
   children
-}) => <Container direction={direction}>
+}) => <Container style={style} direction={direction}>
   { children }
 </Container>
 

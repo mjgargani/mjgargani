@@ -2,45 +2,47 @@ import styled from "styled-components";
 import { device } from "../../../utils/devices";
 
 const fontSizeBase = 4;
+const bottomMobileBase = 7.5;
+const bottomDesktopBase = 17.5;
 
 export const Container = styled.div`
-  position: relative;
+  position: fixed;
+  width: 75vw;
+  margin: 0 12.5vw;
   text-align: center;
-  height: 100%;
-  width: 100vw;
   
-  top: calc(50% - 15vh);
+  bottom: ${bottomMobileBase}%;
   font-size: ${fontSizeBase}vw;
   @media ${device.mobileS} {
-    top: calc(50% - 15vh);
+    bottom: ${bottomMobileBase}%;
     font-size: ${fontSizeBase-0.5}vw;
   }
   @media ${device.mobileM} {
-    top: calc(50% - 15vh);
+    bottom: ${bottomMobileBase}%;
     font-size: ${fontSizeBase-1}vw;
   }
   @media ${device.mobileL} {
-    top: calc(50% - 15vh);
+    bottom: ${bottomMobileBase}%;
     font-size: ${fontSizeBase-1.5}vw;
   }
   @media ${device.tablet} {
-    top: calc(50% - 3vh);
+    bottom: ${bottomDesktopBase}%;
     font-size: ${fontSizeBase-1.7}vw;
   }
   @media ${device.laptop} {
-    top: calc(50% - 3vh);
+    bottom: ${bottomDesktopBase}%;
     font-size: ${fontSizeBase-2}vw;
   }
   @media ${device.laptopL} {
-    top: calc(50% - 3vh);
+    bottom: ${bottomDesktopBase}%;
     font-size: ${fontSizeBase-2.5}vw;
   }
   @media ${device.desktop} {
-    top: calc(50% - 3vh);
+    bottom: ${bottomDesktopBase}%;
     font-size: ${fontSizeBase-3}vw;
   }
   @media ${device.desktopL} {
-    top: calc(50% - 3vh);
+    bottom: ${bottomDesktopBase}%;
     font-size: ${fontSizeBase-3.5}vw;
   }
 `;

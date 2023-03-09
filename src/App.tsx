@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import 'normalize.css';
+import usePrevious from './hooks/usePrevious';
 import Frame from './components/UI/molecules/Frame';
-import Navigation from './components/UI/molecules/Navigation';
 import { GitHubDataContext, useGitHubDataValues } from './context/GitHubData';
 import Home from './pages/Home';
 import Repos from './pages/Repos';
 import About from './pages/About';
-import usePrevious from './hooks/usePrevious';
+import Navigation from './components/UI/molecules/Navigation';
 
 function App() {
   const [page, setPage] = useState<number>(0);

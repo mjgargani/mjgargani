@@ -17,13 +17,16 @@ export const Container = styled.div`
 
   font-size: ${fontSizeBase}vw;
   @media ${device.mobileS} {
-    font-size: ${fontSizeBase-0.5}vw;
+    font-size: ${fontSizeBase-0.2}vw;
   }
   @media ${device.mobileM} {
-    font-size: ${fontSizeBase-1}vw;
+    font-size: ${fontSizeBase-0.3}vw;
   }
   @media ${device.mobileL} {
-    font-size: ${fontSizeBase-1.6}vw;
+    font-size: ${fontSizeBase-0.5}vw;
+  }
+  @media ${device.tablet} {
+    font-size: ${fontSizeBase-1}vh;
   }
   @media ${device.laptop} {
     font-size: ${fontSizeBase-1}vh;

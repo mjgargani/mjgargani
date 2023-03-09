@@ -1,3 +1,4 @@
 export interface FlexItemProps {
-  flex: string[];
+  flex?: string[];
+  style?: React.CSSProperties;
 }
