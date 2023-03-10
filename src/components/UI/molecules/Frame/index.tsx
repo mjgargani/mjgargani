@@ -1,5 +1,5 @@
-import React, { PropsWithChildren } from "react";
-import FooterInfo from "../../atoms/FooterInfo";
+import React from "react";
+import FooterInfo from "../FooterInfo";
 import Potion from "../../atoms/Potion";
 
 import { Tiles, Shadow, Container } from "./styles";

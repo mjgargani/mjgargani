@@ -4,6 +4,7 @@ import { Container } from "./styles";
 import { GridCellProps } from "./types";
 
 const GridCell: React.FC<PropsWithChildren<GridCellProps>> = ({
+  dataTestId = `avatar_${Date.now()}`,
   bgImg = {
     source: "",
     size: "contain"
@@ -11,7 +12,12 @@ const GridCell: React.FC<PropsWithChildren<GridCellProps>> = ({
   area = ["auto"],
   style,
   children
-}) => <Container area={area} bgImg={bgImg} style={style}>
+}) => <Container 
+  data-testid={dataTestId} 
+  area={area} 
+  bgImg={bgImg} 
+  style={style}
+>
   {children}
 </Container>;
 

@@ -5,7 +5,7 @@ import { CardProps } from "./types";
 import GridContainer from "../../atoms/GridContainer";
 import GridCell from "../../atoms/GridCell";
 import CardDescription from "../../atoms/CardDescription";
-import CardTitle from "../../atoms/CardTitle";
+import CardTitle from "../CardTitle";
 import CardThumbnail from "../../atoms/CardThumbnail";
 
 const Card: React.FC<PropsWithChildren<CardProps>> = ({
