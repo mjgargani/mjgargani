@@ -1,3 +1,5 @@
-export interface CardThumbnailProps {
+import { CommonProps } from "../../../../types";
+
+export interface CardThumbnailProps extends CommonProps {
   bgImg: string;
 }
