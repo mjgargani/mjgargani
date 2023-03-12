@@ -4,7 +4,7 @@ import repos from '../../mock/repos.json';
 
 afterEach(cleanup);
 
-test('verify if component receives the `src` prop correctly', () => {
+test('verify if component receives the `bgImg` prop correctly', () => {
   const currentDataTestId = "card-thumb__rtl";
   const expectedBgImg = `https://raw.githubusercontent.com/mjgargani/${repos[0].name}/main/thumbnail.gif`;
 

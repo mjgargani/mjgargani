@@ -4,6 +4,7 @@ import { Container } from "./styles";
 import { GridContainerProps } from "./types";
 
 const GridContainer: React.FC<PropsWithChildren<GridContainerProps>> = ({
+  dataTestId = `avatar_${Date.now()}`,
   templateColumns,
   templateRows,
   columnGap = 0,
@@ -11,6 +12,7 @@ const GridContainer: React.FC<PropsWithChildren<GridContainerProps>> = ({
   style,
   children
 }) => <Container
+  data-testid={dataTestId}
   templateColumns={templateColumns}
   templateRows={templateRows}
   columnGap={columnGap}

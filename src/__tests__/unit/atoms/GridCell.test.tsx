@@ -4,7 +4,7 @@ import { GridCellProps } from '../../../components/UI/atoms/GridCell/types';
 
 afterEach(cleanup);
 
-test('verify if component receives the `children` correctly', () => {
+test('verify if component receives the props and `children` correctly', () => {
   const currentDataTestId = "grid-cell__rtl";
   const expectedText = "Teste com RTL";
   const props: GridCellProps = {

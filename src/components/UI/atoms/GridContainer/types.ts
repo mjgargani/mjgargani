@@ -1,6 +1,7 @@
 import React from "react";
+import { CommonProps } from "../../../../types";
 
-export interface GridContainerProps {
+export interface GridContainerProps extends CommonProps {
   templateColumns?: {
     mobile?: string[];
     desktop?: string[];
