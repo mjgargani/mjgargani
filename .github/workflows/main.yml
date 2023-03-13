@@ -28,3 +28,4 @@ jobs:
           author_name: Rodrigo G Oliveira
           author_email: mjgargani@gmail.com
           add: './dist'
+          push: origin dev --force
