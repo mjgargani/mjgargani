@@ -1,11 +1,16 @@
 import React from "react";
+import { testIdName } from "../../../utils/testIdName";
 import Button from "../../atoms/Button";
 import GridCell from "../../atoms/GridCell";
 import GridContainer from "../../atoms/GridContainer";
 import { Container } from "./styles";
 import { NavigationProps } from "./types";
 
-const Navigation: React.FC<NavigationProps> = ({ page, setPage }) => <Container>
+const Navigation: React.FC<NavigationProps> = ({ 
+  dataTestId = testIdName("navigation"),
+  page, 
+  setPage 
+}) => <Container data-testid={dataTestId}>
   <GridContainer templateColumns={{desktop: ["repeat(3, 1fr)"]}} columnGap={10} rowGap={10}>
     <GridCell>
       <Button active={page === 0} onClick={() => setPage(0)}> início</Button>
