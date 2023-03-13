@@ -11,7 +11,7 @@ import { GitHubDataContext } from "../../context/GitHubData";
 import mdParser from "../../utils/mdParser";
 import Avatar from "../../components/UI/atoms/Avatar";
 import request from "../../utils/fetch";
-import IconReplacer from "../../components/UI/atoms/IconReplacer";
+import IconReplacer from "../../components/UI/molecules/IconReplacer";
 
 let loadTrigger = false;
 

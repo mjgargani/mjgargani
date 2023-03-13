@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from "react";
-import IconReplacer from "../../atoms/IconReplacer";
+import IconReplacer from "../IconReplacer";
 
 import { Container } from "./styles";
 

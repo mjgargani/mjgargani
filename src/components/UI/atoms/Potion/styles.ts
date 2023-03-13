@@ -71,7 +71,7 @@ const shadowAnim = keyframes`
     filter: drop-shadow(0 0 50px rgba(255, 255, 255, .75));
   }
 `
-const transparencyAlpha = [0.1, 1]
+export const transparencyAlpha = [0.1, 1]
 
 const opacityTransition = (onHome: boolean) => keyframes`
   from{

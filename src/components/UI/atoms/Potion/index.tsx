@@ -4,8 +4,8 @@ import { Container } from "./styles";
 import { PotionProps } from "./types";
 
 const Potion: React.FC<PropsWithChildren<PotionProps>> = ({
-  speed = 10,
+  dataTestId = `potion_${Date.now()}`,
   transparent = false
-}) => <Container speed={speed} transparent={transparent}/>;
+}) => <Container data-testid={dataTestId} transparent={transparent}/>;
 
 export default Potion;
