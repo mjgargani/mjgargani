@@ -10,7 +10,7 @@ test('verify if component receives child components and `content` prop correctly
   const props: CardProps = {
     bgImg: `https://raw.githubusercontent.com/mjgargani/${repos[0].name}/main/thumbnail.gif`,
     title: "Teste RTL",
-    content: false,
+    content: 0,
     url: repos[0].url
   }
   const expectedText = "Descrição do card";

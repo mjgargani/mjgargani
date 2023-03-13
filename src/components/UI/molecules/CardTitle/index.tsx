@@ -14,7 +14,7 @@ const CardTitle: React.FC<PropsWithChildren<CommonProps>> = ({
 }) => <>
   <Container data-testid={dataTestId}>
     {(children as string).replaceAll(replaceRegExpTitle, "").replaceAll("-"," ")}<br />
-    <h2 style={{ margin: "1%" }}><IconReplacer text={(children as string).replaceAll(replaceRegExpIcons, "")} darker={true}/></h2>
+    <IconReplacer style={{ fontSize: "larger" }} text={(children as string).replaceAll(replaceRegExpIcons, "")} darker={true}/>
   </Container>
 </>;
 

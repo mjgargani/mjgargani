@@ -14,7 +14,7 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
   bgImg,
   url,
   title = "",
-  content = false,
+  content = 0,
   children
 }) => { 
   const cardContent: JSX.Element = <GridContainer>
