@@ -27,8 +27,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test"
+  },
+  "jest": {
+    "testMatch" : [
+      "**/__tests__/**/*.test.tsx"
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -49,6 +53,7 @@
     ]
   },
   "devDependencies": {
-    "@types/styled-components": "^5.1.26"
+    "@types/styled-components": "^5.1.26",
+    "msw": "^1.1.0"
   }
 }

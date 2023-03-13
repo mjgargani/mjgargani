@@ -43,7 +43,11 @@ const About: React.FC<PageProps> = ({
       rowGap={10}
     >
         <GridCell>
-          <Card title={`Olá! Sou ${profile?.name}`} content={true}>
+          <Card
+            dataTestId={testIdName("card-about")} 
+            title={`Olá! Sou ${profile?.name}`} 
+            content={1}
+          >
             <GridContainer
               templateColumns={{
                 desktop: ["1fr", "9fr"],
@@ -80,7 +84,11 @@ const About: React.FC<PageProps> = ({
         </GridCell>
 
         <a href="https://www.vakinha.com.br/3539654" target="_blank" rel="noreferrer">
-          <GridCell bgImg={{ source: Vakinha, size: "contain" }} style={{minHeight:"100%", margin: "0 4.5%"}} />
+          <GridCell
+            dataTestId={testIdName("img-vakinha")}
+            bgImg={{ source: Vakinha, size: "contain" }} 
+            style={{minHeight:"100%", margin: "0 4.5%"}} 
+          />
         </a>
     </GridContainer>
   </Page>)
