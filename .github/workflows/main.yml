@@ -22,8 +22,13 @@ jobs:
       - name: Build project
         run: BUILD_PATH='./dist' npm run build
 
-      - name: Commit dist
-        uses: EndBug/add-and-commit@v9
-        with:
-          add: 'dist'
-          new_branch: 'dev'
+      - name: setup git config
+        run: |
+          git config user.name "Rodrigo G. Oliveira"
+          git config user.email "<mjgargani@gmail.com>"
+
+      - name: commit
+        run: |
+          git add ./dist
+          git commit -m "new dist"
+          git push origin dev
