@@ -24,6 +24,7 @@ jobs:
           then true; \
           else echo "Nothing to build in compare with '${{ github.head_ref }}' branch" && exit 1; \
           fi
+
   jest-test:
     needs: [src-change]
     runs-on: ubuntu-latest
@@ -38,6 +39,7 @@ jobs:
 
       - name: Run Jest tests
         run: npm test
+
   deploy:
     needs: [src-change, jest-test]
     runs-on: ubuntu-latest
