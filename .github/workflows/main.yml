@@ -1,5 +1,5 @@
 name: Deploy
-run-name: Started by @${{ github.actor }}
+run-name: Deploy started by @${{ github.actor }}
 
 on:
   pull_request:
@@ -26,3 +26,4 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           add: 'dist'
+          new_branch: 'dev'
