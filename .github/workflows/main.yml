@@ -15,7 +15,7 @@ jobs:
 
       - name: Verify source changes
         id: src-changes
-        run: git diff-index --quiet HEAD ./.github ./public ./src ./package-lock.json ./package.json ./tsconfig.json && exit 1
+        run: if git diff-index --quiet HEAD ./.github ./public ./src ./package-lock.json ./package.json ./tsconfig.json; then exit 1; else true; fi
 
       - uses: actions/setup-node@v3
         with:
