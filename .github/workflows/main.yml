@@ -31,4 +31,5 @@ jobs:
 
       - name: Commit generated distribution
         uses: stefanzweifel/git-auto-commit-action@v4
-        commit_message: 'dist: bot commit'
+        with:
+          commit_message: 'dist: bot commit'
