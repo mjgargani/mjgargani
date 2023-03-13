@@ -12,7 +12,7 @@ const opacityTransition = (from: number, to: number) => keyframes`
 `
 
 export const Container = styled.div<CardProps>`
-  ${props => !props.content ? 
+  ${props => props.content ? 
   `min-height: 50px;
     @media ${device.mobileS} {
       min-height: 60px;
@@ -42,14 +42,14 @@ export const Container = styled.div<CardProps>`
   color: black;
   background-color: rgba(255,255,255,1);
   background: linear-gradient(180deg, rgba(255,255,255,1) 50%, rgba(217,217,217,1) 100%);
-  opacity: ${props => !!props.content ? 1 : 0.85};
-  animation: ${props => !!!props.content ? opacityTransition(1, 0.85) : "none"} .5s ease;
+  opacity: ${props => props.content ? 1 : 0.85};
+  animation: ${props => !props.content ? opacityTransition(1, 0.85) : "none"} .5s ease;
 
   &:hover {
     background-color: rgba(255,255,255,1);
     background: linear-gradient(180deg, rgba(255,255,255,1) 50%, rgba(217,217,217,1) 100%);
     opacity: 1;
-    animation: ${props => !!!props.content ? opacityTransition(0.85, 1) : "none"} .5s ease;
-    cursor: ${props => !!props.content ? "default" : "pointer"};
+    animation: ${props => !props.content ? opacityTransition(0.85, 1) : "none"} .5s ease;
+    cursor: ${props => props.content ? "default" : "pointer"};
   }
 `;

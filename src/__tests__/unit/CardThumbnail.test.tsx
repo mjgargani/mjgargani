@@ -1,6 +1,6 @@
 import { render, screen, cleanup } from '@testing-library/react';
-import CardThumbnail from '../../../components/UI/atoms/CardThumbnail';
-import repos from '../../mock/repos.json';
+import CardThumbnail from '../../components/UI/atoms/CardThumbnail';
+import repos from '../mock/repos.json';
 
 afterEach(cleanup);
 

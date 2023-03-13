@@ -1,6 +1,6 @@
 import { render, screen, cleanup } from '@testing-library/react';
-import GridContainer from '../../../components/UI/atoms/GridContainer';
-import { GridContainerProps } from '../../../components/UI/atoms/GridContainer/types';
+import GridContainer from '../../components/UI/atoms/GridContainer';
+import { GridContainerProps } from '../../components/UI/atoms/GridContainer/types';
 
 afterEach(cleanup);
 

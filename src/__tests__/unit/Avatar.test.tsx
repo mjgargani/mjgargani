@@ -1,6 +1,6 @@
 import { render, screen, cleanup } from '@testing-library/react';
-import Avatar from '../../../components/UI/atoms/Avatar';
-import profile from '../../mock/profile.json';
+import Avatar from '../../components/UI/atoms/Avatar';
+import profile from '../mock/profile.json';
 
 afterEach(cleanup);
 

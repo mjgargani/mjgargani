@@ -1,6 +1,6 @@
 import { render, screen, cleanup } from '@testing-library/react';
-import GridCell from '../../../components/UI/atoms/GridCell';
-import { GridCellProps } from '../../../components/UI/atoms/GridCell/types';
+import GridCell from '../../components/UI/atoms/GridCell';
+import { GridCellProps } from '../../components/UI/atoms/GridCell/types';
 
 afterEach(cleanup);
 

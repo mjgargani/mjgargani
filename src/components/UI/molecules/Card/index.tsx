@@ -9,8 +9,7 @@ import CardTitle from "../CardTitle";
 import CardThumbnail from "../../atoms/CardThumbnail";
 
 const Card: React.FC<PropsWithChildren<CardProps>> = ({
-  backgroundColor = "white",
-  hoverColor = "whitesmoke",
+  dataTestId = `avatar_${Date.now()}`,
   bgImg,
   url,
   title = "",
@@ -34,9 +33,8 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
     </GridCell>
   </GridContainer>
 
-  return <Container 
-    backgroundColor={backgroundColor} 
-    hoverColor={hoverColor}
+  return <Container
+    data-testid={dataTestId}
     content={content}
   >
     {url ? <a href={url} target="_blank" rel="noreferrer" style={{ 
