@@ -2,9 +2,9 @@ import styled, { keyframes } from "styled-components";
 import { FrameProps } from "./types";
 import tile from "../../../../assets/tile.png"
 
-const shadowAlpha = [0.5, 0.9, 0.7];
+export const shadowAlpha = [0.5, 0.9, 0.7];
 
-const linearGradientColors = [
+export const linearGradientColors = [
   ["#0422ce", "#873ea1"],
   ["#636311", "#417883"],
   ["#690808", "#64c773"],

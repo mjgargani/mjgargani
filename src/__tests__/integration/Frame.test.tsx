@@ -1,5 +1,7 @@
 import { render, screen, cleanup } from '@testing-library/react';
 import Frame from "../../components/UI/molecules/Frame";
+import { linearGradientColors, shadowAlpha } from '../../components/UI/molecules/Frame/styles';
+import { transparencyAlpha } from '../../components/UI/atoms/Potion/styles';
 
 afterEach(cleanup);
 
@@ -24,12 +26,17 @@ test('verify if component shows child components correctly', () => {
   expect(footerInfo).toBeInTheDocument();
 });
 
-test('verify if components changes when the `page` prop changes', () => {
+test.each([
+  [0, transparencyAlpha[1]],
+  [1, transparencyAlpha[0]],
+  [2, transparencyAlpha[0]]
+])('verify if components changes when the `page` prop changes (value: %p)', 
+(page, potionOpacity) => {
   const currentDataTestId = "frame_rtl";
 
   render(<Frame
       dataTestId={currentDataTestId}
-      page={1}
+      page={page}
     />);
 
   const frame = screen.getByTestId(currentDataTestId);
@@ -38,6 +45,8 @@ test('verify if components changes when the `page` prop changes', () => {
   const shadow = screen.getByTestId(/^frame-shadow_\d+/);
   const potion = screen.getByTestId(/^potion_\d+/);
 
-  expect(shadow).toHaveStyle(`opacity: 0.9`);
-  expect(potion).toHaveStyle(`opacity: 0.1`);
+  expect(frame)
+    .toHaveStyle(`background: linear-gradient(315deg, ${linearGradientColors[page].join(', ')});`);
+  expect(shadow).toHaveStyle(`opacity: ${shadowAlpha[page]}`);
+  expect(potion).toHaveStyle(`opacity: ${potionOpacity}`);
 });
