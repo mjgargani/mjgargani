@@ -4,14 +4,19 @@ import Potion from "../../atoms/Potion";
 
 import { Tiles, Shadow, Container } from "./styles";
 import { FrameProps } from "./types";
+import { testIdName } from "../../../utils/testIdName";
 
 const Frame: React.FC<FrameProps> = ({
+  dataTestId = testIdName("frame"),
   style,
   page,
   prevPage = 0,
-}) =><Container style={style} page={page}>
-      <Tiles />
-      <Shadow page={page} prevPage={prevPage}/>
+}) =><Container 
+    data-testid={dataTestId}
+    style={style} 
+    page={page}>
+      <Tiles data-testid={testIdName("frame-tiles")} />
+      <Shadow data-testid={testIdName("frame-shadow")} page={page} prevPage={prevPage}/>
       <Potion transparent={page !== 0}/>
       <FooterInfo />
     </Container>;
