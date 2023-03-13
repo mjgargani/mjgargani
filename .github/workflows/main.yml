@@ -20,10 +20,9 @@ jobs:
         run: npm test
 
       - name: Build project
-        run: npm run build
+        run: BUILD_PATH='./dist' npm run build
 
       - name: Commit build on main
         uses: EndBug/add-and-commit@v9
         with:
-          add: 'build'
-          commit: -f
+          add: 'dist'
