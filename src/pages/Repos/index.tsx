@@ -7,12 +7,17 @@ import Page from "../../components/UI/templates/Page";
 import { PageProps } from "../../components/UI/templates/Page/types";
 import { GitHubDataContext } from "../../context/GitHubData";
 import mdParser from "../../utils/mdParser";
+import { testIdName } from "../../components/utils/testIdName";
 
-const Repos: React.FC<PageProps> = ({ show }) => {
+const Repos: React.FC<PageProps> = ({ 
+  dataTestId = testIdName("page-repos"),
+  show 
+}) => {
   const { repos } = useContext(GitHubDataContext);
 
   return (<Page show={show}>
     <GridContainer 
+      dataTestId={dataTestId}
       templateColumns={{
         desktop: ["repeat(3, 1fr)"],
       }}

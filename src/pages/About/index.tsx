@@ -12,10 +12,14 @@ import mdParser from "../../utils/mdParser";
 import Avatar from "../../components/UI/atoms/Avatar";
 import request from "../../utils/fetch";
 import IconReplacer from "../../components/UI/molecules/IconReplacer";
+import { testIdName } from "../../components/utils/testIdName";
 
 let loadTrigger = false;
 
-const About: React.FC<PageProps> = ({ show }) => {
+const About: React.FC<PageProps> = ({ 
+  dataTestId = testIdName("page-about"),
+  show 
+}) => {
   const { profile } = useContext(GitHubDataContext);
   const [desc, setDesc] = useState<string | undefined>(undefined);
 
@@ -31,7 +35,8 @@ const About: React.FC<PageProps> = ({ show }) => {
   }, [desc, setDesc]);
 
   return (<Page show={show}>
-    <GridContainer 
+    <GridContainer
+      dataTestId={dataTestId} 
       templateColumns={{ desktop: ["9fr", "4fr"] }}
       templateRows={{ mobile: ["1fr", "300px"] }}
       columnGap={10}
