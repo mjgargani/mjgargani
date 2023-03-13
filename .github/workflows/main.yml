@@ -1,15 +1,13 @@
 name: Deploy
-run-name: Build and commit distribution
+run-name: Test, build and commit distribution
 
 on:
   pull_request:
     types: [opened, synchronize]
 
 jobs:
-  deploy:
+  src-change:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v3
 
@@ -26,6 +24,11 @@ jobs:
           then true; \
           else echo "Nothing to build in compare with '${{ github.head_ref }}' branch" && exit 1; \
           fi
+  jest-test:
+    needs: [src-change]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
 
       - uses: actions/setup-node@v3
         with:
@@ -35,6 +38,19 @@ jobs:
 
       - name: Run Jest tests
         run: npm test
+  deploy:
+    needs: [src-change, jest-test]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+     
+      - run: npm ci
 
       - name: Build ReactJS project
         run: BUILD_PATH='./dist' npm run build
