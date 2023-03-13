@@ -22,7 +22,7 @@ jobs:
       - name: Build project
         run: BUILD_PATH='./dist' npm run build
 
-      - name: Commit build on main
+      - name: Commit dist
         uses: EndBug/add-and-commit@v9
         with:
           add: 'dist'
