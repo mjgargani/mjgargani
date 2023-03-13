@@ -13,18 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Verify Changed files
-        uses: tj-actions/verify-changed-files@v13
-        id: verify-changed-files
-        with:
-          files: |
-             .github
-             public
-             src
-             package-lock.json
-             package.json
-             tsconfig.json
-
       - uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -37,7 +25,14 @@ jobs:
       - name: Build ReactJS project
         run: BUILD_PATH='./dist' npm run build
 
+      - name: Verify Changed files
+        uses: tj-actions/verify-changed-files@v13
+        id: verify-changed-files
+        with:
+          files: dist
+
       - name: Commit generated distribution
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: 'dist: bot commit'
