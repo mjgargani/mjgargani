@@ -1,28 +1,34 @@
 name: Deploy
-run-name: Started by @${{ github.actor }}
+run-name: Build and commit distribution
 
 on:
   pull_request:
     types: [opened, synchronize]
 
 jobs:
-  evaluation:
+  deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v3
+
+      - name: Verify source changes
+        id: src-changes
+        run: git diff-index --quiet HEAD ./.github ./public ./src ./package-lock.json ./package.json ./tsconfig.json && exit 1
+
       - uses: actions/setup-node@v3
         with:
           node-version: 18
      
       - run: npm ci
 
-      - name: Run tests
+      - name: Run Jest tests
         run: npm test
 
-      - name: Build project
-        run: npm run build
+      - name: Build ReactJS project
+        run: BUILD_PATH='./dist' npm run build
 
-      - name: Commit build on main
-        uses: EndBug/add-and-commit@v9
-        with:
-          add: 'build'
+      - name: Commit generated distribution
+        uses: stefanzweifel/git-auto-commit-action@v4
+        commit_message: 'dist: bot commit'
