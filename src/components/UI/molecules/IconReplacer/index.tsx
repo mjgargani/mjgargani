@@ -12,6 +12,7 @@ import { MdEmail } from "react-icons/md";
 
 import { IconList, IconReplacerProps } from "./types";
 import { Container } from "./styles";
+import { testIdName } from "../../../utils/testIdName";
 
 const icons: IconList = {
   "archive": ["#575100", <FaArchive title="Arquivo" />],
@@ -25,19 +26,29 @@ const icons: IconList = {
   "socketio": ["#000", <SiSocketdotio title="Socket.IO" />],
   "php": ["#4D588E", <SiPhp title="PHP" />],
   "wp": ["#21759B", <DiWordpress title="WordPress" />],
-  "heart": ["#F75341", <GiHeartOrgan title="com o coração" />]
+  "heart": ["#F75341", <GiHeartOrgan  title="com o coração" />]
 }
 
 const IconReplacer: React.FC<IconReplacerProps> = ({ 
-  text, darker = false, style
-}) => <Container darker={darker} style={style}>
+  dataTestId = testIdName("icon-replacer"),
+  text, 
+  darker = false, 
+  style
+}) => <Container 
+  data-testid={dataTestId} 
+  darker={darker} 
+  style={style}
+>
   {
     Object.entries(icons).map((entry, i) => {
       if(text.includes(entry[0])) {
-        return (<span style={{ 
-          color: entry[1][0],
-          padding: "0 5px"
-        }} key={i}>{entry[1][1]}</span>);
+        return (<span
+          data-testid={testIdName(`icon-${entry[0]}`)} 
+          style={{ 
+            color: entry[1][0],
+            padding: "0 5px"
+          }
+        } key={i}>{entry[1][1]}</span>);
       }
       return false
     })

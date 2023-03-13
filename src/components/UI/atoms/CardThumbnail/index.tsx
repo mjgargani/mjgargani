@@ -1,9 +1,10 @@
 import React from "react";
+import { testIdName } from "../../../utils/testIdName";
 import { Container } from "./styles";
 import { CardThumbnailProps } from "./types";
 
 const CardThumbnail: React.FC<CardThumbnailProps> = ({ 
-  dataTestId = `card-thumb_${Date.now()}`,
+  dataTestId = testIdName("card-thumb"),
   bgImg = ""
 }) => <>
     <Container data-testid={dataTestId} bgImg={bgImg} />

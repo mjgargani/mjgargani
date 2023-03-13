@@ -1,10 +1,11 @@
 import React, { PropsWithChildren } from "react";
+import { testIdName } from "../../../utils/testIdName";
 
 import { Container } from "./styles";
 import { GridContainerProps } from "./types";
 
 const GridContainer: React.FC<PropsWithChildren<GridContainerProps>> = ({
-  dataTestId = `avatar_${Date.now()}`,
+  dataTestId = testIdName("grid-container"),
   templateColumns,
   templateRows,
   columnGap = 0,

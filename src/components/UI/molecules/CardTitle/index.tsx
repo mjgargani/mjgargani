@@ -1,5 +1,6 @@
 import React, { PropsWithChildren } from "react";
 import { CommonProps } from "../../../../types";
+import { testIdName } from "../../../utils/testIdName";
 import IconReplacer from "../IconReplacer";
 
 import { Container } from "./styles";
@@ -8,7 +9,7 @@ const replaceRegExpTitle = new RegExp(".+(?<=_)", "gi");
 const replaceRegExpIcons = new RegExp("(?=_).+", "gi");
 
 const CardTitle: React.FC<PropsWithChildren<CommonProps>> = ({
-  dataTestId = `card-title_${Date.now()}`,
+  dataTestId = testIdName("card-title"),
   children
 }) => <>
   <Container data-testid={dataTestId}>

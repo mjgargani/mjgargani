@@ -1,10 +1,11 @@
 import React, { PropsWithChildren } from "react";
+import { testIdName } from "../../../utils/testIdName";
 
 import { Container } from "./styles";
 import { GridCellProps } from "./types";
 
 const GridCell: React.FC<PropsWithChildren<GridCellProps>> = ({
-  dataTestId = `avatar_${Date.now()}`,
+  dataTestId = testIdName("grid-cell"),
   bgImg = {
     source: "",
     size: "contain"

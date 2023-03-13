@@ -1,10 +1,11 @@
 import React, { PropsWithChildren } from "react";
+import { testIdName } from "../../../utils/testIdName";
 
 import { Container } from "./styles";
 import { AvatarProps } from "./types";
 
 const Avatar: React.FC<PropsWithChildren<AvatarProps>> = ({
-  dataTestId = `avatar_${Date.now()}`,
+  dataTestId = testIdName("avatar"),
   src
 }) => <Container data-testid={dataTestId} src={src} />;
 

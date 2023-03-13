@@ -33,7 +33,7 @@ test('verify if component receives child components and `content` prop correctly
   expect(cardTitle).toBeInTheDocument();
   expect(cardDescription).toBeInTheDocument();
 
-  expect(screen.getByTestId(/^card-thumb_\d+/))
+  expect(cardThumb)
     .toHaveStyle(`background-image: url(${props.bgImg})`);
   expect(card).toHaveTextContent(props.title!);
   expect(card).toHaveTextContent(expectedText);

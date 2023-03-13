@@ -7,9 +7,10 @@ import GridCell from "../../atoms/GridCell";
 import CardDescription from "../../atoms/CardDescription";
 import CardTitle from "../CardTitle";
 import CardThumbnail from "../../atoms/CardThumbnail";
+import { testIdName } from "../../../utils/testIdName";
 
 const Card: React.FC<PropsWithChildren<CardProps>> = ({
-  dataTestId = `avatar_${Date.now()}`,
+  dataTestId = testIdName("card"),
   bgImg,
   url,
   title = "",

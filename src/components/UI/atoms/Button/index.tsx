@@ -1,10 +1,11 @@
 import React, { PropsWithChildren } from "react";
+import { testIdName } from "../../../utils/testIdName";
 
 import { Container } from "./styles";
 import { ButtonProps } from "./types";
 
 const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
-  dataTestId = `button_${Date.now()}`,
+  dataTestId = testIdName("button"),
   active = false,
   onClick,
   children
