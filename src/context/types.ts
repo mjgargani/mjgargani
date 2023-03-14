@@ -5,6 +5,8 @@ export type GitHubProfile = {
 }
 
 export type GitHubRepoItem = {
+  id: number
+  created_at: number
   name: string
   description: string
   html_url: string

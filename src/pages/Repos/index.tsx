@@ -24,12 +24,16 @@ const Repos: React.FC<PageProps> = ({ dataTestId = testIdName('page-repos'), sho
       >
         {repos &&
           repos.length > 0 &&
-          repos.map((el, i) => (
+          repos.sort((a, b) => (a!.id < b!.id) ? 1 : -1).map((el, i) => (
             <GridCell key={i}>
               <Card
                 bgImg={`https://raw.githubusercontent.com/mjgargani/${el!.name}/main/thumbnail.gif`}
                 url={el!.html_url}
-                title={el!.name}
+                title={
+                  el!.name === "mjgargani" ?
+                    "nodejs-typescript-reactjs-styledcomponents_mjgargani" : 
+                    el!.name
+                }
               >
                 {mdParser(el!.description)}
               </Card>

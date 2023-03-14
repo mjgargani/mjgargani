@@ -20,6 +20,8 @@ export const useGitHubDataValues = (): GitHubData => {
       request('https://api.github.com/users/mjgargani/repos', 'GET').then(
         (data: GitHubRepoItem[]) => {
           const newRepos: GitHubRepoItem[] = data.map((el) => ({
+            id: el.id,
+            created_at: new Date(el.created_at).getTime(),
             name: el.name,
             description: el.description,
             html_url: el.html_url,
