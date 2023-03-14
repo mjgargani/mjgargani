@@ -69,3 +69,13 @@ After starting the container, use the browser to access the address `http://loca
 ```bash
 docker compose down
 ```
+
+## Quer ajudar a financiar meus projetos? / Want to help fund my projects?
+
+Desde um café ☕ ou uma breja 🍺, à ração dos meus bixanos 🐱 🐱, qualquer valor pode ajudar!
+
+From a coffee ☕ or a beer 🍺, to my cats' food 🐱 🐱, any amount can help!
+
+🪙 [Acesse meu link do site 'Vakinha' / Visit my website link 'Vakinha'](https://www.vakinha.com.br/3539654)
+
+![Vakinha](src/assets/vakinha.jpeg)
