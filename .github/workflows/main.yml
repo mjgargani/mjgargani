@@ -69,7 +69,6 @@ jobs:
         run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
 
       - uses: actions/cache@v3
-        id: npm-cache
         with:
           fail-on-cache-miss: true
           path: ${{ steps.npm-cache-dir.outputs.dir }}
@@ -77,8 +76,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - if: steps.npm-cache.outputs.cache-hit != 'true'
-        name: Restore dependencies
+      - name: Restore dependencies
         run: npm ci
 
       - name: Run Jest tests
@@ -103,7 +101,6 @@ jobs:
         run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
 
       - uses: actions/cache@v3
-        id: npm-cache
         with:
           fail-on-cache-miss: true
           path: ${{ steps.npm-cache-dir.outputs.dir }}
@@ -111,8 +108,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - if: steps.npm-cache.outputs.cache-hit == 'true'
-        name: Restore dependencies
+      - name: Restore dependencies
         run: npm ci
 
       - name: Build ReactJS project
