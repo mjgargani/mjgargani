@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/mjgargani/static/css/main.58462fbc.css",
+    "main.js": "/mjgargani/static/js/main.efcd3f2f.js",
+    "static/media/potion.png": "/mjgargani/static/media/potion.b00101bbb836100f0262.png",
+    "static/media/vakinha.jpeg": "/mjgargani/static/media/vakinha.6604aca222fcb928a55b.jpeg",
+    "static/media/tile.png": "/mjgargani/static/media/tile.e61ddeec9779a3c02062.png",
+    "index.html": "/mjgargani/index.html",
+    "static/media/about.md": "/mjgargani/static/media/about.da1b5e54d622bcb09aa9.md",
+    "main.58462fbc.css.map": "/mjgargani/static/css/main.58462fbc.css.map",
+    "main.efcd3f2f.js.map": "/mjgargani/static/js/main.efcd3f2f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.58462fbc.css",
+    "static/js/main.efcd3f2f.js"
+  ]
+}
