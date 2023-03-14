@@ -1,5 +1,5 @@
 import React from 'react'
-import { CommonProps } from '../../../../fonts'
+import { type CommonProps } from '../../../../fonts'
 import { testIdName } from '../../../utils/testIdName'
 import IconReplacer from '../IconReplacer'
 

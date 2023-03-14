@@ -1,4 +1,4 @@
-import { CommonProps } from '../../../../fonts'
+import { type CommonProps } from '../../../../fonts'
 
 export type PotionProps = {
   transparent?: boolean

@@ -1,5 +1,5 @@
 import type React from 'react'
-import { CommonProps } from '../../../../fonts'
+import { type CommonProps } from '../../../../fonts'
 
 export type GridContainerProps = {
   templateColumns?: {

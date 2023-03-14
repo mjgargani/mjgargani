@@ -1,5 +1,5 @@
 import type React from 'react'
-import { CommonProps } from '../../../../fonts'
+import { type CommonProps } from '../../../../fonts'
 
 type RGB = `rgb(${number}, ${number}, ${number})`
 type RGBA = `rgba(${number}, ${number}, ${number}, ${number})`
