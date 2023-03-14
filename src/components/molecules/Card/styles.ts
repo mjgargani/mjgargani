@@ -1,5 +1,4 @@
 import styled, { keyframes } from 'styled-components'
-import { device } from '../../../utils/devices'
 import { type CardProps } from './types'
 
 const opacityTransition = (from: number, to: number) => keyframes`
@@ -12,32 +11,9 @@ const opacityTransition = (from: number, to: number) => keyframes`
 `
 
 export const Container = styled.div<CardProps>`
-  ${(props) =>
-    props.content
-      ? `min-height: 50px;
-    @media ${device.mobileS} {
-      min-height: 60px;
-    }
-    @media ${device.mobileM} {
-      min-height: 70px;
-    }
-    @media ${device.mobileL} {
-      min-height: 80px;
-    }
-    @media ${device.laptop} {
-      min-height: 90px;
-    }
-    @media ${device.laptopL} {
-      min-height: 100px;
-    }
-    @media ${device.desktop} {
-      min-height: 110px;
-    }
-    @media ${device.desktopL} {
-      min-height: 120px;
-    }`
-      : 'min-height: 95%;'}
-
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
   border-style: none;
   border-width: 0px;
   border-radius: 5px;

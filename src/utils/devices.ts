@@ -6,6 +6,7 @@ export const size = {
   laptop: 1024,
   laptopL: 1440,
   desktop: 2560,
+  desktopl: 3840,
 }
 
 export const device = {

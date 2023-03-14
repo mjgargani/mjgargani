@@ -12,13 +12,14 @@ const FontStyles = createGlobalStyle`
     margin-bottom: 1.5vh;
   }
   a:not(.card-link){
-    color: #3e47f7;
+    color: rgb(62, 71, 247, .7);
     text-decoration: none;
     padding: 0 .25%;
+    border-radius: .25vw;
   }
   a:not(.card-link):hover{
     color: #FFF;
-    background-color: #3e47f7;
+    background-color: rgb(62, 71, 247, .5);
   }
   code {
     font-weight: bold;
@@ -27,15 +28,15 @@ const FontStyles = createGlobalStyle`
   }
   h1 {
     font-weight: normal;
-    font-size: ${h1FontSizeBase * 0.5}vh;
+    font-size: ${h1FontSizeBase * 0.9}vh;
     @media ${device.mobileS} {
-      font-size: ${h1FontSizeBase * 0.6}vh;
+      font-size: ${h1FontSizeBase * 0.9}vh;
     }
     @media ${device.mobileM} {
-      font-size: ${h1FontSizeBase * 0.7}vh;
+      font-size: ${h1FontSizeBase * 0.8}vh;
     }
     @media ${device.mobileL} {
-      font-size: ${h1FontSizeBase * 0.7}vh;
+      font-size: ${h1FontSizeBase * 0.8}vh;
     }
     @media ${device.tablet} {
       font-size: ${h1FontSizeBase * 0.6}vw;
@@ -57,15 +58,15 @@ const FontStyles = createGlobalStyle`
     font-size: larger;
   }
   p, li {
-    font-size: ${pFontSizeBase * 0.5}vh;
+    font-size: ${pFontSizeBase * 0.9}vh;
     @media ${device.mobileS} {
-      font-size: ${pFontSizeBase * 0.6}vh;
+      font-size: ${pFontSizeBase * 0.9}vh;
     }
     @media ${device.mobileM} {
-      font-size: ${pFontSizeBase * 0.7}vh;
+      font-size: ${pFontSizeBase * 0.8}vh;
     }
     @media ${device.mobileL} {
-      font-size: ${pFontSizeBase * 0.7}vh;
+      font-size: ${pFontSizeBase * 0.8}vh;
     }
     @media ${device.tablet} {
       font-size: ${pFontSizeBase * 0.6}vw;

@@ -23,6 +23,9 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
         templateRows={{ mobile: ['1fr', '300px'] }}
         columnGap={10}
         rowGap={10}
+        style={{
+          height: "100%"
+        }}
       >
         <GridCell>
           <Card
@@ -81,7 +84,7 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
             <GridContainer dataTestId={testIdName('card-about-desc')}>
               <GridCell style={{ textAlign: 'center' }}>
                 <p>
-                  🪙 Você contribui com meu trabalho o divulgando e/ou fazendo uma doação na{' '}
+                  🪙 Você contribui com meu trabalho divulgando-o e/ou fazendo uma doação na{' '}
                   <a href='https://www.vakinha.com.br/3539654' target='_blank' rel='noreferrer'>
                     minha Vakinha
                   </a>

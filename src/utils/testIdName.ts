@@ -1,4 +1,4 @@
 export const testIdName = (name: string) =>
-  process.env.NODE_ENV === 'development'
+  ['development', 'test'].includes(process.env.NODE_ENV!)
     ? `${name}_${Date.now()}${Math.round(Math.random() * 1000)}`
     : undefined
