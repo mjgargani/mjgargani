@@ -28,6 +28,7 @@ jobs:
 
   linter:
     name: Analyze source code for errors
+    needs: [src-change]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
