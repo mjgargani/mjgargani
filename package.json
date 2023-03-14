@@ -1,6 +1,12 @@
 {
-  "name": "site",
+  "name": "mjgarganis-lab_portfolio",
   "version": "0.1.0",
+  "author": {
+    "name": "Rodrigo G. Oliveira",
+    "email": "mjgargani@gmail.com",
+    "url": "https://gargani.dev"
+  },
+  "homepage": "https://mjgargani.github.io/mjgargani",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
