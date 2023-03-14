@@ -49,7 +49,7 @@ jobs:
         run: npm test
 
       - name: Build ReactJS project for web
-        run: BUILD_PATH='./dist' npm run build
+        run: BUILD_PATH='./docs' npm run build
 
       - name: Commit generated distribution
         uses: stefanzweifel/git-auto-commit-action@v4
