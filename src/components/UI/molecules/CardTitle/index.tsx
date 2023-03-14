@@ -1,5 +1,5 @@
 import React, { type PropsWithChildren } from 'react'
-import { type CommonProps } from '../../../../fonts'
+import { type CommonProps } from '../../../../globals'
 import { testIdName } from '../../../utils/testIdName'
 import IconReplacer from '../IconReplacer'
 

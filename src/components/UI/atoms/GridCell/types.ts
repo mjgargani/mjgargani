@@ -1,5 +1,5 @@
 import type React from 'react'
-import { type CommonProps } from '../../../../fonts'
+import { type CommonProps } from '../../../../globals'
 
 export type GridCellProps = {
   bgImg?: {

@@ -3,7 +3,7 @@ import GridCell from '../../components/UI/atoms/GridCell'
 import Card from '../../components/UI/molecules/Card'
 import GridContainer from '../../components/UI/atoms/GridContainer'
 import Vakinha from '../../assets/vakinha.jpeg'
-import AboutDescription from '../../assets/about.md'
+import * as AboutDescription from '../../assets/about.md'
 
 import Page from '../../components/UI/templates/Page'
 import { type PageProps } from '../../components/UI/templates/Page/types'
@@ -53,9 +53,13 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
               columnGap={10}
             >
               <GridCell>
-                <Avatar src={profile?.avatar_url!} />
+                <Avatar 
+                  dataTestId={testIdName("card-about-avatar")} 
+                  src={profile?.avatar_url!} 
+                />
               </GridCell>
               <GridCell
+                dataTestId={testIdName("card-about-bio")}
                 style={{
                   position: 'relative',
                   backgroundColor: 'rgb(0, 0, 0, .05)',
@@ -70,7 +74,7 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
               </GridCell>
             </GridContainer>
             <GridContainer style={{ marginTop: '2%' }}>
-              <GridCell>
+              <GridCell dataTestId={testIdName("card-about-contacts")}>
                 <ul style={{ listStyle: 'none', margin: 0, padding: 0, textAlign: 'center' }}>
                   <li style={{ display: 'inline', padding: 10 }}>
                     <a href='https://github.com/mjgargani' target='_blank' rel='noreferrer'>
@@ -93,7 +97,10 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
                 </ul>
               </GridCell>
             </GridContainer>
-            <GridContainer style={{ marginTop: '2%' }}>
+            <GridContainer 
+              dataTestId={testIdName("card-about-desc")} 
+              style={{ marginTop: '2%' }}
+            >
               <GridCell>{desc && mdParser(desc)}</GridCell>
             </GridContainer>
           </Card>

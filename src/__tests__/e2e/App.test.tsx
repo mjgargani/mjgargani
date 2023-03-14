@@ -1,6 +1,8 @@
 import { render, screen, cleanup, fireEvent, waitFor } from '@testing-library/react'
 import App from '../../App'
 import { server } from '../mock/server'
+import profile from '../mock/profile.json'
+import repos from '../mock/repos.json'
 
 beforeAll(() => {
   server.listen({ onUnhandledRequest: 'bypass' })
@@ -8,7 +10,9 @@ beforeAll(() => {
 
 afterEach(() => {
   cleanup()
+  server.listen({ onUnhandledRequest: 'bypass' })
   server.resetHandlers()
+  server.close()
 })
 
 afterAll(() => {
@@ -47,6 +51,21 @@ test('verify if app rendeer child components correctly depending of the `page` p
   expect(cards[1]).toBeInTheDocument()
   expect(cards[2]).toBeInTheDocument()
 
+  const replaceRegExpTitle = new RegExp('.+(?<=_)', 'gi')
+
+  for (let i = 0; i < repos.length; i++) {
+    const cardThumb = await screen.findAllByTestId(/^card-thumb_\d+/);
+    const cardTitle = await screen.findAllByTestId(/^card-title_\d+/);
+    const cardDesc = await screen.findAllByTestId(/^card-desc_\d+/);
+    const cardLink = await screen.findAllByTestId(/^card-link_\d+/);
+
+    expect(cardThumb[i])
+      .toHaveStyle(`background-image: url(https://raw.githubusercontent.com/mjgargani/${repos[i].name}/main/thumbnail.gif)`);
+    expect(cardTitle[i]).toHaveTextContent(repos[i].name.replaceAll(replaceRegExpTitle, '').replaceAll('-', ' '));
+    expect(cardDesc[i]).toHaveTextContent(repos[i].description.replaceAll('`', ''));
+    expect(cardLink[i]).toHaveAttribute('href', repos[i].html_url);
+  }
+
   fireEvent.click(buttons[2])
 
   await waitFor(() => {
@@ -57,9 +76,19 @@ test('verify if app rendeer child components correctly depending of the `page` p
   expect(pageAbout).toBeInTheDocument()
 
   const cardAbout = await screen.findByTestId(/^card-about_\d+/)
+  const cardAvatar = await screen.findByTestId(/^card-about-avatar_\d+/)
+  const cardAboutBio = await screen.findByTestId(/^card-about-bio_\d+/)
+  const cardAboutContacts = await screen.findByTestId(/^card-about-contacts_\d+/)
+  const cardAboutDesc = await screen.findByTestId(/^card-about-desc_\d+/)
   const imgVakinha = await screen.findByTestId(/^img-vakinha_\d+/)
   expect(cardAbout).toBeInTheDocument()
+  expect(cardAvatar).toBeInTheDocument()
+  expect(cardAboutBio).toBeInTheDocument()
+  expect(cardAboutContacts).toBeInTheDocument()
+  expect(cardAboutDesc).toBeInTheDocument()
   expect(imgVakinha).toBeInTheDocument()
+
+  expect(cardAboutBio).toHaveTextContent(profile.bio!.replaceAll('`', ''));
 
   fireEvent.click(buttons[0])
 
