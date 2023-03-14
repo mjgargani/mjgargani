@@ -1,16 +1,16 @@
 import React, { useContext } from 'react'
-import GridCell from '../../components/UI/atoms/GridCell'
-import Card from '../../components/UI/molecules/Card'
-import GridContainer from '../../components/UI/atoms/GridContainer'
+import GridCell from '../../components/atoms/GridCell'
+import Card from '../../components/molecules/Card'
+import GridContainer from '../../components/atoms/GridContainer'
 import Vakinha from '../../assets/vakinha.jpeg'
 
-import Page from '../../components/UI/templates/Page'
-import { type PageProps } from '../../components/UI/templates/Page/types'
+import Page from '../../components/templates/Page'
+import { type PageProps } from '../../components/templates/Page/types'
 import { GitHubDataContext } from '../../context/GitHubData'
 import mdParser from '../../utils/mdParser'
-import Avatar from '../../components/UI/atoms/Avatar'
-import IconReplacer from '../../components/UI/molecules/IconReplacer'
-import { testIdName } from '../../components/utils/testIdName'
+import Avatar from '../../components/atoms/Avatar'
+import IconReplacer from '../../components/molecules/IconReplacer'
+import { testIdName } from '../../utils/testIdName'
 
 const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), show }) => {
   const { profile } = useContext(GitHubDataContext)
@@ -38,20 +38,16 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
               columnGap={10}
             >
               <GridCell>
-                <Avatar 
-                  dataTestId={testIdName("card-about-avatar")} 
-                  src={profile?.avatar_url!} 
-                />
+                <Avatar dataTestId={testIdName('card-about-avatar')} src={profile?.avatar_url!} />
               </GridCell>
               <GridCell
-                dataTestId={testIdName("card-about-bio")}
+                dataTestId={testIdName('card-about-bio')}
                 style={{
                   position: 'relative',
                   backgroundColor: 'rgb(0, 0, 0, .05)',
                   borderRadius: '10px',
                   textAlign: 'justify',
-                  lineHeight: '200%',
-                  textIndent: '5%',
+                  lineHeight: '150%',
                   padding: '0 1.5vw',
                 }}
               >
@@ -59,35 +55,38 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
               </GridCell>
             </GridContainer>
             <GridContainer style={{ marginTop: '2%' }}>
-              <GridCell dataTestId={testIdName("card-about-contacts")}>
+              <GridCell dataTestId={testIdName('card-about-contacts')}>
                 <ul style={{ listStyle: 'none', margin: 0, padding: 0, textAlign: 'center' }}>
                   <li style={{ display: 'inline', padding: 10 }}>
+                    <IconReplacer text='github' />{' '}
                     <a href='https://github.com/mjgargani' target='_blank' rel='noreferrer'>
-                      <IconReplacer text='github' />
                       GitHub
                     </a>
                   </li>
                   <li style={{ display: 'inline', padding: 10 }}>
+                    <IconReplacer text='linkedin' />{' '}
                     <a href='https://www.linkedin.com/in/rod-olv/' target='_blank' rel='noreferrer'>
-                      <IconReplacer text='linkedin' />
                       LinkedIn
                     </a>
                   </li>
                   <li style={{ display: 'inline', padding: 10 }}>
+                    <IconReplacer text='email' />{' '}
                     <a href='mailto:mjgargani@gmail.com' rel='noreferrer'>
-                      <IconReplacer text='email' />
                       E-mail
                     </a>
                   </li>
                 </ul>
               </GridCell>
             </GridContainer>
-            <GridContainer 
-              dataTestId={testIdName("card-about-desc")} 
-              style={{ marginTop: '2%' }}
-            >
-              <GridCell>
-                <p>Você pode contribuir com meu trabalho divulgando este portfólio e/ou fazendo uma doação na <a href='https://www.vakinha.com.br/3539654' target="_blank" rel="noreferrer">minha Vakinha</a>!</p>
+            <GridContainer dataTestId={testIdName('card-about-desc')}>
+              <GridCell style={{ textAlign: 'center' }}>
+                <p>
+                  🪙 Você contribui com meu trabalho o divulgando e/ou fazendo uma doação na{' '}
+                  <a href='https://www.vakinha.com.br/3539654' target='_blank' rel='noreferrer'>
+                    minha Vakinha
+                  </a>
+                  ! 🐄
+                </p>
               </GridCell>
             </GridContainer>
           </Card>

@@ -1,5 +1,5 @@
 import { render, screen, cleanup } from '@testing-library/react'
-import Navigation from '../../components/UI/molecules/Navigation'
+import Navigation from '../../components/molecules/Navigation'
 
 afterEach(cleanup)
 

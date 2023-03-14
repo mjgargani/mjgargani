@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Page from '../../components/UI/templates/Page'
-import { type PageProps } from '../../components/UI/templates/Page/types'
-import { testIdName } from '../../components/utils/testIdName'
+import Page from '../../components/templates/Page'
+import { type PageProps } from '../../components/templates/Page/types'
+import { testIdName } from '../../utils/testIdName'
 import { Container } from './styles'
 
 const Home: React.FC<PageProps> = ({ dataTestId = testIdName('page-home'), show }) => (

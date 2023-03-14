@@ -1,5 +1,5 @@
 import { render, screen, cleanup } from '@testing-library/react'
-import CardTitle from '../../components/UI/molecules/CardTitle'
+import CardTitle from '../../components/molecules/CardTitle'
 import { GitHubRepoItem } from '../../context/types'
 import repos from '../mock/repos.json'
 
@@ -7,7 +7,7 @@ afterEach(cleanup)
 
 test('verify if component receives `children` correctly', () => {
   const currentDataTestId = 'card-title_rtl'
-  const repoItem = repos[0] as GitHubRepoItem;
+  const repoItem = repos[0] as Partial<GitHubRepoItem>
 
   render(<CardTitle dataTestId={currentDataTestId}>{repoItem.name}</CardTitle>)
 

@@ -1,5 +1,5 @@
 import { render, screen, cleanup } from '@testing-library/react'
-import FooterInfo from '../../components/UI/molecules/FooterInfo'
+import FooterInfo from '../../components/molecules/FooterInfo'
 
 afterEach(cleanup)
 
@@ -26,6 +26,6 @@ test('verify if component returns the content correctly', () => {
   expect(heartIcon).toBeInTheDocument()
 
   expect(footerInfo).toHaveTextContent(
-    `🄯  ${new Date().getFullYear()}; Este portfólio foi feito com`,
+    ` ${new Date().getFullYear()}; Este portfólio foi feito com`,
   )
 })

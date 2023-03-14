@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-import { device } from './components/utils/devices'
+import { device } from './utils/devices'
 
 const h1FontSizeBase = 2
 const pFontSizeBase = 1.8
@@ -11,12 +11,19 @@ const FontStyles = createGlobalStyle`
   li:not(:last-child){
     margin-bottom: 1.5vh;
   }
-  a{
+  a:not(.card-link){
     color: #3e47f7;
     text-decoration: none;
+    padding: 0 .25%;
+  }
+  a:not(.card-link):hover{
+    color: #FFF;
+    background-color: #3e47f7;
   }
   code {
+    font-weight: bold;
     color: #0f9125;
+    padding: 0 .25%;
   }
   h1 {
     font-weight: normal;
@@ -46,7 +53,10 @@ const FontStyles = createGlobalStyle`
       font-size: ${h1FontSizeBase * 0.4}vw;
     }
   }
-  p {
+  h1 span {
+    font-size: larger;
+  }
+  p, li {
     font-size: ${pFontSizeBase * 0.5}vh;
     @media ${device.mobileS} {
       font-size: ${pFontSizeBase * 0.6}vh;
