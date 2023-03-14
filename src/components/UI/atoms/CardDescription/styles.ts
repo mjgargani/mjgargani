@@ -3,7 +3,7 @@ import { device } from "../../../utils/devices";
 
 const heightBase = 50;
 
-export const Container = styled.p`
+export const Container = styled.div`
   display: table-cell;
   font-weight: normal;
   vertical-align: middle;

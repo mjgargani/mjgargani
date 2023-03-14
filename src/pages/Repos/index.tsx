@@ -30,7 +30,7 @@ const Repos: React.FC<PageProps> = ({
             bgImg={`https://raw.githubusercontent.com/mjgargani/${el!.name}/main/thumbnail.gif`}
             url={el!.html_url}
             title={el!.name}
-          >{mdParser(el!.description!, ["<p>", "</p>"])}</Card>
+          >{mdParser(el!.description!)}</Card>
         </GridCell>
       ))}
     </GridContainer>

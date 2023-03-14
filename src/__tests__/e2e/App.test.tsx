@@ -2,7 +2,7 @@ import { render, screen, cleanup, fireEvent, waitFor } from '@testing-library/re
 import App from '../../App';
 import { server } from '../mock/server';
 
-beforeAll(() => server.listen());
+beforeAll(() => server.listen({ onUnhandledRequest: "bypass" }));
 
 afterEach(() => {
   cleanup();

@@ -71,10 +71,11 @@ const About: React.FC<PageProps> = ({
             </GridContainer>
             <GridContainer style={{ marginTop: "2%" }}>
               <GridCell>
-                <p style={{ textAlign: "center", margin: "0", padding: "0" }}>
-                  <a href="https://www.linkedin.com/in/rod-olv/" target="_blank" rel="noreferrer"><IconReplacer text="linkedin" />LinkedIn</a>
-                  <a href="mailto:mjgargani@gmail.com" rel="noreferrer"><IconReplacer text="email" style={{ marginLeft:"25px" }} />E-mail</a>
-                </p>
+                <ul style={{ listStyle: "none", margin: 0, padding: 0, textAlign: "center" }}>
+                  <li style={{ display: "inline", padding: 10 }}><a href="https://github.com/mjgargani" target="_blank" rel="noreferrer"><IconReplacer text="github" />GitHub</a></li>
+                  <li style={{ display: "inline", padding: 10 }}><a href="https://www.linkedin.com/in/rod-olv/" target="_blank" rel="noreferrer"><IconReplacer text="linkedin" />LinkedIn</a></li>
+                  <li style={{ display: "inline", padding: 10 }}><a href="mailto:mjgargani@gmail.com" rel="noreferrer"><IconReplacer text="email" />E-mail</a></li>
+                </ul>
               </GridCell>
             </GridContainer>
             <GridContainer style={{ marginTop: "2%" }}>

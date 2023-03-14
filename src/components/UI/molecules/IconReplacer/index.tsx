@@ -9,12 +9,14 @@ import { SiStyledcomponents } from "react-icons/si";
 import { GiHeartOrgan } from "react-icons/gi";
 import { FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { BsGithub } from "react-icons/bs";
 
 import { IconList, IconReplacerProps } from "./types";
 import { Container } from "./styles";
 import { testIdName } from "../../../utils/testIdName";
 
 const icons: IconList = {
+  "github": ["#000", <BsGithub title="GitHub" />],
   "archive": ["#575100", <FaArchive title="Arquivo" />],
   "linkedin": ["#0A66C2", <FaLinkedin title="LinkedIn" />],
   "email": ["#000", <MdEmail title="E-mail" />],
