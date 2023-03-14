@@ -31,7 +31,7 @@ const Repos: React.FC<PageProps> = ({ dataTestId = testIdName('page-repos'), sho
                 url={el!.html_url}
                 title={
                   el!.name === "mjgargani" ?
-                    "nodejs-typescript-reactjs-styledcomponents_mjgargani" : 
+                    "nodejs-typescript-reactjs-styledcomponents_2023-portfolio" : 
                     el!.name
                 }
               >
