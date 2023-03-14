@@ -1,34 +1,19 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import GridCell from '../../components/UI/atoms/GridCell'
 import Card from '../../components/UI/molecules/Card'
 import GridContainer from '../../components/UI/atoms/GridContainer'
 import Vakinha from '../../assets/vakinha.jpeg'
-import * as AboutDescription from '../../assets/about.md'
 
 import Page from '../../components/UI/templates/Page'
 import { type PageProps } from '../../components/UI/templates/Page/types'
 import { GitHubDataContext } from '../../context/GitHubData'
 import mdParser from '../../utils/mdParser'
 import Avatar from '../../components/UI/atoms/Avatar'
-import request from '../../utils/fetch'
 import IconReplacer from '../../components/UI/molecules/IconReplacer'
 import { testIdName } from '../../components/utils/testIdName'
 
-let loadTrigger = false
-
 const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), show }) => {
   const { profile } = useContext(GitHubDataContext)
-  const [desc, setDesc] = useState<string | undefined>(undefined)
-
-  useEffect(() => {
-    if (!loadTrigger && Boolean(!desc)) {
-      loadTrigger = true
-
-      request(AboutDescription, 'GET', true).then((data) => {
-        setDesc(data)
-      })
-    }
-  }, [desc, setDesc])
 
   return (
     <Page show={show}>
@@ -101,7 +86,9 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
               dataTestId={testIdName("card-about-desc")} 
               style={{ marginTop: '2%' }}
             >
-              <GridCell>{desc && mdParser(desc)}</GridCell>
+              <GridCell>
+                <p>Você pode contribuir com meu trabalho divulgando este portfólio e/ou fazendo uma doação na <a href='https://www.vakinha.com.br/3539654' target="_blank" rel="noreferrer">minha Vakinha</a>!</p>
+              </GridCell>
             </GridContainer>
           </Card>
         </GridCell>
