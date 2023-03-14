@@ -6,14 +6,13 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  src-change:
-    name: Key-files change check
+  Deploy:
+    name: File check; Linter; Jest; Build; Commit
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
-      - name: Verify source changes
-        id: src-changes
+      - name: Key-files change check
         shell: bash
         run: | 
           git fetch origin && \
@@ -22,96 +21,20 @@ jobs:
           else echo "Nothing to build in compare with 'main' branch" && exit 1; \
           fi
 
-  linter:
-    name: Analyze source code for errors
-    needs: [src-change]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
       - uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: Get npm cache directory
-        id: npm-cache-dir
-        shell: bash
-        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
-
-      - uses: actions/cache@v3
-        id: npm-cache
-        with:
-          path: ${{ steps.npm-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-     
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Linter
+      - name: Run ESLint to find errors
         run: npm run lint
 
-  jest-test:
-    name: Test the code
-    needs: [src-change, linter]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Get npm cache directory
-        id: npm-cache-dir
-        shell: bash
-        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
-
-      - uses: actions/cache@v3
-        with:
-          fail-on-cache-miss: true
-          path: ${{ steps.npm-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Restore dependencies
-        run: npm ci
-
-      - name: Run Jest tests
+      - name: Run Jest code tests
         run: npm test
 
-  deploy:
-    name: Build and commit distribution
-    needs: [src-change, linter, jest-test]
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v3
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Get npm cache directory
-        id: npm-cache-dir
-        shell: bash
-        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
-
-      - uses: actions/cache@v3
-        with:
-          fail-on-cache-miss: true
-          path: ${{ steps.npm-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Restore dependencies
-        run: npm ci
-
-      - name: Build ReactJS project
+      - name: Build ReactJS project for web
         run: BUILD_PATH='./dist' npm run build
 
       - name: Commit generated distribution
