@@ -9,7 +9,7 @@ import About from './pages/About'
 import Navigation from './components/molecules/Navigation'
 
 function App() {
-  const [page, setPage] = useState<number>(1)
+  const [page, setPage] = useState<number>(0)
   const prevPage = usePrevious<number>(page)
   const gitHubDataValues = useGitHubDataValues()
 
