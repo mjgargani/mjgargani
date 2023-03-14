@@ -1,8 +1,8 @@
-import { CommonProps } from "../../../../types";
+import { type CommonProps } from '../../../../globals'
 
-export interface CardProps extends CommonProps {
-  bgImg?: string;
-  url?: string;
-  title?: string;
-  content?: 0 | 1;
-}
+export type CardProps = {
+  bgImg?: string
+  url?: string
+  title?: string
+  content?: 0 | 1
+} & CommonProps

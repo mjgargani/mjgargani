@@ -1,3 +1,3 @@
-export interface CardTitleProps {
+export type CardTitleProps = {
   text: string
 }

@@ -1,6 +1,6 @@
-import { CommonProps } from "../../../../types";
+import { type CommonProps } from '../../../../globals'
 
-export interface ButtonProps extends CommonProps {
-  active?: boolean;
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
-}
+export type ButtonProps = {
+  active?: boolean
+  onClick: React.MouseEventHandler<HTMLButtonElement>
+} & CommonProps

@@ -1,15 +1,13 @@
-import React from 'react';
-import { CommonProps } from '../../../../types';
-import { testIdName } from '../../../utils/testIdName';
+import React from 'react'
+import { type CommonProps } from '../../../../globals'
+import { testIdName } from '../../../utils/testIdName'
 
-import { Container, Potion } from './styles';
+import { Container, Potion } from './styles'
 
-const Loading: React.FC<CommonProps> = ({
-  dataTestId = testIdName("loading")
-}) => {
-  return <Container data-testid={dataTestId}>
+const Loading: React.FC<CommonProps> = ({ dataTestId = testIdName('loading') }) => (
+  <Container data-testid={dataTestId}>
     <Potion></Potion>
-  </Container>;
-}
+  </Container>
+)
 
-export default Loading;
+export default Loading

@@ -1,5 +1,5 @@
-import { CommonProps } from "../../../../types";
+import { type CommonProps } from '../../../../globals'
 
-export interface AvatarProps extends CommonProps {
-  src: string;
-}
+export type AvatarProps = {
+  src: string
+} & CommonProps

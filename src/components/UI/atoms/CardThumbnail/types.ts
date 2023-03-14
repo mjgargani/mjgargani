@@ -1,5 +1,5 @@
-import { CommonProps } from "../../../../types";
+import { type CommonProps } from '../../../../globals'
 
-export interface CardThumbnailProps extends CommonProps {
-  bgImg: string;
-}
+export type CardThumbnailProps = {
+  bgImg: string
+} & CommonProps

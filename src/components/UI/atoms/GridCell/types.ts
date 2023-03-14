@@ -1,11 +1,11 @@
-import React from "react";
-import { CommonProps } from "../../../../types";
+import type React from 'react'
+import { type CommonProps } from '../../../../globals'
 
-export interface GridCellProps extends CommonProps {
+export type GridCellProps = {
   bgImg?: {
-    source?: string;
-    size?: "contain" | "cover"
-  };
-  area?: (number | string)[];
-  style?: React.CSSProperties;
-}
+    source?: string
+    size?: 'contain' | 'cover'
+  }
+  area?: Array<number | string>
+  style?: React.CSSProperties
+} & CommonProps

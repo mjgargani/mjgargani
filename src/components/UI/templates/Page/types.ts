@@ -1,5 +1,5 @@
-import { CommonProps } from "../../../../types";
+import { type CommonProps } from '../../../../globals'
 
-export interface PageProps extends CommonProps {
-  show?: boolean;
-}
+export type PageProps = {
+  show?: boolean
+} & CommonProps

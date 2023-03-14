@@ -1,16 +1,19 @@
-import { render, screen, cleanup } from '@testing-library/react';
-import CardThumbnail from '../../components/UI/atoms/CardThumbnail';
-import repos from '../mock/repos.json';
+import { render, screen, cleanup } from '@testing-library/react'
+import CardThumbnail from '../../components/UI/atoms/CardThumbnail'
+import { GitHubRepoItem } from '../../context/types'
+import repos from '../mock/repos.json'
 
-afterEach(cleanup);
+afterEach(cleanup)
 
 test('verify if component receives the `bgImg` prop correctly', () => {
-  const currentDataTestId = "card-thumb__rtl";
-  const expectedBgImg = `https://raw.githubusercontent.com/mjgargani/${repos[0].name}/main/thumbnail.gif`;
+  const currentDataTestId = 'card-thumb__rtl'
+  const repoItem = repos[0] as GitHubRepoItem;
+  const expectedBgImg = `https://raw.githubusercontent.com/mjgargani/${repoItem.name}/main/thumbnail.gif`
 
-  render(<CardThumbnail dataTestId={currentDataTestId} bgImg={expectedBgImg} />);
+  render(<CardThumbnail dataTestId={currentDataTestId} bgImg={expectedBgImg} />)
 
-  expect(screen.getByTestId(currentDataTestId)).toBeInTheDocument();
-  expect(screen.getByTestId(currentDataTestId))
-    .toHaveStyle(`background-image: url(${expectedBgImg})`);
-});
+  expect(screen.getByTestId(currentDataTestId)).toBeInTheDocument()
+  expect(screen.getByTestId(currentDataTestId)).toHaveStyle(
+    `background-image: url(${expectedBgImg})`,
+  )
+})
