@@ -63,18 +63,18 @@ jobs:
         with:
           node-version: 18
 
-      # - name: Get npm cache directory
-      #   id: npm-cache-dir
-      #   shell: bash
-      #   run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        shell: bash
+        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
 
-      # - uses: actions/cache@v3
-      #   with:
-      #     fail-on-cache-miss: true
-      #     path: ${{ steps.npm-cache-dir.outputs.dir }}
-      #     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-node-
+      - uses: actions/cache@v3
+        with:
+          fail-on-cache-miss: true
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Restore dependencies
         run: npm ci
@@ -82,39 +82,39 @@ jobs:
       - name: Run Jest tests
         run: npm test
 
-  # deploy:
-  #   name: Build and commit distribution
-  #   needs: [src-change, linter, jest-test]
-  #   runs-on: ubuntu-latest
-  #   permissions:
-  #     contents: write
-  #   steps:
-  #     - uses: actions/checkout@v3
+  deploy:
+    name: Build and commit distribution
+    needs: [src-change, linter, jest-test]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
 
-  #     - uses: actions/setup-node@v3
-  #       with:
-  #         node-version: 18
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-  #     - name: Get npm cache directory
-  #       id: npm-cache-dir
-  #       shell: bash
-  #       run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        shell: bash
+        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
 
-  #     - uses: actions/cache@v3
-  #       with:
-  #         fail-on-cache-miss: true
-  #         path: ${{ steps.npm-cache-dir.outputs.dir }}
-  #         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-  #         restore-keys: |
-  #           ${{ runner.os }}-node-
+      - uses: actions/cache@v3
+        with:
+          fail-on-cache-miss: true
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
-  #     - name: Restore dependencies
-  #       run: npm ci
+      - name: Restore dependencies
+        run: npm ci
 
-  #     - name: Build ReactJS project
-  #       run: BUILD_PATH='./dist' npm run build
+      - name: Build ReactJS project
+        run: BUILD_PATH='./dist' npm run build
 
-  #     - name: Commit generated distribution
-  #       uses: stefanzweifel/git-auto-commit-action@v4
-  #       with:
-  #         commit_message: 'dist: bot commit'
+      - name: Commit generated distribution
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'dist: bot commit from ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'
