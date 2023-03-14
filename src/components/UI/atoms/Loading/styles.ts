@@ -1,4 +1,4 @@
-import styled, {keyframes} from "styled-components";
+import styled, { keyframes } from 'styled-components'
 
 const potionRotate = keyframes`
   from{
@@ -26,7 +26,7 @@ export const Container = styled.div`
   padding: 1%;
   top: calc(50vh - 1.25vh);
   left: calc(50vw - 2.5vw);
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border-radius: 5px;
 `

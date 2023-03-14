@@ -1,6 +1,6 @@
-import styled, { keyframes } from "styled-components";
-import { device } from "../../../utils/devices";
-import { CardProps } from "./types";
+import styled, { keyframes } from 'styled-components'
+import { device } from '../../../utils/devices'
+import { type CardProps } from './types'
 
 const opacityTransition = (from: number, to: number) => keyframes`
   from{
@@ -12,8 +12,9 @@ const opacityTransition = (from: number, to: number) => keyframes`
 `
 
 export const Container = styled.div<CardProps>`
-  ${props => props.content ? 
-  `min-height: 50px;
+  ${(props) =>
+    props.content
+      ? `min-height: 50px;
     @media ${device.mobileS} {
       min-height: 60px;
     }
@@ -34,22 +35,23 @@ export const Container = styled.div<CardProps>`
     }
     @media ${device.desktopL} {
       min-height: 120px;
-    }`: "min-height: 95%;"}
+    }`
+      : 'min-height: 95%;'}
 
   border-style: none;
   border-width: 0px;
   border-radius: 5px;
   color: black;
-  background-color: rgba(255,255,255,1);
-  background: linear-gradient(180deg, rgba(255,255,255,1) 50%, rgba(217,217,217,1) 100%);
-  opacity: ${props => props.content ? 1 : 0.85};
-  animation: ${props => !props.content ? opacityTransition(1, 0.85) : "none"} .5s ease;
+  background-color: rgba(255, 255, 255, 1);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 50%, rgba(217, 217, 217, 1) 100%);
+  opacity: ${(props) => (props.content ? 1 : 0.85)};
+  animation: ${(props) => (!props.content ? opacityTransition(1, 0.85) : 'none')} 0.5s ease;
 
   &:hover {
-    background-color: rgba(255,255,255,1);
-    background: linear-gradient(180deg, rgba(255,255,255,1) 50%, rgba(217,217,217,1) 100%);
+    background-color: rgba(255, 255, 255, 1);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 50%, rgba(217, 217, 217, 1) 100%);
     opacity: 1;
-    animation: ${props => !props.content ? opacityTransition(0.85, 1) : "none"} .5s ease;
-    cursor: ${props => props.content ? "default" : "pointer"};
+    animation: ${(props) => (!props.content ? opacityTransition(0.85, 1) : 'none')} 0.5s ease;
+    cursor: ${(props) => (props.content ? 'default' : 'pointer')};
   }
-`;
+`

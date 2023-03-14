@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.div`
   position: fixed;
@@ -9,6 +9,6 @@ export const Container = styled.div`
   font-weight: normal;
   text-align: center;
   text-shadow: 0 1.5px 0 black;
-  opacity: .5;
+  opacity: 0.5;
   color: white;
-`;
+`

@@ -1,7 +1,7 @@
-import React from "react";
-import { CommonProps } from "../../../../types";
+import type React from 'react'
+import { CommonProps } from '../../../../fonts'
 
-export interface NavigationProps extends CommonProps{
-  page: number;
-  setPage: React.Dispatch<React.SetStateAction<number>>;
-}
+export type NavigationProps = {
+  page: number
+  setPage: React.Dispatch<React.SetStateAction<number>>
+} & CommonProps

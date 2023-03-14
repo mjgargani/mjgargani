@@ -1,18 +1,16 @@
-import React from "react";
-import { CommonProps } from "../../../../types";
+import type React from 'react'
+import { CommonProps } from '../../../../fonts'
 
-type RGB = `rgb(${number}, ${number}, ${number})`;
-type RGBA = `rgba(${number}, ${number}, ${number}, ${number})`;
-type HEX = `#${string}`;
+type RGB = `rgb(${number}, ${number}, ${number})`
+type RGBA = `rgba(${number}, ${number}, ${number}, ${number})`
+type HEX = `#${string}`
 
-export type Color = RGB | RGBA | HEX;
+export type Color = RGB | RGBA | HEX
 
-export interface IconReplacerProps extends CommonProps {
-  text: string;
-  darker?: boolean;
-  style?: React.CSSProperties;
-}
+export type IconReplacerProps = {
+  text: string
+  darker?: boolean
+  style?: React.CSSProperties
+} & CommonProps
 
-export interface IconList {
-  [key: string]: [color: Color, icon: JSX.Element]
-}
+export type IconList = Record<string, [color: Color, icon: JSX.Element]>

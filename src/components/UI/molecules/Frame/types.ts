@@ -1,8 +1,8 @@
-import React from "react";
-import { CommonProps } from "../../../../types";
+import type React from 'react'
+import { CommonProps } from '../../../../fonts'
 
-export interface FrameProps extends CommonProps {
-  page: number;
-  prevPage?: number;
-  style?: React.CSSProperties;
-}
+export type FrameProps = {
+  page: number
+  prevPage?: number
+  style?: React.CSSProperties
+} & CommonProps

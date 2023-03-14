@@ -1,5 +1,5 @@
-import { CommonProps } from "../../../../types";
+import { CommonProps } from '../../../../fonts'
 
-export interface PotionProps extends CommonProps {
-  transparent?: boolean;
-}
+export type PotionProps = {
+  transparent?: boolean
+} & CommonProps

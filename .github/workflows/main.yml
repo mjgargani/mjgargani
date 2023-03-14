@@ -1,5 +1,5 @@
 name: Deploy
-run-name: Test, build and commit distribution
+run-name: Validate, build and commit distribution
 
 on:
   pull_request:
@@ -7,6 +7,7 @@ on:
 
 jobs:
   src-change:
+    name: Key-files change check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -25,8 +26,24 @@ jobs:
           else echo "Nothing to build in compare with '${{ github.head_ref }}' branch" && exit 1; \
           fi
 
+  linter:
+    name: Analyze source code for errors
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+     
+      - run: npm ci
+
+      - name: Run Linter
+        run: npm run lint
+
   jest-test:
-    needs: [src-change]
+    name: Test the code
+    needs: [src-change, linter]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -41,7 +58,8 @@ jobs:
         run: npm test
 
   deploy:
-    needs: [src-change, jest-test]
+    name: Build and commit distribution
+    needs: [src-change, linter, jest-test]
     runs-on: ubuntu-latest
     permissions:
       contents: write

@@ -1,2 +1,6 @@
-declare module '*.woff';
-declare module '*.md';
+declare module '*.woff'
+declare module '*.md'
+
+export type CommonProps = {
+  dataTestId?: string
+}

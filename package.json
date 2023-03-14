@@ -21,16 +21,18 @@
     "react-icons": "^4.7.1",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.6",
-    "typescript": "^4.9.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "lint": "eslint src/**/*.{ts,tsx}",
+    "lint:fix": "eslint --fix 'src/**/*.{ts,tsx}'",
+    "format": "prettier --write 'src/**/*.{ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "jest": {
-    "testMatch" : [
+    "testMatch": [
       "**/__tests__/**/*.test.tsx"
     ]
   },
@@ -54,6 +56,17 @@
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.26",
-    "msw": "^1.1.0"
+    "@typescript-eslint/eslint-plugin": "^5.55.0",
+    "@typescript-eslint/parser": "^5.55.0",
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-config-xo": "^0.43.1",
+    "eslint-config-xo-typescript": "^0.56.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "msw": "^1.1.0",
+    "prettier": "^2.8.4",
+    "typescript": "^4.9.5"
   }
 }

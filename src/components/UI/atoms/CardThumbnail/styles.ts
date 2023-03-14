@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import { device } from "../../../utils/devices";
-import { CardThumbnailProps } from "./types";
+import styled from 'styled-components'
+import { device } from '../../../utils/devices'
+import { type CardThumbnailProps } from './types'
 
 export const Container = styled.div<CardThumbnailProps>`
-  background-image: url(${props => props.bgImg});
+  background-image: url(${(props) => props.bgImg});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -14,4 +14,4 @@ export const Container = styled.div<CardThumbnailProps>`
   @media ${device.tablet} {
     min-height: 20vh;
   }
-`;
+`

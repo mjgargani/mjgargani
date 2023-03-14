@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const Container = styled.div`
   width: 80%;
@@ -8,4 +8,4 @@ const Container = styled.div`
   background-color: red;
 `
 
-export default Container;
+export default Container

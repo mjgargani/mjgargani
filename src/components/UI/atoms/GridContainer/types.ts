@@ -1,16 +1,16 @@
-import React from "react";
-import { CommonProps } from "../../../../types";
+import type React from 'react'
+import { CommonProps } from '../../../../fonts'
 
-export interface GridContainerProps extends CommonProps {
+export type GridContainerProps = {
   templateColumns?: {
-    mobile?: string[];
-    desktop?: string[];
-  },
+    mobile?: string[]
+    desktop?: string[]
+  }
   templateRows?: {
-    mobile?: string[];
-    desktop?: string[];
-  },
-  columnGap?: number;
-  rowGap?: number;
-  style?: React.CSSProperties;
-}
+    mobile?: string[]
+    desktop?: string[]
+  }
+  columnGap?: number
+  rowGap?: number
+  style?: React.CSSProperties
+} & CommonProps

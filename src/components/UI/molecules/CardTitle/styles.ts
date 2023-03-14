@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.h1`
   text-transform: uppercase;
@@ -6,4 +6,4 @@ export const Container = styled.h1`
   line-height: 200%;
   margin-top: 3.5%;
   margin-bottom: 0;
-`;
+`

@@ -1,6 +1,6 @@
-import styled, { keyframes } from "styled-components";
-import { PotionProps } from "./types";
-import potion from "../../../../assets/potion.png"
+import styled, { keyframes } from 'styled-components'
+import { type PotionProps } from './types'
+import potion from '../../../../assets/potion.png'
 
 const rotateAnim = keyframes`
   0% { 
@@ -91,7 +91,9 @@ export const Container = styled.div<PotionProps>`
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: ${props => !!props.transparent ? transparencyAlpha[0] : transparencyAlpha[1]};
-  animation: ${props => opacityTransition(!!props.transparent)} .75s ease, ${shadowAnim} 5s infinite alternate ease-in-out, ${rotateAnim} 60s infinite alternate ease-in-out, ${moveAnim} 120s infinite ease-in-out;
+  opacity: ${(props) => (props.transparent ? transparencyAlpha[0] : transparencyAlpha[1])};
+  animation: ${(props) => opacityTransition(Boolean(props.transparent))} 0.75s ease,
+    ${shadowAnim} 5s infinite alternate ease-in-out,
+    ${rotateAnim} 60s infinite alternate ease-in-out, ${moveAnim} 120s infinite ease-in-out;
   z-index: 0;
-`;
+`
