@@ -38,8 +38,7 @@ jobs:
         shell: bash
         run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
 
-      - if: ${{ steps.npm-cache.outputs.cache-hit == 'true' }}
-        uses: actions/cache@v3
+      - uses: actions/cache@v3
         id: npm-cache
         with:
           path: ${{ steps.npm-cache-dir.outputs.dir }}
@@ -47,19 +46,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
      
-      - run: npm ci
+      - name: Install dependencies
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: npm ci
 
       - name: Run Linter
         run: npm run lint
-
-      - if: ${{ steps.npm-cache.outputs.cache-hit != 'true' }}
-        uses: actions/cache@v3
-        id: npm-cache
-        with:
-          path: ${{ steps.npm-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
 
   jest-test:
     name: Test the code
@@ -78,15 +70,12 @@ jobs:
         run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
 
       - uses: actions/cache@v3
-        id: npm-cache
         with:
+          fail-on-cache-miss: true
           path: ${{ steps.npm-cache-dir.outputs.dir }}
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-
-      - name: Restore dependencies
-        run: npm ci
 
       - name: Run Jest tests
         run: npm test
@@ -104,21 +93,18 @@ jobs:
         with:
           node-version: 18
 
-      # - name: Get npm cache directory
-      #   id: npm-cache-dir
-      #   shell: bash
-      #   run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        shell: bash
+        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
 
-      # - uses: actions/cache@v3
-      #   id: npm-cache
-      #   with:
-      #     path: ${{ steps.npm-cache-dir.outputs.dir }}
-      #     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-node-
-
-      - name: Restore dependencies
-        run: npm ci
+      - uses: actions/cache@v3
+        with:
+          fail-on-cache-miss: true
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Build ReactJS project
         run: BUILD_PATH='./dist' npm run build
