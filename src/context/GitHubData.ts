@@ -11,35 +11,38 @@ export const useGitHubDataValues = (): GitHubData => {
   const [profile, setProfile] = useState<Partial<GitHubProfile>>({})
   const [repos, setRepos] = useState<Partial<GitHubRepoItem[]>>([])
 
-  const fetch = () => {
+  const fetch = async () => {
     if (!loadTrigger && !repos.length && Boolean(!profile?.name)) {
       loadTrigger = true
 
       setLoading(true)
 
-      request('https://api.github.com/users/mjgargani/repos', 'GET').then(
-        (data: GitHubRepoItem[]) => {
-          const newRepos: GitHubRepoItem[] = data.map((el) => ({
-            id: el.id,
-            created_at: new Date(el.created_at).getTime(),
-            name: el.name,
-            description: el.description,
-            html_url: el.html_url,
-          }))
-          setRepos(newRepos)
-
-          request('https://api.github.com/users/mjgargani', 'GET').then((data: GitHubProfile) => {
-            const newProfile: GitHubProfile = {
-              name: data.name,
-              avatar_url: data.avatar_url,
-              bio: data.bio,
-            }
-            setProfile(newProfile)
-
-            setLoading(false)
-          })
-        },
+      const newRepos: GitHubRepoItem[] = await request(
+        'https://api.github.com/users/mjgargani/repos',
+        'GET',
+      ).then((data: GitHubRepoItem[]) =>
+        data.map((el) => ({
+          id: el.id,
+          created_at: new Date(el.created_at).getTime(),
+          name: el.name,
+          description: el.description,
+          html_url: el.html_url,
+          thumbnail: `https://raw.githubusercontent.com/mjgargani/${el.name}/main/thumbnail.gif`,
+        })),
       )
+      setRepos(newRepos)
+
+      const newProfile: GitHubProfile = await request(
+        'https://api.github.com/users/mjgargani',
+        'GET',
+      ).then((data: GitHubProfile) => ({
+        name: data.name,
+        avatar_url: data.avatar_url,
+        bio: data.bio,
+      }))
+      setProfile(newProfile)
+
+      setLoading(false)
     }
   }
 

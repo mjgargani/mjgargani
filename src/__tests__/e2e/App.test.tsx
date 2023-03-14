@@ -54,16 +54,19 @@ test('verify if app rendeer child components correctly depending of the `page` p
   const replaceRegExpTitle = new RegExp('.+(?<=_)', 'gi')
 
   for (let i = 0; i < repos.length; i++) {
-    const cardThumb = await screen.findAllByTestId(/^card-thumb_\d+/);
-    const cardTitle = await screen.findAllByTestId(/^card-title_\d+/);
-    const cardDesc = await screen.findAllByTestId(/^card-desc_\d+/);
-    const cardLink = await screen.findAllByTestId(/^card-link_\d+/);
+    const cardThumb = await screen.findAllByTestId(/^card-thumb_\d+/)
+    const cardTitle = await screen.findAllByTestId(/^card-title_\d+/)
+    const cardDesc = await screen.findAllByTestId(/^card-desc_\d+/)
+    const cardLink = await screen.findAllByTestId(/^card-link_\d+/)
 
-    expect(cardThumb[i])
-      .toHaveStyle(`background-image: url(https://raw.githubusercontent.com/mjgargani/${repos[i].name}/main/thumbnail.gif)`);
-    expect(cardTitle[i]).toHaveTextContent(repos[i].name.replaceAll(replaceRegExpTitle, '').replaceAll('-', ' '));
-    expect(cardDesc[i]).toHaveTextContent(repos[i].description.replaceAll('`', ''));
-    expect(cardLink[i]).toHaveAttribute('href', repos[i].html_url);
+    expect(cardThumb[i]).toHaveStyle(
+      `background-image: url(https://raw.githubusercontent.com/mjgargani/${repos[i].name}/main/thumbnail.gif)`,
+    )
+    expect(cardTitle[i]).toHaveTextContent(
+      repos[i].name.replaceAll(replaceRegExpTitle, '').replaceAll('-', ' '),
+    )
+    expect(cardDesc[i]).toHaveTextContent(repos[i].description.replaceAll('`', ''))
+    expect(cardLink[i]).toHaveAttribute('href', repos[i].html_url)
   }
 
   fireEvent.click(buttons[2])
@@ -88,7 +91,7 @@ test('verify if app rendeer child components correctly depending of the `page` p
   expect(cardAboutDesc).toBeInTheDocument()
   expect(imgVakinha).toBeInTheDocument()
 
-  expect(cardAboutBio).toHaveTextContent(profile.bio!.replaceAll('`', ''));
+  expect(cardAboutBio).toHaveTextContent(profile.bio!.replaceAll('`', ''))
 
   fireEvent.click(buttons[0])
 

@@ -10,6 +10,7 @@ export type GitHubRepoItem = {
   name: string
   description: string
   html_url: string
+  thumbnail: string
 }
 
 export type GitHubData = {

@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-import { device } from './components/utils/devices'
+import { device } from './utils/devices'
 
 const h1FontSizeBase = 2
 const pFontSizeBase = 1.8
@@ -11,24 +11,32 @@ const FontStyles = createGlobalStyle`
   li:not(:last-child){
     margin-bottom: 1.5vh;
   }
-  a{
-    color: #3e47f7;
+  a:not(.card-link){
+    color: rgb(62, 71, 247, .7);
     text-decoration: none;
+    padding: 0 .25%;
+    border-radius: .25vw;
+  }
+  a:not(.card-link):hover{
+    color: #FFF;
+    background-color: rgb(62, 71, 247, .5);
   }
   code {
+    font-weight: bold;
     color: #0f9125;
+    padding: 0 .25%;
   }
   h1 {
     font-weight: normal;
-    font-size: ${h1FontSizeBase * 0.5}vh;
+    font-size: ${h1FontSizeBase * 0.9}vh;
     @media ${device.mobileS} {
-      font-size: ${h1FontSizeBase * 0.6}vh;
+      font-size: ${h1FontSizeBase * 0.9}vh;
     }
     @media ${device.mobileM} {
-      font-size: ${h1FontSizeBase * 0.7}vh;
+      font-size: ${h1FontSizeBase * 0.8}vh;
     }
     @media ${device.mobileL} {
-      font-size: ${h1FontSizeBase * 0.7}vh;
+      font-size: ${h1FontSizeBase * 0.8}vh;
     }
     @media ${device.tablet} {
       font-size: ${h1FontSizeBase * 0.6}vw;
@@ -46,16 +54,19 @@ const FontStyles = createGlobalStyle`
       font-size: ${h1FontSizeBase * 0.4}vw;
     }
   }
-  p {
-    font-size: ${pFontSizeBase * 0.5}vh;
+  h1 span {
+    font-size: larger;
+  }
+  p, li {
+    font-size: ${pFontSizeBase * 0.9}vh;
     @media ${device.mobileS} {
-      font-size: ${pFontSizeBase * 0.6}vh;
+      font-size: ${pFontSizeBase * 0.9}vh;
     }
     @media ${device.mobileM} {
-      font-size: ${pFontSizeBase * 0.7}vh;
+      font-size: ${pFontSizeBase * 0.8}vh;
     }
     @media ${device.mobileL} {
-      font-size: ${pFontSizeBase * 0.7}vh;
+      font-size: ${pFontSizeBase * 0.8}vh;
     }
     @media ${device.tablet} {
       font-size: ${pFontSizeBase * 0.6}vw;

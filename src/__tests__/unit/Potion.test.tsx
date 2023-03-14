@@ -1,6 +1,6 @@
 import { render, screen, cleanup } from '@testing-library/react'
-import Potion from '../../components/UI/atoms/Potion'
-import { transparencyAlpha } from '../../components/UI/atoms/Potion/styles'
+import Potion from '../../components/atoms/Potion'
+import { transparencyAlpha } from '../../components/atoms/Potion/styles'
 
 afterEach(cleanup)
 

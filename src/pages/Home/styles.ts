@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { device } from '../../components/utils/devices'
+import { device } from '../../utils/devices'
 
 const fontSizeBase = 6
 

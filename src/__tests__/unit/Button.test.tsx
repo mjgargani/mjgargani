@@ -1,5 +1,5 @@
 import { render, screen, cleanup, fireEvent } from '@testing-library/react'
-import Button from '../../components/UI/atoms/Button'
+import Button from '../../components/atoms/Button'
 
 afterEach(cleanup)
 

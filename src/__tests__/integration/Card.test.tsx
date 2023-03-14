@@ -1,6 +1,6 @@
 import { render, screen, cleanup } from '@testing-library/react'
-import Card from '../../components/UI/molecules/Card'
-import { type CardProps } from '../../components/UI/molecules/Card/types'
+import Card from '../../components/molecules/Card'
+import { type CardProps } from '../../components/molecules/Card/types'
 import { GitHubRepoItem } from '../../context/types'
 import repos from '../mock/repos.json'
 
@@ -8,7 +8,7 @@ afterEach(cleanup)
 
 test('verify if component receives child components and `content` prop correctly', () => {
   const currentDataTestId = 'card_rtl'
-  const repoItem = repos[0] as GitHubRepoItem
+  const repoItem = repos[0] as Partial<GitHubRepoItem>
   const props: CardProps = {
     bgImg: `https://raw.githubusercontent.com/mjgargani/${repoItem.name}/main/thumbnail.gif`,
     title: 'Teste RTL',
