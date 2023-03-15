@@ -29,15 +29,16 @@ test('verify if app rendeer child components correctly depending of the `page` p
   expect(buttons[0]).toBeInTheDocument()
   expect(buttons[1]).toBeInTheDocument()
   expect(buttons[2]).toBeInTheDocument()
+  expect(buttons[3]).toBeInTheDocument()
 
   const pageHome = await screen.findByTestId(/^page-home_\d+/)
 
   expect(pageHome).toBeInTheDocument()
-  expect(buttons[0]).toHaveStyle('color: black')
+  expect(buttons[1]).toHaveStyle('color: black')
 
   expect(pageHome).toHaveTextContent("mjgargani's Lab ")
 
-  fireEvent.click(buttons[1])
+  fireEvent.click(buttons[2])
 
   await waitFor(() => {
     expect(pageHome).not.toBeInTheDocument()
@@ -69,7 +70,7 @@ test('verify if app rendeer child components correctly depending of the `page` p
     expect(cardLink[i]).toHaveAttribute('href', repos[i].html_url)
   }
 
-  fireEvent.click(buttons[2])
+  fireEvent.click(buttons[3])
 
   await waitFor(() => {
     expect(pageRepos).not.toBeInTheDocument()
@@ -93,7 +94,7 @@ test('verify if app rendeer child components correctly depending of the `page` p
 
   expect(cardAboutBio).toHaveTextContent(profile.bio!.replaceAll('`', ''))
 
-  fireEvent.click(buttons[0])
+  fireEvent.click(buttons[1])
 
   await waitFor(() => {
     expect(pageAbout).not.toBeInTheDocument()

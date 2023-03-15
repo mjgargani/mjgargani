@@ -24,7 +24,7 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
         columnGap={10}
         rowGap={10}
         style={{
-          height: "100%"
+          height: '100%',
         }}
       >
         <GridCell>
@@ -57,15 +57,17 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
                 {mdParser(profile?.bio || '')}
               </GridCell>
             </GridContainer>
-            <GridContainer style={{ marginTop: '2%', fontSize: "" }}>
+            <GridContainer style={{ marginTop: '2%', fontSize: '' }}>
               <GridCell dataTestId={testIdName('card-about-contacts')}>
-                <ul style={{ 
-                  listStyle: 'none', 
-                  margin: 0, 
-                  padding: 0, 
-                  textAlign: 'center',
-                  fontSize: 'smaller'
-                }}>
+                <ul
+                  style={{
+                    listStyle: 'none',
+                    margin: 0,
+                    padding: 0,
+                    textAlign: 'center',
+                    fontSize: 'smaller',
+                  }}
+                >
                   <li style={{ display: 'inline', padding: 4 }}>
                     <IconReplacer text='github' />
                     <a href='https://github.com/mjgargani' target='_blank' rel='noreferrer'>

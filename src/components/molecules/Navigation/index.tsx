@@ -19,8 +19,10 @@ const Navigation: React.FC<NavigationProps> = ({
           onClick={() => {
             setPage(0)
           }}
-          icon={""}
-        >Início</Button>
+          icon={''}
+        >
+          Início
+        </Button>
       </GridCell>
       <GridCell>
         <Button
@@ -28,8 +30,10 @@ const Navigation: React.FC<NavigationProps> = ({
           onClick={() => {
             setPage(1)
           }}
-          icon={""}
-        >Projetos</Button>
+          icon={''}
+        >
+          Projetos
+        </Button>
       </GridCell>
       <GridCell>
         <Button
@@ -37,8 +41,10 @@ const Navigation: React.FC<NavigationProps> = ({
           onClick={() => {
             setPage(2)
           }}
-          icon={""}
-        >Sobre</Button>
+          icon={''}
+        >
+          Sobre
+        </Button>
       </GridCell>
     </GridContainer>
   </Container>

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   position: fixed;
@@ -11,12 +11,12 @@ export const Container = styled.div`
   ul {
     margin: 0;
     padding: 0;
-    margin: .5vh .25vw 0 0;
+    margin: 0.5vh 0.25vw 0 0;
   }
   li {
     display: inline;
     list-style: none;
-    margin: 0 0 0 .5vw;
+    margin: 0 0 0 0.5vw;
     padding: 0;
   }
 `

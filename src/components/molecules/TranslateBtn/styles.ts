@@ -1,13 +1,14 @@
-import styled from 'styled-components';
-import { device } from '../../../utils/devices';
+import styled from 'styled-components'
+import { device } from '../../../utils/devices'
 
 export const Container = styled.div`
   max-width: 1vh;
-  @media ${device.tablet}{
+  @media ${device.tablet} {
     max-width: 1vw;
   }
-  margin: .5vh 0 0 .25vw;
-  a, a:hover {
+  margin: 0.5vh 0 0 0.25vw;
+  a,
+  a:hover {
     background-color: unset !important;
   }
   button {
@@ -15,15 +16,15 @@ export const Container = styled.div`
     line-height: 0;
     max-height: -1vh;
   }
-  h1{
+  h1 {
     font-size: 1vh;
-    @media ${device.tablet}{
-      font-size: .85vw;
+    @media ${device.tablet} {
+      font-size: 0.85vw;
     }
     padding: 0;
     margin: 0;
   }
   h1 span {
-    margin: 0
+    margin: 0;
   }
-`;
+`

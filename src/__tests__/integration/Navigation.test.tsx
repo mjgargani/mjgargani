@@ -29,9 +29,9 @@ test.each([
     expect(buttons[1]).toBeInTheDocument()
     expect(buttons[2]).toBeInTheDocument()
 
-    expect(buttons[0]).toHaveTextContent(' início')
-    expect(buttons[1]).toHaveTextContent(' projetos')
-    expect(buttons[2]).toHaveTextContent(' sobre')
+    expect(buttons[0]).toHaveTextContent('Início')
+    expect(buttons[1]).toHaveTextContent('Projetos')
+    expect(buttons[2]).toHaveTextContent('Sobre')
 
     expect(buttons[0]).toHaveStyle(`color: ${color1}`)
     expect(buttons[1]).toHaveStyle(`color: ${color2}`)

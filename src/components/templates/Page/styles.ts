@@ -19,7 +19,7 @@ export const Container = styled.div<PageProps>`
   z-index: 1000;
   overflow: auto;
   width: 84vw;
-  padding-right: .5%;
+  padding-right: 0.5%;
   animation: ${opacityTransition} 0.5s ease;
 
   height: ${(heightBase * 0.93).toFixed(2)}vh;
@@ -49,11 +49,11 @@ export const Container = styled.div<PageProps>`
     margin: ${marginBase[0] + 14}vh ${marginBase[1]}vw ${marginBase[2]}vh ${marginBase[3]}vw;
   }
   @media ${device.desktop} {
-    height: ${(heightBase * 0.80).toFixed(2)}vh;
+    height: ${(heightBase * 0.8).toFixed(2)}vh;
     margin: ${marginBase[0] + 14}vh ${marginBase[1]}vw ${marginBase[2]}vh ${marginBase[3]}vw;
   }
   @media ${device.desktopL} {
-    height: ${(heightBase * 0.80).toFixed(2)}vh;
+    height: ${(heightBase * 0.8).toFixed(2)}vh;
     margin: ${marginBase[0] + 14}vh ${marginBase[1]}vw ${marginBase[2]}vh ${marginBase[3]}vw;
   }
 `

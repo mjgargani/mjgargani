@@ -17,7 +17,7 @@ import { Container } from './styles'
 import { testIdName } from '../../../utils/testIdName'
 
 const icons: IconList = {
-  gtranslate: ["#4B8BF5", <MdGTranslate title='Translate this page!' />],
+  gtranslate: ['#4B8BF5', <MdGTranslate title='Translate this page!' />],
   github: ['#000', <BsGithub title='GitHub' />],
   archive: ['#575100', <FaArchive title='Arquivo' />],
   linkedin: ['#0A66C2', <FaLinkedin title='LinkedIn' />],
