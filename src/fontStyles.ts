@@ -11,6 +11,11 @@ const FontStyles = createGlobalStyle`
   li:not(:last-child){
     margin-bottom: 1.5vh;
   }
+  a{
+    font-weight: bold;
+    font-family: "Sono", sans-serif;
+    transition: all .1s ease;
+  }
   a:not(.card-link){
     color: rgb(62, 71, 247, .7);
     text-decoration: none;
@@ -27,7 +32,7 @@ const FontStyles = createGlobalStyle`
     padding: 0 .25%;
   }
   h1 {
-    font-weight: normal;
+    font-family: "Sono", sans-serif;
     font-size: ${h1FontSizeBase * 0.9}vh;
     @media ${device.mobileS} {
       font-size: ${h1FontSizeBase * 0.9}vh;

@@ -4,6 +4,7 @@ import { device } from '../../utils/devices'
 const fontSizeBase = 6
 
 export const Container = styled.div`
+  font-family: 'mjgarganis Lab', sans-serif;
   position: relative;
   height: inherit;
   width: inherit;
@@ -27,6 +28,10 @@ export const Container = styled.div`
     '5px  5px 0 #fff',
     '6px  6px 0 #fff',
   ].join(', ')};
+
+  span {
+    font-family: 'mjgarganis Lab', sans-serif;
+  }
 
   font-size: ${fontSizeBase}vw;
   @media ${device.mobileS} {

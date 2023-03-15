@@ -12,7 +12,7 @@ const colorTransition = (from: string, to: string) => keyframes`
 
 export const Container = styled.button<ButtonProps>`
   min-width: 100%;
-  min-height: 6vh;
+  min-height: 4vh;
   border-style: none;
   border-width: 0px;
   border-radius: 5px;
@@ -34,5 +34,11 @@ export const Container = styled.button<ButtonProps>`
           ? colorTransition('rgba(255, 255, 255, .1)', 'rgba(255, 255, 255, .25)')
           : 'none'}
       0.25s;
+  }
+
+  h1 span {
+    font-weight: normal;
+    margin-right: 0.5vw;
+    font-family: 'mjgarganis Lab', sans-serif;
   }
 `

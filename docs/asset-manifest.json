@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.58462fbc.css",
-    "main.js": "/static/js/main.11dfe361.js",
+    "main.js": "/static/js/main.3e6869eb.js",
     "static/media/potion.png": "/static/media/potion.b00101bbb836100f0262.png",
     "static/media/vakinha.jpeg": "/static/media/vakinha.6604aca222fcb928a55b.jpeg",
     "static/media/tile.png": "/static/media/tile.e61ddeec9779a3c02062.png",
     "index.html": "/index.html",
     "main.58462fbc.css.map": "/static/css/main.58462fbc.css.map",
-    "main.11dfe361.js.map": "/static/js/main.11dfe361.js.map"
+    "main.3e6869eb.js.map": "/static/js/main.3e6869eb.js.map"
   },
   "entrypoints": [
     "static/css/main.58462fbc.css",
-    "static/js/main.11dfe361.js"
+    "static/js/main.3e6869eb.js"
   ]
 }

@@ -1,6 +1,7 @@
 import styled, { keyframes } from 'styled-components'
 import { type FrameProps } from './types'
 import tile from '../../../assets/tile.png'
+import { device } from '../../../utils/devices'
 
 export const shadowAlpha = [0.5, 0.9, 0.7]
 
@@ -79,7 +80,10 @@ export const Tiles = styled.div`
   height: inherit;
   background-image: url(${tile});
   background-repeat: repeat;
-  background-size: 8%;
+  background-size: 10vh;
+  @media ${device.tablet} {
+    background-size: 8vw;
+  }
   opacity: 0.015;
   animation: ${gradientTransition} 120s alternate-reverse ease infinite;
   pointer-events: none;

@@ -1,4 +1,4 @@
-name: Deploy
+name: Prepare to GH-Pages
 run-name: Validate, build and commit distribution
 
 on:

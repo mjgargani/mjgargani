@@ -10,7 +10,7 @@ const potionRotate = keyframes`
 `
 
 export const Potion = styled.p`
-  font-family : "mjgarganis Lab", Sans-Serif;
+  font-family: 'mjgarganis Lab', Sans-Serif;
   animation: ${potionRotate} 1s infinite linear;
   margin: 0;
   padding: 0;

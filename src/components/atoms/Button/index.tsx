@@ -8,10 +8,15 @@ const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
   dataTestId = testIdName('button'),
   active = false,
   onClick,
+  icon,
+  style,
   children,
 }) => (
-  <Container data-testid={dataTestId} onClick={onClick} active={active}>
-    <h1>{children}</h1>
+  <Container data-testid={dataTestId} onClick={onClick} active={active} style={style}>
+    <h1>
+      <span>{icon}</span>
+      {children}
+    </h1>
   </Container>
 )
 
