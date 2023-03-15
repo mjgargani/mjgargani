@@ -19,46 +19,46 @@ const rotateAnim = keyframes`
 
 const moveAnim = keyframes`
   0% {
-    left:10vw; top:10vh;
+    left:25vw; top:10vh;
   }
   8% {
-    left:20vw; top:15vh;
+    left:35vw; top:15vh;
   }
   16% {
-    left:30vw; top:20vh;
+    left:40vw; top:20vh;
   }
   24% {
-    left:40vw; top:25vh;
+    left:30vw; top:25vh;
   }
   32% {
-    left:30vw; top:30vh;
+    left:20vw; top:30vh;
   }
   40% {
-    left:20vw; top:35vh;
+    left:10vw; top:35vh;
   }
   48% {
-    left:10vw; top:40vh;
+    left:20vw; top:40vh;
   }
   56% {
-    left:20vw; top:35vh;
+    left:30vw; top:35vh;
   }
   64% {
-    left:30vw; top:30vh;
+    left:40vw; top:30vh;
   }
   72% {
-    left:40vw; top:25vh;
+    left:30vw; top:25vh;
   }
   80% {
-    left:30vw; top:20vh;
+    left:20vw; top:20vh;
   }
   88% {
-    left:20vw; top:15vh;
+    left:15vw; top:15vh;
   }
   96% {
-    left:11vw; top:11vh;
+    left:20vw; top:11vh;
   }
   100% {
-    left:10vw; top:10vh;
+    left:25vw; top:10vh;
   }
 `
 const shadowAnim = keyframes`

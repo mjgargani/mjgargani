@@ -57,23 +57,29 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
                 {mdParser(profile?.bio || '')}
               </GridCell>
             </GridContainer>
-            <GridContainer style={{ marginTop: '2%' }}>
+            <GridContainer style={{ marginTop: '2%', fontSize: "" }}>
               <GridCell dataTestId={testIdName('card-about-contacts')}>
-                <ul style={{ listStyle: 'none', margin: 0, padding: 0, textAlign: 'center' }}>
-                  <li style={{ display: 'inline', padding: 10 }}>
-                    <IconReplacer text='github' />{' '}
+                <ul style={{ 
+                  listStyle: 'none', 
+                  margin: 0, 
+                  padding: 0, 
+                  textAlign: 'center',
+                  fontSize: 'smaller'
+                }}>
+                  <li style={{ display: 'inline', padding: 4 }}>
+                    <IconReplacer text='github' />
                     <a href='https://github.com/mjgargani' target='_blank' rel='noreferrer'>
                       GitHub
                     </a>
                   </li>
-                  <li style={{ display: 'inline', padding: 10 }}>
-                    <IconReplacer text='linkedin' />{' '}
+                  <li style={{ display: 'inline', padding: 4 }}>
+                    <IconReplacer text='linkedin' />
                     <a href='https://www.linkedin.com/in/rod-olv/' target='_blank' rel='noreferrer'>
                       LinkedIn
                     </a>
                   </li>
-                  <li style={{ display: 'inline', padding: 10 }}>
-                    <IconReplacer text='email' />{' '}
+                  <li style={{ display: 'inline', padding: 4 }}>
+                    <IconReplacer text='email' />
                     <a href='mailto:mjgargani@gmail.com' rel='noreferrer'>
                       E-mail
                     </a>
