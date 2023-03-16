@@ -1,10 +1,14 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { type GridCellProps } from './types'
 
-export const Container = styled.div<GridCellProps>`
-  grid-area: ${(props) => props.area?.length ? props.area.join(' / ') : "unset"};
-  background-image: url(${(props) => props.bgImg!.source!});
-  background-size: ${(props) => props.bgImg!.size!};
+const background = (source: string, size: string) =>css`
+  background-image: url(${source});
+  background-size: ${size};
   background-position: center;
   background-repeat: no-repeat;
+`
+
+export const Container = styled.div<GridCellProps>`
+  grid-area: ${props => props.area?.length ? props.area.join(' / ') : "unset"};
+  ${props => props.bgImg && background(props.bgImg.source!, props.bgImg.size!)}
 `

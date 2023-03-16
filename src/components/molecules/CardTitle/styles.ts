@@ -3,14 +3,13 @@ import { CardTitleProps } from './types'
 
 export const Container = styled.div<CardTitleProps>`
   position: relative;
-  min-height: 60%;
+  min-height: ${props => props.isContent ? 10 : 60}%;
 `
 
 export const Title = styled.h1`
-  position: absolute;
+  position: relative;
   width: 100%;
   top: 50%;
-  transform: translateY(-50%);
   font-family: 'Sono', sans-serif;
   text-transform: uppercase;
   text-align: center;

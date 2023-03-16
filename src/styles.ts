@@ -16,7 +16,6 @@ export const ContainerBase = styled.div`
 
 export const ContainerTop = styled.div`
   overflow: hidden;
-  background-color: rgba(128,128,128,.5);
   position: relative;
   width: 100%;
 

@@ -5,7 +5,8 @@ import { CardDescriptionProps } from './types'
 
 const CardDescription: React.FC<PropsWithChildren<CardDescriptionProps>> = ({
   dataTestId = testIdName('card-desc'),
+  isContent = false,
   children,
-}) => <Container data-testid={dataTestId}>{children}</Container>
+}) => <Container isContent={isContent} data-testid={dataTestId}>{children}</Container>
 
 export default CardDescription

@@ -3,7 +3,6 @@ import { device } from '../../../utils/devices'
 import { type GridContainerProps } from './types'
 
 export const Container = styled.div<GridContainerProps>`
-  transition: all .25s ease;
   display: grid;
 
   grid-template-columns: ${(props) =>

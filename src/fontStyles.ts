@@ -5,6 +5,9 @@ const h1FontSizeBase = 2
 const pFontSizeBase = 1.8
 
 const FontStyles = createGlobalStyle`
+  * {
+    transition: all .25s ease !important;
+  }
   a, p, ul, li, ol, i, b, em {
     font-family: sans-serif;
   }
@@ -14,7 +17,6 @@ const FontStyles = createGlobalStyle`
   a{
     font-weight: bold;
     font-family: "Sono", sans-serif;
-    transition: all .1s ease;
   }
   a:not(.card-link){
     color: rgb(62, 71, 247, .7);

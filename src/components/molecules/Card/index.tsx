@@ -12,7 +12,7 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
   bgImg,
   url,
   title = '',
-  content = 0,
+  isContent = false,
   style,
   children,
 }) => {
@@ -22,8 +22,8 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
         <CardThumbnail bgImg={bgImg} />
       </ContainerTop>
       <ContainerBottom bgImg={bgImg}>
-        <CardTitle bgImg={bgImg}>{title}</CardTitle>
-        <CardDescription bgImg={bgImg}>{children}</CardDescription>
+        <CardTitle isContent={isContent} bgImg={bgImg}>{title}</CardTitle>
+        <CardDescription isContent={isContent} bgImg={bgImg}>{children}</CardDescription>
       </ContainerBottom>
     </>
   )
@@ -31,7 +31,7 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
   return (
     <Container 
       data-testid={dataTestId} 
-      content={content} 
+      isContent={isContent} 
       style={style}
     >
       {url ? (

@@ -12,7 +12,7 @@ test('verify if component receives child components and `content` prop correctly
   const props: CardProps = {
     bgImg: `https://raw.githubusercontent.com/mjgargani/${repoItem.name}/main/thumbnail.gif`,
     title: 'Teste RTL',
-    content: 0,
+    isContent: false,
     url: repoItem.html_url,
   }
   const expectedText = 'Descrição do card'
@@ -22,7 +22,7 @@ test('verify if component receives child components and `content` prop correctly
       dataTestId={currentDataTestId}
       bgImg={props.bgImg}
       title={props.title}
-      content={props.content}
+      isContent={props.isContent}
       url={props.url}
     >
       {expectedText}

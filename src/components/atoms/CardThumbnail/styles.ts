@@ -2,7 +2,8 @@ import styled from 'styled-components'
 import { type CardThumbnailProps } from './types'
 
 export const Container = styled.div<CardThumbnailProps>`
-  min-height: 100%;
+  min-height: 95%;
+  margin-bottom: 5%;
 
   background-image: url(${(props) => props.bgImg});
   background-size: cover;

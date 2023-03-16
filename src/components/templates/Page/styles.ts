@@ -11,7 +11,6 @@ const opacityTransition = keyframes`
 `
 
 export const Container = styled.div<PageProps>`
-  background-color: rgba(0,0,255,.5);
   display: ${(props) => props.show! ? 'block' : 'none'};
   min-height: 100%;
   width: 80%;

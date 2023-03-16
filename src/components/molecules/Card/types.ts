@@ -4,6 +4,6 @@ export type CardProps = {
   bgImg?: string
   url?: string
   title?: string
-  content?: 0 | 1
+  isContent?: boolean
   style?: React.CSSProperties
 } & CommonProps

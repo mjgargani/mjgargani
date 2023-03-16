@@ -7,14 +7,12 @@ const fontSizeBase = 4
 export const Show = styled.div<Partial<NavigationProps>>`
   margin: 0;
   padding: 0;
-  transition: all .25s ease;
   transform: scale(${props => props.isHome ? 0 : 1});
   min-height: 4vh;
   overflow: hidden;
 `
 
 export const Container = styled.div<Partial<NavigationProps>>`
-  transition: all .5s ease;
   text-align: center;
 
   font-size: ${fontSizeBase}vw;

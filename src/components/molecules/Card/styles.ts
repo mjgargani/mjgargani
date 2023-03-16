@@ -1,11 +1,28 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { device } from '../../../utils/devices'
 import { type CardProps } from './types'
+
+const opacity = css`
+  opacity: .7;
+  &:hover {
+    opacity: 1;
+  }
+`
+
+const contentSize = css`
+  position: absolute;
+  max-width: 68.5%;
+  top: 50%;
+  transform: translateY(-50%);
+  height: unset !important;
+  min-height: unset !important;
+  width: inherit !important;
+  background-color: green;
+`
 
 export const Container = styled.div<CardProps>`
   overflow: auto;
 
-  transition: all .5s ease;
   border-style: none;
   border-radius: 5px;
   color: black;
@@ -14,7 +31,7 @@ export const Container = styled.div<CardProps>`
   -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.25);
   box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.25);
-  cursor: ${(props) => (props.content ? 'default' : 'pointer')};
+  cursor: ${props => props.isContent ? 'default' : 'pointer'};
   
   height: 100%;
   min-height: 33vh;
@@ -29,17 +46,20 @@ export const Container = styled.div<CardProps>`
     min-height: 24vh;
   }
   @media ${device.tablet}{
-    min-height: 24vh;
-    opacity: .7;
-    &:hover {
-      opacity: 1;
-    }
+    min-height: 35vh;
+    ${props => !props.isContent ? opacity : contentSize}
   }
   @media ${device.laptop}{
-    height: 60vh;
+    min-height: 50vh;
+  }
+  @media ${device.laptopL}{
+    min-height: 50vh;
   }
   @media ${device.desktop}{
-    height: 58vh;
+    min-height: 34vh;
+  }
+  @media ${device.desktopL}{
+    min-height: 33vh;
   }
 `
 
