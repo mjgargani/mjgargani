@@ -20,7 +20,7 @@ const Repos: React.FC<PageProps> = ({ dataTestId = testIdName('page-repos'), sho
           desktop: ['repeat(3, 1fr)'],
         }}
         columnGap={30}
-        rowGap={30}
+        rowGap={15}
       >
         {repos &&
           repos.length > 0 &&

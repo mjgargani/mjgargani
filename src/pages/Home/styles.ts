@@ -4,19 +4,22 @@ import { device } from '../../utils/devices'
 const fontSizeBase = 6
 
 export const Container = styled.div`
-  font-family: 'mjgarganis Lab', sans-serif;
-  position: relative;
-  height: inherit;
+  position: absolute;
   width: inherit;
-  display: table-cell;
-  vertical-align: bottom;
-  color: black;
-  line-height: 180%;
+  bottom: 0;
+  
+  font-family: 'mjgarganis Lab', sans-serif;
   text-align: center;
-  font-weight: bold;
   pointer-events: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 180%;
+  
+  color: black !important;
+  font-weight: bold !important;
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: white;
+  -webkit-text-stroke-color: white !important;
   text-shadow: ${[
     '-3px  -3px 0 #fff',
     '-2px  -2px 0 #fff',

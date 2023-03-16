@@ -11,7 +11,10 @@ const opacityTransition = keyframes`
 `
 
 export const Container = styled.div<PageProps>`
-  ${(props) => Boolean(!props.show) && 'display: none;'}
-  z-index: 1000;
+  background-color: rgba(0,0,255,.5);
+  display: ${(props) => props.show! ? 'block' : 'none'};
+  min-height: 100%;
+  width: 80%;
+  margin: 0 10%;
   animation: ${opacityTransition} 0.5s ease;
 `

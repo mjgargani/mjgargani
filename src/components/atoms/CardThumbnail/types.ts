@@ -1,5 +1,5 @@
 import { type CommonProps } from '../../../globals'
 
 export type CardThumbnailProps = {
-  bgImg: string
+  bgImg?: string
 } & CommonProps

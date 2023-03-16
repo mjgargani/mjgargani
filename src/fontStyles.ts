@@ -63,7 +63,10 @@ const FontStyles = createGlobalStyle`
     font-size: larger;
   }
   p, li {
+    text-align: justify;
+
     font-size: ${pFontSizeBase * 0.9}vh;
+    line-height: 150%;
     @media ${device.mobileS} {
       font-size: ${pFontSizeBase * 0.9}vh;
     }
@@ -75,12 +78,15 @@ const FontStyles = createGlobalStyle`
     }
     @media ${device.tablet} {
       font-size: ${pFontSizeBase * 0.6}vw;
+      line-height: 125%;
     }
     @media ${device.laptop} {
       font-size: ${pFontSizeBase * 0.6}vw;
+      line-height: 150%;
     }
     @media ${device.laptopL} {
       font-size: ${pFontSizeBase * 0.5}vw;
+      line-height: 175%;
     }
     @media ${device.desktop} {
       font-size: ${pFontSizeBase * 0.4}vw;

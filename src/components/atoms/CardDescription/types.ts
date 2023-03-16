@@ -1,5 +1,5 @@
 import { CommonProps } from "../../../globals"
 
-export type CardTitleProps = {
+export type CardDescriptionProps = {
   bgImg?: string
 } & CommonProps

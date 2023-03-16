@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { type GridCellProps } from './types'
 
 export const Container = styled.div<GridCellProps>`
-  grid-area: ${(props) => props.area!.join(' / ')};
+  grid-area: ${(props) => props.area?.length ? props.area.join(' / ') : "unset"};
   background-image: url(${(props) => props.bgImg!.source!});
   background-size: ${(props) => props.bgImg!.size!};
   background-position: center;

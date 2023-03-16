@@ -3,7 +3,6 @@ import { device } from './utils/devices'
 
 export const ContainerBase = styled.div`
   position: absolute;
-  background-color: purple;
   padding: 0;
 
   height: 100%;
@@ -28,7 +27,6 @@ export const ContainerTop = styled.div`
 `
 
 export const ContainerPage = styled.div`
-  background-color: rgba(0,0,255,.5);
   overflow-y: auto;
   position: relative;
   width: 100%;
