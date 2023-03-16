@@ -84,13 +84,13 @@ test('verify if app rendeer child components correctly depending of the `page` p
   const cardAboutBio = await screen.findByTestId(/^card-about-bio_\d+/)
   const cardAboutContacts = await screen.findByTestId(/^card-about-contacts_\d+/)
   const cardAboutDesc = await screen.findByTestId(/^card-about-desc_\d+/)
-  const imgVakinha = await screen.findByTestId(/^img-vakinha_\d+/)
+  const imgQrCodePadrim = await screen.findByTestId(/^img-qr-code-padrim_\d+/)
   expect(cardAbout).toBeInTheDocument()
   expect(cardAvatar).toBeInTheDocument()
   expect(cardAboutBio).toBeInTheDocument()
   expect(cardAboutContacts).toBeInTheDocument()
   expect(cardAboutDesc).toBeInTheDocument()
-  expect(imgVakinha).toBeInTheDocument()
+  expect(imgQrCodePadrim).toBeInTheDocument()
 
   expect(cardAboutBio).toHaveTextContent(profile.bio!.replaceAll('`', ''))
 

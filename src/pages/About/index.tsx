@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import GridCell from '../../components/atoms/GridCell'
 import Card from '../../components/molecules/Card'
 import GridContainer from '../../components/atoms/GridContainer'
-import Vakinha from '../../assets/vakinha.jpeg'
+import QrCodePadrim from '../../assets/qr-code-padrim.png'
 
 import Page from '../../components/templates/Page'
 import { type PageProps } from '../../components/templates/Page/types'
@@ -92,21 +92,21 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
             <GridContainer dataTestId={testIdName('card-about-desc')}>
               <GridCell style={{ textAlign: 'center' }}>
                 <p>
-                  🪙 Você contribui com meu trabalho divulgando-o e/ou fazendo uma doação na{' '}
-                  <a href='https://www.vakinha.com.br/3539654' target='_blank' rel='noreferrer'>
-                    minha Vakinha
+                  🪙 Você contribui com meu trabalho divulgando-o e/ou sendo {' '}
+                  <a href='https://www.padrim.com.br/mjgargani' target='_blank' rel='noreferrer'>
+                    meu Padrim ou Madrim
                   </a>
-                  ! 🐄
+                  !
                 </p>
               </GridCell>
             </GridContainer>
           </Card>
         </GridCell>
 
-        <a href='https://www.vakinha.com.br/3539654' target='_blank' rel='noreferrer'>
+        <a href='https://www.padrim.com.br/mjgargani' target='_blank' rel='noreferrer'>
           <GridCell
-            dataTestId={testIdName('img-vakinha')}
-            bgImg={{ source: Vakinha, size: 'contain' }}
+            dataTestId={testIdName('img-qr-code-padrim')}
+            bgImg={{ source: QrCodePadrim, size: 'contain' }}
             style={{ minHeight: '100%', margin: '0 4.5%' }}
           />
         </a>
