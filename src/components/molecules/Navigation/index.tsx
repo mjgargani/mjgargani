@@ -16,10 +16,7 @@ const Navigation: React.FC<NavigationProps> = ({
     <GridContainer 
       templateColumns={{ 
         desktop: [isHome ? '0 repeat(2, 1fr)' : 'repeat(3, 1fr)'] 
-      }} 
-      templateRows={{ 
-        mobile: [isHome ? '0 repeat(2, 1fr)' : 'repeat(3, 1fr)'] 
-      }} 
+      }}
       columnGap={2} 
       rowGap={1}
     >

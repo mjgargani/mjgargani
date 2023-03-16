@@ -49,7 +49,6 @@ export const ContainerNavigation = styled.div`
 
 export const ContainerFooter = styled.div`
   overflow: hidden;
-  background-color: rgba(255,0,0,.5);
   position: relative;
   width: 100%;
 

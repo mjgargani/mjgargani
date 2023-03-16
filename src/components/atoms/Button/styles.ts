@@ -11,6 +11,7 @@ const colorTransition = (from: string, to: string) => keyframes`
 `
 
 export const Container = styled.button<ButtonProps>`
+  transition: none !important;
   min-width: 100%;
   min-height: 4vh;
   border-style: none;
@@ -37,6 +38,7 @@ export const Container = styled.button<ButtonProps>`
   }
 
   h1 span {
+    transition: none !important;
     font-weight: normal;
     padding: 0;
     margin-right: 0.5vw;
