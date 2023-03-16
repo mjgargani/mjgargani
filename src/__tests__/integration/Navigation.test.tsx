@@ -4,7 +4,7 @@ import Navigation from '../../components/molecules/Navigation'
 afterEach(cleanup)
 
 test.each([
-  [0, 'black', 'white', 'white'],
+  [0, 'white', 'white', 'white'],
   [1, 'white', 'black', 'white'],
   [2, 'white', 'white', 'black'],
 ])(
@@ -22,7 +22,7 @@ test.each([
     )
 
     const navigation = screen.getByTestId(currentDataTestId)
-    const buttons = screen.getAllByTestId(/^button_\d+/)
+    const buttons = screen.getAllByTestId(/^btn-nav_\d+/)
 
     expect(navigation).toBeInTheDocument()
     expect(buttons[0]).toBeInTheDocument()

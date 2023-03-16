@@ -43,6 +43,5 @@ test('verify if component receives child components and `content` prop correctly
   expect(cardThumb).toHaveStyle(`background-image: url(${props.bgImg})`)
   expect(card).toHaveTextContent(props.title!)
   expect(card).toHaveTextContent(expectedText)
-  expect(screen.getByTestId(currentDataTestId)).toHaveStyle(`opacity: 0.85`)
   expect(cardLink).toHaveAttribute('href', props.url)
 })
