@@ -7,6 +7,10 @@ import Home from './pages/Home'
 import Repos from './pages/Repos'
 import About from './pages/About'
 import Navigation from './components/molecules/Navigation'
+import FooterInfo from './components/molecules/FooterInfo'
+import { ContainerBase, ContainerFooter, ContainerNavigation, ContainerPage, ContainerTop } from './styles'
+import TranslateBtn from './components/molecules/TranslateBtn'
+import GitHubButtons from './components/molecules/GitHubButtons'
 
 function App() {
   const [page, setPage] = useState<number>(0)
@@ -22,12 +26,25 @@ function App() {
   return (
     <>
       <Frame page={page} prevPage={prevPage} />
-      <Home show={page === 0} />
-      <GitHubDataContext.Provider value={gitHubDataValues}>
-        <Repos show={page === 1} />
-        <About show={page === 2} />
-      </GitHubDataContext.Provider>
-      <Navigation page={page} setPage={setPage} />
+      <ContainerBase>
+        <ContainerTop>
+          <TranslateBtn />
+          <GitHubButtons />
+        </ContainerTop>
+        <ContainerPage>
+          <Home show={page === 0} />
+          <GitHubDataContext.Provider value={gitHubDataValues}>
+            <Repos show={page === 1} />
+            <About show={page === 2} />
+          </GitHubDataContext.Provider>
+        </ContainerPage>
+        <ContainerNavigation>
+          <Navigation isHome={page === 0} page={page} setPage={setPage} />
+        </ContainerNavigation>
+        <ContainerFooter>
+          <FooterInfo />
+        </ContainerFooter>
+      </ContainerBase>
     </>
   )
 }

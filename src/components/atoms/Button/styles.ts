@@ -38,6 +38,7 @@ export const Container = styled.button<ButtonProps>`
 
   h1 span {
     font-weight: normal;
+    padding: 0;
     margin-right: 0.5vw;
     font-family: 'mjgarganis Lab', sans-serif;
   }
