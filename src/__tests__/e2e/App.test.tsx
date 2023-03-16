@@ -22,23 +22,30 @@ afterAll(() => {
 test('verify if app rendeer child components correctly depending of the `page` prop', async () => {
   render(<App />)
 
+  const translateBtn = await screen.findByTestId(/^translate-btn_\d/)
+  expect(translateBtn).toBeInTheDocument()
+
+  const ghBtns = await screen.findByTestId(/^github-btns_\d/)
+  expect(ghBtns).toBeInTheDocument()
+
+  const footerInfo = screen.getByTestId(/^footer-info_\d+/)
+  expect(footerInfo).toBeInTheDocument()
+
   const frame = await screen.findByTestId(/^frame_\d/)
   expect(frame).toBeInTheDocument()
 
-  const buttons = await screen.findAllByTestId(/^button_\d+/)
-  expect(buttons[0]).toBeInTheDocument()
-  expect(buttons[1]).toBeInTheDocument()
-  expect(buttons[2]).toBeInTheDocument()
-  expect(buttons[3]).toBeInTheDocument()
+  const buttonsNav = await screen.findAllByTestId(/^btn-nav_\d+/)
+  expect(buttonsNav[0]).toBeInTheDocument()
+  expect(buttonsNav[1]).toBeInTheDocument()
+  expect(buttonsNav[2]).toBeInTheDocument()
 
   const pageHome = await screen.findByTestId(/^page-home_\d+/)
 
   expect(pageHome).toBeInTheDocument()
-  expect(buttons[1]).toHaveStyle('color: black')
 
   expect(pageHome).toHaveTextContent("mjgargani's Lab ")
 
-  fireEvent.click(buttons[2])
+  fireEvent.click(buttonsNav[1])
 
   await waitFor(() => {
     expect(pageHome).not.toBeInTheDocument()
@@ -70,7 +77,7 @@ test('verify if app rendeer child components correctly depending of the `page` p
     expect(cardLink[i]).toHaveAttribute('href', repos[i].html_url)
   }
 
-  fireEvent.click(buttons[3])
+  fireEvent.click(buttonsNav[2])
 
   await waitFor(() => {
     expect(pageRepos).not.toBeInTheDocument()
@@ -94,7 +101,7 @@ test('verify if app rendeer child components correctly depending of the `page` p
 
   expect(cardAboutBio).toHaveTextContent(profile.bio!.replaceAll('`', ''))
 
-  fireEvent.click(buttons[1])
+  fireEvent.click(buttonsNav[0])
 
   await waitFor(() => {
     expect(pageAbout).not.toBeInTheDocument()

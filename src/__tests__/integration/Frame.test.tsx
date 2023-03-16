@@ -14,13 +14,11 @@ test('verify if component shows child components correctly', () => {
   const tiles = screen.getByTestId(/^frame-tiles_\d+/)
   const shadow = screen.getByTestId(/^frame-shadow_\d+/)
   const potion = screen.getByTestId(/^potion_\d+/)
-  const footerInfo = screen.getByTestId(/^footer-info_\d+/)
 
   expect(frame).toBeInTheDocument()
   expect(tiles).toBeInTheDocument()
   expect(shadow).toBeInTheDocument()
   expect(potion).toBeInTheDocument()
-  expect(footerInfo).toBeInTheDocument()
 })
 
 test.each([

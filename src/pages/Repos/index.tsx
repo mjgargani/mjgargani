@@ -19,8 +19,8 @@ const Repos: React.FC<PageProps> = ({ dataTestId = testIdName('page-repos'), sho
         templateColumns={{
           desktop: ['repeat(3, 1fr)'],
         }}
-        columnGap={30}
-        rowGap={30}
+        columnGap={4}
+        rowGap={2}
       >
         {repos &&
           repos.length > 0 &&

@@ -1,24 +1,23 @@
 import React, { type PropsWithChildren } from 'react'
-import { type CommonProps } from '../../../globals'
 import { testIdName } from '../../../utils/testIdName'
 import IconReplacer from '../IconReplacer'
 
-import { Container } from './styles'
+import { Container, Title } from './styles'
+import { CardTitleProps } from './types'
 
 const replaceRegExpTitle = new RegExp('.+(?<=_)', 'gi')
 const replaceRegExpIcons = new RegExp('(?=_).+', 'gi')
 
-const CardTitle: React.FC<PropsWithChildren<CommonProps>> = ({
+const CardTitle: React.FC<PropsWithChildren<CardTitleProps>> = ({
   dataTestId = testIdName('card-title'),
+  isContent = false,
   children,
-}) => (
-  <>
-    <Container data-testid={dataTestId}>
+}) => (<Container isContent={isContent} data-testid={dataTestId}>
+  <Title>
       {(children as string).replaceAll(replaceRegExpTitle, '').replaceAll('-', ' ')}
       <br />
       <IconReplacer text={(children as string).replaceAll(replaceRegExpIcons, '')} darker={true} />
-    </Container>
-  </>
-)
+  </Title>
+</Container>)
 
 export default CardTitle

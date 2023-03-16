@@ -1,4 +1,6 @@
 import GitHubButton from 'react-github-btn'
+import { CommonProps } from '../../../globals'
+import { testIdName } from '../../../utils/testIdName'
 import { Container } from './styles'
 
 const GitHubBtnData = {
@@ -27,8 +29,10 @@ const GitHubBtnData = {
   ],
 }
 
-const GitHubButtons = () => (
-  <Container>
+const GitHubButtons: React.FC<CommonProps> = ({
+  dataTestId = testIdName("github-btns")
+}) => (
+  <Container data-testid={dataTestId}>
     <ul>
       {GitHubBtnData.specific.map((el, i) => {
         const props = {

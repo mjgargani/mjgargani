@@ -5,11 +5,7 @@ import { type CardThumbnailProps } from './types'
 
 const CardThumbnail: React.FC<CardThumbnailProps> = ({
   dataTestId = testIdName('card-thumb'),
-  bgImg = '',
-}) => (
-  <>
-    <Container data-testid={dataTestId} bgImg={bgImg} />
-  </>
-)
+  bgImg,
+}) => (<Container data-testid={dataTestId} bgImg={bgImg} />)
 
 export default CardThumbnail

@@ -1,3 +1,6 @@
+import { CommonProps } from "../../../globals"
+
 export type CardTitleProps = {
-  text: string
-}
+  isContent?: boolean
+  bgImg?: string
+} & CommonProps

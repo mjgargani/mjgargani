@@ -23,15 +23,17 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
         templateRows={{ mobile: ['1fr', '300px'] }}
         columnGap={10}
         rowGap={10}
-        style={{
-          height: '100%',
+        style={{ 
+          position: "absolute",
+          width: "inherit",
+          minHeight: '100%'
         }}
       >
         <GridCell>
           <Card
             dataTestId={testIdName('card-about')}
             title={`Olá! Sou ${profile?.name}`}
-            content={1}
+            isContent={true}
           >
             <GridContainer
               templateColumns={{

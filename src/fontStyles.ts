@@ -5,6 +5,9 @@ const h1FontSizeBase = 2
 const pFontSizeBase = 1.8
 
 const FontStyles = createGlobalStyle`
+  * {
+    transition: all .25s ease !important;
+  }
   a, p, ul, li, ol, i, b, em {
     font-family: sans-serif;
   }
@@ -14,7 +17,6 @@ const FontStyles = createGlobalStyle`
   a{
     font-weight: bold;
     font-family: "Sono", sans-serif;
-    transition: all .1s ease;
   }
   a:not(.card-link){
     color: rgb(62, 71, 247, .7);
@@ -63,7 +65,10 @@ const FontStyles = createGlobalStyle`
     font-size: larger;
   }
   p, li {
+    text-align: justify;
+
     font-size: ${pFontSizeBase * 0.9}vh;
+    line-height: 150%;
     @media ${device.mobileS} {
       font-size: ${pFontSizeBase * 0.9}vh;
     }
@@ -75,12 +80,15 @@ const FontStyles = createGlobalStyle`
     }
     @media ${device.tablet} {
       font-size: ${pFontSizeBase * 0.6}vw;
+      line-height: 125%;
     }
     @media ${device.laptop} {
       font-size: ${pFontSizeBase * 0.6}vw;
+      line-height: 150%;
     }
     @media ${device.laptopL} {
       font-size: ${pFontSizeBase * 0.5}vw;
+      line-height: 175%;
     }
     @media ${device.desktop} {
       font-size: ${pFontSizeBase * 0.4}vw;

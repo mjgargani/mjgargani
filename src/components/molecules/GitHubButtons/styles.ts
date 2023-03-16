@@ -2,11 +2,11 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   position: fixed;
-  margin: 0;
-  padding: 0;
   top: 0;
   right: 0;
-  text-align: right;
+
+  margin: 0;
+  padding: 0;
 
   ul {
     margin: 0;
