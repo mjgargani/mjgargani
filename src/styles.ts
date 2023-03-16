@@ -38,7 +38,6 @@ export const ContainerPage = styled.div`
 
 export const ContainerNavigation = styled.div`
   overflow-y: auto;
-  background-color: rgba(0,255,0,.5);
   position: relative;
   width: 100%;
 

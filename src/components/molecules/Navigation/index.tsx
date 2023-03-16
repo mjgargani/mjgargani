@@ -20,8 +20,8 @@ const Navigation: React.FC<NavigationProps> = ({
       templateRows={{ 
         mobile: [isHome ? '0 repeat(2, 1fr)' : 'repeat(3, 1fr)'] 
       }} 
-      columnGap={10} 
-      rowGap={10}
+      columnGap={2} 
+      rowGap={1}
     >
       <Show isHome={isHome}>
         <GridCell>

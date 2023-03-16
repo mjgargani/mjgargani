@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { device } from '../../../utils/devices'
 import { NavigationProps } from './types'
 
@@ -12,7 +12,15 @@ export const Show = styled.div<Partial<NavigationProps>>`
   overflow: hidden;
 `
 
+const horizontalResize = (isHome: boolean) => css`
+  width: ${isHome ? 50: 75}%;
+  margin: 0 ${isHome ? 25: 12.5}%;
+`
+
 export const Container = styled.div<Partial<NavigationProps>>`
+  position: absolute;
+  width: 100%;
+  bottom: 0;
   text-align: center;
 
   font-size: ${fontSizeBase}vw;
@@ -27,6 +35,7 @@ export const Container = styled.div<Partial<NavigationProps>>`
   }
   @media ${device.tablet} {
     font-size: ${fontSizeBase - 1.7}vw;
+    ${props => horizontalResize(props.isHome!)}
   }
   @media ${device.laptop} {
     font-size: ${fontSizeBase - 2}vw;
