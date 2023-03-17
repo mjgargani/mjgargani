@@ -20,9 +20,9 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
       <GridContainer
         dataTestId={dataTestId}
         templateColumns={{ desktop: ['9fr', '4fr'] }}
-        templateRows={{ mobile: ['1fr', '300px'] }}
-        columnGap={10}
-        rowGap={10}
+        templateRows={{ mobile: ['min-content', '30vh'] }}
+        columnGap={4}
+        rowGap={2}
         style={{ 
           position: "absolute",
           width: "inherit",
@@ -40,7 +40,7 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
                 desktop: ['1fr', '9fr'],
                 mobile: ['1fr', '7fr'],
               }}
-              columnGap={10}
+              columnGap={1}
             >
               <GridCell>
                 <Avatar dataTestId={testIdName('card-about-avatar')} src={profile?.avatar_url!} />
@@ -109,7 +109,7 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
           <GridCell
             dataTestId={testIdName('img-qr-code-padrim')}
             bgImg={{ source: QrCodePadrim, size: 'contain' }}
-            style={{ minHeight: '100%', margin: '0 4.5%' }}
+            style={{ minHeight: '100%' }}
           />
         </a>
       </GridContainer>

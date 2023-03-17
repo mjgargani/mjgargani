@@ -19,7 +19,8 @@ const horizontalResize = (isHome: boolean) => css`
 
 export const Container = styled.div<Partial<NavigationProps>>`
   position: absolute;
-  width: 100%;
+  width: 80%;
+  margin: 0 10%;
   bottom: 0;
   text-align: center;
 
