@@ -15,22 +15,32 @@
 html, body{
   width: 100%;
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
 body {
   background-color: black;
 }
 #root_loading {
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-  height: 100vh;
-  width: 100vw;
-  color: white;
-}
-#root_loading_potion {
+  position: fixed;
+
+  margin: 0;
+  padding: 0;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
   font-family: "mjgarganis Lab", sans-serif;
   font-size: 6vw;
+  color: white;
+
   animation: rotatePotion .5s infinite linear;
+
+  pointer-events: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 @keyframes rotatePotion {
   from{
