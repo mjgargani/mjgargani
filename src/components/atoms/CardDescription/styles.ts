@@ -14,7 +14,7 @@ const paragraph = css`
 
 export const Container = styled.div<CardDescriptionProps>`
   position: relative;
-  min-height: ${props => props.isContent ? 90 : 40}%;
+  min-height: ${props => props.isContent ? 90 : 50}%;
   font-weight: normal;
   padding: 0 3%;
   

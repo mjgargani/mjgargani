@@ -17,7 +17,6 @@ const contentSize = css`
   height: unset !important;
   min-height: unset !important;
   width: inherit !important;
-  background-color: green;
 `
 
 export const Container = styled.div<CardProps>`
@@ -53,7 +52,7 @@ export const Container = styled.div<CardProps>`
     min-height: 50vh;
   }
   @media ${device.laptopL}{
-    min-height: 50vh;
+    min-height: 56vh;
   }
   @media ${device.desktop}{
     min-height: 34vh;
