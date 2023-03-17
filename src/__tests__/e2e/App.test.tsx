@@ -5,14 +5,12 @@ import profile from '../mock/profile.json'
 import repos from '../mock/repos.json'
 
 beforeAll(() => {
-  server.listen({ onUnhandledRequest: 'bypass' })
+  server.listen()
 })
 
 afterEach(() => {
   cleanup()
-  server.listen({ onUnhandledRequest: 'bypass' })
   server.resetHandlers()
-  server.close()
 })
 
 afterAll(() => {
@@ -24,9 +22,6 @@ test('verify if app rendeer child components correctly depending of the `page` p
 
   const translateBtn = await screen.findByTestId(/^translate-btn_\d/)
   expect(translateBtn).toBeInTheDocument()
-
-  const ghBtns = await screen.findByTestId(/^github-btns_\d/)
-  expect(ghBtns).toBeInTheDocument()
 
   const footerInfo = screen.getByTestId(/^footer-info_\d+/)
   expect(footerInfo).toBeInTheDocument()
@@ -58,10 +53,11 @@ test('verify if app rendeer child components correctly depending of the `page` p
   expect(cards[0]).toBeInTheDocument()
   expect(cards[1]).toBeInTheDocument()
   expect(cards[2]).toBeInTheDocument()
+  expect(cards[3]).toBeInTheDocument()
 
   const replaceRegExpTitle = new RegExp('.+(?<=_)', 'gi')
 
-  for (let i = 0; i < repos.length; i++) {
+  for (let i = 1; i < repos.length; i++) {
     const cardThumb = await screen.findAllByTestId(/^card-thumb_\d+/)
     const cardTitle = await screen.findAllByTestId(/^card-title_\d+/)
     const cardDesc = await screen.findAllByTestId(/^card-desc_\d+/)

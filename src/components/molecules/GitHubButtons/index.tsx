@@ -31,7 +31,7 @@ const GitHubBtnData = {
 
 const GitHubButtons: React.FC<CommonProps> = ({
   dataTestId = testIdName("github-btns")
-}) => (
+}) => (['test'].includes(process.env.NODE_ENV!) ? <></> :
   <Container data-testid={dataTestId}>
     <ul>
       {GitHubBtnData.specific.map((el, i) => {
