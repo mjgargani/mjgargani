@@ -1,7 +1,13 @@
 import { type CommonProps } from '../../../globals'
 
 export type CardProps = {
-  bgImg?: string
+  bgImg?: {
+    source: string,
+    new?: boolean,
+    pinned?: boolean,
+    stars?: number,
+    watchers?: number
+  }
   url?: string
   title?: string
   isContent?: boolean

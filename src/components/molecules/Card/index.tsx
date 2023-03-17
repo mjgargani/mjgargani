@@ -22,8 +22,8 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
         <CardThumbnail bgImg={bgImg} />
       </ContainerTop>
       <ContainerBottom bgImg={bgImg}>
-        <CardTitle isContent={isContent} bgImg={bgImg}>{title}</CardTitle>
-        <CardDescription isContent={isContent} bgImg={bgImg}>{children}</CardDescription>
+        <CardTitle isContent={isContent} bgImg={bgImg?.source}>{title}</CardTitle>
+        <CardDescription isContent={isContent} bgImg={bgImg?.source}>{children}</CardDescription>
       </ContainerBottom>
     </>
   )
