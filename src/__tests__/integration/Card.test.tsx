@@ -10,7 +10,13 @@ test('verify if component receives child components and `content` prop correctly
   const currentDataTestId = 'card_rtl'
   const repoItem = repos[0] as Partial<GitHubRepoItem>
   const props: CardProps = {
-    bgImg: `https://raw.githubusercontent.com/mjgargani/${repoItem.name}/main/thumbnail.gif`,
+    bgImg: {
+      source: `https://raw.githubusercontent.com/mjgargani/${repoItem.name}/main/thumbnail.gif`,
+      new: true,
+      pinned: true,
+      stars: 1,
+      watchers: 0
+    },
     title: 'Teste RTL',
     isContent: false,
     url: repoItem.html_url,
@@ -40,7 +46,7 @@ test('verify if component receives child components and `content` prop correctly
   expect(cardTitle).toBeInTheDocument()
   expect(cardDescription).toBeInTheDocument()
 
-  expect(cardThumb).toHaveStyle(`background-image: url(${props.bgImg})`)
+  expect(cardThumb).toHaveStyle(`background-image: url(${props.bgImg?.source})`)
   expect(card).toHaveTextContent(props.title!)
   expect(card).toHaveTextContent(expectedText)
   expect(cardLink).toHaveAttribute('href', props.url)

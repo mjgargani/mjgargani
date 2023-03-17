@@ -11,12 +11,20 @@ import { FaLinkedin } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 import { BsGithub } from 'react-icons/bs'
 import { MdGTranslate } from 'react-icons/md'
+import { MdFiberNew } from 'react-icons/md'
+import { BsPinFill } from 'react-icons/bs'
+import { AiFillStar } from 'react-icons/ai'
+import { AiFillEye } from 'react-icons/ai'
 
 import { type IconList, type IconReplacerProps } from './types'
 import { Container } from './styles'
 import { testIdName } from '../../../utils/testIdName'
 
 const icons: IconList = {
+  new: ['#e6ff82', <MdFiberNew title='Novo!' />],
+  pin: ['#FFF', <BsPinFill title='Fixado' />],
+  star: ['#e6ff82', <AiFillStar title='Estrelas dadas' />],
+  eye: ['#FFF', <AiFillEye title='Observadores(as)' />],
   gtranslate: ['#4B8BF5', <MdGTranslate title='Translate this page!' />],
   github: ['#000', <BsGithub title='GitHub' />],
   archive: ['#575100', <FaArchive title='Arquivo' />],

@@ -8,9 +8,32 @@ import { type PageProps } from '../../components/templates/Page/types'
 import { GitHubDataContext } from '../../context/GitHubData'
 import mdParser from '../../utils/mdParser'
 import { testIdName } from '../../utils/testIdName'
+import { GitHubRepoItem } from '../../context/types'
 
 const Repos: React.FC<PageProps> = ({ dataTestId = testIdName('page-repos'), show }) => {
   const { repos } = useContext(GitHubDataContext)
+
+  const RepoItem = (el: GitHubRepoItem | undefined, i: number,) => (
+    <GridCell key={i}>
+      <Card
+        bgImg={{
+          source: el!.thumbnail,
+          new: el!.new,
+          pinned: el!.pinned,
+          stars: el!.stargazers_count,
+          watchers: el!.watchers_count
+        }}
+        url={el!.html_url}
+        title={
+          el!.name === 'mjgargani'
+            ? 'nodejs-typescript-reactjs-styledcomponents_2023-portfolio'
+            : el!.name
+        }
+      >
+        {mdParser(el!.description)}
+      </Card>
+    </GridCell>
+  )
 
   return (
     <Page show={show}>
@@ -24,23 +47,16 @@ const Repos: React.FC<PageProps> = ({ dataTestId = testIdName('page-repos'), sho
       >
         {repos &&
           repos.length > 0 &&
-          repos
-            .sort((a, b) => (a!.id < b!.id ? 1 : -1))
-            .map((el, i) => (
-              <GridCell key={i}>
-                <Card
-                  bgImg={el!.thumbnail}
-                  url={el!.html_url}
-                  title={
-                    el!.name === 'mjgargani'
-                      ? 'nodejs-typescript-reactjs-styledcomponents_2023-portfolio'
-                      : el!.name
-                  }
-                >
-                  {mdParser(el!.description)}
-                </Card>
-              </GridCell>
-            ))}
+          [
+            repos
+              .sort((a, b) => (a!.id < b!.id ? 1 : -1))
+              .filter(el => el?.pinned)
+              .map((el, i) => RepoItem(el, i)),
+            repos
+              .sort((a, b) => (a!.id < b!.id ? 1 : -1))
+              .filter(el => !el?.pinned)
+              .map((el, i) => RepoItem(el, i))
+          ]}
       </GridContainer>
     </Page>
   )
