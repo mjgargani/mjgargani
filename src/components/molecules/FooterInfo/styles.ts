@@ -14,7 +14,7 @@ export const Container = styled.div`
 
   p {
     margin: 0;
-    margin-bottom: .5vh;
+    margin-bottom: 0.5vh;
     text-align: center;
   }
 `
