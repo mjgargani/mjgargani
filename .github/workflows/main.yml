@@ -42,8 +42,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run ESLint to find errors
-        run: npm run lint
+      - name: Run ESLint to find warnings and errors
+        run: npm run lint -- --max-warnings=0
 
       - name: Run Jest code tests
         run: npm test
