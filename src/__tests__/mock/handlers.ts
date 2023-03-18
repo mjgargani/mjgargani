@@ -10,10 +10,8 @@ export const handlers = [
   rest.get('https://api.github.com/users/mjgargani/repos', async (_req, res, ctx) =>
     res(ctx.status(200), ctx.json(repos)),
   ),
-  rest.get('https://gh-pinned-repos.egoist.dev', async (req, res, ctx) =>{
-    const username =  req.url.searchParams.get('username');
-    return username === "mjgargani" ? 
-      res(ctx.status(200), ctx.json(pinned)) :
-      res(ctx.status(404))
+  rest.get('https://gh-pinned-repos.egoist.dev', async (req, res, ctx) => {
+    const username = req.url.searchParams.get('username')
+    return username === 'mjgargani' ? res(ctx.status(200), ctx.json(pinned)) : res(ctx.status(404))
   }),
 ]

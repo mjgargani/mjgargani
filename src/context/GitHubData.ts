@@ -12,8 +12,8 @@ export const useGitHubDataValues = (): GitHubData => {
   const [repos, setRepos] = useState<Partial<GitHubRepoItem[]>>([])
 
   useEffect(() => {
-    if(profile.name){
-      setLoading(false);
+    if (profile.name) {
+      setLoading(false)
     }
   }, [profile])
 
@@ -27,15 +27,15 @@ export const useGitHubDataValues = (): GitHubData => {
         'https://api.github.com/users/mjgargani/repos',
         'GET',
       ).then(async (data: Partial<GitHubRepoItem>[]) => {
-        const pinned = (await pinnedRepos()).map(el => el.repo);
+        const pinned = (await pinnedRepos()).map((el) => el.repo)
         return data.map((el) => ({
           id: el.id!,
           created_at: el.created_at!,
           name: el.name!,
-          new: ((Date.now() - new Date(el.created_at!).getTime()) <= 15778800000),
+          new: Date.now() - new Date(el.created_at!).getTime() <= 15778800000,
           pinned: pinned.includes(el.name!),
-          "stargazers_count": el.stargazers_count!,
-          "watchers_count": el.watchers_count!,
+          stargazers_count: el.stargazers_count!,
+          watchers_count: el.watchers_count!,
           description: el.description!,
           html_url: el.html_url!,
           thumbnail: `https://raw.githubusercontent.com/mjgargani/${el.name!}/main/thumbnail.gif`,

@@ -13,7 +13,7 @@ import { GitHubRepoItem } from '../../context/types'
 const Repos: React.FC<PageProps> = ({ dataTestId = testIdName('page-repos'), show }) => {
   const { repos } = useContext(GitHubDataContext)
 
-  const RepoItem = (el: GitHubRepoItem | undefined, i: number,) => (
+  const RepoItem = (el: GitHubRepoItem | undefined, i: number) => (
     <GridCell key={i}>
       <Card
         bgImg={{
@@ -21,7 +21,7 @@ const Repos: React.FC<PageProps> = ({ dataTestId = testIdName('page-repos'), sho
           new: el!.new,
           pinned: el!.pinned,
           stars: el!.stargazers_count,
-          watchers: el!.watchers_count
+          watchers: el!.watchers_count,
         }}
         url={el!.html_url}
         title={
@@ -46,16 +46,15 @@ const Repos: React.FC<PageProps> = ({ dataTestId = testIdName('page-repos'), sho
         rowGap={2}
       >
         {repos &&
-          repos.length > 0 &&
-          [
+          repos.length > 0 && [
             repos
               .sort((a, b) => (a!.id < b!.id ? 1 : -1))
-              .filter(el => el?.pinned)
+              .filter((el) => el?.pinned)
               .map((el, i) => RepoItem(el, i)),
             repos
               .sort((a, b) => (a!.id < b!.id ? 1 : -1))
-              .filter(el => !el?.pinned)
-              .map((el, i) => RepoItem(el, i))
+              .filter((el) => !el?.pinned)
+              .map((el, i) => RepoItem(el, i)),
           ]}
       </GridContainer>
     </Page>

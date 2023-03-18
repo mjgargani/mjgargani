@@ -8,7 +8,7 @@ export const Container = styled.div`
 
   max-height: min-content;
   max-width: min-content;
-  
+
   a,
   a:hover {
     background-color: unset !important;
@@ -23,12 +23,15 @@ export const Container = styled.div`
       font-size: 0.7vw !important;
     }
   }
-  a, button, h1, span {
+  a,
+  button,
+  h1,
+  span {
     padding: 0 !important;
     margin: 0 !important;
     line-height: 0 !important;
   }
-  svg{
+  svg {
     margin: 5px !important;
   }
 `

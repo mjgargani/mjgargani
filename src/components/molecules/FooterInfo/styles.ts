@@ -12,7 +12,7 @@ export const Container = styled.div`
   opacity: 0.5;
   color: white;
 
-  p{
+  p {
     margin: 0;
     text-align: center;
   }

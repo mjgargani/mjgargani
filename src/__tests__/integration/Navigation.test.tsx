@@ -3,11 +3,11 @@ import Navigation from '../../components/molecules/Navigation'
 
 afterEach(cleanup)
 
-const mockedUsedNavigate = jest.fn();
+const mockedUsedNavigate = jest.fn()
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useNavigate: () => mockedUsedNavigate,
-}));
+}))
 
 test.each([
   [0, 'white', 'white', 'white'],
@@ -18,12 +18,7 @@ test.each([
   (page, color1, color2, color3) => {
     const currentDataTestId = 'navigation_rtl'
 
-    render(
-      <Navigation
-        dataTestId={currentDataTestId}
-        page={page}
-      />,
-    )
+    render(<Navigation dataTestId={currentDataTestId} page={page} />)
 
     const navigation = screen.getByTestId(currentDataTestId)
     const buttons = screen.getAllByTestId(/^btn-nav_\d+/)

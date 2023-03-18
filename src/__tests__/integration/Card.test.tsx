@@ -15,7 +15,7 @@ test('verify if component receives child components and `content` prop correctly
       new: true,
       pinned: true,
       stars: 1,
-      watchers: 0
+      watchers: 0,
     },
     title: 'Teste RTL',
     isContent: false,

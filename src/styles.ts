@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import { device } from './utils/devices'
 
 interface ContainerBaseProps {
@@ -8,7 +8,7 @@ interface ContainerBaseProps {
 export const ContainerBase = styled.div<ContainerBaseProps>`
   position: absolute;
   padding: 0;
-  ${props => props.loading && "cursor: wait;"}
+  ${(props) => props.loading && 'cursor: wait;'}
 
   height: 100%;
   width: 95%;

@@ -12,12 +12,14 @@ const CardTitle: React.FC<PropsWithChildren<CardTitleProps>> = ({
   dataTestId = testIdName('card-title'),
   isContent = false,
   children,
-}) => (<Container isContent={isContent} data-testid={dataTestId}>
-  <Title>
+}) => (
+  <Container isContent={isContent} data-testid={dataTestId}>
+    <Title>
       {(children as string).replaceAll(replaceRegExpTitle, '').replaceAll('-', ' ')}
       <br />
       <IconReplacer text={(children as string).replaceAll(replaceRegExpIcons, '')} darker={true} />
-  </Title>
-</Container>)
+    </Title>
+  </Container>
+)
 
 export default CardTitle

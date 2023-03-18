@@ -22,7 +22,7 @@ export const Container = styled.div`
   text-align: center;
   width: 15%;
   font-size: 6vh;
-  @media ${device.tablet}{
+  @media ${device.tablet} {
     width: 5%;
     font-size: 4vw;
   }

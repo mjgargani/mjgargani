@@ -7,14 +7,14 @@ const fontSizeBase = 4
 export const Show = styled.div<Partial<NavigationProps>>`
   margin: 0;
   padding: 0;
-  transform: scale(${props => props.isHome ? 0 : 1});
+  transform: scale(${(props) => (props.isHome ? 0 : 1)});
   min-height: 4vh;
   overflow: hidden;
 `
 
 const horizontalResize = (isHome: boolean) => css`
-  width: ${isHome ? 50: 75}%;
-  margin: 0 ${isHome ? 25: 12.5}%;
+  width: ${isHome ? 50 : 75}%;
+  margin: 0 ${isHome ? 25 : 12.5}%;
 `
 
 const opacityTransition = keyframes`
@@ -46,7 +46,7 @@ export const Container = styled.div<Partial<NavigationProps>>`
   }
   @media ${device.tablet} {
     font-size: ${fontSizeBase - 1.7}vw;
-    ${props => horizontalResize(props.isHome!)}
+    ${(props) => horizontalResize(props.isHome!)}
   }
   @media ${device.laptop} {
     font-size: ${fontSizeBase - 2}vw;

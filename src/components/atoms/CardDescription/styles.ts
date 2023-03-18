@@ -8,15 +8,15 @@ const paragraph = css`
     top: 50%;
     transform: translateY(-50%);
     vertical-align: middle;
-    margin: 0; 
+    margin: 0;
   }
 `
 
 export const Container = styled.div<CardDescriptionProps>`
   position: relative;
-  min-height: ${props => props.isContent ? 90 : 50}%;
+  min-height: ${(props) => (props.isContent ? 90 : 50)}%;
   font-weight: normal;
   padding: 0 3%;
-  
-  ${props => !props.isContent && paragraph}
+
+  ${(props) => !props.isContent && paragraph}
 `

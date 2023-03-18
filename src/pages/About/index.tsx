@@ -23,10 +23,10 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
         templateRows={{ mobile: ['min-content', '30vh'] }}
         columnGap={4}
         rowGap={2}
-        style={{ 
-          position: "absolute",
-          width: "inherit",
-          minHeight: '100%'
+        style={{
+          position: 'absolute',
+          width: 'inherit',
+          minHeight: '100%',
         }}
       >
         <GridCell>
@@ -94,7 +94,7 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
             <GridContainer dataTestId={testIdName('card-about-desc')}>
               <GridCell style={{ textAlign: 'center' }}>
                 <p>
-                  🪙 Você contribui com meu trabalho divulgando-o e/ou sendo {' '}
+                  🪙 Você contribui com meu trabalho divulgando-o e/ou sendo{' '}
                   <a href='https://www.padrim.com.br/mjgargani' target='_blank' rel='noreferrer'>
                     meu Padrim ou Madrim
                   </a>
