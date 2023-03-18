@@ -42,8 +42,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run ESLint to find warnings and errors
-        run: npm run lint -- --max-warnings=0
+      - name: Run ESLint to find/fix warnings and errors
+        run: npm run lint:fix -- --max-warnings=0
+
+      - name: Run Prettier to format code
+        run: npm run format
 
       - name: Run Jest code tests
         run: npm test

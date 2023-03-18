@@ -40,7 +40,7 @@ function App() {
   return (
     <>
       <Frame page={page} prevPage={prevPage} />
-      <ContainerBase loading={!!gitHubDataValues.loading}>
+      <ContainerBase isLoading={!!gitHubDataValues.loading}>
         <ContainerTop>
           <TranslateBtn />
           <GitHubButtons />
