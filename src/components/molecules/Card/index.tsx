@@ -22,18 +22,18 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
         <CardThumbnail bgImg={bgImg} />
       </ContainerTop>
       <ContainerBottom bgImg={bgImg}>
-        <CardTitle isContent={isContent} bgImg={bgImg?.source}>{title}</CardTitle>
-        <CardDescription isContent={isContent} bgImg={bgImg?.source}>{children}</CardDescription>
+        <CardTitle isContent={isContent} bgImg={bgImg?.source}>
+          {title}
+        </CardTitle>
+        <CardDescription isContent={isContent} bgImg={bgImg?.source}>
+          {children}
+        </CardDescription>
       </ContainerBottom>
     </>
   )
 
   return (
-    <Container 
-      data-testid={dataTestId} 
-      isContent={isContent} 
-      style={style}
-    >
+    <Container data-testid={dataTestId} isContent={isContent} style={style}>
       {url ? (
         <a
           data-testid={testIdName('card-link')}
@@ -43,7 +43,8 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
           style={{
             color: 'black',
             textDecoration: 'none',
-          }} rel="noreferrer"
+          }}
+          rel='noreferrer'
         >
           {cardContent}
         </a>

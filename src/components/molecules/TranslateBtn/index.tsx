@@ -6,9 +6,7 @@ import IconReplacer from '../IconReplacer'
 
 import { Container } from './styles'
 
-const TranslateBtn: React.FC<CommonProps> = ({
-  dataTestId = testIdName("translate-btn")
-}) => {
+const TranslateBtn: React.FC<CommonProps> = ({ dataTestId = testIdName('translate-btn') }) => {
   return (
     <Container data-testid={dataTestId}>
       <a

@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { type GitHubData, type GitHubProfile, type GitHubRepoItem } from './types'
 import request, { pinnedRepos } from '../utils/fetch'
 
@@ -11,6 +11,12 @@ export const useGitHubDataValues = (): GitHubData => {
   const [profile, setProfile] = useState<Partial<GitHubProfile>>({})
   const [repos, setRepos] = useState<Partial<GitHubRepoItem[]>>([])
 
+  useEffect(() => {
+    if (profile.name) {
+      setLoading(false)
+    }
+  }, [profile])
+
   const fetch = async () => {
     if (!loadTrigger && !repos.length && Boolean(!profile?.name)) {
       loadTrigger = true
@@ -21,15 +27,15 @@ export const useGitHubDataValues = (): GitHubData => {
         'https://api.github.com/users/mjgargani/repos',
         'GET',
       ).then(async (data: Partial<GitHubRepoItem>[]) => {
-        const pinned = (await pinnedRepos()).map(el => el.repo);
+        const pinned = (await pinnedRepos()).map((el) => el.repo)
         return data.map((el) => ({
           id: el.id!,
           created_at: el.created_at!,
           name: el.name!,
-          new: ((Date.now() - new Date(el.created_at!).getTime()) <= 15778800000),
+          new: Date.now() - new Date(el.created_at!).getTime() <= 15778800000,
           pinned: pinned.includes(el.name!),
-          "stargazers_count": el.stargazers_count!,
-          "watchers_count": el.watchers_count!,
+          stargazers_count: el.stargazers_count!,
+          watchers_count: el.watchers_count!,
           description: el.description!,
           html_url: el.html_url!,
           thumbnail: `https://raw.githubusercontent.com/mjgargani/${el.name!}/main/thumbnail.gif`,
@@ -46,8 +52,6 @@ export const useGitHubDataValues = (): GitHubData => {
         bio: data.bio,
       }))
       setProfile(newProfile)
-
-      setLoading(false)
     }
   }
 

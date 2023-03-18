@@ -1,4 +1,4 @@
-import { CommonProps } from "../../../globals"
+import { CommonProps } from '../../../globals'
 
 export type CardTitleProps = {
   isContent?: boolean

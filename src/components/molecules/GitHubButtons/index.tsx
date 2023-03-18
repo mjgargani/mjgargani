@@ -29,27 +29,28 @@ const GitHubBtnData = {
   ],
 }
 
-const GitHubButtons: React.FC<CommonProps> = ({
-  dataTestId = testIdName("github-btns")
-}) => (['test'].includes(process.env.NODE_ENV!) ? <></> :
-  <Container data-testid={dataTestId}>
-    <ul>
-      {GitHubBtnData.specific.map((el, i) => {
-        const props = {
-          'aria-label': el['aria-label'],
-          'data-icon': el['data-icon'],
-          href: el.href,
-        }
-        return (
-          <li key={i}>
-            <GitHubButton {...GitHubBtnData.common} {...props}>
-              {el.description}
-            </GitHubButton>
-          </li>
-        )
-      })}
-    </ul>
-  </Container>
-)
+const GitHubButtons: React.FC<CommonProps> = ({ dataTestId = testIdName('github-btns') }) =>
+  ['test'].includes(process.env.NODE_ENV!) ? (
+    <></>
+  ) : (
+    <Container data-testid={dataTestId}>
+      <ul>
+        {GitHubBtnData.specific.map((el, i) => {
+          const props = {
+            'aria-label': el['aria-label'],
+            'data-icon': el['data-icon'],
+            href: el.href,
+          }
+          return (
+            <li key={i}>
+              <GitHubButton {...GitHubBtnData.common} {...props}>
+                {el.description}
+              </GitHubButton>
+            </li>
+          )
+        })}
+      </ul>
+    </Container>
+  )
 
 export default GitHubButtons

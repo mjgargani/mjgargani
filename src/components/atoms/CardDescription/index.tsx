@@ -7,6 +7,10 @@ const CardDescription: React.FC<PropsWithChildren<CardDescriptionProps>> = ({
   dataTestId = testIdName('card-desc'),
   isContent = false,
   children,
-}) => <Container isContent={isContent} data-testid={dataTestId}>{children}</Container>
+}) => (
+  <Container isContent={isContent} data-testid={dataTestId}>
+    {children}
+  </Container>
+)
 
 export default CardDescription

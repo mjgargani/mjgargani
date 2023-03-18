@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import {} from 'react-router'
+import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 // Import reportWebVitals from './reportWebVitals';
 import FontStyles from './fontStyles'
@@ -7,8 +9,10 @@ import FontStyles from './fontStyles'
 const root = ReactDOM.createRoot(document.getElementById('root')!)
 root.render(
   <React.StrictMode>
-    <FontStyles />
-    <App />
+    <BrowserRouter>
+      <FontStyles />
+      <App />
+    </BrowserRouter>
   </React.StrictMode>,
 )
 

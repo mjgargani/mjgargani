@@ -10,8 +10,8 @@ export type GitHubRepoItem = {
   name: string
   new: boolean
   pinned: boolean
-  "stargazers_count": number,
-  "watchers_count": number
+  stargazers_count: number
+  watchers_count: number
   description: string
   html_url: string
   thumbnail: string

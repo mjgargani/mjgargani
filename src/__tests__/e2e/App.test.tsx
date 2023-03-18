@@ -3,6 +3,7 @@ import App from '../../App'
 import { server } from '../mock/server'
 import profile from '../mock/profile.json'
 import repos from '../mock/repos.json'
+import { BrowserRouter } from 'react-router-dom'
 
 beforeAll(() => {
   server.listen()
@@ -18,7 +19,7 @@ afterAll(() => {
 })
 
 test('verify if app rendeer child components correctly depending of the `page` prop', async () => {
-  render(<App />)
+  render(<App />, { wrapper: BrowserRouter })
 
   const translateBtn = await screen.findByTestId(/^translate-btn_\d/)
   expect(translateBtn).toBeInTheDocument()

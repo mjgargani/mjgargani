@@ -5,7 +5,7 @@ export const Container = styled.div<CardTitleProps>`
   position: relative;
   display: table;
   width: 100%;
-  min-height: ${props => props.isContent ? 10 : 45}%;
+  min-height: ${(props) => (props.isContent ? 10 : 45)}%;
 `
 
 export const Title = styled.h1`
