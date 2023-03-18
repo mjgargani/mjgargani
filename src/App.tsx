@@ -21,8 +21,8 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
 function App() {
   const { pathname } = useLocation()
-  const currentPage = pathname === '/' ? 0 : pathname === '/projects' ? 1 : 2;
-  const [page, setPage] = useState<number>(currentPage);
+  const currentPage = pathname === '/' ? 0 : pathname === '/projects' ? 1 : 2
+  const [page, setPage] = useState<number>(currentPage)
   const prevPage = usePrevious<number>(page)
   const gitHubDataValues = useGitHubDataValues()
 
@@ -50,7 +50,7 @@ function App() {
               <Route path='/' element={<Home show={page === 0} />} />
               <Route path='/projects' element={<Repos show={page === 1} />} />
               <Route path='/about' element={<About show={page === 2} />} />
-              <Route path='/*' element={<Navigate to="/" replace />} />
+              <Route path='/*' element={<Navigate to='/' replace />} />
             </Routes>
           </ContainerPage>
           <ContainerNavigation>
