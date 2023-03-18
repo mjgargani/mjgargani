@@ -39,14 +39,14 @@ export const IsPinned = styled.div<Partial<CardThumbnailProps>>`
 
 export const Stars = styled.div<Partial<CardThumbnailProps>>`
   ${badgeBackground}
-  bottom: 1.5vh;
+  bottom: 1.25vh;
   left: 0;
   padding-right: 0.75vw;
 `
 
 export const Watchers = styled.div<Partial<CardThumbnailProps>>`
   ${badgeBackground}
-  bottom: 1.5vh;
+  bottom: 1.25vh;
   right: 0;
   padding-right: 0.75vw;
 `

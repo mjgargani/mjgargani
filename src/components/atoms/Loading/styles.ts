@@ -19,6 +19,7 @@ export const Potion = styled.div`
 
 export const Container = styled.div`
   position: fixed;
+  opacity: 0.75;
   text-align: center;
   width: 15%;
   font-size: 6vh;
