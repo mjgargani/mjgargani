@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components'
+import { device } from '../../../utils/devices'
 
 const potionRotate = keyframes`
   from{
@@ -9,24 +10,28 @@ const potionRotate = keyframes`
   }
 `
 
-export const Potion = styled.p`
+export const Potion = styled.div`
   font-family: 'mjgarganis Lab', Sans-Serif;
   animation: ${potionRotate} 1s infinite linear;
   margin: 0;
   padding: 0;
-  font-size: 4vw;
 `
 
 export const Container = styled.div`
   position: fixed;
-  display: table-cell;
-  vertical-align: middle;
   text-align: center;
-  min-height: 2.5px;
-  min-width: 5px;
-  padding: 1%;
-  top: calc(50vh - 1.25vh);
-  left: calc(50vw - 2.5vw);
+  width: 15%;
+  font-size: 6vh;
+  @media ${device.tablet}{
+    width: 5%;
+    font-size: 4vw;
+  }
+  height: min-content;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  padding: 0;
+  transform: translate(-50%, -50%);
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border-radius: 5px;

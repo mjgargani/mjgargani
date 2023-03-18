@@ -3,6 +3,12 @@ import Navigation from '../../components/molecules/Navigation'
 
 afterEach(cleanup)
 
+const mockedUsedNavigate = jest.fn();
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedUsedNavigate,
+}));
+
 test.each([
   [0, 'white', 'white', 'white'],
   [1, 'white', 'black', 'white'],
@@ -11,13 +17,11 @@ test.each([
   'verify if component shows child components correctly (page: %p)',
   (page, color1, color2, color3) => {
     const currentDataTestId = 'navigation_rtl'
-    const setPage = () => {}
 
     render(
       <Navigation
         dataTestId={currentDataTestId}
         page={page}
-        setPage={setPage as React.Dispatch<React.SetStateAction<number>>}
       />,
     )
 

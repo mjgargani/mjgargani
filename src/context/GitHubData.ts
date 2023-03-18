@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { type GitHubData, type GitHubProfile, type GitHubRepoItem } from './types'
 import request, { pinnedRepos } from '../utils/fetch'
 
@@ -10,6 +10,12 @@ export const useGitHubDataValues = (): GitHubData => {
   const [loading, setLoading] = useState<boolean>(false)
   const [profile, setProfile] = useState<Partial<GitHubProfile>>({})
   const [repos, setRepos] = useState<Partial<GitHubRepoItem[]>>([])
+
+  useEffect(() => {
+    if(profile.name){
+      setLoading(false);
+    }
+  }, [profile])
 
   const fetch = async () => {
     if (!loadTrigger && !repos.length && Boolean(!profile?.name)) {
@@ -46,8 +52,6 @@ export const useGitHubDataValues = (): GitHubData => {
         bio: data.bio,
       }))
       setProfile(newProfile)
-
-      setLoading(false)
     }
   }
 

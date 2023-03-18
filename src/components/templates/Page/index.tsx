@@ -13,11 +13,13 @@ const Page: React.FC<PropsWithChildren<PageProps>> = ({
 }) => {
   const { loading } = useContext(GitHubDataContext)
 
-  return (
-    <Container data-testid={dataTestId} show={show}>
-      {loading && <Loading />}
-      {!loading && show && children}
-    </Container>
+  return (<>
+      {loading ? <Loading /> : <Container 
+        data-testid={dataTestId} 
+        show={show}>
+          {show && children}
+        </Container>}
+    </>
   )
 }
 

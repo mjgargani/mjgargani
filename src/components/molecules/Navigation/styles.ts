@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { device } from '../../../utils/devices'
 import { NavigationProps } from './types'
 
@@ -17,12 +17,22 @@ const horizontalResize = (isHome: boolean) => css`
   margin: 0 ${isHome ? 25: 12.5}%;
 `
 
+const opacityTransition = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`
+
 export const Container = styled.div<Partial<NavigationProps>>`
   position: absolute;
   width: 80%;
   margin: 0 10%;
   bottom: 0;
   text-align: center;
+  animation: ${opacityTransition} 0.5s ease;
 
   font-size: ${fontSizeBase}vw;
   @media ${device.mobileS} {
