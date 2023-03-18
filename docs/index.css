@@ -27,12 +27,18 @@ body {
   margin: 0;
   padding: 0;
 
+  height: min-content;
+  width: min-content;
+
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-size: 6vh;
+  @media (min-width: 768px){
+    font-size: 4vw;
+  }
 
   font-family: "mjgarganis Lab", sans-serif;
-  font-size: 6vw;
   color: white;
 
   animation: rotatePotion .5s infinite linear;
