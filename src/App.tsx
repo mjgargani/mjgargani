@@ -17,13 +17,12 @@ import {
 } from './styles'
 import TranslateBtn from './components/molecules/TranslateBtn'
 import GitHubButtons from './components/molecules/GitHubButtons'
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
 function App() {
-  const location = useLocation()
-  const [page, setPage] = useState<number>(() => {
-    return location.pathname === '/' ? 0 : location.pathname === '/projects' ? 1 : 2
-  })
+  const { pathname } = useLocation()
+  const currentPage = pathname === '/' ? 0 : pathname === '/projects' ? 1 : 2
+  const [page, setPage] = useState<number>(currentPage)
   const prevPage = usePrevious<number>(page)
   const gitHubDataValues = useGitHubDataValues()
 
@@ -34,8 +33,8 @@ function App() {
   }, [gitHubDataValues])
 
   useEffect(() => {
-    setPage(location.pathname === '/' ? 0 : location.pathname === '/projects' ? 1 : 2)
-  }, [location])
+    page !== currentPage && setPage(currentPage)
+  }, [page, currentPage])
 
   return (
     <>
@@ -51,6 +50,7 @@ function App() {
               <Route path='/' element={<Home show={page === 0} />} />
               <Route path='/projects' element={<Repos show={page === 1} />} />
               <Route path='/about' element={<About show={page === 2} />} />
+              <Route path='/*' element={<Navigate to='/' replace />} />
             </Routes>
           </ContainerPage>
           <ContainerNavigation>
