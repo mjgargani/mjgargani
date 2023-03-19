@@ -79,7 +79,11 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
                     </li>
                     <li style={{ display: 'inline', padding: 4 }}>
                       <IconReplacer text='linkedin' />
-                      <a href='https://www.linkedin.com/in/rod-olv/' target='_blank' rel='noreferrer'>
+                      <a
+                        href='https://www.linkedin.com/in/rod-olv/'
+                        target='_blank'
+                        rel='noreferrer'
+                      >
                         LinkedIn
                       </a>
                     </li>

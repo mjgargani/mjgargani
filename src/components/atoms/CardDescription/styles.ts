@@ -21,7 +21,7 @@ export const Container = styled.div<CardDescriptionProps>`
 
   ${(props) => !props.isContent && paragraph}
   @media (max-width: ${size.tablet}) {
-    div[id^="card-about-content"]{
+    div[id^='card-about-content'] {
       position: absolute;
       width: 94%;
       top: 50%;
