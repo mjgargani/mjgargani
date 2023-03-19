@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { device } from '../../../utils/devices'
+import { device, size } from '../../../utils/devices'
 import { type CardProps } from './types'
 
 const opacity = css`
@@ -20,7 +20,7 @@ const contentSize = css`
 `
 
 export const Container = styled.div<CardProps>`
-  overflow: auto;
+  overflow: hidden;
 
   border-style: none;
   border-radius: 5px;
@@ -42,11 +42,14 @@ export const Container = styled.div<CardProps>`
     min-height: 25vh;
   }
   @media ${device.mobileL} {
-    min-height: 24vh;
+    min-height: 30vh;
   }
   @media ${device.tablet} {
     min-height: 35vh;
     ${(props) => (!props.isContent ? opacity : contentSize)}
+  }
+  @media (max-width: ${size.laptop}px) and (min-height: ${size.laptop}px) {
+    min-height: 25vh !important;
   }
   @media ${device.laptop} {
     min-height: 50vh;
@@ -55,10 +58,10 @@ export const Container = styled.div<CardProps>`
     min-height: 56vh;
   }
   @media ${device.desktop} {
-    min-height: 34vh;
+    min-height: 40vh;
   }
   @media ${device.desktopL} {
-    min-height: 33vh;
+    min-height: 48vh;
   }
 `
 
