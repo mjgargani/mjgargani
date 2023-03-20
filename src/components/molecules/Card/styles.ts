@@ -73,10 +73,10 @@ export const Container = styled.div<CardProps>`
     min-height: 25vh !important;
   }
   @media ${device.laptop} {
-    min-height: 40vh;
+    min-height: 45vh;
   }
   @media ${device.laptopL} {
-    min-height: 43vh;
+    min-height: 50vh;
   }
   @media ${device.desktop} {
     min-height: 45vh;
