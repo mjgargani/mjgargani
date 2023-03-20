@@ -17,6 +17,6 @@ export const Container = styled.div<GridContainerProps>`
     grid-template-rows: ${(props) =>
       props.templateRows?.desktop ? props.templateRows.desktop.join(' ') : 'auto'};
     grid-column-gap: ${(props) => props.columnGap}vh;
-    grid-row-gap: ${(props) => (props.rowGap!/3).toFixed(2)}vw;
+    grid-row-gap: ${(props) => (props.rowGap! / 3).toFixed(2)}vw;
   }
 `
