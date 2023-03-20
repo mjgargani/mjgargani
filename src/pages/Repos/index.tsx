@@ -59,11 +59,9 @@ const Repos: React.FC<PageProps> = ({ dataTestId = testIdName('page-repos'), sho
         columnGap={3}
         rowGap={3}
       >
-        {
-          ordenedRepos?.length ?
-            ordenedRepos.map(RepoItem) :
-            repos?.length && repos!.map(el => <Card isLoading={true}/>)
-        }
+        {ordenedRepos?.length
+          ? ordenedRepos.map(RepoItem)
+          : repos?.length && repos!.map((el) => <Card isLoading={true} />)}
       </GridContainer>
     </Page>
   )
