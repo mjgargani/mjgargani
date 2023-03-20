@@ -9,9 +9,11 @@ import { GitHubDataContext } from '../../context/GitHubData'
 import mdParser from '../../utils/mdParser'
 import { testIdName } from '../../utils/testIdName'
 import { GitHubRepoItem } from '../../context/types'
+import useRepos from '../../hooks/useRepos'
 
 const Repos: React.FC<PageProps> = ({ dataTestId = testIdName('page-repos'), show }) => {
   const { repos } = useContext(GitHubDataContext)
+  const ordenedRepos = useRepos(repos)
 
   const RepoItem = (el: GitHubRepoItem | undefined, i: number) => (
     <GridCell key={i}>
@@ -45,17 +47,7 @@ const Repos: React.FC<PageProps> = ({ dataTestId = testIdName('page-repos'), sho
         columnGap={3}
         rowGap={3}
       >
-        {repos &&
-          repos.length > 0 && [
-            repos
-              .sort((a, b) => (a!.id < b!.id ? 1 : -1))
-              .filter((el) => el?.pinned)
-              .map((el, i) => RepoItem(el, i)),
-            repos
-              .sort((a, b) => (a!.id < b!.id ? 1 : -1))
-              .filter((el) => !el?.pinned)
-              .map((el, i) => RepoItem(el, i)),
-          ]}
+        {ordenedRepos.length && ordenedRepos.map(RepoItem)}
       </GridContainer>
     </Page>
   )
