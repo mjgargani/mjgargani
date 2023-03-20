@@ -12,16 +12,17 @@ import Avatar from '../../components/atoms/Avatar'
 import IconReplacer from '../../components/molecules/IconReplacer'
 import { testIdName } from '../../utils/testIdName'
 import imgLoader from '../../utils/imgLoader'
+import Loading from '../../components/atoms/Loading'
 
 const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), show }) => {
-  const { profile } = useContext(GitHubDataContext)
+  const { loading, profile } = useContext(GitHubDataContext)
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
   useEffect(() => {
     imgLoader([profile?.avatar_url!, QrCodePadrim], () => setIsLoaded(true))
   }, [profile])
 
-  return isLoaded ? (
+  return !loading ? isLoaded ? (
     <Page show={show}>
       <GridContainer
         dataTestId={dataTestId}
@@ -126,9 +127,7 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
         </a>
       </GridContainer>
     </Page>
-  ) : (
-    <></>
-  )
+  ) : <Loading /> : <></>
 }
 
 export default About

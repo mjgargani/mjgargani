@@ -11,6 +11,15 @@ const potionRotate = keyframes`
   }
 `
 
+const opacityTransition = keyframes`
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+`
+
 const card = css`
   position: absolute !important;
   color: black !important;
@@ -32,7 +41,7 @@ export const Potion = styled.div`
 
 export const Container = styled.div<LoadingProps>`
   position: fixed;
-  opacity: 0.75;
+  opacity: 0.5;
   text-align: center;
   width: 15%;
   font-size: 6vh;
@@ -50,4 +59,5 @@ export const Container = styled.div<LoadingProps>`
   color: white;
   border-radius: 5px;
   ${(props) => props.isCard && card}
+  animation: ${opacityTransition} 2s ease alternate infinite;
 `
