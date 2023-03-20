@@ -13,7 +13,7 @@ const Potion: React.FC<PropsWithChildren<PotionProps>> = ({
 
   useEffect(() => {
     imgLoader([potion], () => setIsLoaded(true))
-  })
+  }, [isLoaded])
 
   return isLoaded ? <Container 
     src={potion} 

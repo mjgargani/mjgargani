@@ -13,7 +13,7 @@ const Frame: React.FC<FrameProps> = ({
   <Container data-testid={dataTestId} style={style} page={page}>
     <Tiles data-testid={testIdName('frame-tiles')} />
     <Shadow data-testid={testIdName('frame-shadow')} page={page} prevPage={prevPage} />
-    <Potion transparent={page !== 0} />
+    <Potion data-testid={testIdName('frame-potion')} transparent={page !== 0} />
   </Container>
 )
 

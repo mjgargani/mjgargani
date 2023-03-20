@@ -1,4 +1,8 @@
 function imgLoader(sources: string[], callback?: () => any) {
+  if (['test'].includes(process.env.NODE_ENV!)){
+    return callback && callback()
+  }
+
   if (!!sources.length) {
     const promises: Promise<(string | boolean)[]>[] = []
 
@@ -13,7 +17,7 @@ function imgLoader(sources: string[], callback?: () => any) {
     
     return Promise.all(promises)
       .then(sources => {
-        callback && callback();
+        callback && callback()
         return sources
       })
   }
