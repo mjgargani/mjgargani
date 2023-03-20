@@ -5,7 +5,7 @@ import { transparencyAlpha } from '../../components/atoms/Potion/styles'
 
 afterEach(cleanup)
 
-test('verify if component shows child components correctly', () => {
+test('verify if component shows child components correctly', async () => {
   const currentDataTestId = 'frame_rtl'
 
   render(<Frame dataTestId={currentDataTestId} page={0} />)
@@ -13,7 +13,7 @@ test('verify if component shows child components correctly', () => {
   const frame = screen.getByTestId(currentDataTestId)
   const tiles = screen.getByTestId(/^frame-tiles_\d+/)
   const shadow = screen.getByTestId(/^frame-shadow_\d+/)
-  const potion = screen.getByTestId(/^potion_\d+/)
+  const potion = await screen.findByTestId(/^potion_\d+/)
 
   expect(frame).toBeInTheDocument()
   expect(tiles).toBeInTheDocument()
@@ -27,7 +27,7 @@ test.each([
   [2, transparencyAlpha[0]],
 ])(
   'verify if components changes when the `page` prop changes (value: %p)',
-  (page, potionOpacity) => {
+  async (page, potionOpacity) => {
     const currentDataTestId = 'frame_rtl'
 
     render(<Frame dataTestId={currentDataTestId} page={page} />)
@@ -36,7 +36,7 @@ test.each([
     expect(frame).toBeInTheDocument()
 
     const shadow = screen.getByTestId(/^frame-shadow_\d+/)
-    const potion = screen.getByTestId(/^potion_\d+/)
+    const potion = await screen.findByTestId(/^potion_\d+/)
 
     expect(frame).toHaveStyle(
       `background: linear-gradient(315deg, ${linearGradientColors[page].join(', ')});`,

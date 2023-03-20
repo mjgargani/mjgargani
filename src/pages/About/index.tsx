@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import GridCell from '../../components/atoms/GridCell'
 import Card from '../../components/molecules/Card'
 import GridContainer from '../../components/atoms/GridContainer'
@@ -11,11 +11,17 @@ import mdParser from '../../utils/mdParser'
 import Avatar from '../../components/atoms/Avatar'
 import IconReplacer from '../../components/molecules/IconReplacer'
 import { testIdName } from '../../utils/testIdName'
+import imgLoader from '../../utils/imgLoader'
 
 const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), show }) => {
   const { profile } = useContext(GitHubDataContext)
+  const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
-  return (
+  useEffect(() => {
+    imgLoader([profile?.avatar_url!, QrCodePadrim], () => setIsLoaded(true))
+  }, [profile])
+
+  return isLoaded ? (
     <Page show={show}>
       <GridContainer
         dataTestId={dataTestId}
@@ -120,6 +126,8 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
         </a>
       </GridContainer>
     </Page>
+  ) : (
+    <></>
   )
 }
 

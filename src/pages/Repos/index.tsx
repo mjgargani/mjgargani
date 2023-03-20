@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import GridCell from '../../components/atoms/GridCell'
 import Card from '../../components/molecules/Card'
 import GridContainer from '../../components/atoms/GridContainer'
@@ -9,9 +9,24 @@ import { GitHubDataContext } from '../../context/GitHubData'
 import mdParser from '../../utils/mdParser'
 import { testIdName } from '../../utils/testIdName'
 import { GitHubRepoItem } from '../../context/types'
+import imgLoader from '../../utils/imgLoader'
 
 const Repos: React.FC<PageProps> = ({ dataTestId = testIdName('page-repos'), show }) => {
   const { repos } = useContext(GitHubDataContext)
+  const [ordenedRepos, setOrdenedRepos] = useState<GitHubRepoItem[]>([])
+
+  useEffect(() => {
+    if (!!repos?.length && !!!ordenedRepos.length) {
+      const newOrdenedRepos = [
+        ...repos.sort((a, b) => (a!.id < b!.id ? 1 : -1)).filter((el) => el?.pinned),
+        ...repos.sort((a, b) => (a!.id < b!.id ? 1 : -1)).filter((el) => !el?.pinned),
+      ]
+      imgLoader(
+        newOrdenedRepos.map((el) => el?.thumbnail!),
+        () => setOrdenedRepos(newOrdenedRepos as GitHubRepoItem[]),
+      )
+    }
+  }, [repos, ordenedRepos])
 
   const RepoItem = (el: GitHubRepoItem | undefined, i: number) => (
     <GridCell key={i}>
@@ -45,17 +60,7 @@ const Repos: React.FC<PageProps> = ({ dataTestId = testIdName('page-repos'), sho
         columnGap={3}
         rowGap={3}
       >
-        {repos &&
-          repos.length > 0 && [
-            repos
-              .sort((a, b) => (a!.id < b!.id ? 1 : -1))
-              .filter((el) => el?.pinned)
-              .map((el, i) => RepoItem(el, i)),
-            repos
-              .sort((a, b) => (a!.id < b!.id ? 1 : -1))
-              .filter((el) => !el?.pinned)
-              .map((el, i) => RepoItem(el, i)),
-          ]}
+        {ordenedRepos.length && ordenedRepos.map(RepoItem)}
       </GridContainer>
     </Page>
   )

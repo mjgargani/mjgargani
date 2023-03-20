@@ -1,5 +1,6 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { device } from '../../../utils/devices'
+import { LoadingProps } from './types'
 
 const potionRotate = keyframes`
   from{
@@ -10,6 +11,18 @@ const potionRotate = keyframes`
   }
 `
 
+const card = css`
+  position: absolute !important;
+  color: black !important;
+  width: 100% !important;
+  background-color: unset !important;
+  border-radius: unset !important;
+  font-size: 3vh !important;
+  @media ${device.tablet} {
+    font-size: 2.5vw !important;
+  }
+`
+
 export const Potion = styled.div`
   font-family: 'mjgarganis Lab', Sans-Serif;
   animation: ${potionRotate} 1s infinite linear;
@@ -17,7 +30,7 @@ export const Potion = styled.div`
   padding: 0;
 `
 
-export const Container = styled.div`
+export const Container = styled.div<LoadingProps>`
   position: fixed;
   opacity: 0.75;
   text-align: center;
@@ -36,4 +49,5 @@ export const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border-radius: 5px;
+  ${(props) => props.isCard && card}
 `

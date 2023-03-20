@@ -1,6 +1,5 @@
 import styled, { keyframes } from 'styled-components'
 import { type PotionProps } from './types'
-import potion from '../../../assets/potion.png'
 
 const rotateAnim = keyframes`
   0% { 
@@ -87,7 +86,7 @@ export const Container = styled.div<PotionProps>`
   left: calc(50% - 25vw);
   width: 50vw;
   height: 50vh;
-  background-image: url(${potion});
+  background-image: url(${(props) => props.src});
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;

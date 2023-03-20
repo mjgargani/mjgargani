@@ -24,13 +24,7 @@ function App() {
   const currentPage = pathname === '/' ? 0 : pathname === '/projects' ? 1 : 2
   const [page, setPage] = useState<number>(currentPage)
   const prevPage = usePrevious<number>(page)
-  const gitHubDataValues = useGitHubDataValues()
-
-  useEffect(() => {
-    if (!gitHubDataValues?.repos?.length) {
-      gitHubDataValues?.fetch()
-    }
-  }, [gitHubDataValues])
+  const appData = useGitHubDataValues()
 
   useEffect(() => {
     page !== currentPage && setPage(currentPage)
@@ -39,12 +33,12 @@ function App() {
   return (
     <>
       <Frame page={page} prevPage={prevPage} />
-      <ContainerBase isLoading={!!gitHubDataValues.loading}>
+      <ContainerBase isLoading={!!appData.loading}>
         <ContainerTop>
           <TranslateBtn />
           <GitHubButtons />
         </ContainerTop>
-        <GitHubDataContext.Provider value={gitHubDataValues}>
+        <GitHubDataContext.Provider value={appData}>
           <ContainerPage>
             <Routes>
               <Route path='/' element={<Home show={page === 0} />} />
