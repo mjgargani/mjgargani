@@ -11,7 +11,7 @@ const Frame: React.FC<FrameProps> = ({
   page,
   prevPage = 0,
 }) => {
-  const { loading } = useContext(GitHubDataContext);
+  const { loading } = useContext(GitHubDataContext)
   return (
     <Container data-testid={dataTestId} style={style} page={page}>
       <Tiles data-testid={testIdName('frame-tiles')} />
