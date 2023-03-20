@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { device, size } from '../../../utils/devices'
 import { type CardProps } from './types'
 
@@ -6,6 +6,15 @@ const opacity = css`
   opacity: 0.7;
   &:hover {
     opacity: 1;
+  }
+`
+
+const opacityTransition = (from?: number, to?: number) => keyframes`
+  from {
+    opacity: ${from || 0};
+  }
+  to {
+    opacity: ${to || 1};
   }
 `
 
@@ -17,6 +26,16 @@ const contentSize = css`
   height: unset !important;
   min-height: unset !important;
   width: inherit !important;
+`
+
+export const InnerContent = styled.div`
+  position: relative;
+  overflow: hidden;
+  margin: inherit;
+  padding: inherit;
+  width: inherit;
+  height: 100%;
+  animation: ${opacityTransition()} 0.5s ease;
 `
 
 export const Container = styled.div<CardProps>`
@@ -31,6 +50,8 @@ export const Container = styled.div<CardProps>`
   -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.25);
   box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.25);
   cursor: ${(props) => (props.isContent ? 'default' : 'pointer')};
+  animation: ${(props) => (props.isLoading ? opacityTransition(0.25, 0.35) : 'none')} 0.5s ease
+    alternate infinite;
 
   height: 100%;
   min-height: 33vh;

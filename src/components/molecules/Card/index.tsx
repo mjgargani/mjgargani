@@ -1,11 +1,12 @@
 import React, { type PropsWithChildren } from 'react'
 
-import { Container, ContainerBottom, ContainerTop } from './styles'
+import { Container, ContainerBottom, ContainerTop, InnerContent } from './styles'
 import { type CardProps } from './types'
 import CardDescription from '../../atoms/CardDescription'
 import CardTitle from '../CardTitle'
 import CardThumbnail from '../../atoms/CardThumbnail'
 import { testIdName } from '../../../utils/testIdName'
+import Loading from '../../atoms/Loading'
 
 const Card: React.FC<PropsWithChildren<CardProps>> = ({
   dataTestId = testIdName('card'),
@@ -13,11 +14,13 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
   url,
   title = '',
   isContent = false,
+  isLoading = false,
   style,
   children,
 }) => {
-  const cardContent: JSX.Element = (
-    <>
+  const cardContent = (isLoading: boolean) => (
+    <InnerContent>
+      {isLoading && <Loading isCard={true} />}
       <ContainerTop bgImg={bgImg}>
         <CardThumbnail bgImg={bgImg} />
       </ContainerTop>
@@ -29,11 +32,11 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
           {children}
         </CardDescription>
       </ContainerBottom>
-    </>
+    </InnerContent>
   )
 
   return (
-    <Container data-testid={dataTestId} isContent={isContent} style={style}>
+    <Container data-testid={dataTestId} isContent={isContent} isLoading={isLoading} style={style}>
       {url ? (
         <a
           data-testid={testIdName('card-link')}
@@ -46,10 +49,10 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
           }}
           rel='noreferrer'
         >
-          {cardContent}
+          {cardContent(isLoading)}
         </a>
       ) : (
-        cardContent
+        cardContent(isLoading)
       )}
     </Container>
   )

@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import GridCell from '../../components/atoms/GridCell'
 import Card from '../../components/molecules/Card'
 import GridContainer from '../../components/atoms/GridContainer'
-
 import Page from '../../components/templates/Page'
 import { type PageProps } from '../../components/templates/Page/types'
 import { GitHubDataContext } from '../../context/GitHubData'
@@ -60,7 +59,9 @@ const Repos: React.FC<PageProps> = ({ dataTestId = testIdName('page-repos'), sho
         columnGap={3}
         rowGap={3}
       >
-        {ordenedRepos.length && ordenedRepos.map(RepoItem)}
+        {ordenedRepos?.length
+          ? ordenedRepos.map(RepoItem)
+          : repos?.length && repos!.map((el) => <Card isLoading={true} />)}
       </GridContainer>
     </Page>
   )
