@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import useImgLoader from '../../../hooks/useImgLoader'
 import { testIdName } from '../../../utils/testIdName'
 import IconReplacer from '../../molecules/IconReplacer'
+import Loading from '../Loading'
 import { Container, IsNew, IsPinned, Stars, Watchers } from './styles'
 import { type CardThumbnailProps } from './types'
 
 const CardThumbnail: React.FC<CardThumbnailProps> = ({
   dataTestId = testIdName('card-thumb'),
   bgImg,
-}) => (
-  <Container data-testid={dataTestId} bgImg={bgImg}>
+}) => {
+  const { isLoaded } = useImgLoader([bgImg?.source!])
+
+  return (!isLoaded ? <Loading isCard={true} /> : <Container data-testid={dataTestId} bgImg={bgImg}>
     <IsNew data-testid={testIdName('card-thumb-is-new')} bgImg={bgImg}>
       <p>{bgImg?.new && <IconReplacer text='new' />}</p>
     </IsNew>
@@ -31,7 +35,7 @@ const CardThumbnail: React.FC<CardThumbnailProps> = ({
         </span>
       </p>
     </Watchers>
-  </Container>
-)
+  </Container>)
+}
 
 export default CardThumbnail

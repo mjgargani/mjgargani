@@ -39,7 +39,7 @@ export const Container = styled.div<CardProps>`
     min-height: 31vh;
   }
   @media ${device.mobileM} {
-    min-height: 25vh;
+    min-height: 29vh;
   }
   @media ${device.mobileL} {
     min-height: 30vh;
@@ -52,16 +52,16 @@ export const Container = styled.div<CardProps>`
     min-height: 25vh !important;
   }
   @media ${device.laptop} {
-    min-height: 50vh;
-  }
-  @media ${device.laptopL} {
-    min-height: 56vh;
-  }
-  @media ${device.desktop} {
     min-height: 40vh;
   }
+  @media ${device.laptopL} {
+    min-height: 43vh;
+  }
+  @media ${device.desktop} {
+    min-height: 45vh;
+  }
   @media ${device.desktopL} {
-    min-height: 48vh;
+    min-height: 40vh;
   }
 `
 

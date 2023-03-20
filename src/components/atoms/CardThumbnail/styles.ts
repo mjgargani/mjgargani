@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { type CardThumbnailProps } from './types'
 
 const badgeBackground = css`
@@ -51,6 +51,15 @@ export const Watchers = styled.div<Partial<CardThumbnailProps>>`
   padding-right: 0.75vw;
 `
 
+const opacityTransition = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`
+
 export const Container = styled.div<CardThumbnailProps>`
   min-height: 95%;
   margin-bottom: 5%;
@@ -61,4 +70,6 @@ export const Container = styled.div<CardThumbnailProps>`
   background-repeat: no-repeat;
   border-radius: 5px 5px 0 0;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.25);
+
+  animation: ${opacityTransition} 0.5s ease;
 `
