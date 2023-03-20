@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.58462fbc.css",
-    "main.js": "/static/js/main.94f8953c.js",
+    "main.js": "/static/js/main.d7985eaa.js",
     "static/media/potion.png": "/static/media/potion.7d5f340158300b86204a.png",
     "static/media/qr-code-padrim.png": "/static/media/qr-code-padrim.6f2e043d6aa22c3bd1d7.png",
     "static/media/tile.png": "/static/media/tile.e61ddeec9779a3c02062.png",
     "index.html": "/index.html",
     "main.58462fbc.css.map": "/static/css/main.58462fbc.css.map",
-    "main.94f8953c.js.map": "/static/js/main.94f8953c.js.map"
+    "main.d7985eaa.js.map": "/static/js/main.d7985eaa.js.map"
   },
   "entrypoints": [
     "static/css/main.58462fbc.css",
-    "static/js/main.94f8953c.js"
+    "static/js/main.d7985eaa.js"
   ]
 }
