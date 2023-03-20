@@ -8,6 +8,7 @@ export type CardProps = {
     stars?: number
     watchers?: number
   }
+  isLoading?: boolean
   url?: string
   title?: string
   isContent?: boolean
