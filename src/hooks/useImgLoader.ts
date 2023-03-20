@@ -22,21 +22,21 @@ function useImgLoader(sources: string[]) {
         })
       ))
       
-      console.log(Promise.all(promises)
+      Promise.all(promises)
         .then((values)=>{
-          console.warn(values)
+          // console.warn(values)
           ref.current = {
             isLoaded: true,
             withErrors: false
           }
         })
         .catch((err)=>{
-          console.error(err)
+          // console.error(err)
           ref.current = {
             isLoaded: true,
             withErrors: err
           }
-        }))
+        })
     }
   }, [sources])
   return ref.current
