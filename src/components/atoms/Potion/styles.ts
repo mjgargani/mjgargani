@@ -86,7 +86,7 @@ export const Container = styled.div<PotionProps>`
   left: calc(50% - 25vw);
   width: 50vw;
   height: 50vh;
-  background-image: url(${props => props.src});
+  background-image: url(${(props) => props.src});
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;

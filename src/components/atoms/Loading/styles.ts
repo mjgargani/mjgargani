@@ -49,5 +49,5 @@ export const Container = styled.div<LoadingProps>`
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border-radius: 5px;
-  ${props => props.isCard && card}
+  ${(props) => props.isCard && card}
 `

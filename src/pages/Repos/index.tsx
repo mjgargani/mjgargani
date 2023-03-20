@@ -16,18 +16,14 @@ const Repos: React.FC<PageProps> = ({ dataTestId = testIdName('page-repos'), sho
   const [ordenedRepos, setOrdenedRepos] = useState<GitHubRepoItem[]>([])
 
   useEffect(() => {
-    if(!!repos?.length && !!!ordenedRepos.length) {
+    if (!!repos?.length && !!!ordenedRepos.length) {
       const newOrdenedRepos = [
-        ...repos
-          .sort((a, b) => (a!.id < b!.id ? 1 : -1))
-          .filter((el) => el?.pinned),
-        ...repos
-          .sort((a, b) => (a!.id < b!.id ? 1 : -1))
-          .filter((el) => !el?.pinned)
+        ...repos.sort((a, b) => (a!.id < b!.id ? 1 : -1)).filter((el) => el?.pinned),
+        ...repos.sort((a, b) => (a!.id < b!.id ? 1 : -1)).filter((el) => !el?.pinned),
       ]
       imgLoader(
-        newOrdenedRepos.map(el => el?.thumbnail!), 
-        () => setOrdenedRepos(newOrdenedRepos as GitHubRepoItem[])
+        newOrdenedRepos.map((el) => el?.thumbnail!),
+        () => setOrdenedRepos(newOrdenedRepos as GitHubRepoItem[]),
       )
     }
   }, [repos, ordenedRepos])

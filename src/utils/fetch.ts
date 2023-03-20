@@ -6,5 +6,5 @@ export interface PinnedRepos {
 
 export const pinnedRepos = async (): Promise<PinnedRepos[]> =>
   fetch('https://gh-pinned-repos.egoist.dev/?username=mjgargani')
-    .then(response => response.json())
-    .then(data => data.length ? data : [{ repo: 'mjgargani' }])
+    .then((response) => response.json())
+    .then((data) => (data.length ? data : [{ repo: 'mjgargani' }]))

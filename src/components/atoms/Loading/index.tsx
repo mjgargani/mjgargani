@@ -4,14 +4,11 @@ import { testIdName } from '../../../utils/testIdName'
 import { Container, Potion } from './styles'
 import { LoadingProps } from './types'
 
-const Loading: React.FC<LoadingProps> = ({ 
+const Loading: React.FC<LoadingProps> = ({
   dataTestId = testIdName('loading'),
-  isCard = false
+  isCard = false,
 }) => (
-  <Container 
-    data-testid={dataTestId}
-    isCard={isCard}
-  >
+  <Container data-testid={dataTestId} isCard={isCard}>
     <Potion></Potion>
   </Container>
 )

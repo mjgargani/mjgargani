@@ -21,8 +21,8 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
     imgLoader([profile?.avatar_url!, QrCodePadrim], () => setIsLoaded(true))
   }, [profile])
 
-  return (
-    isLoaded ? <Page show={show}>
+  return isLoaded ? (
+    <Page show={show}>
       <GridContainer
         dataTestId={dataTestId}
         templateColumns={{ desktop: ['9fr', '4fr'] }}
@@ -125,7 +125,9 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
           />
         </a>
       </GridContainer>
-    </Page> : <></>
+    </Page>
+  ) : (
+    <></>
   )
 }
 

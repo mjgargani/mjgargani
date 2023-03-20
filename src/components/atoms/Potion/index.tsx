@@ -15,11 +15,11 @@ const Potion: React.FC<PropsWithChildren<PotionProps>> = ({
     imgLoader([potion], () => setIsLoaded(true))
   }, [isLoaded])
 
-  return isLoaded ? <Container 
-    src={potion} 
-    data-testid={dataTestId} 
-    transparent={transparent} 
-  /> : <></>
+  return isLoaded ? (
+    <Container src={potion} data-testid={dataTestId} transparent={transparent} />
+  ) : (
+    <></>
+  )
 }
 
 export default Potion
