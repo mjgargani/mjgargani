@@ -1,4 +1,5 @@
 import styled, { css, keyframes } from 'styled-components'
+
 import { device } from '../../../utils/devices'
 import { LoadingProps } from './types'
 

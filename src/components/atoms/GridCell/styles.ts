@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+
 import { type GridCellProps } from './types'
 
 const background = (source: string, size: string) => css`

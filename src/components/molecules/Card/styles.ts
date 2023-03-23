@@ -1,4 +1,5 @@
 import styled, { css, keyframes } from 'styled-components'
+
 import { device, size } from '../../../utils/devices'
 import { type CardProps } from './types'
 

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { type AvatarProps } from './types'
 
 export const Container = styled.div<AvatarProps>`

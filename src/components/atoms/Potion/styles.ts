@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components'
+
 import { type PotionProps } from './types'
 
 const rotateAnim = keyframes`

@@ -1,6 +1,6 @@
 import React, { type PropsWithChildren } from 'react'
-import { testIdName } from '../../../utils/testIdName'
 
+import { testIdName } from '../../../utils/testIdName'
 import { Container } from './styles'
 import { type AvatarProps } from './types'
 

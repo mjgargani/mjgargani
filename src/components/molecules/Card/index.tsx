@@ -1,12 +1,12 @@
 import React, { type PropsWithChildren } from 'react'
 
+import { testIdName } from '../../../utils/testIdName'
+import CardDescription from '../../atoms/CardDescription'
+import CardThumbnail from '../../atoms/CardThumbnail'
+import Loading from '../../atoms/Loading'
+import CardTitle from '../CardTitle'
 import { Container, ContainerBottom, ContainerTop, InnerContent } from './styles'
 import { type CardProps } from './types'
-import CardDescription from '../../atoms/CardDescription'
-import CardTitle from '../CardTitle'
-import CardThumbnail from '../../atoms/CardThumbnail'
-import { testIdName } from '../../../utils/testIdName'
-import Loading from '../../atoms/Loading'
 
 const Card: React.FC<PropsWithChildren<CardProps>> = ({
   dataTestId = testIdName('card'),

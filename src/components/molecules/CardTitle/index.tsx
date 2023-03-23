@@ -1,7 +1,7 @@
 import React, { type PropsWithChildren } from 'react'
+
 import { testIdName } from '../../../utils/testIdName'
 import IconReplacer from '../IconReplacer'
-
 import { Container, Title } from './styles'
 import { CardTitleProps } from './types'
 

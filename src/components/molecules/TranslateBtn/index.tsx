@@ -1,9 +1,9 @@
 import React from 'react'
+
 import { CommonProps } from '../../../globals'
 import { testIdName } from '../../../utils/testIdName'
 import Button from '../../atoms/Button'
 import IconReplacer from '../IconReplacer'
-
 import { Container } from './styles'
 
 const TranslateBtn: React.FC<CommonProps> = ({ dataTestId = testIdName('translate-btn') }) => {

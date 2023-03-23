@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components'
+
 import { type ButtonProps } from './types'
 
 const colorTransition = (from: string, to: string) => keyframes`

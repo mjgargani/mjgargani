@@ -1,8 +1,8 @@
 import React from 'react'
+
 import { type CommonProps } from '../../../globals'
 import { testIdName } from '../../../utils/testIdName'
 import IconReplacer from '../IconReplacer'
-
 import { Container } from './styles'
 
 const FooterInfo: React.FC<CommonProps> = ({ dataTestId = testIdName('footer-info') }) => (

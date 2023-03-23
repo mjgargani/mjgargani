@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import {} from 'react-router'
+import 'react-router'
 import { HashRouter } from 'react-router-dom'
+
 import App from './App'
 // Import reportWebVitals from './reportWebVitals';
 import FontStyles from './fontStyles'

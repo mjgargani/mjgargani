@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+
 import { type CardThumbnailProps } from './types'
 
 const badgeBackground = css`

@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
-import Potion from '../../atoms/Potion'
-import { Tiles, Shadow, Container } from './styles'
-import { type FrameProps } from './types'
-import { testIdName } from '../../../utils/testIdName'
+
 import { GitHubDataContext } from '../../../context/GitHubData'
+import { testIdName } from '../../../utils/testIdName'
+import Potion from '../../atoms/Potion'
+import { Container, Shadow, Tiles } from './styles'
+import { type FrameProps } from './types'
 
 const Frame: React.FC<FrameProps> = ({
   dataTestId = testIdName('frame'),

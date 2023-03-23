@@ -1,7 +1,8 @@
-import { render, screen, cleanup } from '@testing-library/react'
+import { cleanup, render, screen } from '@testing-library/react'
+
+import { transparencyAlpha } from '../../components/atoms/Potion/styles'
 import Frame from '../../components/molecules/Frame'
 import { linearGradientColors, shadowAlpha } from '../../components/molecules/Frame/styles'
-import { transparencyAlpha } from '../../components/atoms/Potion/styles'
 
 afterEach(cleanup)
 

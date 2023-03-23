@@ -1,13 +1,14 @@
-import React, { useEffect, useState, type PropsWithChildren } from 'react'
+import React, { type PropsWithChildren, useEffect, useState } from 'react'
+
+import potion from '../../../assets/potion.png'
+import imgLoader from '../../../utils/imgLoader'
 import { testIdName } from '../../../utils/testIdName'
 import { Container } from './styles'
 import { type PotionProps } from './types'
-import potion from '../../../assets/potion.png'
-import imgLoader from '../../../utils/imgLoader'
 
 const Potion: React.FC<PropsWithChildren<PotionProps>> = ({
   dataTestId = testIdName('potion'),
-  transparent = false,
+  transparent = true,
 }) => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
 

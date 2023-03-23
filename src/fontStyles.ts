@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+
 import { device } from './utils/devices'
 
 const h1FontSizeBase = 2

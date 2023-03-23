@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components'
+
 import { type PageProps } from './types'
 
 const opacityTransition = keyframes`

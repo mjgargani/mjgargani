@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { device } from '../../../utils/devices'
 import { type GridContainerProps } from './types'
 

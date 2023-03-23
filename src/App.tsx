@@ -1,13 +1,17 @@
-import { useEffect, useState } from 'react'
 import 'normalize.css'
-import usePrevious from './hooks/usePrevious'
+import { useEffect, useState } from 'react'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
+
+import FooterInfo from './components/molecules/FooterInfo'
 import Frame from './components/molecules/Frame'
+import GitHubButtons from './components/molecules/GitHubButtons'
+import Navigation from './components/molecules/Navigation'
+import TranslateBtn from './components/molecules/TranslateBtn'
 import { GitHubDataContext, useGitHubDataValues } from './context/GitHubData'
+import usePrevious from './hooks/usePrevious'
+import About from './pages/About'
 import Home from './pages/Home'
 import Repos from './pages/Repos'
-import About from './pages/About'
-import Navigation from './components/molecules/Navigation'
-import FooterInfo from './components/molecules/FooterInfo'
 import {
   ContainerBase,
   ContainerFooter,
@@ -15,9 +19,6 @@ import {
   ContainerPage,
   ContainerTop,
 } from './styles'
-import TranslateBtn from './components/molecules/TranslateBtn'
-import GitHubButtons from './components/molecules/GitHubButtons'
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
 function App() {
   const { pathname } = useLocation()

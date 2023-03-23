@@ -1,7 +1,8 @@
 import styled, { keyframes } from 'styled-components'
-import { type FrameProps } from './types'
+
 import tile from '../../../assets/tile.png'
 import { device } from '../../../utils/devices'
+import { type FrameProps } from './types'
 
 export const shadowAlpha = [0.5, 0.9, 0.7]
 
@@ -37,6 +38,7 @@ const opacityTransition = keyframes`
 
 export const Shadow = styled.div<Partial<FrameProps>>`
   position: inherit;
+  transition: inherit;
   top: inherit;
   left: inherit;
   margin: inherit;
@@ -72,6 +74,7 @@ export const Shadow = styled.div<Partial<FrameProps>>`
 
 export const Tiles = styled.div`
   position: inherit;
+  transition: inherit;
   top: inherit;
   left: inherit;
   margin: inherit;
@@ -96,11 +99,12 @@ export const Container = styled.div<Partial<FrameProps>>`
   left: 0;
   margin: 0;
   padding: 0;
-  width: 100vw;
+  width: 100%;
   height: 100%;
   background-color: #000;
   background: linear-gradient(315deg, ${(props) => linearGradientColors[props.page!].join(', ')});
   background-size: 200% 200%;
   animation: ${gradientTransition} 15s ease infinite, ${opacityTransition} 2s ease;
   z-index: -400;
+  transition: unset !important;
 `

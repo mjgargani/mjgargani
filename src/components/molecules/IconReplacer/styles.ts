@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { type IconReplacerProps } from './types'
 
 export const Container = styled.span<Partial<IconReplacerProps>>`

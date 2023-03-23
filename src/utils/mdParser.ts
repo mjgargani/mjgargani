@@ -1,6 +1,6 @@
-import { marked } from 'marked'
-import htmlParser from 'html-react-parser'
 import DOMPurify from 'dompurify'
+import htmlParser from 'html-react-parser'
+import { marked } from 'marked'
 
 const mdParser = (markDown: string, exceptions?: string[]) => {
   if (!!markDown && markDown !== '') {

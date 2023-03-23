@@ -1,7 +1,8 @@
-import { render, screen, cleanup } from '@testing-library/react'
+import { cleanup, render, screen } from '@testing-library/react'
+
+import potionImg from '../../assets/potion.png'
 import Potion from '../../components/atoms/Potion'
 import { transparencyAlpha } from '../../components/atoms/Potion/styles'
-import potionImg from '../../assets/potion.png'
 
 afterEach(cleanup)
 

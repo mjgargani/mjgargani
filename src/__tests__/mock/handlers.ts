@@ -1,7 +1,8 @@
 import { rest } from 'msw'
+
+import pinned from './pinned.json'
 import profile from './profile.json'
 import repos from './repos.json'
-import pinned from './pinned.json'
 
 export const handlers = [
   rest.get('https://api.github.com/users/mjgargani', async (_req, res, ctx) =>

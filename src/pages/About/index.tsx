@@ -1,18 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react'
-import GridCell from '../../components/atoms/GridCell'
-import Card from '../../components/molecules/Card'
-import GridContainer from '../../components/atoms/GridContainer'
-import QrCodePadrim from '../../assets/qr-code-padrim.png'
 
+import QrCodePadrim from '../../assets/qr-code-padrim.png'
+import Avatar from '../../components/atoms/Avatar'
+import GridCell from '../../components/atoms/GridCell'
+import GridContainer from '../../components/atoms/GridContainer'
+import Loading from '../../components/atoms/Loading'
+import Card from '../../components/molecules/Card'
+import IconReplacer from '../../components/molecules/IconReplacer'
 import Page from '../../components/templates/Page'
 import { type PageProps } from '../../components/templates/Page/types'
 import { GitHubDataContext } from '../../context/GitHubData'
-import mdParser from '../../utils/mdParser'
-import Avatar from '../../components/atoms/Avatar'
-import IconReplacer from '../../components/molecules/IconReplacer'
-import { testIdName } from '../../utils/testIdName'
 import imgLoader from '../../utils/imgLoader'
-import Loading from '../../components/atoms/Loading'
+import mdParser from '../../utils/mdParser'
+import { testIdName } from '../../utils/testIdName'
 
 const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), show }) => {
   const { loading, profile } = useContext(GitHubDataContext)
