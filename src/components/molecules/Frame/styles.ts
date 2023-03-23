@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 import tile from '../../../assets/tile.png'
-import { frameBgPositionTransition, frameLinearGradientColors, frameShadowAlpha, opacityAnimation } from '../../../globalStyles'
+import defaults from '../../../styles/defaults/frame'
+import animation from '../../../styles/utils/animation'
 import { device } from '../../../utils/devices'
 import { type FrameProps } from './types'
 
@@ -35,10 +36,10 @@ export const Shadow = styled.div<FrameProps>`
     rgba(0, 0, 0, 1) 100%
   );
   background: radial-gradient(ellipse at 50% 50%, rgba(255, 255, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
-  opacity: ${(props) => frameShadowAlpha[props.page]};
-  animation: ${(props) => opacityAnimation(
-    frameShadowAlpha[props.prevPage || '/'],
-    frameShadowAlpha[props.page], 
+  opacity: ${(props) => defaults[props.page].shadow};
+  animation: ${(props) => animation.opacity(
+    defaults[props.prevPage || '/'].shadow,
+    defaults[props.page].shadow, 
   )} 1s ease;
   pointer-events: none;
   z-index: -1600;
@@ -60,7 +61,7 @@ export const Tiles = styled.div`
     background-size: 8vw;
   }
   opacity: 0.015;
-  animation: ${frameBgPositionTransition} 120s alternate-reverse ease infinite;
+  animation: ${animation.bg.position} 120s alternate-reverse ease infinite;
   pointer-events: none;
   z-index: -1200;
 `
@@ -74,9 +75,9 @@ export const Container = styled.div<FrameProps>`
   width: 100%;
   height: 100%;
   background-color: #000;
-  background: linear-gradient(315deg, ${(props) => frameLinearGradientColors[props.page].join(', ')});
+  background: linear-gradient(315deg, ${(props) => defaults[props.page].color.join(', ')});
   background-size: 200% 200%;
-  animation: ${frameBgPositionTransition} 15s ease infinite, ${opacityAnimation(0, 1)} 2s ease;
+  animation: ${animation.bg.position} 15s ease infinite, ${animation.opacity(0, 1)} 2s ease;
   z-index: -400;
   transition: unset !important;
 `

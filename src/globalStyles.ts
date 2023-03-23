@@ -1,41 +1,9 @@
-import { createGlobalStyle, keyframes } from 'styled-components'
-import { Color, PageEndPoints } from './globals'
+import { createGlobalStyle } from 'styled-components'
 
 import { device } from './utils/devices'
 
 const h1FontSizeBase = 2
 const pFontSizeBase = 1.8
-
-export const frameLinearGradientColors: {
-  [key in PageEndPoints]: [Color, Color]
-} = {
-  '/': ['#0422ce', '#873ea1'],
-  '/projects': ['#636311', '#417883'],
-  '/about': ['#690808', '#64c773']
-}
-
-export const frameShadowAlpha: {
-  [key in PageEndPoints]: number
-} = {
-  '/': 0.5,
-  '/projects': 0.9,
-  '/about': 0.7
-}
-
-export const frameBgPositionTransition = keyframes`
-  0%{background-position:5% 0%}
-  50%{background-position:96% 100%}
-  100%{background-position:5% 0%}
-`
-
-export const opacityAnimation = (from: number, to: number) => keyframes`
-  from{
-    opacity: ${from};
-  }
-  to{
-    opacity: ${to};
-  }
-`
 
 export const FontStyles = createGlobalStyle`
   * {
