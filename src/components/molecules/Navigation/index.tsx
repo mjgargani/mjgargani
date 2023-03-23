@@ -45,7 +45,7 @@ const Navigation: React.FC<NavigationProps> = ({
             <GridCell>
               <Button
                 dataTestId={testIdName('btn-nav')}
-                active={page === 1}
+                active={page === '/projects'}
                 onClick={() => {
                   navigate('projects')
                 }}
@@ -57,7 +57,7 @@ const Navigation: React.FC<NavigationProps> = ({
             <GridCell>
               <Button
                 dataTestId={testIdName('btn-nav')}
-                active={page === 2}
+                active={page === '/about'}
                 onClick={() => {
                   navigate('about')
                 }}

@@ -14,7 +14,10 @@ import imgLoader from '../../utils/imgLoader'
 import mdParser from '../../utils/mdParser'
 import { testIdName } from '../../utils/testIdName'
 
-const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), show }) => {
+const About: React.FC<PageProps> = ({ 
+  dataTestId = testIdName('page-about'), 
+  show = true
+}) => {
   const { loading, profile } = useContext(GitHubDataContext)
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
 

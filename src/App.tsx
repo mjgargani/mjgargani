@@ -1,5 +1,4 @@
 import 'normalize.css'
-import { useEffect, useState } from 'react'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
 import FooterInfo from './components/molecules/FooterInfo'
@@ -23,13 +22,14 @@ import {
 
 function App() {
   const { pathname } = useLocation()
-  const prevPage = usePrevious<PageEndPoints>(pathname as PageEndPoints)
+  const page = pathname as PageEndPoints
+  const prevPage = usePrevious<PageEndPoints>(page)
   const appData = useGitHubDataValues()
-
+  
   return (
     <>
-      <Frame page={pathname as PageEndPoints} prevPage={prevPage} />
-      {/* <ContainerBase isLoading={!!appData.loading}>
+      <Frame page={page} prevPage={prevPage} />
+      <ContainerBase isLoading={!!appData.loading}>
         <ContainerTop>
           <TranslateBtn />
           <GitHubButtons />
@@ -37,20 +37,20 @@ function App() {
         <GitHubDataContext.Provider value={appData}>
           <ContainerPage>
             <Routes>
-              <Route path='/' element={<Home show={page === 0} />} />
-              <Route path='/projects' element={<Repos show={page === 1} />} />
-              <Route path='/about' element={<About show={page === 2} />} />
+              <Route path='/' element={<Home />} />
+              <Route path='/projects' element={<Repos />} />
+              <Route path='/about' element={<About />} />
               <Route path='/*' element={<Navigate to='/' replace />} />
             </Routes>
           </ContainerPage>
           <ContainerNavigation>
-            <Navigation isHome={page === 0} page={page} />
+            <Navigation isHome={page === '/'} page={page} />
           </ContainerNavigation>
         </GitHubDataContext.Provider>
         <ContainerFooter>
           <FooterInfo />
         </ContainerFooter>
-      </ContainerBase> */}
+      </ContainerBase>
     </>
   )
 }
