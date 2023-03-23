@@ -10,14 +10,14 @@ const Frame: React.FC<FrameProps> = ({
   dataTestId = testIdName('frame'),
   style,
   page,
-  prevPage = 0,
+  prevPage,
 }) => {
   const { loading } = useContext(GitHubDataContext)
   return (
     <Container data-testid={dataTestId} style={style} page={page}>
       <Tiles data-testid={testIdName('frame-tiles')} />
-      <Shadow data-testid={testIdName('frame-shadow')} page={page} prevPage={prevPage} />
-      <Potion data-testid={testIdName('frame-potion')} transparent={loading || page !== 0} />
+      <Shadow data-testid={testIdName('frame-shadow')} page={page} prevPage={prevPage || '/'} />
+      <Potion data-testid={testIdName('frame-potion')} transparent={loading || page !== '/'} />
     </Container>
   )
 }

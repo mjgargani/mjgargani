@@ -1,9 +1,9 @@
 import type React from 'react'
 
-import { type CommonProps } from '../../../globals'
+import { PageEndPoints, type CommonProps } from '../../../globals'
 
 export type FrameProps = {
-  page: number
-  prevPage?: number
+  page: PageEndPoints
+  prevPage?: PageEndPoints
   style?: React.CSSProperties
 } & CommonProps

@@ -5,7 +5,7 @@ import { HashRouter } from 'react-router-dom'
 
 import App from './App'
 // Import reportWebVitals from './reportWebVitals';
-import FontStyles from './fontStyles'
+import { FontStyles } from './globalStyles'
 
 const root = ReactDOM.createRoot(document.getElementById('root')!)
 root.render(

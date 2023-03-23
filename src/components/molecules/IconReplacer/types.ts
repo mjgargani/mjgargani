@@ -1,12 +1,7 @@
 import type React from 'react'
 
-import { type CommonProps } from '../../../globals'
+import { Color, type CommonProps } from '../../../globals'
 
-type RGB = `rgb(${number}, ${number}, ${number})`
-type RGBA = `rgba(${number}, ${number}, ${number}, ${number})`
-type HEX = `#${string}`
-
-export type Color = RGB | RGBA | HEX
 
 export type IconReplacerProps = {
   text: string
