@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { GitHubDataContext } from '../../../context/GitHubData'
-import { testIdName } from '../../../utils/testIdName'
+import randomId from '../../../utils/randomId'
 import Button from '../../atoms/Button'
 import GridCell from '../../atoms/GridCell'
 import GridContainer from '../../atoms/GridContainer'
@@ -10,7 +10,7 @@ import { Container, Show } from './styles'
 import { type NavigationProps } from './types'
 
 const Navigation: React.FC<NavigationProps> = ({
-  dataTestId = testIdName('navigation'),
+  dataTestId = randomId('navigation'),
   isHome,
   page,
 }) => {
@@ -31,7 +31,7 @@ const Navigation: React.FC<NavigationProps> = ({
             <Show isHome={isHome}>
               <GridCell>
                 <Button
-                  dataTestId={testIdName('btn-nav')}
+                  dataTestId={randomId('btn-nav')}
                   active={isHome}
                   onClick={() => {
                     navigate('')
@@ -44,7 +44,7 @@ const Navigation: React.FC<NavigationProps> = ({
             </Show>
             <GridCell>
               <Button
-                dataTestId={testIdName('btn-nav')}
+                dataTestId={randomId('btn-nav')}
                 active={page === '/projects'}
                 onClick={() => {
                   navigate('projects')
@@ -56,7 +56,7 @@ const Navigation: React.FC<NavigationProps> = ({
             </GridCell>
             <GridCell>
               <Button
-                dataTestId={testIdName('btn-nav')}
+                dataTestId={randomId('btn-nav')}
                 active={page === '/about'}
                 onClick={() => {
                   navigate('about')

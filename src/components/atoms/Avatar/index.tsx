@@ -1,11 +1,11 @@
 import React, { type PropsWithChildren } from 'react'
 
-import { testIdName } from '../../../utils/testIdName'
+import randomId from '../../../utils/randomId'
 import { Container } from './styles'
 import { type AvatarProps } from './types'
 
 const Avatar: React.FC<PropsWithChildren<AvatarProps>> = ({
-  dataTestId = testIdName('avatar'),
+  dataTestId = randomId('avatar'),
   src,
 }) => <Container data-testid={dataTestId} src={src} />
 

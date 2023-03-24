@@ -16,7 +16,7 @@ import { SiSocketdotio } from 'react-icons/si'
 import { SiTypescript } from 'react-icons/si'
 import { SiStyledcomponents } from 'react-icons/si'
 
-import { testIdName } from '../../../utils/testIdName'
+import randomId from '../../../utils/randomId'
 import { Container } from './styles'
 import { type IconList, type IconReplacerProps } from './types'
 
@@ -42,7 +42,7 @@ const icons: IconList = {
 }
 
 const IconReplacer: React.FC<IconReplacerProps> = ({
-  dataTestId = testIdName('icon-replacer'),
+  dataTestId = randomId('icon-replacer'),
   text,
   darker = false,
   style,
@@ -52,12 +52,12 @@ const IconReplacer: React.FC<IconReplacerProps> = ({
       if (text.includes(entry[0])) {
         return (
           <span
-            data-testid={testIdName(`icon-${entry[0]}`)}
+            data-testid={randomId(`icon-${entry[0]}`)}
             style={{
               color: entry[1][0],
               padding: '0 5px',
             }}
-            key={i}
+            key={randomId('icon-item', true)}
           >
             {entry[1][1]}
           </span>

@@ -12,9 +12,9 @@ import { type PageProps } from '../../components/templates/Page/types'
 import { GitHubDataContext } from '../../context/GitHubData'
 import imgLoader from '../../utils/imgLoader'
 import mdParser from '../../utils/mdParser'
-import { testIdName } from '../../utils/testIdName'
+import randomId from '../../utils/randomId'
 
-const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), show = true }) => {
+const About: React.FC<PageProps> = ({ dataTestId = randomId('page-about'), show = true }) => {
   const { loading, profile } = useContext(GitHubDataContext)
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
@@ -39,11 +39,11 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
         >
           <GridCell>
             <Card
-              dataTestId={testIdName('card-about')}
+              dataTestId={randomId('card-about')}
               title={`Olá! Sou ${profile?.name}`}
               isContent={true}
             >
-              <div id={testIdName('card-about-content')}>
+              <div id={randomId('card-about-content')}>
                 <GridContainer
                   templateColumns={{
                     desktop: ['1fr', '9fr'],
@@ -53,12 +53,12 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
                 >
                   <GridCell>
                     <Avatar
-                      dataTestId={testIdName('card-about-avatar')}
+                      dataTestId={randomId('card-about-avatar')}
                       src={profile?.avatar_url!}
                     />
                   </GridCell>
                   <GridCell
-                    dataTestId={testIdName('card-about-bio')}
+                    dataTestId={randomId('card-about-bio')}
                     style={{
                       position: 'relative',
                       backgroundColor: 'rgb(0, 0, 0, .05)',
@@ -72,7 +72,7 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
                   </GridCell>
                 </GridContainer>
                 <GridContainer style={{ marginTop: '2%', fontSize: '' }}>
-                  <GridCell dataTestId={testIdName('card-about-contacts')}>
+                  <GridCell dataTestId={randomId('card-about-contacts')}>
                     <ul
                       style={{
                         listStyle: 'none',
@@ -107,7 +107,7 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
                     </ul>
                   </GridCell>
                 </GridContainer>
-                <GridContainer dataTestId={testIdName('card-about-desc')}>
+                <GridContainer dataTestId={randomId('card-about-desc')}>
                   <GridCell style={{ textAlign: 'center' }}>
                     <p>
                       🪙 Você contribui com meu trabalho divulgando-o e/ou sendo{' '}
@@ -128,7 +128,7 @@ const About: React.FC<PageProps> = ({ dataTestId = testIdName('page-about'), sho
 
           <a href='https://www.padrim.com.br/mjgargani' target='_blank' rel='noreferrer'>
             <GridCell
-              dataTestId={testIdName('img-qr-code-padrim')}
+              dataTestId={randomId('img-qr-code-padrim')}
               bgImg={{ source: QrCodePadrim, size: 'contain' }}
               style={{ minHeight: '100%' }}
             />

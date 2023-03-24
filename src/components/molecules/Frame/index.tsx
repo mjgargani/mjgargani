@@ -2,13 +2,13 @@ import React, { useContext, useMemo } from 'react'
 
 import { GitHubDataContext } from '../../../context/GitHubData'
 import bgMov from '../../../styles/utils/bgMov'
-import { testIdName } from '../../../utils/testIdName'
+import randomId from '../../../utils/randomId'
 import Potion from '../../atoms/Potion'
 import { Container, Shadow, Tiles } from './styles'
 import { type FrameProps } from './types'
 
 const Frame: React.FC<FrameProps> = ({
-  dataTestId = testIdName('frame'),
+  dataTestId = randomId('frame'),
   style,
   page,
   prevPage,
@@ -17,9 +17,9 @@ const Frame: React.FC<FrameProps> = ({
   const calcBgMov = useMemo(bgMov, [])
   return calcBgMov ? (
     <Container data-testid={dataTestId} style={style} page={page} bgMov={calcBgMov}>
-      <Tiles data-testid={testIdName('frame-tiles')} bgMov={calcBgMov} />
-      <Shadow data-testid={testIdName('frame-shadow')} page={page} prevPage={prevPage || '/'} />
-      <Potion data-testid={testIdName('frame-potion')} transparent={loading || page !== '/'} />
+      <Tiles data-testid={randomId('frame-tiles')} bgMov={calcBgMov} />
+      <Shadow data-testid={randomId('frame-shadow')} page={page} prevPage={prevPage || '/'} />
+      <Potion data-testid={randomId('frame-potion')} transparent={loading || page !== '/'} />
     </Container>
   ) : (
     <></>

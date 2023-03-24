@@ -1,11 +1,11 @@
 import React from 'react'
 
 import { type CommonProps } from '../../../globals'
-import { testIdName } from '../../../utils/testIdName'
+import randomId from '../../../utils/randomId'
 import IconReplacer from '../IconReplacer'
 import { Container } from './styles'
 
-const FooterInfo: React.FC<CommonProps> = ({ dataTestId = testIdName('footer-info') }) => (
+const FooterInfo: React.FC<CommonProps> = ({ dataTestId = randomId('footer-info') }) => (
   <Container data-testid={dataTestId}>
     <p>
       <span style={{ fontFamily: 'mjgarganis Lab', color: '#E9E9FC' }}></span>{' '}

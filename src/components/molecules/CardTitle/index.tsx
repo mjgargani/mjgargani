@@ -1,6 +1,6 @@
 import React, { type PropsWithChildren } from 'react'
 
-import { testIdName } from '../../../utils/testIdName'
+import randomId from '../../../utils/randomId'
 import IconReplacer from '../IconReplacer'
 import { Container, Title } from './styles'
 import { CardTitleProps } from './types'
@@ -9,7 +9,7 @@ const replaceRegExpTitle = new RegExp('.+(?<=_)', 'gi')
 const replaceRegExpIcons = new RegExp('(?=_).+', 'gi')
 
 const CardTitle: React.FC<PropsWithChildren<CardTitleProps>> = ({
-  dataTestId = testIdName('card-title'),
+  dataTestId = randomId('card-title'),
   isContent = false,
   children,
 }) => (

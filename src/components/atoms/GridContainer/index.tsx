@@ -1,11 +1,11 @@
 import React, { type PropsWithChildren } from 'react'
 
-import { testIdName } from '../../../utils/testIdName'
+import randomId from '../../../utils/randomId'
 import { Container } from './styles'
 import { type GridContainerProps } from './types'
 
 const GridContainer: React.FC<PropsWithChildren<GridContainerProps>> = ({
-  dataTestId = testIdName('grid-container'),
+  dataTestId = randomId('grid-container'),
   templateColumns,
   templateRows,
   columnGap = 0,

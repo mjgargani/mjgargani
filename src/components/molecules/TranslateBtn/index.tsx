@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { CommonProps } from '../../../globals'
-import { testIdName } from '../../../utils/testIdName'
+import randomId from '../../../utils/randomId'
 import Button from '../../atoms/Button'
 import IconReplacer from '../IconReplacer'
 import { Container } from './styles'
 
-const TranslateBtn: React.FC<CommonProps> = ({ dataTestId = testIdName('translate-btn') }) => {
+const TranslateBtn: React.FC<CommonProps> = ({ dataTestId = randomId('translate-btn') }) => {
   return (
     <Container data-testid={dataTestId}>
       <a

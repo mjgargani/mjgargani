@@ -9,9 +9,9 @@ import { GitHubDataContext } from '../../context/GitHubData'
 import { GitHubRepoItem } from '../../context/types'
 import imgLoader from '../../utils/imgLoader'
 import mdParser from '../../utils/mdParser'
-import { testIdName } from '../../utils/testIdName'
+import randomId from '../../utils/randomId'
 
-const Repos: React.FC<PageProps> = ({ dataTestId = testIdName('page-repos'), show = true }) => {
+const Repos: React.FC<PageProps> = ({ dataTestId = randomId('page-repos'), show = true }) => {
   const { repos } = useContext(GitHubDataContext)
   const [ordenedRepos, setOrdenedRepos] = useState<GitHubRepoItem[]>([])
 
@@ -28,8 +28,8 @@ const Repos: React.FC<PageProps> = ({ dataTestId = testIdName('page-repos'), sho
     }
   }, [repos, ordenedRepos])
 
-  const RepoItem = (el: GitHubRepoItem | undefined, i: number) => (
-    <GridCell key={i}>
+  const RepoItem = (el: GitHubRepoItem | undefined) => (
+    <GridCell key={randomId('repo-item', true)}>
       <Card
         bgImg={{
           source: el!.thumbnail,
@@ -62,7 +62,10 @@ const Repos: React.FC<PageProps> = ({ dataTestId = testIdName('page-repos'), sho
       >
         {ordenedRepos?.length
           ? ordenedRepos.map(RepoItem)
-          : repos?.length && repos!.map((el) => <Card isLoading={true} />)}
+          : repos?.length && repos!.map((el) => <Card 
+            key={randomId('card-item', true)} 
+            isLoading={true} 
+          />)}
       </GridContainer>
     </Page>
   )

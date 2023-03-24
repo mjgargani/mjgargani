@@ -1,11 +1,11 @@
 import React, { type PropsWithChildren } from 'react'
 
-import { testIdName } from '../../../utils/testIdName'
+import randomId from '../../../utils/randomId'
 import { Container } from './styles'
 import { CardDescriptionProps } from './types'
 
 const CardDescription: React.FC<PropsWithChildren<CardDescriptionProps>> = ({
-  dataTestId = testIdName('card-desc'),
+  dataTestId = randomId('card-desc'),
   isContent = false,
   children,
 }) => (

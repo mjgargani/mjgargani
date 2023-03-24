@@ -1,11 +1,11 @@
 import React, { type PropsWithChildren } from 'react'
 
-import { testIdName } from '../../../utils/testIdName'
+import randomId from '../../../utils/randomId'
 import { Container } from './styles'
 import { type ButtonProps } from './types'
 
 const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
-  dataTestId = testIdName('button'),
+  dataTestId = randomId('button'),
   active = false,
   onClick,
   icon,

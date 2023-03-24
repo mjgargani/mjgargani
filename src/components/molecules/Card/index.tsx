@@ -1,6 +1,6 @@
 import React, { type PropsWithChildren } from 'react'
 
-import { testIdName } from '../../../utils/testIdName'
+import randomId from '../../../utils/randomId'
 import CardDescription from '../../atoms/CardDescription'
 import CardThumbnail from '../../atoms/CardThumbnail'
 import Loading from '../../atoms/Loading'
@@ -9,7 +9,7 @@ import { Container, ContainerBottom, ContainerTop, InnerContent } from './styles
 import { type CardProps } from './types'
 
 const Card: React.FC<PropsWithChildren<CardProps>> = ({
-  dataTestId = testIdName('card'),
+  dataTestId = randomId('card'),
   bgImg,
   url,
   title = '',
@@ -39,7 +39,7 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
     <Container data-testid={dataTestId} isContent={isContent} isLoading={isLoading} style={style}>
       {url ? (
         <a
-          data-testid={testIdName('card-link')}
+          data-testid={randomId('card-link')}
           className='card-link'
           href={url}
           target='_blank'

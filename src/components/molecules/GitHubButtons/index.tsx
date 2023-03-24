@@ -1,7 +1,7 @@
 import GitHubButton from 'react-github-btn'
 
 import { CommonProps } from '../../../globals'
-import { testIdName } from '../../../utils/testIdName'
+import randomId from '../../../utils/randomId'
 import { Container } from './styles'
 
 const GitHubBtnData = {
@@ -30,7 +30,7 @@ const GitHubBtnData = {
   ],
 }
 
-const GitHubButtons: React.FC<CommonProps> = ({ dataTestId = testIdName('github-btns') }) =>
+const GitHubButtons: React.FC<CommonProps> = ({ dataTestId = randomId('github-btns') }) =>
   ['test'].includes(process.env.NODE_ENV!) ? (
     <></>
   ) : (
@@ -43,7 +43,7 @@ const GitHubButtons: React.FC<CommonProps> = ({ dataTestId = testIdName('github-
             href: el.href,
           }
           return (
-            <li key={i}>
+            <li key={randomId('gh-btn-item', true)}>
               <GitHubButton {...GitHubBtnData.common} {...props}>
                 {el.description}
               </GitHubButton>
