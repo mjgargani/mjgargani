@@ -4,8 +4,9 @@ import 'react-router'
 import { HashRouter } from 'react-router-dom'
 
 import App from './App'
+import FontStyles from './styles/defaults/fonts'
+
 // Import reportWebVitals from './reportWebVitals';
-import { FontStyles } from './globalStyles'
 
 const root = ReactDOM.createRoot(document.getElementById('root')!)
 root.render(

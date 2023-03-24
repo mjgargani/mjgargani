@@ -18,12 +18,6 @@ export const Container = styled.div`
     max-height: min-content !important;
     max-width: min-content !important;
   }
-  h1 {
-    font-size: 1.4vh !important;
-    @media ${device.tablet} {
-      font-size: 0.7vw !important;
-    }
-  }
   a,
   button,
   h1,

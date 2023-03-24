@@ -34,27 +34,4 @@ export const Container = styled.div`
   span {
     font-family: 'mjgarganis Lab', sans-serif;
   }
-
-  font-size: ${fontSizeBase}vw;
-  @media ${device.mobileS} {
-    font-size: ${fontSizeBase - 0.6}vw;
-  }
-  @media ${device.mobileM} {
-    font-size: ${fontSizeBase - 1.2}vw;
-  }
-  @media ${device.mobileL} {
-    font-size: ${fontSizeBase - 1.8}vw;
-  }
-  @media ${device.laptop} {
-    font-size: ${fontSizeBase - 2.4}vw;
-  }
-  @media ${device.laptopL} {
-    font-size: ${fontSizeBase - 3.0}vw;
-  }
-  @media ${device.desktop} {
-    font-size: ${fontSizeBase - 3.6}vw;
-  }
-  @media (min-width: ${device.desktopL}) {
-    font-size: ${fontSizeBase - 4.2}vw;
-  }
 `

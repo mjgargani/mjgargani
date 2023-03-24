@@ -27,10 +27,6 @@ const card = css`
   width: 100% !important;
   background-color: unset !important;
   border-radius: unset !important;
-  font-size: 3vh !important;
-  @media ${device.tablet} {
-    font-size: 2.5vw !important;
-  }
 `
 
 export const Potion = styled.div`
@@ -45,10 +41,8 @@ export const Container = styled.div<LoadingProps>`
   opacity: 0.5;
   text-align: center;
   width: 15%;
-  font-size: 6vh;
   @media ${device.tablet} {
     width: 5%;
-    font-size: 4vw;
   }
   height: min-content;
   top: 50%;
