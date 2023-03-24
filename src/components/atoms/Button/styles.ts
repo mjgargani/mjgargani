@@ -1,9 +1,7 @@
 import styled from 'styled-components'
+
 import animation from '../../../styles/utils/animation'
-
 import { type ButtonProps } from './types'
-
-
 
 export const Container = styled.button<ButtonProps>`
   transition: none !important;

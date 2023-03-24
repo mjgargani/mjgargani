@@ -15,12 +15,14 @@ const Frame: React.FC<FrameProps> = ({
 }) => {
   const { loading } = useContext(GitHubDataContext)
   const calcBgMov = useMemo(bgMov, [])
-  return (calcBgMov ?
+  return calcBgMov ? (
     <Container data-testid={dataTestId} style={style} page={page} bgMov={calcBgMov}>
       <Tiles data-testid={testIdName('frame-tiles')} bgMov={calcBgMov} />
       <Shadow data-testid={testIdName('frame-shadow')} page={page} prevPage={prevPage || '/'} />
       <Potion data-testid={testIdName('frame-potion')} transparent={loading || page !== '/'} />
-    </Container> : <></>
+    </Container>
+  ) : (
+    <></>
   )
 }
 

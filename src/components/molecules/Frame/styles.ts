@@ -37,10 +37,9 @@ export const Shadow = styled.div<FrameProps>`
   );
   background: radial-gradient(ellipse at 50% 50%, rgba(255, 255, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
   opacity: ${(props) => defaults[props.page].shadow};
-  animation: ${(props) => animation.opacity(
-    defaults[props.prevPage || '/'].shadow,
-    defaults[props.page].shadow, 
-  )} 1s ease;
+  animation: ${(props) =>
+      animation.opacity(defaults[props.prevPage || '/'].shadow, defaults[props.page].shadow)}
+    1s ease;
   pointer-events: none;
   z-index: -1600;
 `
@@ -61,7 +60,7 @@ export const Tiles = styled.div<Partial<FrameProps>>`
     background-size: 8vw;
   }
   opacity: 0.015;
-  animation: ${props => animation.bg.position(props.bgMov!)} 120s alternate-reverse ease infinite;
+  animation: ${(props) => animation.bg.position(props.bgMov!)} 120s alternate-reverse ease infinite;
   pointer-events: none;
   z-index: -1200;
 `
@@ -77,7 +76,8 @@ export const Container = styled.div<FrameProps>`
   background-color: #000;
   background: linear-gradient(315deg, ${(props) => defaults[props.page].color.join(', ')});
   background-size: 200% 200%;
-  animation: ${props => animation.bg.position(props.bgMov!)} 15s ease infinite, ${animation.opacity(0, 1)} 2s ease;
+  animation: ${(props) => animation.bg.position(props.bgMov!)} 15s ease infinite,
+    ${animation.opacity(0, 1)} 2s ease;
   z-index: -400;
   transition: unset !important;
 `

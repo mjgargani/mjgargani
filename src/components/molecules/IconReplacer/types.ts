@@ -2,7 +2,6 @@ import type React from 'react'
 
 import { Color, type CommonProps } from '../../../globals'
 
-
 export type IconReplacerProps = {
   text: string
   darker?: boolean

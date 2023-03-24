@@ -14,9 +14,9 @@ Portfolio developed with `ReactJS` (`CRA`) + `TypeScript` ([Learn how](https://c
 
 > ⭐ In this case **especially**, the repository includes a build for distribution (`./docs`), which is used for [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages). `CI/CD` is powered by [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions).
 
-O projeto também conta com uso de [styled-components](https://styled-components.com/) para criação e estilização dos componentes e o [Marked](https://marked.js.org/) para interpretação de texto no formato `Markdown`.
+O projeto também conta com uso de [styled-components](https://styled-components.com/) para criação e estilização dos componentes, o [Marked](https://marked.js.org/) para interpretação de texto no formato `Markdown` e o [React Icons](https://react-icons.github.io/react-icons/).
 
-The project also uses [styled-components](https://styled-components.com/) to create and style components and [Marked](https://marked.js.org/) to interpret text in `Markdown` format.
+The project also uses [styled-components](https://styled-components.com/) to create and style components, [Marked](https://marked.js.org/) to interpret text in `Markdown` format and [React Icons](https://react-icons.github.io/react-icons/).
 
 ## Como rodar / How to run
 

@@ -11,10 +11,7 @@ import imgLoader from '../../utils/imgLoader'
 import mdParser from '../../utils/mdParser'
 import { testIdName } from '../../utils/testIdName'
 
-const Repos: React.FC<PageProps> = ({ 
-  dataTestId = testIdName('page-repos'), 
-  show = true
-}) => {
+const Repos: React.FC<PageProps> = ({ dataTestId = testIdName('page-repos'), show = true }) => {
   const { repos } = useContext(GitHubDataContext)
   const [ordenedRepos, setOrdenedRepos] = useState<GitHubRepoItem[]>([])
 

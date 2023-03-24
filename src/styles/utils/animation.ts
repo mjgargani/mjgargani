@@ -1,5 +1,6 @@
-import { keyframes } from "styled-components"
-import { Color } from "../../globals"
+import { keyframes } from 'styled-components'
+
+import { Color } from '../../globals'
 
 const opacity = (from: number, to: number) => keyframes`
   from{
@@ -27,12 +28,12 @@ const bgPosition = (values: number[][]) => keyframes`
 
 const bg = {
   color: bgColor,
-  position: bgPosition
+  position: bgPosition,
 }
 
 const animation = {
   opacity,
-  bg
+  bg,
 }
 
 export default animation

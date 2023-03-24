@@ -25,7 +25,7 @@ function App() {
   const page = pathname as PageEndPoints
   const prevPage = usePrevious<PageEndPoints>(page)
   const appData = useGitHubDataValues()
-  
+
   return (
     <>
       <Frame page={page} prevPage={prevPage} />
