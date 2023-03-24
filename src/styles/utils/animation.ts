@@ -19,10 +19,10 @@ const bgColor = (from: Color, to: Color) => keyframes`
   }
 `
 
-const bgPosition = keyframes`
-  0%{background-position:5% 0%}
-  50%{background-position:96% 100%}
-  100%{background-position:5% 0%}
+const bgPosition = (values: number[][]) => keyframes`
+  0%{background-position:${values[0][0]}% ${values[0][1]}%}
+  50%{background-position:${values[1][0]}% ${values[1][1]}%}
+  100%{background-position:${values[2][0]}% ${values[2][1]}%}
 `
 
 const bg = {
