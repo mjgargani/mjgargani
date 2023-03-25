@@ -45,7 +45,6 @@ export const Container = styled.button<ButtonProps>`
 
   h2 {
     margin: 0;
-    line-height: 0;
   }
 
   h2 span {

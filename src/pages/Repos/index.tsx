@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { css } from 'styled-components'
 
 import GridCell from '../../components/atoms/GridCell'
 import GridContainer from '../../components/atoms/GridContainer'
@@ -7,6 +8,7 @@ import Page from '../../components/templates/Page'
 import { type PageProps } from '../../components/templates/Page/types'
 import { GitHubDataContext } from '../../context/GitHubData'
 import { GitHubRepoItem } from '../../context/types'
+import { device, size } from '../../utils/devices'
 import imgLoader from '../../utils/imgLoader'
 import mdParser from '../../utils/mdParser'
 import randomId from '../../utils/randomId'
@@ -54,11 +56,30 @@ const Repos: React.FC<PageProps> = ({ dataTestId = randomId('page-repos'), show 
     <Page show={show}>
       <GridContainer
         dataTestId={dataTestId}
-        templateColumns={{
-          desktop: ['repeat(3, 1fr)'],
-        }}
         columnGap={3}
         rowGap={3}
+        styledCss={css`
+          position: absolute;
+          height: 100% !important;
+          grid-template-columns: repeat(2, 1fr) !important;
+
+          @media  ${device.tablet} and (orientation: landscape) {
+            @media  (min-aspect-ratio: 4/3), 
+                    (min-aspect-ratio: 16/9), 
+                    (min-aspect-ratio: 16/10){
+              grid-template-columns: repeat(3, 1fr) !important;
+            }
+            @media  (min-aspect-ratio: 23/9) {
+              grid-template-columns: repeat(4, 1fr) !important;
+            }
+          }
+          @media  ${device.tablet} and (orientation: portrait) {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          @media  (max-width: ${size.tablet}px) and (orientation: portrait) {
+            grid-template-columns: repeat(1, 1fr) !important;
+          }
+        `}
       >
         {ordenedRepos?.length
           ? ordenedRepos.map(RepoItem)

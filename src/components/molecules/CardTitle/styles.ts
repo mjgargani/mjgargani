@@ -11,7 +11,7 @@ export const Container = styled.div<CardTitleProps>`
   ${props => props.styledCss}
 `
 
-export const Title = styled.h1`
+export const Title = styled.h2`
   position: relative;
   display: table-cell;
   width: 100%;
@@ -22,5 +22,4 @@ export const Title = styled.h1`
   text-align: center;
   margin: 0;
   padding: 0;
-  line-height: 200%;
 `

@@ -5,6 +5,7 @@ import { type GridContainerProps } from './types'
 
 export const Container = styled.div<GridContainerProps>`
   display: grid;
+  background-color: mediumseagreen;
   height: 100%;
   width: 100%;
   transition: 300ms;
