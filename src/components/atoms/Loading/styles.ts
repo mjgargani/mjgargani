@@ -55,4 +55,6 @@ export const Container = styled.div<LoadingProps>`
   border-radius: 5px;
   ${(props) => props.isCard && card}
   animation: ${opacityTransition} 2s ease alternate infinite;
+
+  ${props => props.styledCss}
 `

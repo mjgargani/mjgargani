@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import { CommonProps } from '../../../globals'
 
-export const Container = styled.div`
+export const Container = styled.div<CommonProps>`
   position: absolute;
   width: inherit;
   bottom: 0;
@@ -17,4 +18,6 @@ export const Container = styled.div`
     margin-bottom: 0.5vh;
     text-align: center;
   }
+
+  ${props => props.styledCss}
 `

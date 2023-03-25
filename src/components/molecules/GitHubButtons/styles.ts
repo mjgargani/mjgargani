@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import { CommonProps } from '../../../globals'
 
-export const Container = styled.div`
+export const Container = styled.div<CommonProps>`
   position: fixed;
   top: 0;
   right: 0;
@@ -19,4 +20,6 @@ export const Container = styled.div`
     margin: 0 0 0 0.5vw;
     padding: 0;
   }
+
+  ${props => props.styledCss}
 `

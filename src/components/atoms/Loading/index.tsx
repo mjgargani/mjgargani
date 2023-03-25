@@ -7,8 +7,9 @@ import { LoadingProps } from './types'
 const Loading: React.FC<LoadingProps> = ({
   dataTestId = randomId('loading'),
   isCard = false,
+  styledCss
 }) => (
-  <Container data-testid={dataTestId} isCard={isCard}>
+  <Container data-testid={dataTestId} isCard={isCard} styledCss={styledCss}>
     <Potion></Potion>
   </Container>
 )

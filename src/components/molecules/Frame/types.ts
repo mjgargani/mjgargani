@@ -6,5 +6,4 @@ export type FrameProps = {
   page: PageEndPoints
   prevPage?: PageEndPoints
   bgMov?: number[][]
-  style?: React.CSSProperties
 } & CommonProps

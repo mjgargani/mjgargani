@@ -96,4 +96,6 @@ export const Container = styled.div<PotionProps>`
     ${shadowAnim} 5s infinite alternate ease-in-out,
     ${rotateAnim} 60s infinite alternate ease-in-out, ${moveAnim} 120s infinite ease-in-out;
   z-index: 0;
+
+  ${props => props.styledCss}
 `

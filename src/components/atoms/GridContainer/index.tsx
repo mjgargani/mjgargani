@@ -10,7 +10,7 @@ const GridContainer: React.FC<PropsWithChildren<GridContainerProps>> = ({
   templateRows,
   columnGap = 0,
   rowGap = 0,
-  style,
+  styledCss,
   children,
 }) => (
   <Container
@@ -19,7 +19,7 @@ const GridContainer: React.FC<PropsWithChildren<GridContainerProps>> = ({
     templateRows={templateRows}
     columnGap={columnGap}
     rowGap={rowGap}
-    style={style}
+    styledCss={styledCss}
   >
     {children}
   </Container>

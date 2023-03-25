@@ -42,6 +42,8 @@ export const Shadow = styled.div<FrameProps>`
     1s ease;
   pointer-events: none;
   z-index: -1600;
+
+  ${props => props.styledCss}
 `
 
 export const Tiles = styled.div<Partial<FrameProps>>`
@@ -63,6 +65,8 @@ export const Tiles = styled.div<Partial<FrameProps>>`
   animation: ${(props) => animation.bg.position(props.bgMov!)} 120s alternate-reverse ease infinite;
   pointer-events: none;
   z-index: -1200;
+
+  ${props => props.styledCss}
 `
 
 export const Container = styled.div<FrameProps>`
@@ -80,4 +84,6 @@ export const Container = styled.div<FrameProps>`
     ${animation.opacity(0, 1)} 2s ease;
   z-index: -400;
   transition: unset !important;
+
+  ${props => props.styledCss}
 `

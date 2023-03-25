@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { css } from 'styled-components'
 
 import QrCodePadrim from '../../assets/qr-code-padrim.png'
 import Avatar from '../../components/atoms/Avatar'
@@ -31,11 +32,11 @@ const About: React.FC<PageProps> = ({ dataTestId = randomId('page-about'), show 
           templateRows={{ mobile: ['min-content', '30vh'] }}
           columnGap={4}
           rowGap={2}
-          style={{
-            position: 'absolute',
-            width: 'inherit',
-            minHeight: '100%',
-          }}
+          styledCss={css`
+            position: absolute;
+            width: inherit;
+            min-height: 100%;
+          `}
         >
           <GridCell>
             <Card
@@ -59,19 +60,19 @@ const About: React.FC<PageProps> = ({ dataTestId = randomId('page-about'), show 
                   </GridCell>
                   <GridCell
                     dataTestId={randomId('card-about-bio')}
-                    style={{
-                      position: 'relative',
-                      backgroundColor: 'rgb(0, 0, 0, .05)',
-                      borderRadius: '10px',
-                      textAlign: 'justify',
-                      lineHeight: '150%',
-                      padding: '0 1.5vw',
-                    }}
+                    styledCss={css`
+                      position: relative;
+                      background-color: rgb(0, 0, 0, .05);
+                      border-radius: 10px;
+                      text-align: justify;
+                      line-height: 150%;
+                      padding: 0 1.5vw;
+                    `}
                   >
                     {mdParser(profile?.bio || '')}
                   </GridCell>
                 </GridContainer>
-                <GridContainer style={{ marginTop: '2%', fontSize: '' }}>
+                <GridContainer styledCss={css`margin-top: 2%;`}>
                   <GridCell dataTestId={randomId('card-about-contacts')}>
                     <ul
                       style={{
@@ -108,7 +109,7 @@ const About: React.FC<PageProps> = ({ dataTestId = randomId('page-about'), show 
                   </GridCell>
                 </GridContainer>
                 <GridContainer dataTestId={randomId('card-about-desc')}>
-                  <GridCell style={{ textAlign: 'center' }}>
+                  <GridCell styledCss={css`text-align: center;`}>
                     <p>
                       🪙 Você contribui com meu trabalho divulgando-o e/ou sendo{' '}
                       <a
@@ -130,7 +131,7 @@ const About: React.FC<PageProps> = ({ dataTestId = randomId('page-about'), show 
             <GridCell
               dataTestId={randomId('img-qr-code-padrim')}
               bgImg={{ source: QrCodePadrim, size: 'contain' }}
-              style={{ minHeight: '100%' }}
+              styledCss={css`min-height: 100%;`}
             />
           </a>
         </GridContainer>

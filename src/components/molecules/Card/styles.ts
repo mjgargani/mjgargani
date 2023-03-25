@@ -85,6 +85,8 @@ export const Container = styled.div<CardProps>`
   @media ${device.desktopL} {
     min-height: 40vh;
   }
+
+  ${props => props.styledCss}
 `
 
 export const ContainerTop = styled.div<Partial<CardProps>>`

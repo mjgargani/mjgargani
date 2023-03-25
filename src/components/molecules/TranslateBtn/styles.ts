@@ -1,8 +1,9 @@
 import styled from 'styled-components'
+import { CommonProps } from '../../../globals'
 
 import { device } from '../../../utils/devices'
 
-export const Container = styled.div`
+export const Container = styled.div<CommonProps>`
   position: fixed;
   top: 0;
   left: 0;
@@ -29,4 +30,6 @@ export const Container = styled.div`
   svg {
     margin: 5px !important;
   }
+
+  ${props => props.styledCss}
 `

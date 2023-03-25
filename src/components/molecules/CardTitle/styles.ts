@@ -7,6 +7,8 @@ export const Container = styled.div<CardTitleProps>`
   display: table;
   width: 100%;
   min-height: ${(props) => (props.isContent ? 20 : 45)}%;
+
+  ${props => props.styledCss}
 `
 
 export const Title = styled.h1`

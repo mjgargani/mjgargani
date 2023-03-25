@@ -1,7 +1,16 @@
+import { FlattenInterpolation, ThemeProps } from "styled-components"
+
 type RGB = `rgb(${number} | ${number}, ${number})`
 type RGBA = `rgba(${number}, ${number}, ${number}, ${number})`
 type HEX = `#${string}`
 export type Color = RGB | RGBA | HEX
+
+export type PageEndPoints = '/' | '/projects' | '/about'
+
+export type CommonProps = {
+  dataTestId?: string,
+  styledCss?: FlattenInterpolation<ThemeProps<any>>
+}
 
 export type AlphaRange =
   | 0
@@ -387,9 +396,3 @@ export type Angle =
   | 357
   | 358
   | 359
-
-export type PageEndPoints = '/' | '/projects' | '/about'
-
-export type CommonProps = {
-  dataTestId?: string
-}

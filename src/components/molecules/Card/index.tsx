@@ -15,7 +15,7 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
   title = '',
   isContent = false,
   isLoading = false,
-  style,
+  styledCss,
   children,
 }) => {
   const cardContent = (isLoading: boolean) => (
@@ -36,7 +36,7 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
   )
 
   return (
-    <Container data-testid={dataTestId} isContent={isContent} isLoading={isLoading} style={style}>
+    <Container data-testid={dataTestId} isContent={isContent} isLoading={isLoading} styledCss={styledCss}>
       {url ? (
         <a
           data-testid={randomId('card-link')}

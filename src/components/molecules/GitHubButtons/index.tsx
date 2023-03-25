@@ -30,11 +30,14 @@ const GitHubBtnData = {
   ],
 }
 
-const GitHubButtons: React.FC<CommonProps> = ({ dataTestId = randomId('github-btns') }) =>
+const GitHubButtons: React.FC<CommonProps> = ({ 
+  dataTestId = randomId('github-btns'),
+  styledCss
+}) =>
   ['test'].includes(process.env.NODE_ENV!) ? (
     <></>
   ) : (
-    <Container data-testid={dataTestId}>
+    <Container data-testid={dataTestId} styledCss={styledCss}>
       <ul>
         {GitHubBtnData.specific.map((el, i) => {
           const props = {

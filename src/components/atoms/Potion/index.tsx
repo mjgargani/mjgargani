@@ -9,6 +9,7 @@ import { type PotionProps } from './types'
 const Potion: React.FC<PropsWithChildren<PotionProps>> = ({
   dataTestId = randomId('potion'),
   transparent = true,
+  styledCss
 }) => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
@@ -17,7 +18,7 @@ const Potion: React.FC<PropsWithChildren<PotionProps>> = ({
   }, [isLoaded])
 
   return isLoaded ? (
-    <Container src={potion} data-testid={dataTestId} transparent={transparent} />
+    <Container src={potion} data-testid={dataTestId} transparent={transparent} styledCss={styledCss}/>
   ) : (
     <></>
   )

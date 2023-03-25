@@ -8,5 +8,4 @@ export type GridCellProps = {
     size?: 'contain' | 'cover'
   }
   area?: Array<number | string>
-  style?: React.CSSProperties
 } & CommonProps

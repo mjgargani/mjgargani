@@ -9,14 +9,14 @@ import { type FrameProps } from './types'
 
 const Frame: React.FC<FrameProps> = ({
   dataTestId = randomId('frame'),
-  style,
+  styledCss,
   page,
   prevPage,
 }) => {
   const { loading } = useContext(GitHubDataContext)
   const calcBgMov = useMemo(bgMov, [])
   return calcBgMov ? (
-    <Container data-testid={dataTestId} style={style} page={page} bgMov={calcBgMov}>
+    <Container data-testid={dataTestId} styledCss={styledCss} page={page} bgMov={calcBgMov}>
       <Tiles data-testid={randomId('frame-tiles')} bgMov={calcBgMov} />
       <Shadow data-testid={randomId('frame-shadow')} page={page} prevPage={prevPage || '/'} />
       <Potion data-testid={randomId('frame-potion')} transparent={loading || page !== '/'} />

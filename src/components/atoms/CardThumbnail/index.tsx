@@ -8,9 +8,10 @@ import { type CardThumbnailProps } from './types'
 const CardThumbnail: React.FC<CardThumbnailProps> = ({
   dataTestId = randomId('card-thumb'),
   bgImg,
+  styledCss,
 }) => {
   return (
-    <Container data-testid={dataTestId} bgImg={bgImg}>
+    <Container data-testid={dataTestId} bgImg={bgImg} styledCss={styledCss}>
       <IsNew data-testid={randomId('card-thumb-is-new')} bgImg={bgImg}>
         <p>{bgImg?.new && <IconReplacer text='new' />}</p>
       </IsNew>

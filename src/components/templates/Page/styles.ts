@@ -17,4 +17,6 @@ export const Container = styled.div<PageProps>`
   width: 80%;
   margin: 0 10%;
   animation: ${opacityTransition} 0.5s ease;
+
+  ${props => props.styledCss}
 `

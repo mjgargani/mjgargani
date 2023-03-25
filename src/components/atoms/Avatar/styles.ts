@@ -12,4 +12,6 @@ export const Container = styled.div<AvatarProps>`
   height: 80%;
   margin: 10% 0;
   width: 100%;
+
+  ${props => props.styledCss}
 `

@@ -11,10 +11,10 @@ const GridCell: React.FC<PropsWithChildren<GridCellProps>> = ({
     size: 'contain',
   },
   area = ['auto'],
-  style,
+  styledCss,
   children,
 }) => (
-  <Container data-testid={dataTestId} area={area} bgImg={bgImg} style={style}>
+  <Container data-testid={dataTestId} area={area} bgImg={bgImg} styledCss={styledCss}>
     {children}
   </Container>
 )

@@ -16,7 +16,7 @@ const defaults: ButtonDefaults = {
       bg: [
         "rgba(255, 255, 255, 0.7)", 
         "rgba(255, 255, 255, 0.1)",
-        "rgba(255, 255, 255, 0.25)",
+        "rgba(255, 255, 255, 0.25)", //hover
       ]
     }
   }

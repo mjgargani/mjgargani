@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { css } from 'styled-components'
 
 import { GitHubDataContext } from '../../../context/GitHubData'
 import randomId from '../../../utils/randomId'
@@ -13,6 +14,7 @@ const Navigation: React.FC<NavigationProps> = ({
   dataTestId = randomId('navigation'),
   isHome,
   page,
+  styledCss,
 }) => {
   const { loading } = useContext(GitHubDataContext)
   const navigate = useNavigate()
@@ -20,16 +22,16 @@ const Navigation: React.FC<NavigationProps> = ({
   return (
     <>
       {!loading && (
-        <Container data-testid={dataTestId} isHome={isHome}>
+        <Container data-testid={dataTestId} isHome={isHome} styledCss={styledCss}>
           <GridContainer
             templateColumns={{
-              desktop: [isHome ? '0 repeat(2, 1fr)' : 'repeat(3, 1fr)'],
+              desktop: [isHome ? '0 50% 50%' : '32% 32% 32%'],
             }}
-            columnGap={2}
+            columnGap={isHome ? 0 : 2}
             rowGap={1}
           >
-            <Show isHome={isHome}>
-              <GridCell>
+            <GridCell styledCss={css`overflow:hidden;`}>
+              <Show isHome={isHome}>
                 <Button
                   dataTestId={randomId('btn-nav')}
                   active={isHome}
@@ -40,8 +42,8 @@ const Navigation: React.FC<NavigationProps> = ({
                 >
                   Início
                 </Button>
-              </GridCell>
-            </Show>
+              </Show>
+            </GridCell>
             <GridCell>
               <Button
                 dataTestId={randomId('btn-nav')}

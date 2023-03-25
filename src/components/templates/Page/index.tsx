@@ -9,6 +9,7 @@ import { type PageProps } from './types'
 const Page: React.FC<PropsWithChildren<PageProps>> = ({
   dataTestId = randomId('page'),
   show = false,
+  styledCss,
   children,
 }) => {
   const { loading } = useContext(GitHubDataContext)
@@ -18,7 +19,7 @@ const Page: React.FC<PropsWithChildren<PageProps>> = ({
       {loading ? (
         <Loading />
       ) : (
-        <Container data-testid={dataTestId} show={show}>
+        <Container data-testid={dataTestId} show={show} styledCss={styledCss}>
           {show && children}
         </Container>
       )}

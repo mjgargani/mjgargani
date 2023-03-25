@@ -11,9 +11,10 @@ const replaceRegExpIcons = new RegExp('(?=_).+', 'gi')
 const CardTitle: React.FC<PropsWithChildren<CardTitleProps>> = ({
   dataTestId = randomId('card-title'),
   isContent = false,
+  styledCss,
   children,
 }) => (
-  <Container isContent={isContent} data-testid={dataTestId}>
+  <Container isContent={isContent} data-testid={dataTestId} styledCss={styledCss}>
     <Title>
       {(children as string).replaceAll(replaceRegExpTitle, '').replaceAll('-', ' ')}
       <br />

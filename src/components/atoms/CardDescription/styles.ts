@@ -29,4 +29,6 @@ export const Container = styled.div<CardDescriptionProps>`
       transform: translateY(-50%);
     }
   }
+
+  ${props => props.styledCss}
 `

@@ -9,10 +9,10 @@ const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
   active = false,
   onClick,
   icon,
-  style,
+  styledCss,
   children,
 }) => (
-  <Container data-testid={dataTestId} onClick={onClick} active={active} style={style}>
+  <Container data-testid={dataTestId} onClick={onClick} active={active} styledCss={styledCss}>
     <h2><span>{icon}</span>{children}</h2>
   </Container>
 )
