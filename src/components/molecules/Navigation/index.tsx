@@ -3,11 +3,12 @@ import { useNavigate } from 'react-router-dom'
 import { css } from 'styled-components'
 
 import { GitHubDataContext } from '../../../context/GitHubData'
+import { device } from '../../../utils/devices'
 import randomId from '../../../utils/randomId'
 import Button from '../../atoms/Button'
 import GridCell from '../../atoms/GridCell'
 import GridContainer from '../../atoms/GridContainer'
-import { Container, Show } from './styles'
+import { Container, Hidden } from './styles'
 import { type NavigationProps } from './types'
 
 const Navigation: React.FC<NavigationProps> = ({
@@ -25,13 +26,14 @@ const Navigation: React.FC<NavigationProps> = ({
         <Container data-testid={dataTestId} isHome={isHome} styledCss={styledCss}>
           <GridContainer
             templateColumns={{
-              desktop: [isHome ? '0 50% 50%' : '32% 32% 32%'],
+              desktop: [isHome ? '0 50% 50%' : '33.33% 33.33% 33.34%'],
             }}
-            columnGap={isHome ? 0 : 2}
-            rowGap={1}
+            templateRows={{
+              mobile: [isHome ? '0 50% 50%' : '33.33% 33.33% 33.34%']
+            }}
           >
             <GridCell styledCss={css`overflow:hidden;`}>
-              <Show isHome={isHome}>
+              <Hidden>
                 <Button
                   dataTestId={randomId('btn-nav')}
                   active={isHome}
@@ -42,7 +44,7 @@ const Navigation: React.FC<NavigationProps> = ({
                 >
                   Início
                 </Button>
-              </Show>
+              </Hidden>
             </GridCell>
             <GridCell>
               <Button

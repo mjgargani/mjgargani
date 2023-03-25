@@ -14,8 +14,7 @@ const opacityTransition = keyframes`
 export const Container = styled.div<PageProps>`
   display: ${(props) => (props.show! ? 'block' : 'none')};
   min-height: 100%;
-  width: 80%;
-  margin: 0 10%;
+  width: 100%;
   animation: ${opacityTransition} 0.5s ease;
 
   ${props => props.styledCss}

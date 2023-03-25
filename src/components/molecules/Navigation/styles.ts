@@ -1,36 +1,34 @@
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
+import animation from '../../../styles/utils/animation'
+import { device } from '../../../utils/devices'
 
 import { NavigationProps } from './types'
 
-// const styles = css``
 
-export const Show = styled.div<Partial<NavigationProps>>`
-  /* transform: scale(${(props) => (props.isHome ? 0 : 1)}); */
-  height: inherit;
-  width: inherit;
+export const Hidden = styled.div<Partial<NavigationProps>>`
+  height: 100%;
+  width: 100%;
   overflow: inherit;
   margin: 0;
   padding: 0;
 `
 
-const opacityTransition = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-`
-
 export const Container = styled.div<Partial<NavigationProps>>`
+  position: absolute;
   overflow: hidden;
   transition: 300ms;
-  width: 100%;
-  height: 100%;
-  /* margin: 0 ${props => props.isHome ? 20 : 25}%; */
-  bottom: 0;
   text-align: center;
-  animation: ${opacityTransition} 0.5s ease;
+  animation: ${animation.opacity(0, 1)} 0.5s ease;
+
+  height: ${props => !props.isHome ? 80 : 50}%;
+  width: 100%;
+  bottom: ${props => props.isHome ? 12.5 : 0}%;
+  @media ${device.tablet} {
+    height: 60%;
+    width: ${props => !props.isHome ? 100 : 66.66}%;
+    ${props => props.isHome && 'margin-left: 16.67%;'}
+    bottom: 0;
+  }
 
   ${props => props.styledCss}
 `

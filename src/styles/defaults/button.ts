@@ -1,6 +1,7 @@
 import { Color } from "../../globals"
 
 export type ButtonDefaults = {
+  margin: number
   color: {
     active: {
       text: [Color, Color],
@@ -10,6 +11,7 @@ export type ButtonDefaults = {
 }
 
 const defaults: ButtonDefaults = {
+  margin: 10,
   color: {
     active: {
       text: ["#000","#FFF"],

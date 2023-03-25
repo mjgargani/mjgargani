@@ -5,10 +5,11 @@ import { type GridContainerProps } from './types'
 
 export const Container = styled.div<GridContainerProps>`
   display: grid;
-  position: relative;
   height: 100%;
   width: 100%;
   transition: 300ms;
+  margin: 0;
+  padding: 0;
 
   grid-template-columns: ${(props) =>
     props.templateColumns?.mobile ? props.templateColumns.mobile.join(' ') : 'auto'};

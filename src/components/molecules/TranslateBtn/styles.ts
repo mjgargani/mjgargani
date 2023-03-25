@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 import { CommonProps } from '../../../globals'
 
-import { device } from '../../../utils/devices'
-
 export const Container = styled.div<CommonProps>`
   position: fixed;
   top: 0;

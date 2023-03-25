@@ -17,8 +17,10 @@ const hover = css`
 `
 
 export const Container = styled.button<ButtonProps>`
-  width: 100%;
-  height: 100%;
+  width: 95%;
+  height: 80%;
+  margin: 0 2.5%;
+  padding: 0;
   border-style: none;
   border-width: 0px;
   cursor: default;
@@ -43,10 +45,7 @@ export const Container = styled.button<ButtonProps>`
 
   h2 {
     margin: 0;
-    padding: 0;
-    width: 100%;
-    text-align: center;
-    vertical-align: middle;
+    line-height: 0;
   }
 
   h2 span {

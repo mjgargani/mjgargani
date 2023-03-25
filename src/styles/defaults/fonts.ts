@@ -32,6 +32,7 @@ const FontStyles = createGlobalStyle`
 
   h2 {
     font-family: "Sono", sans-serif;
+    font-size: 1em;
   }
 
   p, li {
