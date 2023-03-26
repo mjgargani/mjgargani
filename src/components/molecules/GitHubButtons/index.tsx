@@ -24,11 +24,7 @@ const GitHubButtons: React.FC<CommonProps> = ({
           </a>
         </li>
         <li>
-          <a
-            href='https://github.com/mjgargani/mjgargani'
-            target='_blank'
-            rel='noreferrer'
-          >
+          <a href='https://github.com/mjgargani/mjgargani' target='_blank' rel='noreferrer'>
             <img
               src='https://img.shields.io/github/stars/mjgargani/mjgargani?style=social'
               alt='Repo stars'

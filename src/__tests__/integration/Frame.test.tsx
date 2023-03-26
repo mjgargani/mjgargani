@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, render, screen, waitFor } from '@testing-library/react'
 
 import Frame from '../../components/molecules/Frame'
 import { PageEndPoints } from '../../globals'
@@ -10,12 +10,14 @@ afterEach(cleanup)
 test('verify if component shows child components correctly', async () => {
   const currentDataTestId = 'frame_rtl'
 
-  render(<Frame dataTestId={currentDataTestId} page={"/"} />)
+  render(<Frame dataTestId={currentDataTestId} page={'/'} />)
 
   const frame = screen.getByTestId(currentDataTestId)
   const tiles = screen.getByTestId(/^frame-tiles_\d+/)
   const shadow = screen.getByTestId(/^frame-shadow_\d+/)
-  const potion = await screen.findByTestId(/^potion_\d+/)
+  
+  let potion;
+  await waitFor(async () => potion = await screen.findByTestId(/^potion_\d+/), { timeout: 5000 })
 
   expect(frame).toBeInTheDocument()
   expect(tiles).toBeInTheDocument()
@@ -23,7 +25,7 @@ test('verify if component shows child components correctly', async () => {
   expect(potion).toBeInTheDocument()
 })
 
-test.each(["/", "/projects", "/about"])(
+test.each(['/', '/projects', '/about'])(
   'verify if components changes when the `page` prop changes (value: %p)',
   async (page) => {
     const currentPage = page as PageEndPoints
@@ -35,7 +37,9 @@ test.each(["/", "/projects", "/about"])(
     expect(frame).toBeInTheDocument()
 
     const shadow = screen.getByTestId(/^frame-shadow_\d+/)
-    const potion = await screen.findByTestId(/^potion_\d+/)
+
+    let potion;
+    await waitFor(async () => potion = await screen.findByTestId(/^potion_\d+/), { timeout: 5000 })
 
     expect(frame).toHaveStyle(
       `background: linear-gradient(315deg, ${frameDefaults[currentPage].color.join(', ')});`,

@@ -12,9 +12,9 @@ jest.mock('react-router-dom', () => ({
 }))
 
 test.each([
-  ["/", 'rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)'],
-  ["/projects", 'rgb(255, 255, 255)', 'rgb(0, 0, 0)', 'rgb(255, 255, 255)'],
-  ["/about", 'rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(0, 0, 0)'],
+  ['/', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)'],
+  ['/projects', 'rgb(255, 255, 255)', 'rgb(0, 0, 0)', 'rgb(255, 255, 255)'],
+  ['/about', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(0, 0, 0)'],
 ])(
   'verify if component shows child components correctly (page: %p)',
   (page, color1, color2, color3) => {

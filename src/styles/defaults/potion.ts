@@ -1,4 +1,4 @@
-import { AlphaRange, PageEndPoints } from "../../globals"
+import { AlphaRange, PageEndPoints } from '../../globals'
 
 export type PotionDefaults = {
   [key in PageEndPoints]: {
@@ -8,13 +8,13 @@ export type PotionDefaults = {
 
 const defaults: PotionDefaults = {
   '/': {
-    opacity: 1
+    opacity: 1,
   },
   '/projects': {
-    opacity: 0.1
+    opacity: 0.1,
   },
   '/about': {
-    opacity: 0.1
+    opacity: 0.1,
   },
 }
 

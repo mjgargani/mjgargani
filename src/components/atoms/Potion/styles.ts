@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components'
 
+import defaults from '../../../styles/defaults/potion'
 import animation from '../../../styles/utils/animation'
 import { type PotionProps } from './types'
 
@@ -72,7 +73,6 @@ const shadowAnim = keyframes`
     filter: drop-shadow(0 0 50px rgba(255, 255, 255, .75));
   }
 `
-export const transparencyAlpha = [0.1, 1]
 
 export const Container = styled.div<PotionProps>`
   position: fixed;
@@ -84,11 +84,12 @@ export const Container = styled.div<PotionProps>`
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: ${(props) => (props.transparent ? transparencyAlpha[0] : transparencyAlpha[1])};
+  opacity: ${(props) =>
+    props.transparent ? defaults['/projects'].opacity : defaults['/'].opacity};
   animation: ${(props) =>
         animation.opacity(
-          props.transparent ? transparencyAlpha[1] : transparencyAlpha[0],
-          props.transparent ? transparencyAlpha[0] : transparencyAlpha[1],
+          props.transparent ? defaults['/'].opacity : defaults['/projects'].opacity,
+          props.transparent ? defaults['/projects'].opacity : defaults['/'].opacity,
         )}
       0.75s ease,
     ${shadowAnim} 5s infinite alternate ease-in-out,
