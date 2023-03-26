@@ -25,5 +25,5 @@ export const Container = styled.div<GridContainerProps>`
     grid-row-gap: ${(props) => props.rowGap}%;
   }
 
-  ${props => props.styledCss}
+  ${(props) => props.styledCss}
 `

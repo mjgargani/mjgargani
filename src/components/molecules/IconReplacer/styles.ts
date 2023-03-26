@@ -7,5 +7,5 @@ export const Container = styled.span<Partial<IconReplacerProps>>`
   ${(props) => props.darker && 'filter: brightness(0.8)'};
   vertical-align: middle;
 
-  ${props => props.styledCss}
+  ${(props) => props.styledCss}
 `

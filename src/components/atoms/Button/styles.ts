@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
+
 import defaults from '../../../styles/defaults/button'
 import commonDefaults from '../../../styles/defaults/common'
-
 import animation from '../../../styles/utils/animation'
 import { type ButtonProps } from './types'
 
@@ -9,10 +9,7 @@ const hover = css`
   &:hover {
     cursor: pointer;
     background-color: ${defaults.color.active.bg[2]};
-    animation: ${animation.bg.color(
-      defaults.color.active.bg[1], 
-      defaults.color.active.bg[2])
-    } 0.25s;
+    animation: ${animation.bg.color(defaults.color.active.bg[1], defaults.color.active.bg[2])} 0.25s;
   }
 `
 
@@ -26,22 +23,18 @@ export const Container = styled.button<ButtonProps>`
   cursor: default;
 
   border-radius: ${commonDefaults.border.radius};
-  color: ${(props) => (props.active ? 
-    defaults.color.active.text[0] : 
-    defaults.color.active.text[1])};
-  background-color: ${(props) => (props.active ? 
-    defaults.color.active.bg[0] : 
-    defaults.color.active.bg[1])};
+  color: ${(props) =>
+    props.active ? defaults.color.active.text[0] : defaults.color.active.text[1]};
+  background-color: ${(props) =>
+    props.active ? defaults.color.active.bg[0] : defaults.color.active.bg[1]};
 
   animation: ${(props) =>
       !props.active
-        ? animation.bg.color(
-          defaults.color.active.bg[2], 
-          defaults.color.active.bg[1])
+        ? animation.bg.color(defaults.color.active.bg[2], defaults.color.active.bg[1])
         : 'none'}
     0.25s;
 
-  ${props => !props.active && hover}
+  ${(props) => !props.active && hover}
 
   h2 {
     margin: 0;
@@ -54,5 +47,5 @@ export const Container = styled.button<ButtonProps>`
     margin-right: 0.5vw;
   }
 
-  ${props => props.styledCss}
+  ${(props) => props.styledCss}
 `

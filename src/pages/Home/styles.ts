@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { device } from '../../utils/devices'
 
 export const Container = styled.div`
@@ -18,12 +19,12 @@ export const Container = styled.div`
   color: black !important;
   font-weight: bold !important;
   -webkit-text-stroke-color: white !important;
-  
+
   h1 {
     font-family: 'mjgarganis Lab', sans-serif;
     font-size: calc(2.45vw + 2.45vh);
   }
-  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-width: 0.5px;
   text-shadow: ${[
     '-0.5px  -0.5px 0 #fff',
     '0.5px  0.5px 0 #fff',

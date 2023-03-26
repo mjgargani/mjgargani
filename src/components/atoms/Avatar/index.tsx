@@ -7,7 +7,7 @@ import { type AvatarProps } from './types'
 const Avatar: React.FC<PropsWithChildren<AvatarProps>> = ({
   dataTestId = randomId('avatar'),
   src,
-  styledCss
-}) => <Container data-testid={dataTestId} src={src} styledCss={styledCss}/>
+  styledCss,
+}) => <Container data-testid={dataTestId} src={src} styledCss={styledCss} />
 
 export default Avatar

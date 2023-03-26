@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+
 import { device, size } from '../../utils/devices'
 
 const FontStyles = createGlobalStyle`

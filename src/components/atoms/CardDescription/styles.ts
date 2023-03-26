@@ -8,7 +8,7 @@ const notContent = css`
   transform: translateY(-50%);
 
   p {
-    margin: inherit
+    margin: inherit;
   }
 `
 
@@ -18,15 +18,15 @@ export const InnerContainer = styled.div<Partial<CardDescriptionProps>>`
   margin: inherit;
   font-weight: normal;
 
-  ${props => !!!props.isContent && notContent}
+  ${(props) => !!!props.isContent && notContent}
 `
 
 export const Container = styled.div<CardDescriptionProps>`
   position: relative;
   width: 100%;
-  height: ${props => !!!props.isContent ? 55 : 80}%;
+  height: ${(props) => (!!!props.isContent ? 55 : 80)}%;
   margin: 0;
   padding: 0;
 
-  ${props => props.styledCss}
+  ${(props) => props.styledCss}
 `

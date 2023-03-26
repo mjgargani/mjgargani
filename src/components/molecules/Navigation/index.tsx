@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { css } from 'styled-components'
 
 import { GitHubDataContext } from '../../../context/GitHubData'
-import { device } from '../../../utils/devices'
 import randomId from '../../../utils/randomId'
 import Button from '../../atoms/Button'
 import GridCell from '../../atoms/GridCell'
@@ -29,13 +28,17 @@ const Navigation: React.FC<NavigationProps> = ({
               desktop: [isHome ? '0 50% 50%' : '33.33% 33.33% 33.34%'],
             }}
             templateRows={{
-              mobile: [isHome ? '0 50% 50%' : '33.33% 33.33% 33.34%']
+              mobile: [isHome ? '0 50% 50%' : '33.33% 33.33% 33.34%'],
             }}
             styledCss={css`
               transition: 300ms;
             `}
           >
-            <GridCell styledCss={css`overflow:hidden;`}>
+            <GridCell
+              styledCss={css`
+                overflow: hidden;
+              `}
+            >
               <Hidden>
                 <Button
                   dataTestId={randomId('btn-nav')}

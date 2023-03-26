@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { CommonProps } from '../../../globals'
 
 export const Container = styled.div<CommonProps>`
@@ -29,5 +30,5 @@ export const Container = styled.div<CommonProps>`
     margin: 5px !important;
   }
 
-  ${props => props.styledCss}
+  ${(props) => props.styledCss}
 `

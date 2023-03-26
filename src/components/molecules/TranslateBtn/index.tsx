@@ -6,9 +6,9 @@ import Button from '../../atoms/Button'
 import IconReplacer from '../IconReplacer'
 import { Container } from './styles'
 
-const TranslateBtn: React.FC<CommonProps> = ({ 
+const TranslateBtn: React.FC<CommonProps> = ({
   dataTestId = randomId('translate-btn'),
-  styledCss
+  styledCss,
 }) => {
   return (
     <Container data-testid={dataTestId} styledCss={styledCss}>

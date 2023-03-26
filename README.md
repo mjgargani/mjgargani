@@ -4,6 +4,7 @@
 
 > 🌐 [https://gargani.dev/](https://gargani.dev/)
 
+![latest-version](https://img.shields.io/github/package-json/v/mjgargani/mjgargani) ![action-check](https://github.com/mjgargani/mjgargani/actions/workflows/main.yml/badge.svg)
 ## Descrição / Description
 
 Portfolio desenvolvido com `ReactJS` (`CRA`) + `TypeScript` ([Saiba como](https://create--react--app-dev.translate.goog/docs/adding-typescript/?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt-BR&_x_tr_pto=wapp); [Vantagens](https://www-emizentech-com.translate.goog/blog/react-with-typescript-or-javascript.html?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt-BR&_x_tr_pto=wapp)), no ano de 2023. A aplicação é uma interface que consome e modela recursos da [API do GitHub](https://docs.github.com/pt/rest/guides/getting-started-with-the-rest-api?apiVersion=2022-11-28). 

@@ -43,7 +43,7 @@ export const Shadow = styled.div<FrameProps>`
   pointer-events: none;
   z-index: -1600;
 
-  ${props => props.styledCss}
+  ${(props) => props.styledCss}
 `
 
 export const Tiles = styled.div<Partial<FrameProps>>`
@@ -66,7 +66,7 @@ export const Tiles = styled.div<Partial<FrameProps>>`
   pointer-events: none;
   z-index: -1200;
 
-  ${props => props.styledCss}
+  ${(props) => props.styledCss}
 `
 
 export const Container = styled.div<FrameProps>`
@@ -85,5 +85,5 @@ export const Container = styled.div<FrameProps>`
   z-index: -400;
   transition: unset !important;
 
-  ${props => props.styledCss}
+  ${(props) => props.styledCss}
 `

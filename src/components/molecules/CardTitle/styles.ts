@@ -7,10 +7,10 @@ export const Container = styled.div<CardTitleProps>`
   display: table;
   width: 94%;
   padding: 0 3%;
-  ${props => props.isContent && "margin: 3% 0;" };
-  min-height: ${props => props.isContent ? 20 : 45}%;
+  ${(props) => props.isContent && 'margin: 3% 0;'};
+  min-height: ${(props) => (props.isContent ? 20 : 45)}%;
 
-  ${props => props.styledCss}
+  ${(props) => props.styledCss}
 `
 
 export const Title = styled.h2`

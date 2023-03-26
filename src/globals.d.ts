@@ -1,4 +1,4 @@
-import { FlattenInterpolation, ThemeProps } from "styled-components"
+import { FlattenInterpolation, ThemeProps } from 'styled-components'
 
 type RGB = `rgb(${number} | ${number}, ${number})`
 type RGBA = `rgba(${number}, ${number}, ${number}, ${number})`
@@ -8,7 +8,7 @@ export type Color = RGB | RGBA | HEX
 export type PageEndPoints = '/' | '/projects' | '/about'
 
 export type CommonProps = {
-  dataTestId?: string,
+  dataTestId?: string
   styledCss?: FlattenInterpolation<ThemeProps<any>> | false
 }
 

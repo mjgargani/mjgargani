@@ -30,15 +30,27 @@ const GitHubBtnData = {
   ],
 }
 
-const GitHubButtons: React.FC<CommonProps> = ({ 
+const GitHubButtons: React.FC<CommonProps> = ({
   dataTestId = randomId('github-btns'),
-  styledCss
+  styledCss,
 }) =>
   ['test'].includes(process.env.NODE_ENV!) ? (
     <></>
   ) : (
     <Container data-testid={dataTestId} styledCss={styledCss}>
       <ul>
+        <li>
+          <a
+            href='https://github.com/mjgargani/mjgargani/releases'
+            target='_blank'
+            rel='noreferrer'
+          >
+            <img
+              src='https://img.shields.io/github/package-json/v/mjgargani/mjgargani'
+              alt='Latest release'
+            />
+          </a>
+        </li>
         {GitHubBtnData.specific.map((el, i) => {
           const props = {
             'aria-label': el['aria-label'],

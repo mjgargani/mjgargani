@@ -1,5 +1,3 @@
-import type React from 'react'
-
 import { type CommonProps, PageEndPoints } from '../../../globals'
 
 export type FrameProps = {

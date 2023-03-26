@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { CommonProps } from '../../../globals'
 import { device } from '../../../utils/devices'
 
@@ -21,10 +22,10 @@ export const Container = styled.div<CommonProps>`
     font-size: 100%;
   }
   @media ${device.tablet} {
-    p{
+    p {
       font-size: 75%;
     }
   }
 
-  ${props => props.styledCss}
+  ${(props) => props.styledCss}
 `

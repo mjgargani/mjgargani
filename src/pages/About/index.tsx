@@ -22,7 +22,7 @@ const About: React.FC<PageProps> = ({ dataTestId = randomId('page-about'), show 
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
   useEffect(() => {
-    if(!isLoaded){
+    if (!isLoaded) {
       imgLoader([profile?.avatar_url!, QrCodePadrim], () => setIsLoaded(true))
     }
   }, [profile, isLoaded])
@@ -43,7 +43,7 @@ const About: React.FC<PageProps> = ({ dataTestId = randomId('page-about'), show 
           `}
         >
           <GridCell>
-            <div style={{ width: "100%", height: "100%" }}>
+            <div style={{ width: '100%', height: '100%' }}>
               <Card
                 dataTestId={randomId('card-about')}
                 title={`Olá! Sou ${profile?.name}`}
@@ -58,19 +58,18 @@ const About: React.FC<PageProps> = ({ dataTestId = randomId('page-about'), show 
                   columnGap={2}
                 >
                   <GridCell
-                    styledCss={css`z-index: 2000;`}
+                    styledCss={css`
+                      z-index: 2000;
+                    `}
                   >
-                    <Avatar
-                      dataTestId={randomId('card-about-avatar')}
-                      src={profile?.avatar_url!}
-                    />
+                    <Avatar dataTestId={randomId('card-about-avatar')} src={profile?.avatar_url!} />
                   </GridCell>
                   <GridCell
                     dataTestId={randomId('card-about-bio')}
                     styledCss={css`
                       position: relative;
-                      background-color: rgb(0, 0, 0, .05);
-                      border-radius: calc(.5vw + .5vh);
+                      background-color: rgb(0, 0, 0, 0.05);
+                      border-radius: calc(0.5vw + 0.5vh);
                       text-align: justify;
                       line-height: 150%;
                       padding: 0 1.5vw;
@@ -80,25 +79,27 @@ const About: React.FC<PageProps> = ({ dataTestId = randomId('page-about'), show 
                     {mdParser(profile?.bio || '')}
                   </GridCell>
                 </GridContainer>
-                <GridContainer 
-                  styledCss={css`margin-top: 2%;`}
+                <GridContainer
+                  styledCss={css`
+                    margin-top: 2%;
+                  `}
                 >
-                  <GridCell 
+                  <GridCell
                     dataTestId={randomId('card-about-contacts')}
                     styledCss={css`
                       z-index: 2000;
                       ul {
                         list-style: none;
-                        margin: .25vh 0 0 0;
+                        margin: 0.25vh 0 0 0;
                         padding: 0;
                         text-align: center;
                       }
                       li {
                         display: inline;
-                        border-radius: .25vw;
-                        background-color: rgba(255,255,255,.35);
-                        padding: .25vw;
-                        margin: 0 .25vw;
+                        border-radius: 0.25vw;
+                        background-color: rgba(255, 255, 255, 0.35);
+                        padding: 0.25vw;
+                        margin: 0 0.25vw;
                         font-size: 110%;
                       }
                     `}
@@ -129,27 +130,29 @@ const About: React.FC<PageProps> = ({ dataTestId = randomId('page-about'), show 
                     </ul>
                   </GridCell>
                 </GridContainer>
-                <GridContainer 
-                  dataTestId={randomId('card-about-desc')}
-                >
-                  <GridCell styledCss={css`
-                    z-index: 2000;
-                    p {
-                      text-align: center;
-                      font-size: 120%;
-                    }
-                    @media ${device.tablet} {
+                <GridContainer dataTestId={randomId('card-about-desc')}>
+                  <GridCell
+                    styledCss={css`
+                      z-index: 2000;
                       p {
-                        font-size: 90%;
+                        text-align: center;
+                        font-size: 120%;
                       }
-                    }
-                  `}>
+                      @media ${device.tablet} {
+                        p {
+                          font-size: 90%;
+                        }
+                      }
+                    `}
+                  >
                     <p>
-                      <span style={{
-                        borderRadius: ".25vw",
-                        backgroundColor: "rgba(255,255,255,.35)",
-                        padding: ".25vw"
-                      }}>
+                      <span
+                        style={{
+                          borderRadius: '.25vw',
+                          backgroundColor: 'rgba(255,255,255,.35)',
+                          padding: '.25vw',
+                        }}
+                      >
                         🪙 Você contribui com meu trabalho divulgando-o e/ou sendo{' '}
                         <a
                           href='https://www.padrim.com.br/mjgargani'
@@ -171,7 +174,9 @@ const About: React.FC<PageProps> = ({ dataTestId = randomId('page-about'), show 
             <GridCell
               dataTestId={randomId('img-qr-code-padrim')}
               bgImg={{ source: QrCodePadrim, size: 'contain' }}
-              styledCss={css`min-height: 100%;`}
+              styledCss={css`
+                min-height: 100%;
+              `}
             />
           </a>
         </GridContainer>

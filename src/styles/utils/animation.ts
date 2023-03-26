@@ -1,6 +1,6 @@
 import { keyframes } from 'styled-components'
 
-import { Color } from '../../globals'
+import { Angle, Color } from '../../globals'
 
 const opacity = (from: number, to: number) => keyframes`
   from{
@@ -31,9 +31,19 @@ const bg = {
   position: bgPosition,
 }
 
+const rotate = (from: Angle, to: Angle) => keyframes`
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+`
+
 const animation = {
   opacity,
   bg,
+  rotate,
 }
 
 export default animation

@@ -1,14 +1,14 @@
 import styled, { css } from 'styled-components'
-import animation from '../../../styles/utils/animation'
 
+import animation from '../../../styles/utils/animation'
 import { device } from '../../../utils/devices'
 import { type CardProps } from './types'
 
 const opacity = css`
   opacity: 0.7;
-  animation: ${animation.opacity(1, 0.7)} .25s ease;
+  animation: ${animation.opacity(1, 0.7)} 0.25s ease;
   &:hover {
-    animation: ${animation.opacity(0.7, 1)} .25s ease;
+    animation: ${animation.opacity(0.7, 1)} 0.25s ease;
     opacity: 1;
   }
 `
@@ -56,21 +56,21 @@ export const Container = styled.div<CardProps>`
 
   width: 100%;
   opacity: 1;
-  ${(props) => (!props.isContent && defaultSize)}
+  ${(props) => !props.isContent && defaultSize}
 
   @media ${device.tablet} {
-    ${props => !props.isContent && opacity}
+    ${(props) => !props.isContent && opacity}
   }
-  @media  ${device.tablet} and (orientation: landscape) {
+  @media ${device.tablet} and (orientation: landscape) {
     min-height: 35vh;
-    ${(props) => (props.isContent && contentSize)}
+    ${(props) => props.isContent && contentSize}
   }
-  @media  ${device.tablet} and (orientation: portrait) {
+  @media ${device.tablet} and (orientation: portrait) {
     min-height: 25vh;
-    ${(props) => (props.isContent && contentSize)}
+    ${(props) => props.isContent && contentSize}
   }
 
-  ${props => props.styledCss}
+  ${(props) => props.styledCss}
 `
 
 export const ContainerTop = styled.div<Partial<CardProps>>`
