@@ -1,4 +1,3 @@
-import type React from 'react'
 import { type CommonProps } from '../../../globals'
 
 export type GridContainerProps = {
@@ -12,5 +11,4 @@ export type GridContainerProps = {
   }
   columnGap?: number
   rowGap?: number
-  style?: React.CSSProperties
 } & CommonProps

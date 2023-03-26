@@ -1,63 +1,33 @@
-import styled, { css, keyframes } from 'styled-components'
+import styled from 'styled-components'
+
+import animation from '../../../styles/utils/animation'
 import { device } from '../../../utils/devices'
 import { NavigationProps } from './types'
 
-const fontSizeBase = 4
-
-export const Show = styled.div<Partial<NavigationProps>>`
+export const Hidden = styled.div<Partial<NavigationProps>>`
+  height: 100%;
+  width: 100%;
+  overflow: inherit;
   margin: 0;
   padding: 0;
-  transform: scale(${(props) => (props.isHome ? 0 : 1)});
-  min-height: 4vh;
-  overflow: hidden;
-`
-
-const horizontalResize = (isHome: boolean) => css`
-  width: ${isHome ? 50 : 75}%;
-  margin: 0 ${isHome ? 25 : 12.5}%;
-`
-
-const opacityTransition = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 `
 
 export const Container = styled.div<Partial<NavigationProps>>`
   position: absolute;
-  width: 80%;
-  margin: 0 10%;
-  bottom: 0;
+  overflow: hidden;
+  transition: 300ms;
   text-align: center;
-  animation: ${opacityTransition} 0.5s ease;
+  animation: ${animation.opacity(0, 1)} 0.5s ease;
 
-  font-size: ${fontSizeBase}vw;
-  @media ${device.mobileS} {
-    font-size: ${fontSizeBase - 0.5}vw;
-  }
-  @media ${device.mobileM} {
-    font-size: ${fontSizeBase - 1}vw;
-  }
-  @media ${device.mobileL} {
-    font-size: ${fontSizeBase - 1.5}vw;
-  }
+  height: ${(props) => (!props.isHome ? 80 : 50)}%;
+  width: 100%;
+  bottom: ${(props) => (props.isHome ? 12.5 : 0)}%;
   @media ${device.tablet} {
-    font-size: ${fontSizeBase - 1.7}vw;
-    ${(props) => horizontalResize(props.isHome!)}
+    height: 60%;
+    width: ${(props) => (!props.isHome ? 100 : 66.66)}%;
+    ${(props) => props.isHome && 'margin-left: 16.67%;'}
+    bottom: 0;
   }
-  @media ${device.laptop} {
-    font-size: ${fontSizeBase - 2}vw;
-  }
-  @media ${device.laptopL} {
-    font-size: ${fontSizeBase - 2.5}vw;
-  }
-  @media ${device.desktop} {
-    font-size: ${fontSizeBase - 3}vw;
-  }
-  @media ${device.desktopL} {
-    font-size: ${fontSizeBase - 3.5}vw;
-  }
+
+  ${(props) => props.styledCss}
 `

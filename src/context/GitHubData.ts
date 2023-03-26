@@ -1,6 +1,7 @@
 import { createContext, useCallback, useEffect, useState } from 'react'
-import { type GitHubData, type GitHubProfile, type GitHubRepoItem } from './types'
+
 import { pinnedRepos } from '../utils/fetch'
+import { type GitHubData, type GitHubProfile, type GitHubRepoItem } from './types'
 
 export const GitHubDataContext = createContext<Partial<GitHubData>>({})
 

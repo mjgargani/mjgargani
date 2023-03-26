@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+
 import { type CardThumbnailProps } from './types'
 
 const badgeBackground = css`
@@ -61,4 +62,6 @@ export const Container = styled.div<CardThumbnailProps>`
   background-repeat: no-repeat;
   border-radius: 5px 5px 0 0;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.25);
+
+  ${(props) => props.styledCss}
 `

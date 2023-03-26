@@ -1,9 +1,10 @@
-import { render, screen, cleanup, fireEvent, waitFor } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { BrowserRouter } from 'react-router-dom'
+
 import App from '../../App'
-import { server } from '../mock/server'
 import profile from '../mock/profile.json'
 import repos from '../mock/repos.json'
-import { BrowserRouter } from 'react-router-dom'
+import { server } from '../mock/server'
 
 beforeAll(() => {
   server.listen()

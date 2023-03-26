@@ -1,4 +1,5 @@
-import { render, screen, cleanup } from '@testing-library/react'
+import { cleanup, render, screen } from '@testing-library/react'
+
 import Avatar from '../../components/atoms/Avatar'
 import profile from '../mock/profile.json'
 

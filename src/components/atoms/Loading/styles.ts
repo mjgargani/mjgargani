@@ -1,24 +1,8 @@
-import styled, { css, keyframes } from 'styled-components'
+import styled, { css } from 'styled-components'
+
+import animation from '../../../styles/utils/animation'
 import { device } from '../../../utils/devices'
 import { LoadingProps } from './types'
-
-const potionRotate = keyframes`
-  from{
-    transform: rotate(0deg);
-  }
-  to{
-    transform: rotate(360deg);
-  }
-`
-
-const opacityTransition = keyframes`
-  from{
-    opacity: 0;
-  }
-  to{
-    opacity: 1;
-  }
-`
 
 const card = css`
   position: absolute !important;
@@ -26,15 +10,12 @@ const card = css`
   width: 100% !important;
   background-color: unset !important;
   border-radius: unset !important;
-  font-size: 3vh !important;
-  @media ${device.tablet} {
-    font-size: 2.5vw !important;
-  }
 `
 
 export const Potion = styled.div`
   font-family: 'mjgarganis Lab', Sans-Serif;
-  animation: ${potionRotate} 1s infinite linear;
+  font-size: 400%;
+  animation: ${animation.rotate(0, 359)} 1s infinite linear;
   margin: 0;
   padding: 0;
 `
@@ -44,10 +25,8 @@ export const Container = styled.div<LoadingProps>`
   opacity: 0.5;
   text-align: center;
   width: 15%;
-  font-size: 6vh;
   @media ${device.tablet} {
     width: 5%;
-    font-size: 4vw;
   }
   height: min-content;
   top: 50%;
@@ -59,5 +38,7 @@ export const Container = styled.div<LoadingProps>`
   color: white;
   border-radius: 5px;
   ${(props) => props.isCard && card}
-  animation: ${opacityTransition} 2s ease alternate infinite;
+  animation: ${animation.opacity(0, 1)} 2s ease alternate infinite;
+
+  ${(props) => props.styledCss}
 `

@@ -1,19 +1,13 @@
-import styled, { keyframes } from 'styled-components'
-import { type PageProps } from './types'
+import styled from 'styled-components'
 
-const opacityTransition = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-`
+import animation from '../../../styles/utils/animation'
+import { type PageProps } from './types'
 
 export const Container = styled.div<PageProps>`
   display: ${(props) => (props.show! ? 'block' : 'none')};
   min-height: 100%;
-  width: 80%;
-  margin: 0 10%;
-  animation: ${opacityTransition} 0.5s ease;
+  width: 100%;
+  animation: ${animation.opacity(0, 1)} 0.5s ease;
+
+  ${(props) => props.styledCss}
 `

@@ -1,31 +1,29 @@
-import styled, { css, keyframes } from 'styled-components'
-import { device, size } from '../../../utils/devices'
+import styled, { css } from 'styled-components'
+
+import animation from '../../../styles/utils/animation'
+import { device } from '../../../utils/devices'
 import { type CardProps } from './types'
 
 const opacity = css`
   opacity: 0.7;
+  animation: ${animation.opacity(1, 0.7)} 0.25s ease;
   &:hover {
+    animation: ${animation.opacity(0.7, 1)} 0.25s ease;
     opacity: 1;
   }
 `
 
-const opacityTransition = (from?: number, to?: number) => keyframes`
-  from {
-    opacity: ${from || 0};
-  }
-  to {
-    opacity: ${to || 1};
-  }
-`
-
 const contentSize = css`
-  position: absolute;
-  max-width: 68.5%;
   top: 50%;
   transform: translateY(-50%);
   height: unset !important;
   min-height: unset !important;
   width: inherit !important;
+`
+
+const defaultSize = css`
+  height: 100%;
+  min-height: 32vh;
 `
 
 export const InnerContent = styled.div`
@@ -35,10 +33,14 @@ export const InnerContent = styled.div`
   padding: inherit;
   width: inherit;
   height: 100%;
-  animation: ${opacityTransition()} 0.5s ease;
+`
+
+const loadingAnimation = css`
+  animation: ${animation.opacity(0.25, 0.35)} 0.5s ease alternate infinite !important;
 `
 
 export const Container = styled.div<CardProps>`
+  position: relative;
   overflow: hidden;
 
   border-style: none;
@@ -50,40 +52,25 @@ export const Container = styled.div<CardProps>`
   -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.25);
   box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.25);
   cursor: ${(props) => (props.isContent ? 'default' : 'pointer')};
-  animation: ${(props) => (props.isLoading ? opacityTransition(0.25, 0.35) : 'none')} 0.5s ease
-    alternate infinite;
+  ${(props) => !!props.isLoading && loadingAnimation};
 
-  height: 100%;
-  min-height: 33vh;
+  width: 100%;
   opacity: 1;
-  @media ${device.mobileS} {
-    min-height: 31vh;
-  }
-  @media ${device.mobileM} {
-    min-height: 29vh;
-  }
-  @media ${device.mobileL} {
-    min-height: 30vh;
-  }
+  ${(props) => !props.isContent && defaultSize}
+
   @media ${device.tablet} {
+    ${(props) => !props.isContent && opacity}
+  }
+  @media ${device.tablet} and (orientation: landscape) {
     min-height: 35vh;
-    ${(props) => (!props.isContent ? opacity : contentSize)}
+    ${(props) => props.isContent && contentSize}
   }
-  @media (max-width: ${size.laptop}px) and (min-height: ${size.laptop}px) {
-    min-height: 25vh !important;
+  @media ${device.tablet} and (orientation: portrait) {
+    min-height: 25vh;
+    ${(props) => props.isContent && contentSize}
   }
-  @media ${device.laptop} {
-    min-height: 45vh;
-  }
-  @media ${device.laptopL} {
-    min-height: 50vh;
-  }
-  @media ${device.desktop} {
-    min-height: 45vh;
-  }
-  @media ${device.desktopL} {
-    min-height: 40vh;
-  }
+
+  ${(props) => props.styledCss}
 `
 
 export const ContainerTop = styled.div<Partial<CardProps>>`

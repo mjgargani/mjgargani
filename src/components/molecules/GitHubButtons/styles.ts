@@ -1,22 +1,43 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+import { CommonProps } from '../../../globals'
+import { device } from '../../../utils/devices'
+
+export const Container = styled.div<CommonProps>`
   position: fixed;
-  top: 0;
+  top: 0.5vh;
   right: 0;
+  width: max-content;
 
-  margin: 0;
-  padding: 0;
-
-  ul {
-    margin: 0;
-    padding: 0;
-    margin: 0.5vh 0.25vw 0 0;
+  * {
+    all: unset !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
+
   li {
-    display: inline;
-    list-style: none;
-    margin: 0 0 0 0.5vw;
-    padding: 0;
+    display: inline !important;
+    list-style: none !important;
+    margin-right: 0.5vw !important;
+    cursor: pointer !important;
   }
+
+  transform: scale(0.5) translate(49%, -45%);
+  @media ${device.mobileL} {
+    transform: scale(0.75) translate(17%, -20%);
+  }
+  @media ${device.tablet} {
+    transform: unset;
+  }
+  @media ${device.laptopL} {
+    transform: scale(1.125) translate(-2%, 6%);
+  }
+  @media ${device.desktop} {
+    transform: scale(1.25) translate(-5%, -10%);
+  }
+  @media ${device.desktopL} {
+    transform: scale(1.5) translate(-10%, -15%);
+  }
+
+  ${(props) => props.styledCss}
 `

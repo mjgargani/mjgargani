@@ -1,7 +1,8 @@
 import styled from 'styled-components'
-import { device } from '../../../utils/devices'
 
-export const Container = styled.div`
+import { CommonProps } from '../../../globals'
+
+export const Container = styled.div<CommonProps>`
   position: fixed;
   top: 0;
   left: 0;
@@ -17,12 +18,6 @@ export const Container = styled.div`
     max-height: min-content !important;
     max-width: min-content !important;
   }
-  h1 {
-    font-size: 1.4vh !important;
-    @media ${device.tablet} {
-      font-size: 0.7vw !important;
-    }
-  }
   a,
   button,
   h1,
@@ -34,4 +29,6 @@ export const Container = styled.div`
   svg {
     margin: 5px !important;
   }
+
+  ${(props) => props.styledCss}
 `

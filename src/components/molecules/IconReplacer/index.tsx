@@ -1,24 +1,24 @@
-import { FaArchive } from 'react-icons/fa'
-import { SiPhp, SiJest } from 'react-icons/si'
+import { AiFillStar } from 'react-icons/ai'
+import { AiFillEye } from 'react-icons/ai'
+import { BsGithub } from 'react-icons/bs'
+import { BsPinFill } from 'react-icons/bs'
 import { DiWordpress } from 'react-icons/di'
+import { FaArchive } from 'react-icons/fa'
+import { FaLinkedin } from 'react-icons/fa'
+import { GiHeartOrgan } from 'react-icons/gi'
 import { IoLogoNodejs } from 'react-icons/io'
+import { MdEmail } from 'react-icons/md'
+import { MdGTranslate } from 'react-icons/md'
+import { MdFiberNew } from 'react-icons/md'
 import { RiReactjsLine } from 'react-icons/ri'
+import { SiJest, SiPhp } from 'react-icons/si'
 import { SiSocketdotio } from 'react-icons/si'
 import { SiTypescript } from 'react-icons/si'
 import { SiStyledcomponents } from 'react-icons/si'
-import { GiHeartOrgan } from 'react-icons/gi'
-import { FaLinkedin } from 'react-icons/fa'
-import { MdEmail } from 'react-icons/md'
-import { BsGithub } from 'react-icons/bs'
-import { MdGTranslate } from 'react-icons/md'
-import { MdFiberNew } from 'react-icons/md'
-import { BsPinFill } from 'react-icons/bs'
-import { AiFillStar } from 'react-icons/ai'
-import { AiFillEye } from 'react-icons/ai'
 
-import { type IconList, type IconReplacerProps } from './types'
+import randomId from '../../../utils/randomId'
 import { Container } from './styles'
-import { testIdName } from '../../../utils/testIdName'
+import { type IconList, type IconReplacerProps } from './types'
 
 const icons: IconList = {
   new: ['#e6ff82', <MdFiberNew title='Novo!' />],
@@ -42,22 +42,22 @@ const icons: IconList = {
 }
 
 const IconReplacer: React.FC<IconReplacerProps> = ({
-  dataTestId = testIdName('icon-replacer'),
+  dataTestId = randomId('icon-replacer'),
   text,
   darker = false,
-  style,
+  styledCss,
 }) => (
-  <Container data-testid={dataTestId} darker={darker} style={style}>
+  <Container data-testid={dataTestId} darker={darker} styledCss={styledCss}>
     {Object.entries(icons).map((entry, i) => {
       if (text.includes(entry[0])) {
         return (
           <span
-            data-testid={testIdName(`icon-${entry[0]}`)}
+            data-testid={randomId(`icon-${entry[0]}`)}
             style={{
               color: entry[1][0],
               padding: '0 5px',
             }}
-            key={i}
+            key={randomId(`icon-item-${entry[0]}`, true)}
           >
             {entry[1][1]}
           </span>

@@ -1,4 +1,3 @@
-import type React from 'react'
 import { type CommonProps } from '../../../globals'
 
 export type GridCellProps = {
@@ -7,5 +6,4 @@ export type GridCellProps = {
     size?: 'contain' | 'cover'
   }
   area?: Array<number | string>
-  style?: React.CSSProperties
 } & CommonProps

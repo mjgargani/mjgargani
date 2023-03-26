@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { device } from './utils/devices'
 
 interface ContainerBaseProps {
@@ -11,11 +12,11 @@ export const ContainerBase = styled.div<ContainerBaseProps>`
   ${(props) => props.isLoading && 'cursor: wait;'}
 
   height: 100%;
-  width: 95%;
-  margin: 0 2.5%;
+  width: 80%;
+  margin: 0 10%;
   @media ${device.tablet} {
-    width: 90%;
-    margin: 0 5%;
+    width: 70%;
+    margin: 0 15%;
   }
 `
 
@@ -35,10 +36,10 @@ export const ContainerPage = styled.div`
   position: relative;
   width: 100%;
 
-  height: 70%;
-  /* @media ${device.tablet} {
-    height: 70%;
-  } */
+  height: 68%;
+  @media ${device.tablet} {
+    height: 65%;
+  }
 `
 
 export const ContainerNavigation = styled.div`
@@ -46,9 +47,9 @@ export const ContainerNavigation = styled.div`
   position: relative;
   width: 100%;
 
-  height: 20%;
+  height: 22%;
   @media ${device.tablet} {
-    height: 10%;
+    height: 15%;
   }
 `
 

@@ -1,4 +1,5 @@
-import { render, screen, cleanup } from '@testing-library/react'
+import { cleanup, render, screen } from '@testing-library/react'
+
 import CardThumbnail from '../../components/atoms/CardThumbnail'
 import { GitHubRepoItem } from '../../context/types'
 import repos from '../mock/repos.json'

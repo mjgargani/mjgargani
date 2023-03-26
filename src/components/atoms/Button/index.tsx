@@ -1,22 +1,22 @@
 import React, { type PropsWithChildren } from 'react'
-import { testIdName } from '../../../utils/testIdName'
 
+import randomId from '../../../utils/randomId'
 import { Container } from './styles'
 import { type ButtonProps } from './types'
 
 const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
-  dataTestId = testIdName('button'),
+  dataTestId = randomId('button'),
   active = false,
   onClick,
   icon,
-  style,
+  styledCss,
   children,
 }) => (
-  <Container data-testid={dataTestId} onClick={onClick} active={active} style={style}>
-    <h1>
+  <Container data-testid={dataTestId} onClick={onClick} active={active} styledCss={styledCss}>
+    <h2>
       <span>{icon}</span>
       {children}
-    </h1>
+    </h2>
   </Container>
 )
 

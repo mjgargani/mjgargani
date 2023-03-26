@@ -1,23 +1,39 @@
-import React, { useContext } from 'react'
-import Potion from '../../atoms/Potion'
-import { Tiles, Shadow, Container } from './styles'
-import { type FrameProps } from './types'
-import { testIdName } from '../../../utils/testIdName'
+import React, { useContext, useEffect, useMemo, useState } from 'react'
+
 import { GitHubDataContext } from '../../../context/GitHubData'
+import bgMov from '../../../styles/utils/bgMov'
+import randomId from '../../../utils/randomId'
+import Potion from '../../atoms/Potion'
+import { Container, Shadow, Tiles } from './styles'
+import { type FrameProps } from './types'
 
 const Frame: React.FC<FrameProps> = ({
-  dataTestId = testIdName('frame'),
-  style,
+  dataTestId = randomId('frame'),
+  styledCss,
   page,
-  prevPage = 0,
+  prevPage,
 }) => {
+  const [showPotion, setShowPotion] = useState<boolean>(false)
   const { loading } = useContext(GitHubDataContext)
-  return (
-    <Container data-testid={dataTestId} style={style} page={page}>
-      <Tiles data-testid={testIdName('frame-tiles')} />
-      <Shadow data-testid={testIdName('frame-shadow')} page={page} prevPage={prevPage} />
-      <Potion data-testid={testIdName('frame-potion')} transparent={loading || page !== 0} />
+  const calcBgMov = useMemo(bgMov, [])
+
+  useEffect(() => {
+    if (!!!loading && !showPotion) {
+      const timeout = setTimeout(() => {
+        setShowPotion(true)
+        clearTimeout(timeout)
+      }, 750)
+    }
+  }, [loading, showPotion])
+
+  return calcBgMov ? (
+    <Container data-testid={dataTestId} styledCss={styledCss} page={page} bgMov={calcBgMov}>
+      <Tiles data-testid={randomId('frame-tiles')} bgMov={calcBgMov} />
+      <Shadow data-testid={randomId('frame-shadow')} page={page} prevPage={prevPage || '/'} />
+      {showPotion && <Potion transparent={page !== '/'} />}
     </Container>
+  ) : (
+    <></>
   )
 }
 

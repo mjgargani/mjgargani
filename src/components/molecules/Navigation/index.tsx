@@ -1,17 +1,20 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { css } from 'styled-components'
+
 import { GitHubDataContext } from '../../../context/GitHubData'
-import { testIdName } from '../../../utils/testIdName'
+import randomId from '../../../utils/randomId'
 import Button from '../../atoms/Button'
 import GridCell from '../../atoms/GridCell'
 import GridContainer from '../../atoms/GridContainer'
-import { Container, Show } from './styles'
+import { Container, Hidden } from './styles'
 import { type NavigationProps } from './types'
 
 const Navigation: React.FC<NavigationProps> = ({
-  dataTestId = testIdName('navigation'),
+  dataTestId = randomId('navigation'),
   isHome,
   page,
+  styledCss,
 }) => {
   const { loading } = useContext(GitHubDataContext)
   const navigate = useNavigate()
@@ -19,18 +22,26 @@ const Navigation: React.FC<NavigationProps> = ({
   return (
     <>
       {!loading && (
-        <Container data-testid={dataTestId} isHome={isHome}>
+        <Container data-testid={dataTestId} isHome={isHome} styledCss={styledCss}>
           <GridContainer
             templateColumns={{
-              desktop: [isHome ? '0 repeat(2, 1fr)' : 'repeat(3, 1fr)'],
+              desktop: [isHome ? '0 50% 50%' : '33.33% 33.33% 33.34%'],
             }}
-            columnGap={2}
-            rowGap={1}
+            templateRows={{
+              mobile: [isHome ? '0 50% 50%' : '33.33% 33.33% 33.34%'],
+            }}
+            styledCss={css`
+              transition: 300ms;
+            `}
           >
-            <Show isHome={isHome}>
-              <GridCell>
+            <GridCell
+              styledCss={css`
+                overflow: hidden;
+              `}
+            >
+              <Hidden>
                 <Button
-                  dataTestId={testIdName('btn-nav')}
+                  dataTestId={randomId('btn-nav')}
                   active={isHome}
                   onClick={() => {
                     navigate('')
@@ -39,12 +50,12 @@ const Navigation: React.FC<NavigationProps> = ({
                 >
                   Início
                 </Button>
-              </GridCell>
-            </Show>
+              </Hidden>
+            </GridCell>
             <GridCell>
               <Button
-                dataTestId={testIdName('btn-nav')}
-                active={page === 1}
+                dataTestId={randomId('btn-nav')}
+                active={page === '/projects'}
                 onClick={() => {
                   navigate('projects')
                 }}
@@ -55,8 +66,8 @@ const Navigation: React.FC<NavigationProps> = ({
             </GridCell>
             <GridCell>
               <Button
-                dataTestId={testIdName('btn-nav')}
-                active={page === 2}
+                dataTestId={randomId('btn-nav')}
+                active={page === '/about'}
                 onClick={() => {
                   navigate('about')
                 }}

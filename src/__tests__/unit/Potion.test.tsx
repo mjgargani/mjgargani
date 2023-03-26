@@ -1,17 +1,25 @@
-import { render, screen, cleanup } from '@testing-library/react'
-import Potion from '../../components/atoms/Potion'
-import { transparencyAlpha } from '../../components/atoms/Potion/styles'
+import { cleanup, render, screen } from '@testing-library/react'
+
 import potionImg from '../../assets/potion.png'
+import Potion from '../../components/atoms/Potion'
+import { PageEndPoints } from '../../globals'
+import defaults from '../../styles/defaults/potion'
 
 afterEach(cleanup)
 
-test('verify if component receives the `transparent` prop correctly', async () => {
-  const currentDataTestId = 'potion__rtl'
+test.each([
+  [false, '/'],
+  [true, '/projects'],
+])(
+  'verify if component receives the `transparent` prop correctly (value: %p)',
+  async (transparent, page) => {
+    const currentDataTestId = 'potion__rtl'
 
-  render(<Potion src={potionImg} dataTestId={currentDataTestId} transparent={true} />)
+    render(<Potion src={potionImg} dataTestId={currentDataTestId} transparent={transparent} />)
 
-  const potion = await screen.findByTestId(currentDataTestId)
+    const potion = await screen.findByTestId(currentDataTestId)
 
-  expect(potion).toBeInTheDocument()
-  expect(potion).toHaveStyle(`opacity: ${transparencyAlpha[0]}`)
-})
+    expect(potion).toBeInTheDocument()
+    expect(potion).toHaveStyle(`opacity: ${defaults[page as PageEndPoints].opacity}`)
+  },
+)

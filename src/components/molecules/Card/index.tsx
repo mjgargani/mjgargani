@@ -1,21 +1,21 @@
 import React, { type PropsWithChildren } from 'react'
 
+import randomId from '../../../utils/randomId'
+import CardDescription from '../../atoms/CardDescription'
+import CardThumbnail from '../../atoms/CardThumbnail'
+import Loading from '../../atoms/Loading'
+import CardTitle from '../CardTitle'
 import { Container, ContainerBottom, ContainerTop, InnerContent } from './styles'
 import { type CardProps } from './types'
-import CardDescription from '../../atoms/CardDescription'
-import CardTitle from '../CardTitle'
-import CardThumbnail from '../../atoms/CardThumbnail'
-import { testIdName } from '../../../utils/testIdName'
-import Loading from '../../atoms/Loading'
 
 const Card: React.FC<PropsWithChildren<CardProps>> = ({
-  dataTestId = testIdName('card'),
+  dataTestId = randomId('card'),
   bgImg,
   url,
   title = '',
   isContent = false,
   isLoading = false,
-  style,
+  styledCss,
   children,
 }) => {
   const cardContent = (isLoading: boolean) => (
@@ -36,10 +36,15 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
   )
 
   return (
-    <Container data-testid={dataTestId} isContent={isContent} isLoading={isLoading} style={style}>
+    <Container
+      data-testid={dataTestId}
+      isContent={isContent}
+      isLoading={isLoading}
+      styledCss={styledCss}
+    >
       {url ? (
         <a
-          data-testid={testIdName('card-link')}
+          data-testid={randomId('card-link')}
           className='card-link'
           href={url}
           target='_blank'

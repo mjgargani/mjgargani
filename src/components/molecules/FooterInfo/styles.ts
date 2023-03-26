@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+import { CommonProps } from '../../../globals'
+import { device } from '../../../utils/devices'
+
+export const Container = styled.div<CommonProps>`
   position: absolute;
   width: inherit;
   bottom: 0;
@@ -16,5 +19,13 @@ export const Container = styled.div`
     margin: 0;
     margin-bottom: 0.5vh;
     text-align: center;
+    font-size: 100%;
   }
+  @media ${device.tablet} {
+    p {
+      font-size: 75%;
+    }
+  }
+
+  ${(props) => props.styledCss}
 `
