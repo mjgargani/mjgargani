@@ -15,9 +15,9 @@ test('verify if component shows child components correctly', async () => {
   const frame = screen.getByTestId(currentDataTestId)
   const tiles = screen.getByTestId(/^frame-tiles_\d+/)
   const shadow = screen.getByTestId(/^frame-shadow_\d+/)
-  
-  let potion;
-  await waitFor(async () => potion = await screen.findByTestId(/^potion_\d+/), { timeout: 5000 })
+
+  let potion
+  await waitFor(async () => (potion = await screen.findByTestId(/^potion_\d+/)), { timeout: 5000 })
 
   expect(frame).toBeInTheDocument()
   expect(tiles).toBeInTheDocument()
@@ -38,8 +38,10 @@ test.each(['/', '/projects', '/about'])(
 
     const shadow = screen.getByTestId(/^frame-shadow_\d+/)
 
-    let potion;
-    await waitFor(async () => potion = await screen.findByTestId(/^potion_\d+/), { timeout: 5000 })
+    let potion
+    await waitFor(async () => (potion = await screen.findByTestId(/^potion_\d+/)), {
+      timeout: 5000,
+    })
 
     expect(frame).toHaveStyle(
       `background: linear-gradient(315deg, ${frameDefaults[currentPage].color.join(', ')});`,
