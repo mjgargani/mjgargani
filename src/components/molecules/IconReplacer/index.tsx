@@ -57,7 +57,7 @@ const IconReplacer: React.FC<IconReplacerProps> = ({
               color: entry[1][0],
               padding: '0 5px',
             }}
-            key={randomId('icon-item', true)}
+            key={randomId(`icon-item-${entry[0]}`, true)}
           >
             {entry[1][1]}
           </span>

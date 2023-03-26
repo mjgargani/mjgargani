@@ -31,6 +31,7 @@ const card = css`
 
 export const Potion = styled.div`
   font-family: 'mjgarganis Lab', Sans-Serif;
+  font-size: 400%;
   animation: ${potionRotate} 1s infinite linear;
   margin: 0;
   padding: 0;

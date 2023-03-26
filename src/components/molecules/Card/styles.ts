@@ -36,7 +36,7 @@ export const InnerContent = styled.div`
 `
 
 const loadingAnimation = css`
-  animation: ${animation.opacity(0.25, 0.35)} 0.5s ease alternate infinite;
+  animation: ${animation.opacity(0.25, 0.35)} 0.5s ease alternate infinite !important;
 `
 
 export const Container = styled.div<CardProps>`
