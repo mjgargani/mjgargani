@@ -5,6 +5,10 @@ echo "Running linter, format and tests before commit"
 
 git stash -q --keep-index
 
+npm run lint:fix -- --max-warnings=0
+
+npm run format
+
 npm test -- --watchAll=false
 
 status=$?
