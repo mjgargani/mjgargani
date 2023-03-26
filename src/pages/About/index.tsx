@@ -22,8 +22,10 @@ const About: React.FC<PageProps> = ({ dataTestId = randomId('page-about'), show 
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
   useEffect(() => {
-    imgLoader([profile?.avatar_url!, QrCodePadrim], () => setIsLoaded(true))
-  }, [profile])
+    if(!isLoaded){
+      imgLoader([profile?.avatar_url!, QrCodePadrim], () => setIsLoaded(true))
+    }
+  }, [profile, isLoaded])
 
   return !loading ? (
     isLoaded ? (

@@ -14,7 +14,9 @@ const Potion: React.FC<PropsWithChildren<PotionProps>> = ({
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
   useEffect(() => {
-    imgLoader([potion], () => setIsLoaded(true))
+    if(!isLoaded) {
+      imgLoader([potion], () => setIsLoaded(true))
+    }
   }, [isLoaded])
 
   return isLoaded ? (
