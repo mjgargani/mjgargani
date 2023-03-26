@@ -6,14 +6,14 @@ import { type CardProps } from './types'
 
 const opacity = css`
   opacity: 0.7;
+  animation: ${animation.opacity(1, 0.7)} .25s ease;
   &:hover {
+    animation: ${animation.opacity(0.7, 1)} .25s ease;
     opacity: 1;
   }
 `
 
 const contentSize = css`
-  /* position: absolute; */
-  /* max-width: 68.5%; */
   top: 50%;
   transform: translateY(-50%);
   height: unset !important;
@@ -33,7 +33,10 @@ export const InnerContent = styled.div`
   padding: inherit;
   width: inherit;
   height: 100%;
-  animation: ${animation.opacity(0, 1)} 0.5s ease;
+`
+
+const loadingAnimation = css`
+  animation: ${animation.opacity(0.25, 0.35)} 0.5s ease alternate infinite;
 `
 
 export const Container = styled.div<CardProps>`
@@ -49,13 +52,15 @@ export const Container = styled.div<CardProps>`
   -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.25);
   box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.25);
   cursor: ${(props) => (props.isContent ? 'default' : 'pointer')};
-  animation: ${(props) => (props.isLoading ? animation.opacity(0.25, 0.35) : 'none')} 0.5s ease
-    alternate infinite;
+  ${(props) => !!props.isLoading && loadingAnimation};
 
   width: 100%;
   opacity: 1;
-  ${(props) => (!props.isContent && (opacity && defaultSize))}
+  ${(props) => (!props.isContent && defaultSize)}
 
+  @media ${device.tablet} {
+    ${props => !props.isContent && opacity}
+  }
   @media  ${device.tablet} and (orientation: landscape) {
     min-height: 35vh;
     ${(props) => (props.isContent && contentSize)}
