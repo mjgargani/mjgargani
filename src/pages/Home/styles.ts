@@ -1,9 +1,5 @@
 import styled from 'styled-components'
 
-import { device } from '../../utils/devices'
-
-const fontSizeBase = 6
-
 export const Container = styled.div`
   position: absolute;
   width: inherit;

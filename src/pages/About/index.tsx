@@ -3,6 +3,7 @@ import { css } from 'styled-components'
 
 import QrCodePadrim from '../../assets/qr-code-padrim.png'
 import Avatar from '../../components/atoms/Avatar'
+import CoinFountain from '../../components/atoms/CoinFountain'
 import GridCell from '../../components/atoms/GridCell'
 import GridContainer from '../../components/atoms/GridContainer'
 import Loading from '../../components/atoms/Loading'
@@ -46,83 +47,90 @@ const About: React.FC<PageProps> = ({ dataTestId = randomId('page-about'), show 
                 title={`Olá! Sou ${profile?.name}`}
                 isContent={true}
               >
-                <div id={randomId('card-about-content')}>
-                  <GridContainer
-                    templateColumns={{
-                      desktop: ['2fr', '8fr'],
-                      mobile: ['3fr', '7fr'],
-                    }}
-                    columnGap={2}
+                <CoinFountain />
+                <GridContainer
+                  templateColumns={{
+                    desktop: ['2fr', '8fr'],
+                    mobile: ['3fr', '7fr'],
+                  }}
+                  columnGap={2}
+                  styledCss={css`z-index: 1000;`}
+                >
+                  <GridCell>
+                    <Avatar
+                      dataTestId={randomId('card-about-avatar')}
+                      src={profile?.avatar_url!}
+                    />
+                  </GridCell>
+                  <GridCell
+                    dataTestId={randomId('card-about-bio')}
+                    styledCss={css`
+                      position: relative;
+                      background-color: rgb(0, 0, 0, .05);
+                      border-radius: calc(.5vw + .5vh);
+                      text-align: justify;
+                      line-height: 150%;
+                      padding: 0 1.5vw;
+                    `}
                   >
-                    <GridCell>
-                      <Avatar
-                        dataTestId={randomId('card-about-avatar')}
-                        src={profile?.avatar_url!}
-                      />
-                    </GridCell>
-                    <GridCell
-                      dataTestId={randomId('card-about-bio')}
-                      styledCss={css`
-                        position: relative;
-                        background-color: rgb(0, 0, 0, .05);
-                        border-radius: calc(.5vw + .5vh);
-                        text-align: justify;
-                        line-height: 150%;
-                        padding: 0 1.5vw;
-                      `}
+                    {mdParser(profile?.bio || '')}
+                  </GridCell>
+                </GridContainer>
+                <GridContainer styledCss={css`margin-top: 2%;`}>
+                  <GridCell dataTestId={randomId('card-about-contacts')}>
+                    <ul
+                      style={{
+                        listStyle: 'none',
+                        margin: 0,
+                        padding: 0,
+                        textAlign: 'center',
+                        fontSize: 'smaller',
+                      }}
                     >
-                      {mdParser(profile?.bio || '')}
-                    </GridCell>
-                  </GridContainer>
-                  <GridContainer styledCss={css`margin-top: 2%;`}>
-                    <GridCell dataTestId={randomId('card-about-contacts')}>
-                      <ul
-                        style={{
-                          listStyle: 'none',
-                          margin: 0,
-                          padding: 0,
-                          textAlign: 'center',
-                          fontSize: 'smaller',
-                        }}
-                      >
-                        <li style={{ display: 'inline', padding: 4 }}>
-                          <IconReplacer text='github' />
-                          <a href='https://github.com/mjgargani' target='_blank' rel='noreferrer'>
-                            GitHub
-                          </a>
-                        </li>
-                        <li style={{ display: 'inline', padding: 4 }}>
-                          <IconReplacer text='linkedin' />
-                          <a
-                            href='https://www.linkedin.com/in/rod-olv/'
-                            target='_blank'
-                            rel='noreferrer'
-                          >
-                            LinkedIn
-                          </a>
-                        </li>
-                        <li style={{ display: 'inline', padding: 4 }}>
-                          <IconReplacer text='email' />
-                          <a href='mailto:mjgargani@gmail.com' rel='noreferrer'>
-                            E-mail
-                          </a>
-                        </li>
-                      </ul>
-                    </GridCell>
-                  </GridContainer>
-                  <GridContainer dataTestId={randomId('card-about-desc')}>
-                    <GridCell styledCss={css`
+                      <li style={{ display: 'inline', padding: 4 }}>
+                        <IconReplacer text='github' />
+                        <a href='https://github.com/mjgargani' target='_blank' rel='noreferrer'>
+                          GitHub
+                        </a>
+                      </li>
+                      <li style={{ display: 'inline', padding: 4 }}>
+                        <IconReplacer text='linkedin' />
+                        <a
+                          href='https://www.linkedin.com/in/rod-olv/'
+                          target='_blank'
+                          rel='noreferrer'
+                        >
+                          LinkedIn
+                        </a>
+                      </li>
+                      <li style={{ display: 'inline', padding: 4 }}>
+                        <IconReplacer text='email' />
+                        <a href='mailto:mjgargani@gmail.com' rel='noreferrer'>
+                          E-mail
+                        </a>
+                      </li>
+                    </ul>
+                  </GridCell>
+                </GridContainer>
+                <GridContainer dataTestId={randomId('card-about-desc')}>
+                  <GridCell styledCss={css`
+                    z-index: 2000;
+                    p {
+                      text-align: center;
+                      font-size: 120%;
+                    }
+                    @media ${device.tablet} {
                       p {
-                        text-align: center;
-                        font-size: 120%;
+                        font-size: 90%;
                       }
-                      @media ${device.tablet} {
-                        p {
-                          font-size: 90%;
-                        }
-                      }
-                    `}>
-                      <p>
+                    }
+                  `}>
+                    <p>
+                      <span style={{
+                        borderRadius: ".25vw",
+                        backgroundColor: "rgba(255,255,255,.35)",
+                        padding: ".25vw"
+                      }}>
                         🪙 Você contribui com meu trabalho divulgando-o e/ou sendo{' '}
                         <a
                           href='https://www.padrim.com.br/mjgargani'
@@ -132,10 +140,10 @@ const About: React.FC<PageProps> = ({ dataTestId = randomId('page-about'), show 
                           meu Padrim ou Madrim
                         </a>
                         !
-                      </p>
-                    </GridCell>
-                  </GridContainer>
-                </div>
+                      </span>
+                    </p>
+                  </GridCell>
+                </GridContainer>
               </Card>
             </div>
           </GridCell>
