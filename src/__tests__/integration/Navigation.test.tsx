@@ -1,6 +1,7 @@
 import { cleanup, render, screen } from '@testing-library/react'
 
 import Navigation from '../../components/molecules/Navigation'
+import { PageEndPoints } from '../../globals'
 
 afterEach(cleanup)
 
@@ -11,15 +12,16 @@ jest.mock('react-router-dom', () => ({
 }))
 
 test.each([
-  [0, 'white', 'white', 'white'],
-  [1, 'white', 'black', 'white'],
-  [2, 'white', 'white', 'black'],
+  ["/", 'rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(255, 255, 255)'],
+  ["/projects", 'rgb(255, 255, 255)', 'rgb(0, 0, 0)', 'rgb(255, 255, 255)'],
+  ["/about", 'rgb(255, 255, 255)', 'rgb(255, 255, 255)', 'rgb(0, 0, 0)'],
 ])(
   'verify if component shows child components correctly (page: %p)',
   (page, color1, color2, color3) => {
+    const currentPage = page as PageEndPoints
     const currentDataTestId = 'navigation_rtl'
 
-    render(<Navigation dataTestId={currentDataTestId} page={page} />)
+    render(<Navigation dataTestId={currentDataTestId} page={currentPage} />)
 
     const navigation = screen.getByTestId(currentDataTestId)
     const buttons = screen.getAllByTestId(/^btn-nav_\d+/)

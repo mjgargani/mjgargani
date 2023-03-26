@@ -1,15 +1,16 @@
 import { cleanup, render, screen } from '@testing-library/react'
 
-import { transparencyAlpha } from '../../components/atoms/Potion/styles'
 import Frame from '../../components/molecules/Frame'
-import { linearGradientColors, shadowAlpha } from '../../components/molecules/Frame/styles'
+import { PageEndPoints } from '../../globals'
+import frameDefaults from '../../styles/defaults/frame'
+import potionDefaults from '../../styles/defaults/potion'
 
 afterEach(cleanup)
 
 test('verify if component shows child components correctly', async () => {
   const currentDataTestId = 'frame_rtl'
 
-  render(<Frame dataTestId={currentDataTestId} page={0} />)
+  render(<Frame dataTestId={currentDataTestId} page={"/"} />)
 
   const frame = screen.getByTestId(currentDataTestId)
   const tiles = screen.getByTestId(/^frame-tiles_\d+/)
@@ -22,16 +23,13 @@ test('verify if component shows child components correctly', async () => {
   expect(potion).toBeInTheDocument()
 })
 
-test.each([
-  [0, transparencyAlpha[1]],
-  [1, transparencyAlpha[0]],
-  [2, transparencyAlpha[0]],
-])(
+test.each(["/", "/projects", "/about"])(
   'verify if components changes when the `page` prop changes (value: %p)',
-  async (page, potionOpacity) => {
+  async (page) => {
+    const currentPage = page as PageEndPoints
     const currentDataTestId = 'frame_rtl'
 
-    render(<Frame dataTestId={currentDataTestId} page={page} />)
+    render(<Frame dataTestId={currentDataTestId} page={currentPage} />)
 
     const frame = screen.getByTestId(currentDataTestId)
     expect(frame).toBeInTheDocument()
@@ -40,9 +38,9 @@ test.each([
     const potion = await screen.findByTestId(/^potion_\d+/)
 
     expect(frame).toHaveStyle(
-      `background: linear-gradient(315deg, ${linearGradientColors[page].join(', ')});`,
+      `background: linear-gradient(315deg, ${frameDefaults[currentPage].color.join(', ')});`,
     )
-    expect(shadow).toHaveStyle(`opacity: ${shadowAlpha[page]}`)
-    expect(potion).toHaveStyle(`opacity: ${potionOpacity}`)
+    expect(shadow).toHaveStyle(`opacity: ${frameDefaults[currentPage].shadow}`)
+    expect(potion).toHaveStyle(`opacity: ${potionDefaults[currentPage].opacity}`)
   },
 )
