@@ -54,9 +54,10 @@ const About: React.FC<PageProps> = ({ dataTestId = randomId('page-about'), show 
                     mobile: ['3fr', '7fr'],
                   }}
                   columnGap={2}
-                  styledCss={css`z-index: 1000;`}
                 >
-                  <GridCell>
+                  <GridCell
+                    styledCss={css`z-index: 2000;`}
+                  >
                     <Avatar
                       dataTestId={randomId('card-about-avatar')}
                       src={profile?.avatar_url!}
@@ -71,29 +72,43 @@ const About: React.FC<PageProps> = ({ dataTestId = randomId('page-about'), show 
                       text-align: justify;
                       line-height: 150%;
                       padding: 0 1.5vw;
+                      z-index: 2000;
                     `}
                   >
                     {mdParser(profile?.bio || '')}
                   </GridCell>
                 </GridContainer>
-                <GridContainer styledCss={css`margin-top: 2%;`}>
-                  <GridCell dataTestId={randomId('card-about-contacts')}>
-                    <ul
-                      style={{
-                        listStyle: 'none',
-                        margin: 0,
-                        padding: 0,
-                        textAlign: 'center',
-                        fontSize: 'smaller',
-                      }}
-                    >
-                      <li style={{ display: 'inline', padding: 4 }}>
+                <GridContainer 
+                  styledCss={css`margin-top: 2%;`}
+                >
+                  <GridCell 
+                    dataTestId={randomId('card-about-contacts')}
+                    styledCss={css`
+                      z-index: 2000;
+                      ul {
+                        list-style: none;
+                        margin: .25vh 0 0 0;
+                        padding: 0;
+                        text-align: center;
+                      }
+                      li {
+                        display: inline;
+                        border-radius: .25vw;
+                        background-color: rgba(255,255,255,.35);
+                        padding: .25vw;
+                        margin: 0 .25vw;
+                        font-size: 110%;
+                      }
+                    `}
+                  >
+                    <ul>
+                      <li>
                         <IconReplacer text='github' />
                         <a href='https://github.com/mjgargani' target='_blank' rel='noreferrer'>
                           GitHub
                         </a>
                       </li>
-                      <li style={{ display: 'inline', padding: 4 }}>
+                      <li>
                         <IconReplacer text='linkedin' />
                         <a
                           href='https://www.linkedin.com/in/rod-olv/'
@@ -103,7 +118,7 @@ const About: React.FC<PageProps> = ({ dataTestId = randomId('page-about'), show 
                           LinkedIn
                         </a>
                       </li>
-                      <li style={{ display: 'inline', padding: 4 }}>
+                      <li>
                         <IconReplacer text='email' />
                         <a href='mailto:mjgargani@gmail.com' rel='noreferrer'>
                           E-mail
@@ -112,7 +127,9 @@ const About: React.FC<PageProps> = ({ dataTestId = randomId('page-about'), show 
                     </ul>
                   </GridCell>
                 </GridContainer>
-                <GridContainer dataTestId={randomId('card-about-desc')}>
+                <GridContainer 
+                  dataTestId={randomId('card-about-desc')}
+                >
                   <GridCell styledCss={css`
                     z-index: 2000;
                     p {

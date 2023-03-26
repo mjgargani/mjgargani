@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { CommonProps } from '../../../globals'
+import { device } from '../../../utils/devices'
 
 export const Container = styled.div<CommonProps>`
   position: absolute;
@@ -17,6 +18,12 @@ export const Container = styled.div<CommonProps>`
     margin: 0;
     margin-bottom: 0.5vh;
     text-align: center;
+    font-size: 100%;
+  }
+  @media ${device.tablet} {
+    p{
+      font-size: 75%;
+    }
   }
 
   ${props => props.styledCss}
