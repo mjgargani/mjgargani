@@ -6,11 +6,10 @@ export const Container = styled.div<AvatarProps>`
   background-image: url(${(props) => props.src});
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
-  border-radius: .5vw;
+  background-position: center left;
+  border-radius: calc(.5vw + .5vh);
 
-  height: 80%;
-  margin: 10% 0;
+  height: 100%;
   width: 100%;
 
   ${props => props.styledCss}

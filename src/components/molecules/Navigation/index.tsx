@@ -31,6 +31,9 @@ const Navigation: React.FC<NavigationProps> = ({
             templateRows={{
               mobile: [isHome ? '0 50% 50%' : '33.33% 33.33% 33.34%']
             }}
+            styledCss={css`
+              transition: 300ms;
+            `}
           >
             <GridCell styledCss={css`overflow:hidden;`}>
               <Hidden>

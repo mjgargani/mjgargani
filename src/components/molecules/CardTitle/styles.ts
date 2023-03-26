@@ -5,8 +5,10 @@ import { CardTitleProps } from './types'
 export const Container = styled.div<CardTitleProps>`
   position: relative;
   display: table;
-  width: 100%;
-  min-height: ${(props) => (props.isContent ? 20 : 45)}%;
+  width: 94%;
+  padding: 0 3%;
+  ${props => props.isContent && "margin: 3% 0;" };
+  min-height: ${props => props.isContent ? 20 : 45}%;
 
   ${props => props.styledCss}
 `

@@ -1,34 +1,32 @@
 import styled, { css } from 'styled-components'
 
-import { size } from '../../../utils/devices'
 import { CardDescriptionProps } from './types'
 
-const paragraph = css`
+const notContent = css`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
   p {
-    position: absolute;
-    width: 94%;
-    top: 50%;
-    transform: translateY(-50%);
-    vertical-align: middle;
-    margin: 0;
+    margin: inherit
   }
+`
+
+export const InnerContainer = styled.div<Partial<CardDescriptionProps>>`
+  padding: 0 3%;
+  width: 94%;
+  margin: inherit;
+  font-weight: normal;
+
+  ${props => !!!props.isContent && notContent}
 `
 
 export const Container = styled.div<CardDescriptionProps>`
   position: relative;
-  min-height: ${(props) => (props.isContent ? 79 : 49)}%;
-  font-weight: normal;
-  padding: 0 3%;
-
-  ${(props) => !props.isContent && paragraph}
-  @media (max-width: ${size.tablet}) {
-    div[id^='card-about-content'] {
-      position: absolute;
-      width: 94%;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-  }
+  width: 100%;
+  height: ${props => !!!props.isContent ? 55 : 80}%;
+  margin: 0;
+  padding: 0;
 
   ${props => props.styledCss}
 `

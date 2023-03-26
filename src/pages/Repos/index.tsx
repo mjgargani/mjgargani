@@ -46,6 +46,15 @@ const Repos: React.FC<PageProps> = ({ dataTestId = randomId('page-repos'), show 
             ? 'nodejs-typescript-reactjs-styledcomponents_2023-portfolio'
             : el!.name
         }
+        styledCss={el!.description.length >= 50 && 
+          css`
+            @media  ${device.tablet} {
+              p{
+                font-size: 95% !important
+              }
+            }
+          `
+        }
       >
         {mdParser(el!.description)}
       </Card>
@@ -69,15 +78,18 @@ const Repos: React.FC<PageProps> = ({ dataTestId = randomId('page-repos'), show 
                     (min-aspect-ratio: 16/10){
               grid-template-columns: repeat(3, 1fr) !important;
             }
-            @media  (min-aspect-ratio: 23/9) {
+            @media  (min-aspect-ratio: 23/9),
+                    (min-aspect-ratio: 23/10) {
               grid-template-columns: repeat(4, 1fr) !important;
             }
           }
           @media  ${device.tablet} and (orientation: portrait) {
             grid-template-columns: repeat(2, 1fr) !important;
+            grid-template-rows: repeat(3, 1fr) !important;
           }
           @media  (max-width: ${size.tablet}px) and (orientation: portrait) {
             grid-template-columns: repeat(1, 1fr) !important;
+            grid-template-rows: auto !important;
           }
         `}
       >

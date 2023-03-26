@@ -1,7 +1,7 @@
 import React, { type PropsWithChildren } from 'react'
 
 import randomId from '../../../utils/randomId'
-import { Container } from './styles'
+import { Container, InnerContainer } from './styles'
 import { CardDescriptionProps } from './types'
 
 const CardDescription: React.FC<PropsWithChildren<CardDescriptionProps>> = ({
@@ -11,7 +11,7 @@ const CardDescription: React.FC<PropsWithChildren<CardDescriptionProps>> = ({
   children,
 }) => (
   <Container isContent={isContent} data-testid={dataTestId} styledCss={styledCss}>
-    {children}
+    <InnerContainer isContent={isContent}>{children}</InnerContainer>
   </Container>
 )
 

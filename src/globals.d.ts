@@ -9,7 +9,7 @@ export type PageEndPoints = '/' | '/projects' | '/about'
 
 export type CommonProps = {
   dataTestId?: string,
-  styledCss?: FlattenInterpolation<ThemeProps<any>>
+  styledCss?: FlattenInterpolation<ThemeProps<any>> | false
 }
 
 export type AlphaRange =
