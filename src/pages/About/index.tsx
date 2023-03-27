@@ -69,7 +69,7 @@ const About: React.FC<PageProps> = ({ dataTestId = randomId('page-about'), show 
                     styledCss={css`
                       position: relative;
                       background-color: rgb(0, 0, 0, 0.05);
-                      border-radius: calc(0.5vw + 0.5vh);
+                      border-radius: ${(props) => props.theme.common.border.radius};
                       text-align: justify;
                       line-height: 150%;
                       padding: 0 1.5vw;
@@ -96,7 +96,7 @@ const About: React.FC<PageProps> = ({ dataTestId = randomId('page-about'), show 
                       }
                       li {
                         display: inline;
-                        border-radius: 0.25vw;
+                        border-radius: ${(props) => props.theme.common.border.radius};
                         background-color: rgba(255, 255, 255, 0.35);
                         padding: 0.25vw;
                         margin: 0 0.25vw;
@@ -143,16 +143,15 @@ const About: React.FC<PageProps> = ({ dataTestId = randomId('page-about'), show 
                           font-size: 90%;
                         }
                       }
+                      span {
+                        border-radius: ${(props) => props.theme.common.border.radius};
+                        background-color: rgba(255, 255, 255, 0.35);
+                        padding: 0.25vw;
+                      }
                     `}
                   >
                     <p>
-                      <span
-                        style={{
-                          borderRadius: '.25vw',
-                          backgroundColor: 'rgba(255,255,255,.35)',
-                          padding: '.25vw',
-                        }}
-                      >
+                      <span>
                         🪙 Você contribui com meu trabalho divulgando-o e/ou sendo{' '}
                         <a
                           href='https://www.padrim.com.br/mjgargani'

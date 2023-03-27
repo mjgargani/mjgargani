@@ -1,6 +1,6 @@
 import { Color } from '../../globals'
 
-export type ButtonDefaults = {
+export type ButtonStyles = {
   margin: number
   color: {
     active: {
@@ -10,7 +10,7 @@ export type ButtonDefaults = {
   }
 }
 
-const defaults: ButtonDefaults = {
+const buttonStyles: ButtonStyles = {
   margin: 10,
   color: {
     active: {
@@ -24,4 +24,4 @@ const defaults: ButtonDefaults = {
   },
 }
 
-export default defaults
+export default buttonStyles

@@ -1,12 +1,12 @@
 import { AlphaRange, PageEndPoints } from '../../globals'
 
-export type PotionDefaults = {
+export type PotionStyles = {
   [key in PageEndPoints]: {
     opacity: AlphaRange
   }
 }
 
-const defaults: PotionDefaults = {
+const potionStyles: PotionStyles = {
   '/': {
     opacity: 1,
   },
@@ -18,4 +18,4 @@ const defaults: PotionDefaults = {
   },
 }
 
-export default defaults
+export default potionStyles

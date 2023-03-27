@@ -1,7 +1,13 @@
-const defaults = {
+export type CommonStyles = {
   border: {
-    radius: '.5vw',
+    radius: string
+  }
+}
+
+const commonStyles = {
+  border: {
+    radius: 'calc(0.5vw + 0.5vh)',
   },
 }
 
-export default defaults
+export default commonStyles

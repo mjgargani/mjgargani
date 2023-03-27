@@ -1,9 +1,10 @@
-import { cleanup, render, screen, waitFor } from '@testing-library/react'
+import { cleanup, screen, waitFor } from '@testing-library/react'
 
 import Frame from '../../components/molecules/Frame'
 import { PageEndPoints } from '../../globals'
-import frameDefaults from '../../styles/defaults/frame'
-import potionDefaults from '../../styles/defaults/potion'
+import frameStyles from '../../styles/defaults/frame'
+import potionStyles from '../../styles/defaults/potion'
+import { render } from '../utils/render'
 
 afterEach(cleanup)
 
@@ -15,9 +16,9 @@ test('verify if component shows child components correctly', async () => {
   const frame = screen.getByTestId(currentDataTestId)
   const tiles = screen.getByTestId(/^frame-tiles_\d+/)
   const shadow = screen.getByTestId(/^frame-shadow_\d+/)
-  
-  let potion;
-  await waitFor(async () => potion = await screen.findByTestId(/^potion_\d+/), { timeout: 5000 })
+
+  let potion
+  await waitFor(async () => (potion = await screen.findByTestId(/^potion_\d+/)), { timeout: 5000 })
 
   expect(frame).toBeInTheDocument()
   expect(tiles).toBeInTheDocument()
@@ -38,13 +39,15 @@ test.each(['/', '/projects', '/about'])(
 
     const shadow = screen.getByTestId(/^frame-shadow_\d+/)
 
-    let potion;
-    await waitFor(async () => potion = await screen.findByTestId(/^potion_\d+/), { timeout: 5000 })
+    let potion
+    await waitFor(async () => (potion = await screen.findByTestId(/^potion_\d+/)), {
+      timeout: 5000,
+    })
 
     expect(frame).toHaveStyle(
-      `background: linear-gradient(315deg, ${frameDefaults[currentPage].color.join(', ')});`,
+      `background: linear-gradient(315deg, ${frameStyles[currentPage].color.join(', ')});`,
     )
-    expect(shadow).toHaveStyle(`opacity: ${frameDefaults[currentPage].shadow}`)
-    expect(potion).toHaveStyle(`opacity: ${potionDefaults[currentPage].opacity}`)
+    expect(shadow).toHaveStyle(`opacity: ${frameStyles[currentPage].shadow}`)
+    expect(potion).toHaveStyle(`opacity: ${potionStyles[currentPage].opacity}`)
   },
 )

@@ -7,7 +7,7 @@ export const Container = styled.div<AvatarProps>`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center left;
-  border-radius: calc(0.5vw + 0.5vh);
+  border-radius: ${(props) => props.theme.common.border.radius};
 
   height: 100%;
   width: 100%;

@@ -36,7 +36,7 @@ export const Container = styled.div<LoadingProps>`
   transform: translate(-50%, -50%);
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
-  border-radius: 5px;
+  border-radius: ${(props) => props.theme.common.border.radius};
   ${(props) => props.isCard && card}
   animation: ${animation.opacity(0, 1)} 2s ease alternate infinite;
 

@@ -94,7 +94,10 @@ const Repos: React.FC<PageProps> = ({ dataTestId = randomId('page-repos'), show 
         {ordenedRepos?.length
           ? ordenedRepos.map(RepoItem)
           : repos?.length &&
-            repos!.map((el) => <Card key={randomId('card-item', true)} isLoading={true} />)}
+            repos!.map((el, i) => <Card 
+              key={randomId(`card-item-${i}`, true)} 
+              isLoading={true} 
+            />)}
       </GridContainer>
     </Page>
   )

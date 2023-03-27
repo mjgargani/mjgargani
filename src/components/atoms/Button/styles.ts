@@ -1,11 +1,10 @@
 import styled, { css } from 'styled-components'
 
-import defaults from '../../../styles/defaults/button'
-import commonDefaults from '../../../styles/defaults/common'
+import { ButtonStyles } from '../../../styles/defaults/button'
 import animation from '../../../styles/utils/animation'
 import { type ButtonProps } from './types'
 
-const hover = css`
+const hover = (defaults: ButtonStyles) => css`
   &:hover {
     cursor: pointer;
     background-color: ${defaults.color.active.bg[2]};
@@ -22,19 +21,24 @@ export const Container = styled.button<ButtonProps>`
   border-width: 0px;
   cursor: default;
 
-  border-radius: ${commonDefaults.border.radius};
+  border-radius: ${(props) => props.theme.common.border.radius};
   color: ${(props) =>
-    props.active ? defaults.color.active.text[0] : defaults.color.active.text[1]};
+    props.active
+      ? props.theme.button.color.active.text[0]
+      : props.theme.button.color.active.text[1]};
   background-color: ${(props) =>
-    props.active ? defaults.color.active.bg[0] : defaults.color.active.bg[1]};
+    props.active ? props.theme.button.color.active.bg[0] : props.theme.button.color.active.bg[1]};
 
   animation: ${(props) =>
       !props.active
-        ? animation.bg.color(defaults.color.active.bg[2], defaults.color.active.bg[1])
+        ? animation.bg.color(
+            props.theme.button.color.active.bg[2],
+            props.theme.button.color.active.bg[1],
+          )
         : 'none'}
     0.25s;
 
-  ${(props) => !props.active && hover}
+  ${(props) => !props.active && hover(props.theme.button)}
 
   h2 {
     margin: 0;

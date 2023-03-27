@@ -1,6 +1,7 @@
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, screen } from '@testing-library/react'
 
 import CardDescription from '../../components/atoms/CardDescription'
+import { render } from '../utils/render'
 
 afterEach(cleanup)
 

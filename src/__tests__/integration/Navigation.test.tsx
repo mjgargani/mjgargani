@@ -1,7 +1,8 @@
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, screen } from '@testing-library/react'
 
 import Navigation from '../../components/molecules/Navigation'
 import { PageEndPoints } from '../../globals'
+import { render } from '../utils/render'
 
 afterEach(cleanup)
 

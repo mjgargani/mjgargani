@@ -1,7 +1,8 @@
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, screen } from '@testing-library/react'
 
 import IconReplacer from '../../components/molecules/IconReplacer'
 import repos from '../mock/repos.json'
+import { render } from '../utils/render'
 
 afterEach(cleanup)
 

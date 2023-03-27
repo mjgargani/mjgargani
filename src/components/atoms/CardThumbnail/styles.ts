@@ -7,7 +7,7 @@ const badgeBackground = css`
   background-color: rgba(0, 0, 0, 0.75);
   opacity: 0.75;
   color: white;
-  border-radius: 0.25vw;
+  border-radius: ${(props) => props.theme.common.border.radius};
   padding: 0.25vw;
   margin: 0.25vw;
 
@@ -60,7 +60,6 @@ export const Container = styled.div<CardThumbnailProps>`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 5px 5px 0 0;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.25);
 
   ${(props) => props.styledCss}

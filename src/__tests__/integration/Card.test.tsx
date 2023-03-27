@@ -1,9 +1,10 @@
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, screen } from '@testing-library/react'
 
 import Card from '../../components/molecules/Card'
 import { type CardProps } from '../../components/molecules/Card/types'
 import { GitHubRepoItem } from '../../context/types'
 import repos from '../mock/repos.json'
+import { render } from '../utils/render'
 
 afterEach(cleanup)
 

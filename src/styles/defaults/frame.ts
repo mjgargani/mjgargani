@@ -1,13 +1,13 @@
 import { AlphaRange, Color, PageEndPoints } from '../../globals'
 
-export type FrameDefaults = {
+export type FrameStyles = {
   [key in PageEndPoints]: {
     color: [Color, Color]
     shadow: AlphaRange
   }
 }
 
-const defaults: FrameDefaults = {
+const frameStyles: FrameStyles = {
   '/': {
     color: ['#0422ce', '#873ea1'],
     shadow: 0.5,
@@ -22,4 +22,4 @@ const defaults: FrameDefaults = {
   },
 }
 
-export default defaults
+export default frameStyles

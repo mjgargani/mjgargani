@@ -1,6 +1,7 @@
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, screen } from '@testing-library/react'
 
 import FooterInfo from '../../components/molecules/FooterInfo'
+import { render } from '../utils/render'
 
 afterEach(cleanup)
 
