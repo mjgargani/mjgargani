@@ -1,7 +1,7 @@
 #!/bin/sh
 # Source: https://dev.to/akdevcraft/git-pre-hook-pre-commit-hook-with-npm-project-44p2
 
-echo "Running linter, format and tests before commit"
+echo "Running linter and tests before commit"
 
 git stash -q --keep-index
 
