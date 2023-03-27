@@ -1,4 +1,5 @@
 import { FlattenInterpolation, ThemeProps } from 'styled-components'
+
 import { ButtonStyles } from './styles/defaults/button'
 import { CommonStyles } from './styles/defaults/common'
 import { FrameStyles } from './styles/defaults/frame'
