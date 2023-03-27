@@ -1,5 +1,10 @@
 import { FlattenInterpolation, ThemeProps } from 'styled-components'
 
+import { ButtonStyles } from './styles/defaults/button'
+import { CommonStyles } from './styles/defaults/common'
+import { FrameStyles } from './styles/defaults/frame'
+import { PotionStyles } from './styles/defaults/potion'
+
 type RGB = `rgb(${number} | ${number}, ${number})`
 type RGBA = `rgba(${number}, ${number}, ${number}, ${number})`
 type HEX = `#${string}`
@@ -10,6 +15,15 @@ export type PageEndPoints = '/' | '/projects' | '/about'
 export type CommonProps = {
   dataTestId?: string
   styledCss?: FlattenInterpolation<ThemeProps<any>> | false
+}
+
+declare module 'styled-components' {
+  export interface DefaultTheme {
+    button: ButtonStyles
+    common: CommonStyles
+    frame: FrameStyles
+    potion: PotionStyles
+  }
 }
 
 export type AlphaRange =

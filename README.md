@@ -4,16 +4,18 @@
 
 > 🌐 [https://gargani.dev/](https://gargani.dev/)
 
-![latest-version](https://img.shields.io/github/package-json/v/mjgargani/mjgargani) ![action-check](https://github.com/mjgargani/mjgargani/actions/workflows/main.yml/badge.svg)
+![latest-version](https://img.shields.io/github/package-json/v/mjgargani/mjgargani) ![action-check](https://github.com/mjgargani/mjgargani/actions/workflows/node-ci.yml/badge.svg) ![deploy-check](https://github.com/mjgargani/mjgargani/actions/workflows/deploy.yml/badge.svg)
+
+![coverage-statements](badges/badge-statements.svg) ![coverage-branches](badges/badge-branches.svg) ![coverage-functions](badges/badge-functions.svg) ![coverage-lines](badges/badge-lines.svg)
 ## Descrição / Description
 
 Portfolio desenvolvido com `ReactJS` (`CRA`) + `TypeScript` ([Saiba como](https://create--react--app-dev.translate.goog/docs/adding-typescript/?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt-BR&_x_tr_pto=wapp); [Vantagens](https://www-emizentech-com.translate.goog/blog/react-with-typescript-or-javascript.html?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt-BR&_x_tr_pto=wapp)), no ano de 2023. A aplicação é uma interface que consome e modela recursos da [API do GitHub](https://docs.github.com/pt/rest/guides/getting-started-with-the-rest-api?apiVersion=2022-11-28). 
 
 Portfolio developed with `ReactJS` (`CRA`) + `TypeScript` ([Learn how](https://create-react-app.dev/docs/adding-typescript/); [Benefits](https://www.emizentech.com/blog/react-with-typescript-or-javascript.html)), in the year 2023. The application is an interface that consumes and models [GitHub API](https://docs.github.com/en/rest/guides/getting-started-with-the-rest-api?apiVersion=2022-11-28) resources.
 
-> ⭐ Nesse caso, **especialmente**, o repositório inclui uma compilação para distribuição (`./docs`), que é utilizado para o [GitHub Pages](https://docs.github.com/pt/pages/getting-started-with-github-pages/about-github-pages). O `CI/CD` é feito com o apoio do [GitHub Actions](https://docs.github.com/pt/actions/learn-github-actions/understanding-github-actions).
+> ⭐ O projeto é disponibilizado pelo [GitHub Pages](https://docs.github.com/pt/pages/getting-started-with-github-pages/about-github-pages). O `CI/CD` é feito com o apoio do [GitHub Actions](https://docs.github.com/pt/actions/learn-github-actions/understanding-github-actions).
 
-> ⭐ In this case **especially**, the repository includes a build for distribution (`./docs`), which is used for [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages). `CI/CD` is powered by [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions).
+> ⭐ The project is provided by [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages). `CI/CD` is powered by [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions).
 
 O projeto também conta com uso de [styled-components](https://styled-components.com/) para criação e estilização dos componentes, o [Marked](https://marked.js.org/) para interpretação de texto no formato `Markdown` e o [React Icons](https://react-icons.github.io/react-icons/).
 

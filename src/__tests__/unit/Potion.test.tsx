@@ -1,9 +1,10 @@
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, screen } from '@testing-library/react'
 
 import potionImg from '../../assets/potion.png'
 import Potion from '../../components/atoms/Potion'
 import { PageEndPoints } from '../../globals'
-import defaults from '../../styles/defaults/potion'
+import potionStyles from '../../styles/defaults/potion'
+import { render } from '../utils/render'
 
 afterEach(cleanup)
 
@@ -20,6 +21,6 @@ test.each([
     const potion = await screen.findByTestId(currentDataTestId)
 
     expect(potion).toBeInTheDocument()
-    expect(potion).toHaveStyle(`opacity: ${defaults[page as PageEndPoints].opacity}`)
+    expect(potion).toHaveStyle(`opacity: ${potionStyles[page as PageEndPoints].opacity}`)
   },
 )

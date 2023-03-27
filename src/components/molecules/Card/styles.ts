@@ -44,7 +44,7 @@ export const Container = styled.div<CardProps>`
   overflow: hidden;
 
   border-style: none;
-  border-radius: 5px;
+  border-radius: ${(props) => props.theme.common.border.radius};
   color: black;
   background-color: rgba(255, 255, 255, 1);
   background: linear-gradient(180deg, rgba(255, 255, 255, 1) 50%, rgba(217, 217, 217, 1) 100%);

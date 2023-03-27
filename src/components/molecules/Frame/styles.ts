@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 import tile from '../../../assets/tile.png'
-import defaults from '../../../styles/defaults/frame'
 import animation from '../../../styles/utils/animation'
 import { device } from '../../../utils/devices'
 import { type FrameProps } from './types'
@@ -36,9 +35,12 @@ export const Shadow = styled.div<FrameProps>`
     rgba(0, 0, 0, 1) 100%
   );
   background: radial-gradient(ellipse at 50% 50%, rgba(255, 255, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
-  opacity: ${(props) => defaults[props.page].shadow};
+  opacity: ${(props) => props.theme.frame[props.page].shadow};
   animation: ${(props) =>
-      animation.opacity(defaults[props.prevPage || '/'].shadow, defaults[props.page].shadow)}
+      animation.opacity(
+        props.theme.frame[props.prevPage || '/'].shadow,
+        props.theme.frame[props.page].shadow,
+      )}
     1s ease;
   pointer-events: none;
   z-index: -1600;
@@ -78,7 +80,7 @@ export const Container = styled.div<FrameProps>`
   width: 100%;
   height: 100%;
   background-color: #000;
-  background: linear-gradient(315deg, ${(props) => defaults[props.page].color.join(', ')});
+  background: linear-gradient(315deg, ${(props) => props.theme.frame[props.page].color.join(', ')});
   background-size: 200% 200%;
   animation: ${(props) => animation.bg.position(props.bgMov!)} 15s ease infinite,
     ${animation.opacity(0, 1)} 2s ease;

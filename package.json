@@ -1,6 +1,6 @@
 {
   "name": "mjgarganis-lab_portfolio",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "author": {
     "name": "Rodrigo G. Oliveira",
     "email": "mjgargani@gmail.com",
@@ -34,7 +34,9 @@
     "prestart": "cp scripts/pre-commit .git/hooks/ && chmod +x .git/hooks/pre-commit && echo 'hook copied'",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!ui-core)/\" --env=jsdom",
+    "test": "react-scripts test",
+    "test:coverage": "npm test -- --watchAll=false --forceExit --verbose --coverage --coverageReporters text-summary json-summary",
+    "test:badges": "npm run test:coverage && jest-coverage-badges --output './badges'",
     "lint": "eslint src/**/*.{ts,tsx}",
     "lint:fix": "eslint --fix 'src/**/*.{ts,tsx}'",
     "format": "prettier --write 'src/**/*.{ts,tsx,css,md,json}' --config ./.prettierrc"
@@ -74,6 +76,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "jest-coverage-badges": "^1.1.2",
     "msw": "^1.1.0",
     "prettier": "^2.8.4",
     "typescript": "^4.9.5"

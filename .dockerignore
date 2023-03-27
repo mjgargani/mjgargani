@@ -1,0 +1,12 @@
+.git*
+badges
+build
+coverage
+node_modules
+scripts
+.prettierrc
+compose.yml
+Dockerfile
+eslintrc.json
+README.md
+thumbnail.gif

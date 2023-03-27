@@ -1,7 +1,8 @@
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, screen } from '@testing-library/react'
 
 import GridContainer from '../../components/atoms/GridContainer'
 import { type GridContainerProps } from '../../components/atoms/GridContainer/types'
+import { render } from '../utils/render'
 
 afterEach(cleanup)
 

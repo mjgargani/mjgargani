@@ -1,7 +1,8 @@
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, screen } from '@testing-library/react'
 
 import GridCell from '../../components/atoms/GridCell'
 import { type GridCellProps } from '../../components/atoms/GridCell/types'
+import { render } from '../utils/render'
 
 afterEach(cleanup)
 

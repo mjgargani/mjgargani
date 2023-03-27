@@ -1,5 +1,6 @@
 import 'normalize.css'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import { ThemeProvider } from 'styled-components'
 
 import FooterInfo from './components/molecules/FooterInfo'
 import Frame from './components/molecules/Frame'
@@ -19,6 +20,7 @@ import {
   ContainerPage,
   ContainerTop,
 } from './styles'
+import { defaultTheme } from './styles/defaults/defaultTheme'
 
 function App() {
   const { pathname } = useLocation()
@@ -27,14 +29,14 @@ function App() {
   const appData = useGitHubDataValues()
 
   return (
-    <>
-      <Frame page={page} prevPage={prevPage} />
-      <ContainerBase isLoading={!!appData.loading}>
-        <ContainerTop>
-          <TranslateBtn />
-          <GitHubButtons />
-        </ContainerTop>
-        <GitHubDataContext.Provider value={appData}>
+    <GitHubDataContext.Provider value={appData}>
+      <ThemeProvider theme={defaultTheme}>
+        <Frame page={page} prevPage={prevPage} />
+        <ContainerBase isLoading={!!appData.loading}>
+          <ContainerTop>
+            <TranslateBtn />
+            <GitHubButtons />
+          </ContainerTop>
           <ContainerPage>
             <Routes>
               <Route path='/' element={<Home />} />
@@ -46,12 +48,12 @@ function App() {
           <ContainerNavigation>
             <Navigation isHome={page === '/'} page={page} />
           </ContainerNavigation>
-        </GitHubDataContext.Provider>
-        <ContainerFooter>
-          <FooterInfo />
-        </ContainerFooter>
-      </ContainerBase>
-    </>
+          <ContainerFooter>
+            <FooterInfo />
+          </ContainerFooter>
+        </ContainerBase>
+      </ThemeProvider>
+    </GitHubDataContext.Provider>
   )
 }
 

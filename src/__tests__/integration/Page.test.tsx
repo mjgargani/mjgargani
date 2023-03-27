@@ -1,6 +1,7 @@
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, screen } from '@testing-library/react'
 
 import Page from '../../components/templates/Page'
+import { render } from '../utils/render'
 
 afterEach(cleanup)
 

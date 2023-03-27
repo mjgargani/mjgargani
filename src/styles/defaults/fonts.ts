@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
 import { device, size } from '../../utils/devices'
+import commonStyles from './common'
 
 const FontStyles = createGlobalStyle`
   a{
@@ -11,7 +12,7 @@ const FontStyles = createGlobalStyle`
     color: rgb(62, 71, 247, .7);
     text-decoration: none;
     padding: 0 .25%;
-    border-radius: .25vw;
+    border-radius: ${commonStyles.border.radius};
   }
   a:not(.card-link):hover{
     color: #FFF;
