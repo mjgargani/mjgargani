@@ -3,14 +3,10 @@
 
 echo "Running linter and tests before commit"
 
-git stash -q --keep-index
-
 npm run lint -- --max-warnings=0
 
 npm test -- --watchAll=false
 
 status=$?
-
-git stash pop -q
 
 exit $status
