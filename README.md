@@ -4,7 +4,7 @@
 
 > 🌐 [https://gargani.dev/](https://gargani.dev/)
 
-![latest-version](https://img.shields.io/github/package-json/v/mjgargani/mjgargani) ![action-check](https://github.com/mjgargani/mjgargani/actions/workflows/node-ci.yml/badge.svg) ![deploy-check](https://github.com/mjgargani/mjgargani/actions/workflows/deploy.yml/badge.svg)
+![latest-version](https://img.shields.io/github/package-json/v/mjgargani/mjgargani) ![action-check](https://github.com/mjgargani/mjgargani/actions/workflows/node-ci.yml/badge.svg) ![deploy-check](https://github.com/mjgargani/mjgargani/actions/workflows/static.yml/badge.svg)
 
 ![coverage-statements](badges/badge-statements.svg) ![coverage-branches](badges/badge-branches.svg) ![coverage-functions](badges/badge-functions.svg) ![coverage-lines](badges/badge-lines.svg)
 ## Descrição / Description
