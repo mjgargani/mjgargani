@@ -19,7 +19,6 @@ export type GitHubRepoItem = {
 
 export type GitHubData = {
   loading: boolean
-  retrieveData: () => void
   profile: Partial<GitHubProfile>
   repos: Partial<GitHubRepoItem[]>
 }

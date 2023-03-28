@@ -1,6 +1,6 @@
 {
   "name": "mjgarganis-lab_portfolio",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "author": {
     "name": "Rodrigo G. Oliveira",
     "email": "mjgargani@gmail.com",
@@ -12,14 +12,18 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/camelcase": "^5.2.0",
     "@types/dompurify": "^2.4.0",
+    "@types/http-status-codes": "^1.2.0",
     "@types/jest": "^27.5.2",
     "@types/marked": "^4.0.8",
     "@types/node": "^16.18.11",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
+    "camelcase": "^7.0.1",
     "dompurify": "^3.0.1",
     "html-react-parser": "^3.0.12",
+    "http-status-codes": "^2.2.0",
     "marked": "^4.2.12",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
@@ -34,7 +38,7 @@
     "prestart": "cp scripts/pre-commit .git/hooks/ && chmod +x .git/hooks/pre-commit && echo 'hook copied'",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!ui-core)/\" --env=jsdom",
     "test:coverage": "npm test -- --watchAll=false --forceExit --verbose --coverage --coverageReporters text-summary json-summary",
     "test:badges": "npm run test:coverage && jest-coverage-badges --output './badges'",
     "lint": "eslint src/**/*.{ts,tsx}",
@@ -43,7 +47,18 @@
   },
   "jest": {
     "testMatch": [
-      "**/__tests__/**/*.test.tsx"
+      "**/__tests__/**/*.test.{ts,tsx}"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/index.tsx",
+      "!src/globals.d.ts",
+      "!src/react-app-env.d.ts",
+      "!src/reportWebVitals.ts",
+      "!src/components/atoms/CoinFountain",
+      "!src/styles/defaults/fonts.ts",
+      "!src/utils/imgLoader.ts",
+      "!src/**/types.ts"
     ]
   },
   "eslintConfig": {

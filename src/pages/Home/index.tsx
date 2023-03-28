@@ -1,12 +1,12 @@
 import React from 'react'
 
 import Page from '../../components/templates/Page'
-import { type PageProps } from '../../components/templates/Page/types'
+import { CommonProps } from '../../globals'
 import randomId from '../../utils/randomId'
 import { Container } from './styles'
 
-const Home: React.FC<PageProps> = ({ dataTestId = randomId('page-home'), show = true }) => (
-  <Page show={show}>
+const Home: React.FC<CommonProps> = ({ dataTestId = randomId('page-home') }) => (
+  <Page>
     <Container data-testid={dataTestId}>
       <h1>
         mjgargani's Lab <span style={{ color: 'darkblue' }}></span>

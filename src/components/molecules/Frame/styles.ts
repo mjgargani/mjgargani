@@ -38,7 +38,7 @@ export const Shadow = styled.div<FrameProps>`
   opacity: ${(props) => props.theme.frame[props.page].shadow};
   animation: ${(props) =>
       animation.opacity(
-        props.theme.frame[props.prevPage || '/'].shadow,
+        props.theme.frame[props.prevPage!].shadow,
         props.theme.frame[props.page].shadow,
       )}
     1s ease;

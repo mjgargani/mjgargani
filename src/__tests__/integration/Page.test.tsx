@@ -5,20 +5,14 @@ import { render } from '../utils/render'
 
 afterEach(cleanup)
 
-test.each([
-  [true, 'conteúdo'],
-  [false, ''],
-])('verify if component shows children correctly (show: %p)', (show, content) => {
+test('verify if component shows children correctly', () => {
   const currentDataTestId = 'page_rtl'
+  const expected = 'conteúdo'
 
-  render(
-    <Page dataTestId={currentDataTestId} show={show}>
-      conteúdo
-    </Page>,
-  )
+  render(<Page dataTestId={currentDataTestId}>{expected}</Page>)
 
   const page = screen.getByTestId(currentDataTestId)
   expect(page).toBeInTheDocument()
 
-  expect(page).toHaveTextContent(content)
+  expect(page).toHaveTextContent(expected)
 })

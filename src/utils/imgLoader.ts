@@ -1,4 +1,4 @@
-function imgLoader(sources: string[], callback?: () => any) {
+async function imgLoader(sources: string[], callback?: () => any) {
   if (['test'].includes(process.env.NODE_ENV!)) {
     return callback && callback()
   }
@@ -17,9 +17,10 @@ function imgLoader(sources: string[], callback?: () => any) {
       ),
     )
 
-    return Promise.all(promises).then((sources) => {
+    return Promise.all(promises).then((results) => {
       callback && callback()
-      return sources
+      console.log(results)
+      return results
     })
   }
   return false

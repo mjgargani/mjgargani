@@ -14,11 +14,9 @@ test.each([
 ])(
   'verify if component receives the `transparent` prop correctly (value: %p)',
   async (transparent, page) => {
-    const currentDataTestId = 'potion__rtl'
+    render(<Potion src={potionImg} transparent={transparent} />)
 
-    render(<Potion src={potionImg} dataTestId={currentDataTestId} transparent={transparent} />)
-
-    const potion = await screen.findByTestId(currentDataTestId)
+    const potion = await screen.findByTestId(/^potion_\d/)
 
     expect(potion).toBeInTheDocument()
     expect(potion).toHaveStyle(`opacity: ${potionStyles[page as PageEndPoints].opacity}`)

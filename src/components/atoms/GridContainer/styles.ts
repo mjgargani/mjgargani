@@ -19,8 +19,7 @@ export const Container = styled.div<GridContainerProps>`
   @media ${device.tablet} {
     grid-template-columns: ${(props) =>
       props.templateColumns?.desktop ? props.templateColumns.desktop.join(' ') : 'auto'};
-    grid-template-rows: ${(props) =>
-      props.templateRows?.desktop ? props.templateRows.desktop.join(' ') : 'auto'};
+    grid-template-rows: ${(props) => props.templateRows?.desktop?.join(' ') || 'auto'};
     grid-column-gap: ${(props) => props.columnGap}%;
     grid-row-gap: ${(props) => props.rowGap}%;
   }

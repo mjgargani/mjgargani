@@ -17,7 +17,7 @@ const TranslateBtn: React.FC<CommonProps> = ({
         target='_self'
         rel='noreferrer'
       >
-        <Button icon={<IconReplacer text='gtranslate' />} onClick={() => true} />
+        <Button icon={<IconReplacer text='gtranslate' />} />
       </a>
     </Container>
   )

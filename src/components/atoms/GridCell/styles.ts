@@ -13,7 +13,6 @@ export const Container = styled.div<GridCellProps>`
   margin: 0;
   padding: 0;
 
-  grid-area: ${(props) => (props.area?.length ? props.area.join(' / ') : 'unset')};
   ${(props) => props.bgImg && background(props.bgImg.source!, props.bgImg.size!)}
 
   ${(props) => props.styledCss}
