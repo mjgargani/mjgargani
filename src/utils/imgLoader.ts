@@ -19,7 +19,6 @@ async function imgLoader(sources: string[], callback?: () => any) {
 
     return Promise.all(promises).then((results) => {
       callback && callback()
-      console.log(results)
       return results
     })
   }
