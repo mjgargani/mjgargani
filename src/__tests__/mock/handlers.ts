@@ -11,7 +11,7 @@ export const handlers = (statusCode: 200 | 304 | 403) => [
   rest.get('https://api.github.com/users/mjgargani/repos', async (_req, res, ctx) =>
     res(ctx.status(statusCode), ctx.json(repos)),
   ),
-  rest.get('https://gh-pinned-repos.egoist.dev', async (req, res, ctx) => 
-    res(ctx.status(200), ctx.json(pinned))
+  rest.get('https://gh-pinned-repos.egoist.dev', async (req, res, ctx) =>
+    res(ctx.status(200), ctx.json(pinned)),
   ),
 ]

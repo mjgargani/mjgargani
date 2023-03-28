@@ -12,7 +12,5 @@ test('verify if component receives the `src` prop correctly', () => {
   const avatar = screen.getByTestId(/^avatar_\d/)
 
   expect(avatar).toBeInTheDocument()
-  expect(avatar).toHaveStyle(
-    `background-image: url(${profile.avatar_url})`,
-  )
+  expect(avatar).toHaveStyle(`background-image: url(${profile.avatar_url})`)
 })

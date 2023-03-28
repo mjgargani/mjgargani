@@ -5,7 +5,7 @@ import { CommonProps } from '../../globals'
 import randomId from '../../utils/randomId'
 import { Container } from './styles'
 
-const Home: React.FC<CommonProps> = ({ dataTestId = randomId('page-home')}) => (
+const Home: React.FC<CommonProps> = ({ dataTestId = randomId('page-home') }) => (
   <Page>
     <Container data-testid={dataTestId}>
       <h1>

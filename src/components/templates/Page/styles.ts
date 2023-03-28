@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { CommonProps } from '../../../globals'
 
+import { CommonProps } from '../../../globals'
 import animation from '../../../styles/utils/animation'
 
 export const Container = styled.div<CommonProps>`

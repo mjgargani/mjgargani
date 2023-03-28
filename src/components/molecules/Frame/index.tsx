@@ -11,7 +11,7 @@ const Frame: React.FC<FrameProps> = ({
   dataTestId = randomId('frame'),
   styledCss,
   page,
-  prevPage = '/'
+  prevPage = '/',
 }) => {
   const { loading } = useContext(GitHubDataContext)
   const calcBgMov = useMemo(bgMov, [])

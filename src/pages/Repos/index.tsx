@@ -13,7 +13,7 @@ import imgLoader from '../../utils/imgLoader'
 import mdParser from '../../utils/mdParser'
 import randomId from '../../utils/randomId'
 
-const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos')}) => {
+const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) => {
   const { repos } = useContext(GitHubDataContext)
   const [ordenedRepos, setOrdenedRepos] = useState<GitHubRepoItem[]>([])
 

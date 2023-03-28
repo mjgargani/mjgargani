@@ -7,13 +7,9 @@ afterEach(cleanup)
 
 test('verify if component shows children correctly', () => {
   const currentDataTestId = 'page_rtl'
-  const expected = "conteúdo"
+  const expected = 'conteúdo'
 
-  render(
-    <Page dataTestId={currentDataTestId}>
-      {expected}
-    </Page>,
-  )
+  render(<Page dataTestId={currentDataTestId}>{expected}</Page>)
 
   const page = screen.getByTestId(currentDataTestId)
   expect(page).toBeInTheDocument()

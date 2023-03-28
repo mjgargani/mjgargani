@@ -27,7 +27,7 @@ const About: React.FC<CommonProps> = ({ dataTestId = randomId('page-about') }) =
     }
   }, [profile, isLoaded])
 
-  return (isLoaded ? 
+  return isLoaded ? (
     <Page>
       <GridContainer
         dataTestId={dataTestId}
@@ -178,7 +178,9 @@ const About: React.FC<CommonProps> = ({ dataTestId = randomId('page-about') }) =
           />
         </a>
       </GridContainer>
-    </Page> : <Loading />
+    </Page>
+  ) : (
+    <Loading />
   )
 }
 

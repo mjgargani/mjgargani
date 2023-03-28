@@ -13,11 +13,11 @@ test('verify if component receives the props and `children` correctly', () => {
     bgImg: {
       source: '../assets/tile.png',
       size: 'cover',
-    }
+    },
   }
 
   render(
-    <GridCell dataTestId={currentDataTestId} bgImg={props.bgImg} >
+    <GridCell dataTestId={currentDataTestId} bgImg={props.bgImg}>
       {expectedText}
     </GridCell>,
   )

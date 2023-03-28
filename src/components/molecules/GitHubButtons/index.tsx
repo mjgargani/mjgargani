@@ -9,11 +9,7 @@ const GitHubButtons: React.FC<CommonProps> = ({
   <Container data-testid={dataTestId} styledCss={styledCss}>
     <ul>
       <li>
-        <a
-          href='https://github.com/mjgargani/mjgargani/releases'
-          target='_blank'
-          rel='noreferrer'
-        >
+        <a href='https://github.com/mjgargani/mjgargani/releases' target='_blank' rel='noreferrer'>
           <img
             src='https://img.shields.io/github/package-json/v/mjgargani/mjgargani'
             alt='Latest release'
