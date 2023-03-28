@@ -7,12 +7,12 @@ import { render } from '../utils/render'
 afterEach(cleanup)
 
 test('verify if component receives the `src` prop correctly', () => {
-  const currentDataTestId = 'avatar__rtl'
+  render(<Avatar src={profile.avatar_url} />)
 
-  render(<Avatar dataTestId={currentDataTestId} src={profile.avatar_url} />)
+  const avatar = screen.getByTestId(/^avatar_\d/)
 
-  expect(screen.getByTestId(currentDataTestId)).toBeInTheDocument()
-  expect(screen.getByTestId(currentDataTestId)).toHaveStyle(
+  expect(avatar).toBeInTheDocument()
+  expect(avatar).toHaveStyle(
     `background-image: url(${profile.avatar_url})`,
   )
 })

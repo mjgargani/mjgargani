@@ -5,15 +5,15 @@ import GridCell from '../../components/atoms/GridCell'
 import GridContainer from '../../components/atoms/GridContainer'
 import Card from '../../components/molecules/Card'
 import Page from '../../components/templates/Page'
-import { type PageProps } from '../../components/templates/Page/types'
 import { GitHubDataContext } from '../../context/GitHubData'
 import { GitHubRepoItem } from '../../context/types'
+import { CommonProps } from '../../globals'
 import { device, size } from '../../utils/devices'
 import imgLoader from '../../utils/imgLoader'
 import mdParser from '../../utils/mdParser'
 import randomId from '../../utils/randomId'
 
-const Repos: React.FC<PageProps> = ({ dataTestId = randomId('page-repos'), show = true }) => {
+const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos')}) => {
   const { repos } = useContext(GitHubDataContext)
   const [ordenedRepos, setOrdenedRepos] = useState<GitHubRepoItem[]>([])
 
@@ -63,7 +63,7 @@ const Repos: React.FC<PageProps> = ({ dataTestId = randomId('page-repos'), show 
   )
 
   return (
-    <Page show={show}>
+    <Page>
       <GridContainer
         dataTestId={dataTestId}
         columnGap={3}

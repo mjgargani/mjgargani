@@ -48,9 +48,9 @@ test.each([200, 304, 403])('verify if app rendeer child components correctly dep
   expect(pageHome).toHaveTextContent("mjgargani's Lab ")
 
   expect(spyLoSet).toHaveBeenCalled()
-  expect(spyLoSet).toHaveBeenCalledTimes(13)
+  expect(spyLoSet).toHaveBeenCalledTimes(10)
   expect(spyLoGet).toHaveBeenCalled()
-  expect(spyLoGet).toHaveBeenCalledTimes(9)
+  expect(spyLoGet).toHaveBeenCalledTimes(6)
 
   fireEvent.click(buttonsNav[1])
 

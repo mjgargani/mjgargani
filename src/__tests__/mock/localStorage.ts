@@ -3,8 +3,6 @@
 interface LocalStorageMock {
   getItem: (key: string) => (string | null)
   setItem: (key: string, value: string | number) => void
-  removeItem: (key: string) => void
-  clear: () => void
 }
 
 type Store = {
@@ -16,16 +14,10 @@ const localStorageMock: LocalStorageMock = (function() {
 
   return {
     getItem: function(key) {
-      return store[key] || null
+      return store[key]
     },
     setItem: function(key, value) {
       store[key] = value.toString()
-    },
-    removeItem: function(key) {
-      delete store[key]
-    },
-    clear: function() {
-      store = {}
     }
   }
 })()
