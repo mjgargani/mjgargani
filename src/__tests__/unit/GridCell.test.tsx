@@ -13,12 +13,11 @@ test('verify if component receives the props and `children` correctly', () => {
     bgImg: {
       source: '../assets/tile.png',
       size: 'cover',
-    },
-    area: [2, 1, 2, 4],
+    }
   }
 
   render(
-    <GridCell dataTestId={currentDataTestId} bgImg={props.bgImg} area={props.area}>
+    <GridCell dataTestId={currentDataTestId} bgImg={props.bgImg} >
       {expectedText}
     </GridCell>,
   )
@@ -29,5 +28,4 @@ test('verify if component receives the props and `children` correctly', () => {
   expect(cardDesc).toHaveTextContent(expectedText)
   expect(cardDesc).toHaveStyle(`background-image: url(${props.bgImg!.source})`)
   expect(cardDesc).toHaveStyle(`background-size: ${props.bgImg!.size}`)
-  expect(cardDesc).toHaveStyle(`grid-area: ${props.area!.join(' / ')}`)
 })

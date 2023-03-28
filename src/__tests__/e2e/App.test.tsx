@@ -2,30 +2,35 @@ import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/re
 import { BrowserRouter } from 'react-router-dom'
 
 import App from '../../App'
+import localStorageMock from '../mock/localStorage'
 import profile from '../mock/profile.json'
 import repos from '../mock/repos.json'
 import { server } from '../mock/server'
 
-beforeAll(() => {
-  server.listen()
+Object.defineProperty(window, 'localStorage', {
+  value: localStorageMock
 })
 
 afterEach(() => {
   cleanup()
-  server.resetHandlers()
 })
 
-afterAll(() => {
-  server.close()
-})
+test.each([200, 304, 403])('verify if app rendeer child components correctly depending of the `page` prop (apiStatusCode: %p)', async (apiStatusCode) => {
+  const status = apiStatusCode as 200 | 304 | 403;
+  server(status).listen()
+  server(status).resetHandlers()
 
-test('verify if app rendeer child components correctly depending of the `page` prop', async () => {
   render(<App />, { wrapper: BrowserRouter })
 
-  const translateBtn = await screen.findByTestId(/^translate-btn_\d/)
-  expect(translateBtn).toBeInTheDocument()
+  const spyLoSet = jest.spyOn(localStorage, 'setItem')
+  const spyLoGet = jest.spyOn(localStorage, 'getItem')
 
+  const translateBtn = await screen.findByTestId(/^translate-btn_\d/)
+  const ghBtns = await screen.findByTestId(/^github-btns_\d/)
   const footerInfo = screen.getByTestId(/^footer-info_\d+/)
+  
+  expect(translateBtn).toBeInTheDocument()
+  expect(ghBtns).toBeInTheDocument()
   expect(footerInfo).toBeInTheDocument()
 
   const frame = await screen.findByTestId(/^frame_\d/)
@@ -41,6 +46,11 @@ test('verify if app rendeer child components correctly depending of the `page` p
   expect(pageHome).toBeInTheDocument()
 
   expect(pageHome).toHaveTextContent("mjgargani's Lab ")
+
+  expect(spyLoSet).toHaveBeenCalled()
+  expect(spyLoSet).toHaveBeenCalledTimes(13)
+  expect(spyLoGet).toHaveBeenCalled()
+  expect(spyLoGet).toHaveBeenCalledTimes(9)
 
   fireEvent.click(buttonsNav[1])
 
@@ -104,4 +114,6 @@ test('verify if app rendeer child components correctly depending of the `page` p
   await waitFor(() => {
     expect(pageAbout).not.toBeInTheDocument()
   })
+
+  server(status).close()
 })

@@ -28,7 +28,7 @@ function App() {
   const prevPage = usePrevious<PageEndPoints>(page)
   const appData = useGitHubDataValues()
 
-  return (
+  return (appData.loading !== undefined ?
     <GitHubDataContext.Provider value={appData}>
       <ThemeProvider theme={defaultTheme}>
         <Frame page={page} prevPage={prevPage} />
@@ -54,7 +54,7 @@ function App() {
         </ContainerBase>
       </ThemeProvider>
     </GitHubDataContext.Provider>
-  )
+  : <></>)
 }
 
 export default App

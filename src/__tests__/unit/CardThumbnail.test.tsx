@@ -7,7 +7,10 @@ import { render } from '../utils/render'
 
 afterEach(cleanup)
 
-test('verify if component receives the `bgImg` prop correctly', () => {
+test.each([
+  [10 , 20],
+  [1000, 2000]
+])('verify if component receives the `bgImg` prop correctly (stars: %p; watchers: %p)', (stars, watchers) => {
   const currentDataTestId = 'card-thumb__rtl'
   const repoItem = repos[0] as Partial<GitHubRepoItem>
   const expectedBgImg = `https://raw.githubusercontent.com/mjgargani/${repoItem.name}/main/thumbnail.gif`
@@ -19,8 +22,8 @@ test('verify if component receives the `bgImg` prop correctly', () => {
         source: expectedBgImg,
         new: true,
         pinned: true,
-        stars: 1,
-        watchers: 0,
+        stars,
+        watchers,
       }}
     />,
   )
@@ -38,7 +41,7 @@ test('verify if component receives the `bgImg` prop correctly', () => {
   expect(cardThumbNew).toBeInTheDocument()
   expect(cardThumbPinned).toBeInTheDocument()
   expect(cardThumbStars).toBeInTheDocument()
-  expect(cardThumbStarsCount).toHaveTextContent('1')
+  expect(cardThumbStarsCount).toHaveTextContent(stars < 1000 ? stars.toString() : "999+")
   expect(cardThumbWatchers).toBeInTheDocument()
-  expect(cardThumbWatchersCount).toHaveTextContent('0')
+  expect(cardThumbWatchersCount).toHaveTextContent(watchers < 1000 ? watchers.toString() : "999+")
 })

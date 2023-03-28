@@ -1,4 +1,4 @@
-import { cleanup, screen, waitFor } from '@testing-library/react'
+import { cleanup, screen } from '@testing-library/react'
 
 import Frame from '../../components/molecules/Frame'
 import { PageEndPoints } from '../../globals'
@@ -16,10 +16,8 @@ test('verify if component shows child components correctly', async () => {
   const frame = screen.getByTestId(currentDataTestId)
   const tiles = screen.getByTestId(/^frame-tiles_\d+/)
   const shadow = screen.getByTestId(/^frame-shadow_\d+/)
-
-  let potion
-  await waitFor(async () => (potion = await screen.findByTestId(/^potion_\d+/)), { timeout: 5000 })
-
+  const potion = await screen.findByTestId(/^frame-potion_\d+/)
+  
   expect(frame).toBeInTheDocument()
   expect(tiles).toBeInTheDocument()
   expect(shadow).toBeInTheDocument()
@@ -35,15 +33,13 @@ test.each(['/', '/projects', '/about'])(
     render(<Frame dataTestId={currentDataTestId} page={currentPage} />)
 
     const frame = screen.getByTestId(currentDataTestId)
-    expect(frame).toBeInTheDocument()
-
     const shadow = screen.getByTestId(/^frame-shadow_\d+/)
-
-    let potion
-    await waitFor(async () => (potion = await screen.findByTestId(/^potion_\d+/)), {
-      timeout: 5000,
-    })
-
+    const potion = await screen.findByTestId(/^frame-potion_\d+/)
+    
+    expect(frame).toBeInTheDocument()
+    expect(shadow).toBeInTheDocument()
+    expect(potion).toBeInTheDocument()
+    
     expect(frame).toHaveStyle(
       `background: linear-gradient(315deg, ${frameStyles[currentPage].color.join(', ')});`,
     )

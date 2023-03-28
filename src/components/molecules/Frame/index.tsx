@@ -11,7 +11,7 @@ const Frame: React.FC<FrameProps> = ({
   dataTestId = randomId('frame'),
   styledCss,
   page,
-  prevPage,
+  prevPage = '/'
 }) => {
   const { loading } = useContext(GitHubDataContext)
   const calcBgMov = useMemo(bgMov, [])
@@ -20,7 +20,7 @@ const Frame: React.FC<FrameProps> = ({
     <Container data-testid={dataTestId} styledCss={styledCss} page={page} bgMov={calcBgMov}>
       <Tiles data-testid={randomId('frame-tiles')} bgMov={calcBgMov} />
       <Shadow data-testid={randomId('frame-shadow')} page={page} prevPage={prevPage || '/'} />
-      <Potion transparent={loading || page !== '/'} />
+      <Potion dataTestId={randomId('frame-potion')} transparent={loading || page !== '/'} />
     </Container>
   ) : (
     <></>

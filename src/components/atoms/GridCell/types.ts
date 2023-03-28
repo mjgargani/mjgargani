@@ -5,5 +5,4 @@ export type GridCellProps = {
     source?: string
     size?: 'contain' | 'cover'
   }
-  area?: Array<number | string>
 } & CommonProps
