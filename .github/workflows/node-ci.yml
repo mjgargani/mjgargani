@@ -52,7 +52,7 @@ jobs:
       - name: Run Prettier to format code
         run: npm run format
 
-      - name: Run Jest coverage tests
+      - name: Run Vitest coverage tests
         run: npm run test:badges
 
       - name: Commit generated coverage badges
