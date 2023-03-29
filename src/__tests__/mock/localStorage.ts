@@ -1,25 +1,23 @@
-//Source: https://stackoverflow.com/questions/65282181/how-to-use-jest-for-testing-a-react-component-with-localstorage
+// Source: https://stackoverflow.com/questions/65282181/how-to-use-jest-for-testing-a-react-component-with-localstorage
 
-interface LocalStorageMock {
-  getItem: (key: string) => string | null
-  setItem: (key: string, value: string | number) => void
-}
+type LocalStorageMock = {
+  getItem: (key: string) => string | undefined;
+  setItem: (key: string, value: string | number) => void;
+};
 
-type Store = {
-  [key: string]: string
-}
+type Store = Record<string, string>;
 
 const localStorageMock: LocalStorageMock = (function () {
-  let store: Store = {}
+  const store: Store = {};
 
   return {
-    getItem: function (key) {
-      return store[key]
+    getItem(key) {
+      return store[key];
     },
-    setItem: function (key, value) {
-      store[key] = value.toString()
+    setItem(key, value) {
+      store[key] = value.toString();
     },
-  }
-})()
+  };
+})();
 
-export default localStorageMock
+export default localStorageMock;

@@ -1,7 +1,7 @@
-import { type CommonProps, PageEndPoints } from '../../../globals'
+import { type CommonProps, type PageEndPoints } from '../../../globals';
 
 export type FrameProps = {
-  page: PageEndPoints
-  prevPage?: PageEndPoints
-  bgMov?: number[][]
-} & CommonProps
+  page: PageEndPoints;
+  prevPage?: PageEndPoints;
+  bgMov?: number[][];
+} & CommonProps;

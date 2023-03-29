@@ -1,8 +1,7 @@
-import React, { type PropsWithChildren } from 'react'
-
-import randomId from '../../../utils/randomId'
-import { Container } from './styles'
-import { type ButtonProps } from './types'
+import randomId from '../../../utils/randomId';
+import { Container } from './styles';
+import { type ButtonProps } from './types';
+import React, { type PropsWithChildren } from 'react';
 
 const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
   dataTestId = randomId('button'),
@@ -18,6 +17,6 @@ const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
       {children}
     </h2>
   </Container>
-)
+);
 
-export default Button
+export default Button;

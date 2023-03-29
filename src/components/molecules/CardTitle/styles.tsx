@@ -1,6 +1,5 @@
-import styled from 'styled-components'
-
-import { CardTitleProps } from './types'
+import { type CardTitleProps } from './types';
+import styled from 'styled-components';
 
 export const Container = styled.div<CardTitleProps>`
   position: relative;
@@ -11,7 +10,7 @@ export const Container = styled.div<CardTitleProps>`
   min-height: ${(props) => (props.isContent ? 20 : 45)}%;
 
   ${(props) => props.styledCss}
-`
+`;
 
 export const Title = styled.h2`
   position: relative;
@@ -24,4 +23,4 @@ export const Title = styled.h2`
   text-align: center;
   margin: 0;
   padding: 0;
-`
+`;

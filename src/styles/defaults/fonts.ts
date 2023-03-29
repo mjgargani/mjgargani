@@ -1,7 +1,7 @@
-import { createGlobalStyle } from 'styled-components'
-
-import { device, size } from '../../utils/devices'
-import commonStyles from './common'
+/* eslint-disable @typescript-eslint/naming-convention */
+import { device, size } from '../../utils/devices';
+import commonStyles from './common';
+import { createGlobalStyle } from 'styled-components';
 
 const FontStyles = createGlobalStyle`
   a{
@@ -82,6 +82,6 @@ const FontStyles = createGlobalStyle`
       font-size: 110%;
     }
   }
-`
+`;
 
-export default FontStyles
+export default FontStyles;

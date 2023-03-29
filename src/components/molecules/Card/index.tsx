@@ -1,12 +1,11 @@
-import React, { type PropsWithChildren } from 'react'
-
-import randomId from '../../../utils/randomId'
-import CardDescription from '../../atoms/CardDescription'
-import CardThumbnail from '../../atoms/CardThumbnail'
-import Loading from '../../atoms/Loading'
-import CardTitle from '../CardTitle'
-import { Container, ContainerBottom, ContainerTop, InnerContent } from './styles'
-import { type CardProps } from './types'
+import randomId from '../../../utils/randomId';
+import CardDescription from '../../atoms/CardDescription';
+import CardThumbnail from '../../atoms/CardThumbnail';
+import Loading from '../../atoms/Loading';
+import CardTitle from '../CardTitle';
+import { Container, ContainerBottom, ContainerTop, InnerContent } from './styles';
+import { type CardProps } from './types';
+import React, { type PropsWithChildren } from 'react';
 
 const Card: React.FC<PropsWithChildren<CardProps>> = ({
   dataTestId = randomId('card'),
@@ -21,9 +20,11 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
   const cardContent = (isLoading: boolean) => (
     <InnerContent>
       {isLoading && <Loading isCard={true} />}
-      <ContainerTop bgImg={bgImg}>
-        <CardThumbnail bgImg={bgImg} />
-      </ContainerTop>
+      {!isContent && bgImg && (
+        <ContainerTop bgImg={bgImg}>
+          <CardThumbnail bgImg={bgImg} />
+        </ContainerTop>
+      )}
       <ContainerBottom bgImg={bgImg}>
         <CardTitle isContent={isContent} bgImg={bgImg?.source}>
           {title}
@@ -33,26 +34,21 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
         </CardDescription>
       </ContainerBottom>
     </InnerContent>
-  )
+  );
 
   return (
-    <Container
-      data-testid={dataTestId}
-      isContent={isContent}
-      isLoading={isLoading}
-      styledCss={styledCss}
-    >
+    <Container data-testid={dataTestId} isContent={isContent} isLoading={isLoading} styledCss={styledCss}>
       {url ? (
         <a
           data-testid={randomId('card-link')}
-          className='card-link'
+          className="card-link"
           href={url}
-          target='_blank'
+          target="_blank"
           style={{
             color: 'black',
             textDecoration: 'none',
           }}
-          rel='noreferrer'
+          rel="noreferrer"
         >
           {cardContent(isLoading)}
         </a>
@@ -60,7 +56,7 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
         cardContent(isLoading)
       )}
     </Container>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

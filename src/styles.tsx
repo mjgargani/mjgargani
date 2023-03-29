@@ -1,10 +1,9 @@
-import styled from 'styled-components'
+import { device } from './utils/devices';
+import styled from 'styled-components';
 
-import { device } from './utils/devices'
-
-interface ContainerBaseProps {
-  isLoading?: boolean
-}
+type ContainerBaseProps = {
+  isLoading?: boolean;
+};
 
 export const ContainerBase = styled.div<ContainerBaseProps>`
   position: absolute;
@@ -18,7 +17,7 @@ export const ContainerBase = styled.div<ContainerBaseProps>`
     width: 70%;
     margin: 0 15%;
   }
-`
+`;
 
 export const ContainerTop = styled.div`
   overflow: hidden;
@@ -29,7 +28,7 @@ export const ContainerTop = styled.div`
   @media ${device.tablet} {
     height: 10%;
   }
-`
+`;
 
 export const ContainerPage = styled.div`
   overflow-y: auto;
@@ -40,7 +39,7 @@ export const ContainerPage = styled.div`
   @media ${device.tablet} {
     height: 65%;
   }
-`
+`;
 
 export const ContainerNavigation = styled.div`
   overflow-y: auto;
@@ -51,7 +50,7 @@ export const ContainerNavigation = styled.div`
   @media ${device.tablet} {
     height: 15%;
   }
-`
+`;
 
 export const ContainerFooter = styled.div`
   overflow: hidden;
@@ -62,4 +61,4 @@ export const ContainerFooter = styled.div`
   @media ${device.tablet} {
     height: 10%;
   }
-`
+`;

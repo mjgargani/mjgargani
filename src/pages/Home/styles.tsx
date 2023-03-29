@@ -1,6 +1,5 @@
-import styled from 'styled-components'
-
-import { device } from '../../utils/devices'
+import { device } from '../../utils/devices';
+import styled from 'styled-components';
 
 export const Container = styled.div`
   position: absolute;
@@ -25,12 +24,7 @@ export const Container = styled.div`
     font-size: calc(2.45vw + 2.45vh);
   }
   -webkit-text-stroke-width: 0.5px;
-  text-shadow: ${[
-    '-0.5px  -0.5px 0 #fff',
-    '0.5px  0.5px 0 #fff',
-    '1px  1px 0 #fff',
-    '1.5px  1.5px 0 #fff',
-  ].join(', ')};
+  text-shadow: ${['-0.5px  -0.5px 0 #fff', '0.5px  0.5px 0 #fff', '1px  1px 0 #fff', '1.5px  1.5px 0 #fff'].join(', ')};
   @media ${device.tablet} {
     -webkit-text-stroke-width: 1px;
     text-shadow: ${[
@@ -46,4 +40,4 @@ export const Container = styled.div`
       font-size: 300%;
     }
   }
-`
+`;

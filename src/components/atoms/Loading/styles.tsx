@@ -1,8 +1,7 @@
-import styled, { css } from 'styled-components'
-
-import animation from '../../../styles/utils/animation'
-import { device } from '../../../utils/devices'
-import { LoadingProps } from './types'
+import animation from '../../../styles/utils/animation';
+import { device } from '../../../utils/devices';
+import { type LoadingProps } from './types';
+import styled, { css } from 'styled-components';
 
 const card = css`
   position: absolute !important;
@@ -10,7 +9,7 @@ const card = css`
   width: 100% !important;
   background-color: unset !important;
   border-radius: unset !important;
-`
+`;
 
 export const Potion = styled.div`
   font-family: 'mjgarganis Lab', Sans-Serif;
@@ -18,7 +17,7 @@ export const Potion = styled.div`
   animation: ${animation.rotate(0, 359)} 1s infinite linear;
   margin: 0;
   padding: 0;
-`
+`;
 
 export const Container = styled.div<LoadingProps>`
   position: fixed;
@@ -41,4 +40,4 @@ export const Container = styled.div<LoadingProps>`
   animation: ${animation.opacity(0, 1)} 2s ease alternate infinite;
 
   ${(props) => props.styledCss}
-`
+`;

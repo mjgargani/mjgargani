@@ -1,37 +1,31 @@
-import camelcase from 'camelcase'
-import { useEffect, useState } from 'react'
+import camelcase from 'camelcase';
+import { useEffect, useState } from 'react';
 
-interface LocalStorage {
-  [key: string]: any
-}
+type LocalStorage = Record<string, any>;
 
 function useLocalStorage<T>() {
-  const [data, setData] = useState<LocalStorage>()
+  const [data, setData] = useState<LocalStorage>();
 
   useEffect(() => {
-    if (!!!data) {
-      const itens = Object.entries(localStorage).map((el) => {
-        let item
+    if (!data) {
+      let newData: LocalStorage = {};
+
+      Object.entries(localStorage).forEach((el) => {
+        let item;
         try {
-          item = JSON.parse(el[1])
+          item = JSON.parse(el[1] as string) as Record<string, unknown>;
         } catch (error) {
-          item = el[1].toString() !== '' ? el[1].toString() : undefined
+          item = el[1] as string;
         } finally {
-          return { [camelcase(el[0])]: item }
+          newData = Object.assign(newData, { [camelcase(el[0])]: item });
         }
-      })
+      });
 
-      let newData = {}
-
-      for (const item of itens) {
-        newData = { ...newData, ...item }
-      }
-
-      setData(newData)
+      setData(newData);
     }
-  }, [data])
+  }, [data]);
 
-  return data as T
+  return data as T;
 }
 
-export default useLocalStorage
+export default useLocalStorage;

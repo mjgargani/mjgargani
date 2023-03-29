@@ -1,17 +1,16 @@
-import styled, { keyframes } from 'styled-components'
+import { type CoinFountainProps } from './types';
+import styled, { keyframes } from 'styled-components';
 
-import { CoinFountainProps } from './types'
-
-const coinYMovement = (distance: number) => keyframes`
+const coinYmovement = (distance: number) => keyframes`
   from{
     bottom: 2%;
   }
   to{
     bottom: ${distance}%;
   }
-`
+`;
 
-const coinXMovement = (distance: number) => keyframes`
+const coinXmovement = (distance: number) => keyframes`
   from{
     left: 1%;
     transform: rotate(0);
@@ -22,7 +21,7 @@ const coinXMovement = (distance: number) => keyframes`
     transform: rotate(360deg);
     opacity: 0;
   }
-`
+`;
 
 const coinOpacity = keyframes`
   0%{
@@ -34,7 +33,7 @@ const coinOpacity = keyframes`
   100%{
     opacity: 0;
   }
-`
+`;
 
 const moneyBagShake = keyframes`
   from{
@@ -43,18 +42,16 @@ const moneyBagShake = keyframes`
   to{
     transform: rotate(20deg);
   }
-`
+`;
 
 export const Coin = styled.div<CoinFountainProps>`
   position: absolute;
   bottom: 2%;
   left: 1%;
-  animation-delay: ${(props) => props.delay || 0}ms !important;
-  animation: ${(props) => coinYMovement(props.distance ? props.distance![1] : 10)} 0.25s alternate
-      ease infinite,
-    ${(props) => coinXMovement(props.distance ? props.distance![0] : 10)} 1s ease infinite,
-    ${coinOpacity} 1s ease infinite;
-`
+  animation-delay: ${(props) => props.delay ?? 0}ms !important;
+  animation: ${(props) => coinYmovement(props.distance?.[1] ?? 10)} 0.25s alternate ease infinite,
+    ${(props) => coinXmovement(props.distance?.[0] ?? 10)} 1s ease infinite, ${coinOpacity} 1s ease infinite;
+`;
 
 export const MoneyBag = styled.div`
   position: absolute;
@@ -62,7 +59,7 @@ export const MoneyBag = styled.div`
   left: -2%;
   font-size: 300%;
   animation: ${moneyBagShake} 0.15s alternate ease-in-out infinite;
-`
+`;
 
 export const Container = styled.div`
   position: absolute;
@@ -74,4 +71,4 @@ export const Container = styled.div`
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
-`
+`;

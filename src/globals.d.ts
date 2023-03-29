@@ -1,30 +1,17 @@
-import { FlattenInterpolation, ThemeProps } from 'styled-components'
+import { type FlattenInterpolation } from 'styled-components';
 
-import { ButtonStyles } from './styles/defaults/button'
-import { CommonStyles } from './styles/defaults/common'
-import { FrameStyles } from './styles/defaults/frame'
-import { PotionStyles } from './styles/defaults/potion'
+/* eslint-disable @typescript-eslint/naming-convention */
+type RGB = `rgb(${number} | ${number}, ${number})`;
+type RGBA = `rgba(${number}, ${number}, ${number}, ${number})`;
+type HEX = `#${string}`;
+export type Color = RGB | RGBA | HEX;
 
-type RGB = `rgb(${number} | ${number}, ${number})`
-type RGBA = `rgba(${number}, ${number}, ${number}, ${number})`
-type HEX = `#${string}`
-export type Color = RGB | RGBA | HEX
-
-export type PageEndPoints = '/' | '/projects' | '/about'
+export type PageEndPoints = '/' | '/projects' | '/about';
 
 export type CommonProps = {
-  dataTestId?: string
-  styledCss?: FlattenInterpolation<ThemeProps<any>> | false
-}
-
-declare module 'styled-components' {
-  export interface DefaultTheme {
-    button: ButtonStyles
-    common: CommonStyles
-    frame: FrameStyles
-    potion: PotionStyles
-  }
-}
+  dataTestId?: string;
+  styledCss?: FlattenInterpolation<ThemeProps<any>> | false;
+};
 
 export type AlphaRange =
   | 0
@@ -47,7 +34,7 @@ export type AlphaRange =
   | 0.85
   | 0.9
   | 0.95
-  | 1
+  | 1;
 
 export type Angle =
   | 0
@@ -409,4 +396,4 @@ export type Angle =
   | 356
   | 357
   | 358
-  | 359
+  | 359;

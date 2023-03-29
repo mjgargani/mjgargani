@@ -1,0 +1,7 @@
+node_modules/
+dist/
+src/reportWebVitals.ts
+.prettierrc.js
+.eslintrc.js
+env.d.ts
+src/vite-env.d.ts

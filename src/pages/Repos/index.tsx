@@ -1,34 +1,36 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { css } from 'styled-components'
-
-import GridCell from '../../components/atoms/GridCell'
-import GridContainer from '../../components/atoms/GridContainer'
-import Card from '../../components/molecules/Card'
-import Page from '../../components/templates/Page'
-import { GitHubDataContext } from '../../context/GitHubData'
-import { GitHubRepoItem } from '../../context/types'
-import { CommonProps } from '../../globals'
-import { device, size } from '../../utils/devices'
-import imgLoader from '../../utils/imgLoader'
-import mdParser from '../../utils/mdParser'
-import randomId from '../../utils/randomId'
+import GridCell from '../../components/atoms/GridCell';
+import GridContainer from '../../components/atoms/GridContainer';
+import Card from '../../components/molecules/Card';
+import Page from '../../components/templates/Page';
+import { GitHubDataContext } from '../../context/GitHubData';
+import { type GitHubRepoItem } from '../../context/types';
+import { type CommonProps } from '../../globals';
+import { device, size } from '../../utils/devices';
+import imgLoader from '../../utils/imgLoader';
+import mdParser from '../../utils/mdParser';
+import randomId from '../../utils/randomId';
+import React, { useContext, useEffect, useState } from 'react';
+import { css } from 'styled-components';
 
 const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) => {
-  const { repos } = useContext(GitHubDataContext)
-  const [ordenedRepos, setOrdenedRepos] = useState<GitHubRepoItem[]>([])
+  const { repos } = useContext(GitHubDataContext);
+  const [ordenedRepos, setOrdenedRepos] = useState<GitHubRepoItem[]>([]);
 
   useEffect(() => {
-    if (!!repos?.length && !!!ordenedRepos.length) {
+    if (Boolean(repos?.length) && !ordenedRepos.length) {
       const newOrdenedRepos = [
-        ...repos.sort((a, b) => (a!.id < b!.id ? 1 : -1)).filter((el) => el?.pinned),
-        ...repos.sort((a, b) => (a!.id < b!.id ? 1 : -1)).filter((el) => !el?.pinned),
-      ]
-      imgLoader(
-        newOrdenedRepos.map((el) => el?.thumbnail!),
-        () => setOrdenedRepos(newOrdenedRepos as GitHubRepoItem[]),
-      )
+        ...repos!.sort((a, b) => (a!.id < b!.id ? 1 : -1)).filter((el) => el?.pinned),
+        ...repos!.sort((a, b) => (a!.id < b!.id ? 1 : -1)).filter((el) => !el?.pinned),
+      ];
+      imgLoader(newOrdenedRepos.map((el) => el!.thumbnail))
+        .then(() => {
+          setOrdenedRepos(newOrdenedRepos as GitHubRepoItem[]);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     }
-  }, [repos, ordenedRepos])
+  }, [repos, ordenedRepos]);
 
   const RepoItem = (el: GitHubRepoItem | undefined) => (
     <GridCell key={randomId('repo-item', true)}>
@@ -41,11 +43,7 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
           watchers: el!.watchers_count,
         }}
         url={el!.html_url}
-        title={
-          el!.name === 'mjgargani'
-            ? 'nodejs-typescript-reactjs-styledcomponents_2023-portfolio'
-            : el!.name
-        }
+        title={el!.name === 'mjgargani' ? 'nodejs-typescript-reactjs-styledcomponents_2023-portfolio' : el!.name}
         styledCss={
           el!.description.length >= 50 &&
           css`
@@ -60,7 +58,7 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
         {mdParser(el!.description)}
       </Card>
     </GridCell>
-  )
+  );
 
   return (
     <Page>
@@ -93,11 +91,10 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
       >
         {ordenedRepos?.length
           ? ordenedRepos.map(RepoItem)
-          : repos?.length &&
-            repos!.map((el, i) => <Card key={randomId(`card-item-${i}`, true)} isLoading={true} />)}
+          : repos?.length && repos.map((el, i) => <Card key={randomId(`card-item-${i}`, true)} isLoading={true} />)}
       </GridContainer>
     </Page>
-  )
-}
+  );
+};
 
-export default Repos
+export default Repos;

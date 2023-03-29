@@ -1,6 +1,5 @@
-import styled from 'styled-components'
-
-import { type AvatarProps } from './types'
+import { type AvatarProps } from './types';
+import styled from 'styled-components';
 
 export const Container = styled.div<AvatarProps>`
   background-image: url(${(props) => props.src});
@@ -13,4 +12,4 @@ export const Container = styled.div<AvatarProps>`
   width: 100%;
 
   ${(props) => props.styledCss}
-`
+`;

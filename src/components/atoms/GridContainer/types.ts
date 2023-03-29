@@ -1,14 +1,14 @@
-import { type CommonProps } from '../../../globals'
+import { type CommonProps } from '../../../globals';
 
 export type GridContainerProps = {
   templateColumns?: {
-    mobile?: string[]
-    desktop?: string[]
-  }
+    mobile?: string[];
+    desktop?: string[];
+  };
   templateRows?: {
-    mobile?: string[]
-    desktop?: string[]
-  }
-  columnGap?: number
-  rowGap?: number
-} & CommonProps
+    mobile?: string[];
+    desktop?: string[];
+  };
+  columnGap?: number;
+  rowGap?: number;
+} & CommonProps;

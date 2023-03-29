@@ -1,32 +1,32 @@
-import { createContext, useEffect, useState } from 'react'
+/* eslint-disable @typescript-eslint/naming-convention */
+import useLocalStorage from '../hooks/useLocalStorage';
+import { gitHubRequest, pinnedRepos } from '../utils/fetch';
+import { type GitHubData, type GitHubProfile, type GitHubRepoItem } from './types';
+import { createContext, useEffect, useState } from 'react';
 
-import useLocalStorage from '../hooks/useLocalStorage'
-import { gitHubRequest, pinnedRepos } from '../utils/fetch'
-import { type GitHubData, type GitHubProfile, type GitHubRepoItem } from './types'
+export const GitHubDataContext = createContext<Partial<GitHubData>>({});
 
-export const GitHubDataContext = createContext<Partial<GitHubData>>({})
-
-interface LocalStorageData {
-  updated: boolean
-  etagRepos: string
-  etagProfile: string
-  repos: GitHubRepoItem[]
-  profile: GitHubProfile
-}
+type LocalStorageData = {
+  updated: boolean;
+  etagRepos: string;
+  etagProfile: string;
+  repos: GitHubRepoItem[];
+  profile: GitHubProfile;
+};
 
 export const useGitHubDataValues = (): Partial<GitHubData> => {
-  const [loading, setLoading] = useState<boolean>(true)
+  const [loading, setLoading] = useState<boolean>(true);
 
-  const [data, setData] = useState<Partial<LocalStorageData>>()
+  const [data, setData] = useState<Partial<LocalStorageData>>();
 
-  const localStorageHook = useLocalStorage<Partial<LocalStorageData>>()
+  const localStorageHook = useLocalStorage<Partial<LocalStorageData>>();
 
   useEffect(() => {
-    if (!!localStorageHook && !!!data) {
+    if (Boolean(localStorageHook) && !data) {
       setData({
         updated: false,
         ...localStorageHook,
-      })
+      });
     }
 
     if (data?.updated === false) {
@@ -42,25 +42,29 @@ export const useGitHubDataValues = (): Partial<GitHubData> => {
           etag: { name: 'profile', data: data?.etagProfile },
           content: data?.profile,
         }),
-      ]).then((responses) => {
-        setData({
-          updated: true,
-          etagRepos: responses[0].newETag || data?.etagRepos,
-          etagProfile: responses[1].newETag || data?.etagProfile,
-          repos: responses[0].body || data?.repos,
-          profile: responses[1].body || data?.profile,
+      ])
+        .then((responses) => {
+          setData({
+            updated: true,
+            etagRepos: responses[0].newEtag ?? data?.etagRepos,
+            etagProfile: responses[1].newEtag ?? data?.etagProfile,
+            repos: responses[0].body ?? data?.repos,
+            profile: responses[1].body ?? data?.profile,
+          });
         })
-      })
+        .catch((err) => {
+          console.error(err);
+        });
     }
 
     if (data?.updated === true) {
-      setLoading(false)
+      setLoading(false);
     }
-  }, [data, localStorageHook])
+  }, [data, localStorageHook]);
 
   return {
     loading,
     profile: data?.profile,
     repos: data?.repos,
-  }
-}
+  };
+};

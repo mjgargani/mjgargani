@@ -1,14 +1,14 @@
-import { Color } from '../../globals'
+import { type Color } from '../../globals';
 
 export type ButtonStyles = {
-  margin: number
+  margin: number;
   color: {
     active: {
-      text: [Color, Color]
-      bg: [Color, Color, Color]
-    }
-  }
-}
+      text: [Color, Color];
+      bg: [Color, Color, Color];
+    };
+  };
+};
 
 const buttonStyles: ButtonStyles = {
   margin: 10,
@@ -18,10 +18,10 @@ const buttonStyles: ButtonStyles = {
       bg: [
         'rgba(255, 255, 255, 0.7)',
         'rgba(255, 255, 255, 0.1)',
-        'rgba(255, 255, 255, 0.25)', //hover
+        'rgba(255, 255, 255, 0.25)', // Hover
       ],
     },
   },
-}
+};
 
-export default buttonStyles
+export default buttonStyles;
