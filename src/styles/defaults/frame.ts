@@ -1,11 +1,12 @@
-import { AlphaRange, Color, PageEndPoints } from '../../globals'
+/* eslint-disable @typescript-eslint/naming-convention */
+import { type AlphaRange, type Color, type PageEndPoints } from '../../globals';
 
 export type FrameStyles = {
   [key in PageEndPoints]: {
-    color: [Color, Color]
-    shadow: AlphaRange
-  }
-}
+    color: [Color, Color];
+    shadow: AlphaRange;
+  };
+};
 
 const frameStyles: FrameStyles = {
   '/': {
@@ -20,6 +21,6 @@ const frameStyles: FrameStyles = {
     color: ['#690808', '#64c773'],
     shadow: 0.7,
   },
-}
+};
 
-export default frameStyles
+export default frameStyles;

@@ -1,6 +1,5 @@
-import styled from 'styled-components'
-
-import { type IconReplacerProps } from './types'
+import { type IconReplacerProps } from './types';
+import styled from 'styled-components';
 
 export const Container = styled.span<Partial<IconReplacerProps>>`
   display: inline;
@@ -8,4 +7,4 @@ export const Container = styled.span<Partial<IconReplacerProps>>`
   vertical-align: middle;
 
   ${(props) => props.styledCss}
-`
+`;

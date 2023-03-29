@@ -1,8 +1,7 @@
-import React, { type PropsWithChildren } from 'react'
-
-import randomId from '../../../utils/randomId'
-import { Container } from './styles'
-import { type GridContainerProps } from './types'
+import randomId from '../../../utils/randomId';
+import { Container } from './styles';
+import { type GridContainerProps } from './types';
+import React, { type PropsWithChildren } from 'react';
 
 const GridContainer: React.FC<PropsWithChildren<GridContainerProps>> = ({
   dataTestId = randomId('grid-container'),
@@ -23,6 +22,6 @@ const GridContainer: React.FC<PropsWithChildren<GridContainerProps>> = ({
   >
     {children}
   </Container>
-)
+);
 
-export default GridContainer
+export default GridContainer;

@@ -1,6 +1,6 @@
-const randomId = (name: string, production: boolean = false) =>
-  production || ['development', 'test'].includes(process.env.NODE_ENV!)
+const randomId = (name: string, production = false) =>
+  production || ['development', 'test'].includes(import.meta.env.MODE)
     ? `${name}_${Date.now()}${Math.round(Math.random() * 1000)}`
-    : undefined
+    : undefined;
 
-export default randomId
+export default randomId;

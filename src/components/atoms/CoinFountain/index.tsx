@@ -1,6 +1,5 @@
-import React from 'react'
-
-import { Coin, Container, MoneyBag } from './styles'
+import { Coin, Container, MoneyBag } from './styles';
+import React from 'react';
 
 const CoinFountain: React.FC = () => (
   <Container>
@@ -34,6 +33,6 @@ const CoinFountain: React.FC = () => (
     </Coin>
     <MoneyBag>💰</MoneyBag>
   </Container>
-)
+);
 
-export default CoinFountain
+export default CoinFountain;

@@ -1,10 +1,11 @@
-import { AlphaRange, PageEndPoints } from '../../globals'
+/* eslint-disable @typescript-eslint/naming-convention */
+import { type AlphaRange, type PageEndPoints } from '../../globals';
 
 export type PotionStyles = {
   [key in PageEndPoints]: {
-    opacity: AlphaRange
-  }
-}
+    opacity: AlphaRange;
+  };
+};
 
 const potionStyles: PotionStyles = {
   '/': {
@@ -16,6 +17,6 @@ const potionStyles: PotionStyles = {
   '/about': {
     opacity: 0.1,
   },
-}
+};
 
-export default potionStyles
+export default potionStyles;

@@ -1,23 +1,17 @@
-import React, { useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { css } from 'styled-components'
+import { GitHubDataContext } from '../../../context/GitHubData';
+import randomId from '../../../utils/randomId';
+import Button from '../../atoms/Button';
+import GridCell from '../../atoms/GridCell';
+import GridContainer from '../../atoms/GridContainer';
+import { Container, Hidden } from './styles';
+import { type NavigationProps } from './types';
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { css } from 'styled-components';
 
-import { GitHubDataContext } from '../../../context/GitHubData'
-import randomId from '../../../utils/randomId'
-import Button from '../../atoms/Button'
-import GridCell from '../../atoms/GridCell'
-import GridContainer from '../../atoms/GridContainer'
-import { Container, Hidden } from './styles'
-import { type NavigationProps } from './types'
-
-const Navigation: React.FC<NavigationProps> = ({
-  dataTestId = randomId('navigation'),
-  isHome,
-  page,
-  styledCss,
-}) => {
-  const { loading } = useContext(GitHubDataContext)
-  const navigate = useNavigate()
+const Navigation: React.FC<NavigationProps> = ({ dataTestId = randomId('navigation'), isHome, page, styledCss }) => {
+  const { loading } = useContext(GitHubDataContext);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -44,7 +38,7 @@ const Navigation: React.FC<NavigationProps> = ({
                   dataTestId={randomId('btn-nav')}
                   active={isHome}
                   onClick={() => {
-                    navigate('')
+                    navigate('');
                   }}
                   icon={''}
                 >
@@ -57,7 +51,7 @@ const Navigation: React.FC<NavigationProps> = ({
                 dataTestId={randomId('btn-nav')}
                 active={page === '/projects'}
                 onClick={() => {
-                  navigate('projects')
+                  navigate('projects');
                 }}
                 icon={''}
               >
@@ -69,7 +63,7 @@ const Navigation: React.FC<NavigationProps> = ({
                 dataTestId={randomId('btn-nav')}
                 active={page === '/about'}
                 onClick={() => {
-                  navigate('about')
+                  navigate('about');
                 }}
                 icon={''}
               >
@@ -80,7 +74,7 @@ const Navigation: React.FC<NavigationProps> = ({
         </Container>
       )}
     </>
-  )
-}
+  );
+};
 
-export default Navigation
+export default Navigation;

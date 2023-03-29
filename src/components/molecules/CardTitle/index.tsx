@@ -1,12 +1,11 @@
-import React, { type PropsWithChildren } from 'react'
+import randomId from '../../../utils/randomId';
+import IconReplacer from '../IconReplacer';
+import { Container, Title } from './styles';
+import { type CardTitleProps } from './types';
+import React, { type PropsWithChildren } from 'react';
 
-import randomId from '../../../utils/randomId'
-import IconReplacer from '../IconReplacer'
-import { Container, Title } from './styles'
-import { CardTitleProps } from './types'
-
-const replaceRegExpTitle = new RegExp('.+(?<=_)', 'gi')
-const replaceRegExpIcons = new RegExp('(?=_).+', 'gi')
+const replaceRegExpTitle = /.+(?<=_)/gi;
+const replaceRegExpIcons = /(?=_).+/gi;
 
 const CardTitle: React.FC<PropsWithChildren<CardTitleProps>> = ({
   dataTestId = randomId('card-title'),
@@ -21,6 +20,6 @@ const CardTitle: React.FC<PropsWithChildren<CardTitleProps>> = ({
       <IconReplacer text={(children as string).replaceAll(replaceRegExpIcons, '')} darker={true} />
     </Title>
   </Container>
-)
+);
 
-export default CardTitle
+export default CardTitle;

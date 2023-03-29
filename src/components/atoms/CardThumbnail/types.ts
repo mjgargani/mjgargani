@@ -1,11 +1,6 @@
-import { type CommonProps } from '../../../globals'
+import { type CommonProps } from '../../../globals';
+import { type BgImg } from '@/components/molecules/Card/types';
 
 export type CardThumbnailProps = {
-  bgImg?: {
-    source: string
-    new?: boolean
-    pinned?: boolean
-    stars?: number
-    watchers?: number
-  }
-} & CommonProps
+  bgImg: BgImg;
+} & CommonProps;

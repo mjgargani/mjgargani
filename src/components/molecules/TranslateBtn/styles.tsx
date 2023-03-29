@@ -1,6 +1,5 @@
-import styled from 'styled-components'
-
-import { CommonProps } from '../../../globals'
+import { type CommonProps } from '../../../globals';
+import styled from 'styled-components';
 
 export const Container = styled.div<CommonProps>`
   position: fixed;
@@ -31,4 +30,4 @@ export const Container = styled.div<CommonProps>`
   }
 
   ${(props) => props.styledCss}
-`
+`;

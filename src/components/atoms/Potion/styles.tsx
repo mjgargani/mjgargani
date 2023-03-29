@@ -1,8 +1,7 @@
-import styled, { keyframes } from 'styled-components'
-
-import defaults from '../../../styles/defaults/potion'
-import animation from '../../../styles/utils/animation'
-import { type PotionProps } from './types'
+import defaults from '../../../styles/defaults/potion';
+import animation from '../../../styles/utils/animation';
+import { type PotionProps } from './types';
+import styled, { keyframes } from 'styled-components';
 
 const rotateAnim = keyframes`
   0% { 
@@ -17,7 +16,7 @@ const rotateAnim = keyframes`
   100% { 
     transform: rotate(359deg);
   }
-`
+`;
 
 const moveAnim = keyframes`
   0% {
@@ -62,7 +61,7 @@ const moveAnim = keyframes`
   100% {
     left:25vw; top:10vh;
   }
-`
+`;
 const shadowAnim = keyframes`
   to{
     -webkit-filter: drop-shadow(0 0 50px rgba(255, 255, 255, .25));
@@ -72,7 +71,7 @@ const shadowAnim = keyframes`
     -webkit-filter: drop-shadow(0 0 50px rgba(255, 255, 255, .75));
     filter: drop-shadow(0 0 50px rgba(255, 255, 255, .75));
   }
-`
+`;
 
 export const Container = styled.div<PotionProps>`
   position: fixed;
@@ -84,17 +83,16 @@ export const Container = styled.div<PotionProps>`
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: ${(props) =>
-    props.transparent ? defaults['/projects'].opacity : defaults['/'].opacity};
+  opacity: ${(props) => (props.transparent ? defaults['/projects'].opacity : defaults['/'].opacity)};
   animation: ${(props) =>
         animation.opacity(
           props.transparent ? defaults['/'].opacity : defaults['/projects'].opacity,
           props.transparent ? defaults['/projects'].opacity : defaults['/'].opacity,
         )}
       0.75s ease,
-    ${shadowAnim} 5s infinite alternate ease-in-out,
-    ${rotateAnim} 60s infinite alternate ease-in-out, ${moveAnim} 120s infinite ease-in-out;
+    ${shadowAnim} 5s infinite alternate ease-in-out, ${rotateAnim} 60s infinite alternate ease-in-out,
+    ${moveAnim} 120s infinite ease-in-out;
   z-index: 0;
 
   ${(props) => props.styledCss}
-`
+`;

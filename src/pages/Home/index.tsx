@@ -1,18 +1,17 @@
-import React from 'react'
-
-import Page from '../../components/templates/Page'
-import { CommonProps } from '../../globals'
-import randomId from '../../utils/randomId'
-import { Container } from './styles'
+import Page from '../../components/templates/Page';
+import { type CommonProps } from '../../globals';
+import randomId from '../../utils/randomId';
+import { Container } from './styles';
+import React from 'react';
 
 const Home: React.FC<CommonProps> = ({ dataTestId = randomId('page-home') }) => (
   <Page>
     <Container data-testid={dataTestId}>
       <h1>
-        mjgargani's Lab <span style={{ color: 'darkblue' }}></span>
+        mjgargani&apos;s Lab <span style={{ color: 'darkblue' }}></span>
       </h1>
     </Container>
   </Page>
-)
+);
 
-export default Home
+export default Home;

@@ -1,31 +1,36 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { css } from 'styled-components'
-
-import QrCodePadrim from '../../assets/qr-code-padrim.png'
-import Avatar from '../../components/atoms/Avatar'
-import CoinFountain from '../../components/atoms/CoinFountain'
-import GridCell from '../../components/atoms/GridCell'
-import GridContainer from '../../components/atoms/GridContainer'
-import Loading from '../../components/atoms/Loading'
-import Card from '../../components/molecules/Card'
-import IconReplacer from '../../components/molecules/IconReplacer'
-import Page from '../../components/templates/Page'
-import { GitHubDataContext } from '../../context/GitHubData'
-import { CommonProps } from '../../globals'
-import { device } from '../../utils/devices'
-import imgLoader from '../../utils/imgLoader'
-import mdParser from '../../utils/mdParser'
-import randomId from '../../utils/randomId'
+import QrCodePadrim from '../../assets/qr-code-padrim.png';
+import Avatar from '../../components/atoms/Avatar';
+import CoinFountain from '../../components/atoms/CoinFountain';
+import GridCell from '../../components/atoms/GridCell';
+import GridContainer from '../../components/atoms/GridContainer';
+import Loading from '../../components/atoms/Loading';
+import Card from '../../components/molecules/Card';
+import IconReplacer from '../../components/molecules/IconReplacer';
+import Page from '../../components/templates/Page';
+import { GitHubDataContext } from '../../context/GitHubData';
+import { type CommonProps } from '../../globals';
+import { device } from '../../utils/devices';
+import imgLoader from '../../utils/imgLoader';
+import mdParser from '../../utils/mdParser';
+import randomId from '../../utils/randomId';
+import React, { useContext, useEffect, useState } from 'react';
+import { css } from 'styled-components';
 
 const About: React.FC<CommonProps> = ({ dataTestId = randomId('page-about') }) => {
-  const { profile } = useContext(GitHubDataContext)
-  const [isLoaded, setIsLoaded] = useState<boolean>(false)
+  const { profile } = useContext(GitHubDataContext);
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!!profile?.avatar_url && !isLoaded) {
-      imgLoader([profile?.avatar_url!, QrCodePadrim], () => setIsLoaded(true))
+    if (Boolean(profile?.avatar_url) && !isLoaded) {
+      imgLoader([profile!.avatar_url!, QrCodePadrim])
+        .then(() => {
+          setIsLoaded(true);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     }
-  }, [profile, isLoaded])
+  }, [profile, isLoaded]);
 
   return isLoaded ? (
     <Page>
@@ -43,11 +48,7 @@ const About: React.FC<CommonProps> = ({ dataTestId = randomId('page-about') }) =
       >
         <GridCell>
           <div style={{ width: '100%', height: '100%' }}>
-            <Card
-              dataTestId={randomId('card-about')}
-              title={`Olá! Sou ${profile?.name}`}
-              isContent={true}
-            >
+            <Card dataTestId={randomId('card-about')} title={`Olá! Sou ${profile!.name!}`} isContent={true}>
               <CoinFountain />
               <GridContainer
                 templateColumns={{
@@ -61,7 +62,7 @@ const About: React.FC<CommonProps> = ({ dataTestId = randomId('page-about') }) =
                     z-index: 2000;
                   `}
                 >
-                  <Avatar dataTestId={randomId('card-about-avatar')} src={profile?.avatar_url!} />
+                  <Avatar dataTestId={randomId('card-about-avatar')} src={profile!.avatar_url!} />
                 </GridCell>
                 <GridCell
                   dataTestId={randomId('card-about-bio')}
@@ -75,7 +76,7 @@ const About: React.FC<CommonProps> = ({ dataTestId = randomId('page-about') }) =
                     z-index: 2000;
                   `}
                 >
-                  {mdParser(profile?.bio!)}
+                  {mdParser(profile!.bio!)}
                 </GridCell>
               </GridContainer>
               <GridContainer
@@ -105,24 +106,20 @@ const About: React.FC<CommonProps> = ({ dataTestId = randomId('page-about') }) =
                 >
                   <ul>
                     <li>
-                      <IconReplacer text='github' />
-                      <a href='https://github.com/mjgargani' target='_blank' rel='noreferrer'>
+                      <IconReplacer text="github" />
+                      <a href="https://github.com/mjgargani" target="_blank" rel="noreferrer">
                         GitHub
                       </a>
                     </li>
                     <li>
-                      <IconReplacer text='linkedin' />
-                      <a
-                        href='https://www.linkedin.com/in/rod-olv/'
-                        target='_blank'
-                        rel='noreferrer'
-                      >
+                      <IconReplacer text="linkedin" />
+                      <a href="https://www.linkedin.com/in/rod-olv/" target="_blank" rel="noreferrer">
                         LinkedIn
                       </a>
                     </li>
                     <li>
-                      <IconReplacer text='email' />
-                      <a href='mailto:mjgargani@gmail.com' rel='noreferrer'>
+                      <IconReplacer text="email" />
+                      <a href="mailto:mjgargani@gmail.com" rel="noreferrer">
                         E-mail
                       </a>
                     </li>
@@ -152,11 +149,7 @@ const About: React.FC<CommonProps> = ({ dataTestId = randomId('page-about') }) =
                   <p>
                     <span>
                       🪙 Você contribui com meu trabalho divulgando-o e/ou sendo{' '}
-                      <a
-                        href='https://www.padrim.com.br/mjgargani'
-                        target='_blank'
-                        rel='noreferrer'
-                      >
+                      <a href="https://www.padrim.com.br/mjgargani" target="_blank" rel="noreferrer">
                         meu Padrim ou Madrim
                       </a>
                       !
@@ -168,7 +161,7 @@ const About: React.FC<CommonProps> = ({ dataTestId = randomId('page-about') }) =
           </div>
         </GridCell>
 
-        <a href='https://www.padrim.com.br/mjgargani' target='_blank' rel='noreferrer'>
+        <a href="https://www.padrim.com.br/mjgargani" target="_blank" rel="noreferrer">
           <GridCell
             dataTestId={randomId('img-qr-code-padrim')}
             bgImg={{ source: QrCodePadrim, size: 'contain' }}
@@ -181,7 +174,7 @@ const About: React.FC<CommonProps> = ({ dataTestId = randomId('page-about') }) =
     </Page>
   ) : (
     <Loading />
-  )
-}
+  );
+};
 
-export default About
+export default About;

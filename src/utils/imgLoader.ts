@@ -1,28 +1,26 @@
-async function imgLoader(sources: string[], callback?: () => any) {
-  if (['test'].includes(process.env.NODE_ENV!)) {
-    return callback && callback()
-  }
+async function imgLoader(sources: string[]) {
+  if (['test'].includes(import.meta.env.MODE)) return Promise.resolve(true);
 
-  if (!!sources.length) {
-    const promises: Promise<(string | boolean)[]>[] = []
+  const promises: Array<Promise<Array<string | boolean>>> = [];
 
-    sources.forEach((currentSrc) =>
-      promises.push(
-        new Promise((res, rej) => {
-          const img = new Image()
-          img.onload = () => res([currentSrc, true])
-          img.onerror = () => rej([currentSrc, false])
-          img.src = currentSrc
-        }),
-      ),
-    )
+  sources.forEach((currentSrc) =>
+    promises.push(
+      new Promise((res, rej) => {
+        const img = new Image();
+        img.onload = () => {
+          res([currentSrc, true]);
+        };
 
-    return Promise.all(promises).then((results) => {
-      callback && callback()
-      return results
-    })
-  }
-  return false
+        img.onerror = () => {
+          rej(new Error(`'${currentSrc}' is not loaded`));
+        };
+
+        img.src = currentSrc;
+      }),
+    ),
+  );
+
+  return Promise.all(promises);
 }
 
-export default imgLoader
+export default imgLoader;
