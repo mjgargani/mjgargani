@@ -3,6 +3,7 @@ run-name: Run linter, format and test
 
 on:
   pull_request:
+    branches: [dev]
     types: [opened, synchronize]
 
 jobs:
