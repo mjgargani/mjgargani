@@ -8,7 +8,7 @@ on:
 
 jobs:
   ci:
-    name: File check; Linter; Prettier; Jest
+    name: File check; Linter; Prettier; Vitest
     runs-on: ubuntu-latest
     permissions:
       contents: write
