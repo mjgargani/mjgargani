@@ -8,7 +8,7 @@ const Home: React.FC<CommonProps> = ({ dataTestId = randomId('page-home') }) => 
   <Page>
     <Container data-testid={dataTestId}>
       <h1>
-        mjgargani&apos;s Lab <span style={{ color: 'darkblue' }}></span>
+        mjgargani&apos;s Lab <span></span>
       </h1>
     </Container>
   </Page>
