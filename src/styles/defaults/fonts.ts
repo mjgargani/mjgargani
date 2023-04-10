@@ -94,7 +94,6 @@ const FontStyles = createGlobalStyle`
         font-size: 125%;
       }
       @media  (max-aspect-ratio: 9/16), (max-aspect-ratio: 10/16){
-        background-color: blue;
         font-size: 130%;
       }
       @media  (max-aspect-ratio: 9/23) {

@@ -14,7 +14,7 @@ const Frame: React.FC<FrameProps> = ({ dataTestId = randomId('frame'), styledCss
     <Container data-testid={dataTestId} styledCss={styledCss} page={page} bgMov={calcBgMov}>
       <Tiles data-testid={randomId('frame-tiles')} bgMov={calcBgMov} />
       <Shadow data-testid={randomId('frame-shadow')} page={page} prevPage={prevPage} />
-      <Potion dataTestId={randomId('frame-potion')} transparent={loading ?? page !== '/'} />
+      {!loading && <Potion dataTestId={randomId('frame-potion')} transparent={page !== '/'} />}
     </Container>
   );
 };

@@ -12,7 +12,7 @@ test('verify if component receives child components and `content` prop correctly
   const repoItem = repos[0] as Partial<GitHubRepoItem>;
   const props: CardProps = {
     bgImg: {
-      source: `https://raw.githubusercontent.com/mjgargani/${repoItem.name!}/main/thumbnail.gif`,
+      source: `https://raw.githubusercontent.com/mjgargani/${repoItem.name!}/main/thumbnail.webp`,
       new: true,
       pinned: true,
       stars: 1,
