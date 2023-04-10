@@ -12,7 +12,7 @@ test.each([
 ])('verify if component receives the `bgImg` prop correctly (stars: %p; watchers: %p)', (stars, watchers) => {
   const currentDataTestId = 'card-thumb__rtl';
   const repoItem = repos[0] as Partial<GitHubRepoItem>;
-  const expectedBgImg = `https://raw.githubusercontent.com/mjgargani/${repoItem.name!}/main/thumbnail.gif`;
+  const expectedBgImg = `https://raw.githubusercontent.com/mjgargani/${repoItem.name!}/main/thumbnail.webp`;
 
   render(
     <CardThumbnail

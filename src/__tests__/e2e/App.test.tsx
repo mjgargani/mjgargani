@@ -78,7 +78,7 @@ test.each([200, 304, 403])(
 
     for (let i = 1; i < repos.length; i++) {
       expect(cardThumb[i]).toHaveStyle(
-        `background-image: url(https://raw.githubusercontent.com/mjgargani/${repos[i].name}/main/thumbnail.gif)`,
+        `background-image: url(https://raw.githubusercontent.com/mjgargani/${repos[i].name}/main/thumbnail.webp)`,
       );
       expect(cardTitle[i]).toHaveTextContent(repos[i].name.replaceAll(replaceRegExpTitle, '').replaceAll('-', ' '));
       expect(cardDesc[i]).toHaveTextContent(repos[i].description.replaceAll('`', ''));
