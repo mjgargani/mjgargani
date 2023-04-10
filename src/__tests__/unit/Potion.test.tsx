@@ -1,4 +1,4 @@
-import potionImg from '../../assets/potion.png';
+import potionImg from '../../assets/potion.webp';
 import Potion from '../../components/atoms/Potion';
 import { type PageEndPoints } from '../../globals';
 import potionStyles from '../../styles/defaults/potion';

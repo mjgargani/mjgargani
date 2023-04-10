@@ -1,4 +1,4 @@
-import tile from '../../../assets/tile.png';
+import tile from '../../../assets/tile.webp';
 import animation from '../../../styles/utils/animation';
 import { device } from '../../../utils/devices';
 import { type FrameProps } from './types';

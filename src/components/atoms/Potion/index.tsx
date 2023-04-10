@@ -1,4 +1,4 @@
-import potion from '../../../assets/potion.png';
+import potion from '../../../assets/potion.webp';
 import imgLoader from '../../../utils/imgLoader';
 import randomId from '../../../utils/randomId';
 import { Container } from './styles';

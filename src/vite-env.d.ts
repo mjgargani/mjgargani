@@ -6,6 +6,7 @@ import { type PotionStyles } from './styles/defaults/potion';
 import { type FlattenInterpolation, type ThemeProps } from 'styled-components';
 
 declare module '*.png';
+declare module '*.webp';
 declare module '*.jpg';
 declare module '*.jpeg';
 declare module '*.woff';

@@ -10,7 +10,7 @@ test('verify if component receives the props and `children` correctly', () => {
   const expectedText = 'Teste com RTL';
   const props: GridCellProps = {
     bgImg: {
-      source: '../assets/tile.png',
+      source: '../assets/tile.webp',
       size: 'cover',
     },
   };

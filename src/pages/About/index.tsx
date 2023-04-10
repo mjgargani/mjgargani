@@ -1,4 +1,4 @@
-import QrCodePadrim from '../../assets/qr-code-padrim.png';
+import QrCodePadrim from '../../assets/qr-code-padrim.webp';
 import Avatar from '../../components/atoms/Avatar';
 import CoinFountain from '../../components/atoms/CoinFountain';
 import GridCell from '../../components/atoms/GridCell';
