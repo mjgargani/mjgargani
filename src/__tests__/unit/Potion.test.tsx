@@ -17,14 +17,9 @@ test.each([
 
     render(<Potion src={potionImg} transparent={transparent} />);
 
-    await waitFor(
-      async () => {
-        await expect(screen.findByTestId(/^potion_\d/)).resolves.toBeInTheDocument();
-      },
-      { timeout: 10000 },
-    );
+    const potion = await screen.findByTestId(/^potion_\d/);
 
-    // Await expect(potion).resolves.toBeInTheDocument();
-    // Expect(potion).toHaveStyle(`opacity: ${potionStyles[page as PageEndPoints].opacity}`);
+    expect(potion).toBeInTheDocument();
+    expect(potion).toHaveStyle(`opacity: ${potionStyles[page as PageEndPoints].opacity}`);
   },
 );
