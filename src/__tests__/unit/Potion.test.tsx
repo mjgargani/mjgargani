@@ -13,8 +13,6 @@ test.each([
 ])(
   'verify if component receives the `transparent` prop correctly (transparent: %p, page: %p)',
   async (transparent, page) => {
-    console.warn(import.meta.env.MODE);
-
     render(<Potion src={potionImg} transparent={transparent} />);
 
     const potion = await screen.findByTestId(/^potion_\d/);
