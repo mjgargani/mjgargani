@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components';
 
 const coinYmovement = (distance: number) => keyframes`
   from{
-    bottom: 2%;
+    bottom: 0;
   }
   to{
     bottom: ${distance}%;
@@ -37,10 +37,10 @@ const coinOpacity = keyframes`
 
 const moneyBagShake = keyframes`
   from{
-    transform: rotate(30deg);
+    transform: rotate(25deg);
   }
   to{
-    transform: rotate(20deg);
+    transform: rotate(50deg);
   }
 `;
 
@@ -57,8 +57,8 @@ export const MoneyBag = styled.div`
   position: absolute;
   bottom: -3%;
   left: -2%;
-  font-size: 300%;
-  animation: ${moneyBagShake} 0.15s alternate ease-in-out infinite;
+  font-size: 315%;
+  animation: ${moneyBagShake} 0.2s alternate ease-in-out infinite;
 `;
 
 export const Container = styled.div`
