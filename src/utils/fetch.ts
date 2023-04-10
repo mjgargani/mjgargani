@@ -59,6 +59,6 @@ export const pinnedRepos = async (repos: GitHubRepoItem[]): Promise<GitHubRepoIt
         watchers_count: el.watchers_count,
         description: el.description,
         html_url: el.html_url,
-        thumbnail: `https://raw.githubusercontent.com/mjgargani/${el.name}/main/thumbnail.gif`,
+        thumbnail: `https://raw.githubusercontent.com/mjgargani/${el.name}/main/thumbnail.webp`,
       })),
     );

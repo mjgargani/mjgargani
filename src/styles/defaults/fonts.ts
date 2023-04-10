@@ -34,7 +34,7 @@ const FontStyles = createGlobalStyle`
     /* font-size: 100%; */
   }
 
-  h1,h2, p {
+  h1,h2 {
     font-family: "Sono", sans-serif;
 
     font-size: calc(1em + .7vw);
@@ -77,9 +77,40 @@ const FontStyles = createGlobalStyle`
     font-family: sans-serif;
     text-align: justify;
     line-height: 150%;
-    font-size: 150%;
-    @media  ${device.tablet} {
-      font-size: 110%;
+    font-size: 120%;
+    @media  (orientation: landscape) {
+      @media  (min-aspect-ratio: 4/3){
+        font-size: 80%;
+      }
+      @media  (min-aspect-ratio: 16/9), (min-aspect-ratio: 16/10){
+        font-size: 90%;
+      }
+      @media  (min-aspect-ratio: 23/9) {
+        font-size: 75%;
+      }
+    }
+    @media  ${device.tablet} and (orientation: portrait) {
+      @media  (max-aspect-ratio: 3/4){
+        font-size: 125%;
+      }
+      @media  (max-aspect-ratio: 9/16), (max-aspect-ratio: 10/16){
+        background-color: blue;
+        font-size: 130%;
+      }
+      @media  (max-aspect-ratio: 9/23) {
+        font-size: 100%;
+      }
+    }
+    @media  (max-width: ${size.tablet}px) and (orientation: portrait) {
+      @media  (max-aspect-ratio: 3/4){
+        font-size: 150%;
+      }
+      @media  (max-aspect-ratio: 9/16), (max-aspect-ratio: 10/16){
+        font-size: 135%;
+      }
+      @media  (max-aspect-ratio: 9/23) {
+        font-size: 110%;
+      }
     }
   }
 `;

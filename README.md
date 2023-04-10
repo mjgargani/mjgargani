@@ -1,6 +1,6 @@
 # mjgargani's Lab
 
-![thumbnail](./thumbnail.gif)
+![thumbnail](./thumbnail.webp)
 
 > 🌐 [https://gargani.dev/](https://gargani.dev/)
 

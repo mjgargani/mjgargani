@@ -45,11 +45,11 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
         url={el!.html_url}
         title={el!.name === 'mjgargani' ? 'nodejs-typescript-reactjs-styledcomponents_2023-portfolio' : el!.name}
         styledCss={
-          el!.description.length >= 50 &&
+          el!.description.length >= 65 &&
           css`
             @media ${device.tablet} {
               p {
-                font-size: 95% !important;
+                font-size: 90% !important;
               }
             }
           `

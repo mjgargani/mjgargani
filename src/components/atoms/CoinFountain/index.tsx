@@ -7,7 +7,7 @@ const CoinFountain: React.FC = () => (
     <Coin delay={200} distance={[15, 10]}>
       🪙
     </Coin>
-    <Coin delay={400} distance={[25, 30]}>
+    <Coin delay={400} distance={[15, 15]}>
       🪙
     </Coin>
     <Coin delay={600} distance={[8, 15]}>
@@ -16,10 +16,10 @@ const CoinFountain: React.FC = () => (
     <Coin delay={800} distance={[12, 8]}>
       🪙
     </Coin>
-    <Coin delay={1000} distance={[20, 30]}>
+    <Coin delay={1000} distance={[20, 15]}>
       🪙
     </Coin>
-    <Coin delay={1200} distance={[30, 20]}>
+    <Coin delay={1200} distance={[15, 20]}>
       🪙
     </Coin>
     <Coin delay={1400} distance={[18, 15]}>
@@ -28,7 +28,7 @@ const CoinFountain: React.FC = () => (
     <Coin delay={1600} distance={[20, 10]}>
       🪙
     </Coin>
-    <Coin delay={1800} distance={[27, 27]}>
+    <Coin delay={1800} distance={[18, 18]}>
       🪙
     </Coin>
     <MoneyBag>💰</MoneyBag>
