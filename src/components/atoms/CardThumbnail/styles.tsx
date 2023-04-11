@@ -44,6 +44,23 @@ export const Stars = styled.div<Partial<CardThumbnailProps>>`
   padding-right: 0.75vw;
 `;
 
+export const HomePage = styled.div<Partial<CardThumbnailProps>>`
+  display: ${(props) => (props.homePage ? 'block' : 'none')};
+  ${badgeBackground}
+  bottom: 1.25vh;
+  left: 50%;
+  min-width: 20%;
+  transform: translateX(-50%);
+
+  p {
+    text-align: center;
+  }
+
+  a {
+    cursor: alias;
+  }
+`;
+
 export const Watchers = styled.div<Partial<CardThumbnailProps>>`
   ${badgeBackground}
   bottom: 1.25vh;

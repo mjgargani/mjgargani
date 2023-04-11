@@ -15,6 +15,7 @@ export type GitHubRepoItem = {
   description: string;
   html_url: string;
   thumbnail: string;
+  homepage: string;
 };
 
 export type GitHubData = {

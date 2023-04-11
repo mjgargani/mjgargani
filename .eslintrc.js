@@ -9,6 +9,9 @@ module.exports = {
     {
       extends: ['xo-typescript', 'prettier'],
       files: ['*.ts', '*.tsx'],
+      parserOptions: {
+        project: ['./tsconfig.json'],
+      },
     },
   ],
   parserOptions: {
@@ -22,6 +25,7 @@ module.exports = {
     'spaced-comment': 'error',
     quotes: ['error', 'single'],
     'no-duplicate-imports': 'error',
+    '@typescript-eslint/no-unsafe-assignment': 'off',
   },
   settings: {
     'import/resolver': 'typescript',

@@ -1,10 +1,15 @@
 import randomId from '../../../utils/randomId';
 import IconReplacer from '../../molecules/IconReplacer';
-import { Container, IsNew, IsPinned, Stars, Watchers } from './styles';
+import { Container, HomePage, IsNew, IsPinned, Stars, Watchers } from './styles';
 import { type CardThumbnailProps } from './types';
 import React from 'react';
 
-const CardThumbnail: React.FC<CardThumbnailProps> = ({ dataTestId = randomId('card-thumb'), bgImg, styledCss }) =>
+const CardThumbnail: React.FC<CardThumbnailProps> = ({
+  dataTestId = randomId('card-thumb'),
+  homePage,
+  bgImg,
+  styledCss,
+}) =>
   bgImg ? (
     <Container data-testid={dataTestId} bgImg={bgImg} styledCss={styledCss}>
       <IsNew data-testid={randomId('card-thumb-is-new')} bgImg={bgImg}>
@@ -21,6 +26,13 @@ const CardThumbnail: React.FC<CardThumbnailProps> = ({ dataTestId = randomId('ca
           </span>
         </p>
       </Stars>
+      <HomePage data-testid={randomId('card-thumb-homepage')} homePage={homePage}>
+        <p>
+          <a href={homePage} target="_blank" rel="noreferrer">
+            <IconReplacer text="globe-externallink" />
+          </a>
+        </p>
+      </HomePage>
       <Watchers data-testid={randomId('card-thumb-watchers')} bgImg={bgImg}>
         <p>
           <IconReplacer text="eye" />

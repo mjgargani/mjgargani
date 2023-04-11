@@ -44,6 +44,7 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
         }}
         url={el!.html_url}
         title={el!.name === 'mjgargani' ? 'nodejs-typescript-reactjs-styledcomponents_2023-portfolio' : el!.name}
+        homePage={el!.homepage}
       >
         {mdParser(el!.description)}
       </Card>
