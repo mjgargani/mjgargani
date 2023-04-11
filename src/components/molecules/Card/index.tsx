@@ -10,6 +10,7 @@ import React, { type PropsWithChildren } from 'react';
 const Card: React.FC<PropsWithChildren<CardProps>> = ({
   dataTestId = randomId('card'),
   bgImg,
+  homePage,
   url,
   title = '',
   isContent = false,
@@ -22,7 +23,7 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
       {isLoading && <Loading isCard={true} />}
       {!isContent && bgImg && (
         <ContainerTop bgImg={bgImg}>
-          <CardThumbnail bgImg={bgImg} />
+          <CardThumbnail bgImg={bgImg} homePage={homePage} />
         </ContainerTop>
       )}
       <ContainerBottom bgImg={bgImg}>

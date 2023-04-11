@@ -10,6 +10,7 @@ export type BgImg = {
 
 export type CardProps = {
   bgImg?: BgImg;
+  homePage?: string;
   isLoading?: boolean;
   url?: string;
   title?: string;

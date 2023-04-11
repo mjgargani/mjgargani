@@ -3,14 +3,23 @@ import randomId from '../../../utils/randomId';
 import { Container } from './styles';
 import { type IconList, type IconReplacerProps } from './types';
 import { AiFillStar, AiFillEye } from 'react-icons/ai';
-import { BsGithub, BsPinFill } from 'react-icons/bs';
+import { BsGithub, BsPinFill, BsGlobe } from 'react-icons/bs';
 import { DiWordpress } from 'react-icons/di';
 import { FaArchive, FaLinkedin } from 'react-icons/fa';
 import { GiHeartOrgan } from 'react-icons/gi';
 import { IoLogoNodejs } from 'react-icons/io';
 import { MdEmail, MdGTranslate, MdFiberNew } from 'react-icons/md';
-import { RiReactjsLine } from 'react-icons/ri';
-import { SiJest, SiPhp, SiSocketdotio, SiTypescript, SiStyledcomponents } from 'react-icons/si';
+import { RiReactjsLine, RiExternalLinkLine } from 'react-icons/ri';
+import {
+  SiJest,
+  SiPhp,
+  SiSocketdotio,
+  SiTypescript,
+  SiStyledcomponents,
+  SiVite,
+  SiPython,
+  SiDjango,
+} from 'react-icons/si';
 
 const icons: IconList = {
   new: ['#e6ff82', <MdFiberNew title="Novo!" />],
@@ -24,12 +33,17 @@ const icons: IconList = {
   email: ['#000', <MdEmail title="E-mail" />],
   nodejs: ['#7CB73F', <IoLogoNodejs title="Node.js" />],
   ts: ['#2F74C0', <SiTypescript title="TypeScript" />],
+  vite: ['#754afb', <SiVite title="Vite" />],
   reactjs: ['#5ED3F3', <RiReactjsLine title="ReactJS" />],
   styledcomponents: ['#EC75C4', <SiStyledcomponents title="styled-components" />],
   jest: ['#C03B18', <SiJest title="Jest" />],
   socketio: ['#000', <SiSocketdotio title="Socket.IO" />],
   php: ['#4D588E', <SiPhp title="PHP" />],
   wp: ['#21759B', <DiWordpress title="WordPress" />],
+  py: ['#EEC855', <SiPython title="Python" />],
+  dj: ['#000', <SiDjango title="Django" />],
+  globe: ['#FFF', <BsGlobe title="Atalho para HomePage" />],
+  externallink: ['#FFF', <RiExternalLinkLine title="Atalho para HomePage" />],
   heart: ['#F75341', <GiHeartOrgan title="com o coração" />],
 };
 
