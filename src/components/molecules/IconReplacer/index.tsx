@@ -10,7 +10,16 @@ import { GiHeartOrgan } from 'react-icons/gi';
 import { IoLogoNodejs } from 'react-icons/io';
 import { MdEmail, MdGTranslate, MdFiberNew } from 'react-icons/md';
 import { RiReactjsLine } from 'react-icons/ri';
-import { SiJest, SiPhp, SiSocketdotio, SiTypescript, SiStyledcomponents } from 'react-icons/si';
+import {
+  SiJest,
+  SiPhp,
+  SiSocketdotio,
+  SiTypescript,
+  SiStyledcomponents,
+  SiVite,
+  SiPython,
+  SiDjango,
+} from 'react-icons/si';
 
 const icons: IconList = {
   new: ['#e6ff82', <MdFiberNew title="Novo!" />],
@@ -24,12 +33,15 @@ const icons: IconList = {
   email: ['#000', <MdEmail title="E-mail" />],
   nodejs: ['#7CB73F', <IoLogoNodejs title="Node.js" />],
   ts: ['#2F74C0', <SiTypescript title="TypeScript" />],
+  vite: ['#754afb', <SiVite title="Vite" />],
   reactjs: ['#5ED3F3', <RiReactjsLine title="ReactJS" />],
   styledcomponents: ['#EC75C4', <SiStyledcomponents title="styled-components" />],
   jest: ['#C03B18', <SiJest title="Jest" />],
   socketio: ['#000', <SiSocketdotio title="Socket.IO" />],
   php: ['#4D588E', <SiPhp title="PHP" />],
   wp: ['#21759B', <DiWordpress title="WordPress" />],
+  py: ['#EEC855', <SiPython title="Python" />],
+  dj: ['#000', <SiDjango title="Django" />],
   heart: ['#F75341', <GiHeartOrgan title="com o coração" />],
 };
 
