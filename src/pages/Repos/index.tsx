@@ -43,7 +43,7 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
           watchers: el!.watchers_count,
         }}
         url={el!.html_url}
-        title={el!.name === 'mjgargani' ? 'nodejs-typescript-reactjs-styledcomponents_2023-portfolio' : el!.name}
+        title={el!.name === 'mjgargani' ? 'nodejs-typescript-reactjs-vite-styledcomponents_2023-portfolio' : el!.name}
         homePage={el!.homepage}
       >
         {mdParser(el!.description)}
