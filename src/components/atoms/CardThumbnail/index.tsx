@@ -26,7 +26,10 @@ const CardThumbnail: React.FC<CardThumbnailProps> = ({
           </span>
         </p>
       </Stars>
-      <HomePage data-testid={randomId('card-thumb-homepage')} homePage={homePage}>
+      <HomePage
+        data-testid={randomId('card-thumb-homepage')}
+        homePage={Boolean(homePage) && !homePage!.includes('https://gargani.dev') ? homePage : undefined}
+      >
         <p>
           <a href={homePage} target="_blank" rel="noreferrer">
             <IconReplacer text="globe-externallink" />
