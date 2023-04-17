@@ -14,7 +14,7 @@ const FooterInfo: React.FC<CommonProps> = ({ dataTestId = randomId('footer-info'
         styledCss={css`
           line-height: 80%;
         `}
-        text="nodejs-typescript-reactjs-styledcomponents"
+        text="nodejs-typescript-vite-reactjs-styledcomponents"
       />{' '}
       e{' '}
       <IconReplacer

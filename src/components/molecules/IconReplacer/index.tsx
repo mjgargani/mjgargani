@@ -19,6 +19,8 @@ import {
   SiVite,
   SiPython,
   SiDjango,
+  SiPreact,
+  SiTailwindcss
 } from 'react-icons/si';
 
 const icons: IconList = {
@@ -35,7 +37,9 @@ const icons: IconList = {
   ts: ['#2F74C0', <SiTypescript title="TypeScript" />],
   vite: ['#754afb', <SiVite title="Vite" />],
   reactjs: ['#5ED3F3', <RiReactjsLine title="ReactJS" />],
+  preact: ['#673AB8', <RiReactjsLine title="Preact" />],
   styledcomponents: ['#EC75C4', <SiStyledcomponents title="styled-components" />],
+  tailwind: ['#38BDF8', <SiTailwindcss title="Tailwind CSS" />],
   jest: ['#C03B18', <SiJest title="Jest" />],
   socketio: ['#000', <SiSocketdotio title="Socket.IO" />],
   php: ['#4D588E', <SiPhp title="PHP" />],
