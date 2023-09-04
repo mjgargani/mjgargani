@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+import { filterList } from '@/utils/filterList';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { gitHubRequest, pinnedRepos } from '../utils/fetch';
-import { type GitHubData, type GitHubProfile, type GitHubRepoItem } from './types';
+import { type TechDetail, type GitHubData, type GitHubProfile, type GitHubRepoItem } from './types';
 import { createContext, useEffect, useState } from 'react';
 
 export const GitHubDataContext = createContext<Partial<GitHubData>>({});
@@ -16,6 +17,7 @@ type ContextDataFormat = {
 
 export const useGitHubDataValues = (): GitHubData => {
   const [loading, setLoading] = useState<boolean>(true);
+  const [techs, setTechs] = useState<TechDetail[]>([]);
 
   const [data, setData] = useState<ContextDataFormat>({
     etagRepos: '',
@@ -61,15 +63,22 @@ export const useGitHubDataValues = (): GitHubData => {
           const repos: GitHubRepoItem[] = responses[0].body?.length ? responses[0].body : data.repos;
           const profile: GitHubProfile = responses[1].body?.name?.trim() ? responses[1].body : data.profile;
 
+          const newRepos = repos.map(el => el.name === 'mjgargani' ? {...el, name: 'nodejs-ts-reactjs-vite-styledcomponents_2023-portfolio'} : el)
+
           const newData = {
             updated: true,
             etagRepos,
             etagProfile,
-            repos,
+            repos: newRepos,
             profile,
           };
 
           setData(newData);
+          
+          const repoNames: string[] = newRepos.map(el => el.name);
+          const newTechs = filterList(repoNames);
+
+          setTechs(newTechs);
         })
         .catch((err) => {
           console.error(err);
@@ -85,5 +94,6 @@ export const useGitHubDataValues = (): GitHubData => {
     loading,
     profile: data.profile,
     repos: data.repos,
+    techs
   };
 };

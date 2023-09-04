@@ -58,18 +58,18 @@ const IconReplacer: React.FC<IconReplacerProps> = ({
   styledCss,
 }) => (
   <Container data-testid={dataTestId} darker={darker} styledCss={styledCss}>
-    {Object.entries(icons).map((entry, i) => {
-      if (text.includes(entry[0])) {
+    {Object.entries(icons).map(([key, value], i) => {
+      if (text.includes(key)) {
         return (
           <span
-            data-testid={randomId(`icon-${entry[0]}`)}
+            data-testid={randomId(`icon-${key}`)}
             style={{
-              color: entry[1][0],
+              color: value[0],
               padding: '0 5px',
             }}
-            key={randomId(`icon-item-${entry[0]}`, true)}
+            key={randomId(`icon-item-${key}`, true)}
           >
-            {entry[1][1]}
+            {value[1]}
           </span>
         );
       }
