@@ -20,6 +20,6 @@ export type GitHubRepoItem = {
 
 export type GitHubData = {
   loading: boolean;
-  profile: Partial<GitHubProfile>;
-  repos: Partial<GitHubRepoItem[]>;
+  profile: GitHubProfile;
+  repos: GitHubRepoItem[];
 };

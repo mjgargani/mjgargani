@@ -6,51 +6,70 @@ import { createContext, useEffect, useState } from 'react';
 
 export const GitHubDataContext = createContext<Partial<GitHubData>>({});
 
-type LocalStorageData = {
-  updated: boolean;
+type ContextDataFormat = {
+  updated?: boolean;
   etagRepos: string;
   etagProfile: string;
   repos: GitHubRepoItem[];
   profile: GitHubProfile;
 };
 
-export const useGitHubDataValues = (): Partial<GitHubData> => {
+export const useGitHubDataValues = (): GitHubData => {
   const [loading, setLoading] = useState<boolean>(true);
 
-  const [data, setData] = useState<Partial<LocalStorageData>>();
+  const [data, setData] = useState<ContextDataFormat>({
+    etagRepos: '',
+    etagProfile: '',
+    repos: [],
+    profile: {
+      name: 'Rodrigo Gargani Oliveira',
+      avatar_url: 'https://avatars.githubusercontent.com/u/46717827?v=4',
+      bio: ''
+    }
+  });
 
-  const localStorageHook = useLocalStorage<Partial<LocalStorageData>>();
+  const contextData = useLocalStorage<ContextDataFormat>();
 
   useEffect(() => {
-    if (Boolean(localStorageHook) && !data) {
-      setData({
-        updated: false,
-        ...localStorageHook,
-      });
+    let newData = { updated: false, ...data };
+    
+    if (contextData !== false) {
+      newData = { updated: false, ...contextData };
     }
+    
+    setData(newData);
+  }, [contextData]);
 
+  useEffect(() => {
     if (data?.updated === false) {
       Promise.all([
         gitHubRequest<GitHubRepoItem[]>({
           endPoint: 'users/mjgargani/repos',
-          etag: { name: 'repos', data: data?.etagRepos },
+          etag: { name: 'repos', data: data.etagRepos },
           content: data?.repos,
           callback: pinnedRepos,
         }),
         gitHubRequest<GitHubProfile>({
           endPoint: 'users/mjgargani',
-          etag: { name: 'profile', data: data?.etagProfile },
+          etag: { name: 'profile', data: data.etagProfile },
           content: data?.profile,
         }),
       ])
         .then((responses) => {
-          setData({
+          const etagRepos: string = responses[0]?.newEtag?.trim() ? responses[0].newEtag : data.etagRepos;
+          const etagProfile: string =  responses[1]?.newEtag?.trim() ? responses[1].newEtag : data.etagProfile;
+          const repos: GitHubRepoItem[] = responses[0].body?.length ? responses[0].body : data.repos;
+          const profile: GitHubProfile = responses[1].body?.name?.trim() ? responses[1].body : data.profile;
+
+          const newData = {
             updated: true,
-            etagRepos: responses[0].newEtag ?? data?.etagRepos,
-            etagProfile: responses[1].newEtag ?? data?.etagProfile,
-            repos: responses[0].body ?? data?.repos,
-            profile: responses[1].body ?? data?.profile,
-          });
+            etagRepos,
+            etagProfile,
+            repos,
+            profile,
+          };
+
+          setData(newData);
         })
         .catch((err) => {
           console.error(err);
@@ -60,11 +79,11 @@ export const useGitHubDataValues = (): Partial<GitHubData> => {
     if (data?.updated === true) {
       setLoading(false);
     }
-  }, [data, localStorageHook]);
+  }, [data])
 
   return {
     loading,
-    profile: data?.profile,
-    repos: data?.repos,
+    profile: data.profile,
+    repos: data.repos,
   };
 };

@@ -12,6 +12,8 @@ import randomId from '../../utils/randomId';
 import React, { useContext, useEffect, useState } from 'react';
 import { css } from 'styled-components';
 
+const sortRepos = (a: GitHubRepoItem, b: GitHubRepoItem) => (a.id < b.id ? 1 : -1);
+
 const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) => {
   const { repos } = useContext(GitHubDataContext);
   const [ordenedRepos, setOrdenedRepos] = useState<GitHubRepoItem[]>([]);
@@ -19,12 +21,12 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
   useEffect(() => {
     if (Boolean(repos?.length) && !ordenedRepos.length) {
       const newOrdenedRepos = [
-        ...repos!.sort((a, b) => (a!.id < b!.id ? 1 : -1)).filter((el) => el?.pinned),
-        ...repos!.sort((a, b) => (a!.id < b!.id ? 1 : -1)).filter((el) => !el?.pinned),
+        ...repos!.filter(el => el.pinned).sort(sortRepos),
+        ...repos!.filter(el => !el.pinned).sort(sortRepos),
       ];
-      imgLoader(newOrdenedRepos.map((el) => el!.thumbnail))
+      imgLoader(newOrdenedRepos.map((el) => el.thumbnail))
         .then(() => {
-          setOrdenedRepos(newOrdenedRepos as GitHubRepoItem[]);
+          setOrdenedRepos(newOrdenedRepos );
         })
         .catch((err) => {
           console.error(err);

@@ -22,7 +22,7 @@ const About: React.FC<CommonProps> = ({ dataTestId = randomId('page-about') }) =
 
   useEffect(() => {
     if (Boolean(profile?.avatar_url) && !isLoaded) {
-      imgLoader([profile!.avatar_url!, QrCodePadrim])
+      imgLoader([profile!.avatar_url, QrCodePadrim])
         .then(() => {
           setIsLoaded(true);
         })
@@ -48,7 +48,7 @@ const About: React.FC<CommonProps> = ({ dataTestId = randomId('page-about') }) =
       >
         <GridCell>
           <div style={{ width: '100%', height: '100%' }}>
-            <Card dataTestId={randomId('card-about')} title={`Olá! Sou ${profile!.name!}`} isContent={true}>
+            <Card dataTestId={randomId('card-about')} title={`Olá! Sou ${profile!.name}`} isContent={true}>
               <CoinFountain />
               <GridContainer
                 templateColumns={{
@@ -62,7 +62,7 @@ const About: React.FC<CommonProps> = ({ dataTestId = randomId('page-about') }) =
                     z-index: 2000;
                   `}
                 >
-                  <Avatar dataTestId={randomId('card-about-avatar')} src={profile!.avatar_url!} />
+                  <Avatar dataTestId={randomId('card-about-avatar')} src={profile!.avatar_url} />
                 </GridCell>
                 <GridCell
                   dataTestId={randomId('card-about-bio')}
@@ -76,7 +76,7 @@ const About: React.FC<CommonProps> = ({ dataTestId = randomId('page-about') }) =
                     z-index: 2000;
                   `}
                 >
-                  {mdParser(profile!.bio!)}
+                  {mdParser(profile!.bio)}
                 </GridCell>
               </GridContainer>
               <GridContainer

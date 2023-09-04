@@ -3,20 +3,19 @@ import localStorageMock from '../mock/localStorage';
 import profile from '../mock/profile.json';
 import repos from '../mock/repos.json';
 import { server } from '../mock/server';
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { vi } from 'vitest';
+import { delay } from '../utils/delay';
 
 Object.defineProperty(window, 'localStorage', {
   value: localStorageMock,
 });
 
-afterEach(() => {
-  cleanup();
-});
+afterEach(cleanup);
 
 test.each([200, 304, 403])(
-  'verify if app rendeer child components correctly depending of the `page` prop (apiStatusCode: %p)',
+  'verify if app render child components correctly depending of the `page` prop (apiStatusCode: %p)',
   async (apiStatusCode) => {
     const status = apiStatusCode as 200 | 304 | 403;
     server(status).listen();
@@ -37,6 +36,8 @@ test.each([200, 304, 403])(
 
     const frame = await screen.findByTestId(/^frame_\d/);
     expect(frame).toBeInTheDocument();
+
+    await act(async () => delay(1000));
 
     const buttonsNav = await screen.findAllByTestId(/^btn-nav_\d+/);
     expect(buttonsNav[0]).toBeInTheDocument();
