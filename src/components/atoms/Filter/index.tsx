@@ -25,6 +25,7 @@ const Filter: React.FC<PropsWithChildren<FilterProps>> = ({
           gap: 8,
           maxHeight: showFilter ? 'none' : 0,
           overflow: 'hidden',
+          fontSize: 'small',
         }}
       >
         <FilterBox>
