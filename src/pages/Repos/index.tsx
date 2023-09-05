@@ -12,18 +12,15 @@ import mdParser from '../../utils/mdParser';
 import randomId from '../../utils/randomId';
 import React, { useContext, useEffect, useState } from 'react';
 import { css } from 'styled-components';
+import { type FilterItem } from '@/components/atoms/Filter/types';
+import Filter from '@/components/atoms/Filter';
 
 const sortRepos = (a: GitHubRepoItem, b: GitHubRepoItem) => (a.id < b.id ? 1 : -1);
-type Filter = {
-  selected: boolean,
-  name: string,
-  recurrence: number
-}
 
 const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) => {
   const { repos, techs } = useContext(GitHubDataContext);
   const [filteredRepos, setFilteredRepos] = useState<GitHubRepoItem[]>([]);
-  const [filters, setFilters] = useState<Filter[]>([]);
+  const [filters, setFilters] = useState<FilterItem[]>([]);
 
   useEffect(() => {
     if (techs?.length && !filters.length){
@@ -34,7 +31,6 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
   useEffect(() => {
     if(Boolean(repos?.length) && Boolean(filters?.length)){
       if (Boolean(repos?.length) && filters.some(el => el.selected) && !filteredRepos.length) {
-        console.log('EITA')
         const newOrdenedRepos = [
           ...repos!.filter(el => el.pinned).sort(sortRepos),
           ...repos!.filter(el => !el.pinned).sort(sortRepos),
@@ -81,40 +77,24 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
   const handleFilter = (event: React.MouseEvent<HTMLInputElement>) => {
     event.preventDefault();
     const target = event.target as HTMLInputElement;
-    const newFilter = filters.map(el => el.name === target.name ? {...el, selected: !el.selected } : el);
+    let newFilter;
+    if(target.value === "all"){
+      if(target.checked){
+        newFilter = filters.map(el => ({...el, selected: true }));
+      }else{
+        newFilter = filters.map(el => ({...el, selected: false }));
+      }
+    }else{
+      newFilter = filters.map(el => el.name === target.name ? {...el, selected: !el.selected } : el);
+    }
+
     setFilters(newFilter);
     setFilteredRepos([]);
   }
 
   return (
     <Page>
-      <div style={{
-        display: "flex",
-        flex: "column",
-        flexWrap: "wrap",
-        gap: "8px",
-        marginBottom: "16px",
-        alignItems: "center",
-        justifyContent: "center"
-      }}>
-        {filters?.map(el => (
-          <div key={el.name} style={{
-            display: "flex",
-            flex: "column",
-            gap: "8px",
-            backgroundColor: "black",
-            color: "white",
-            opacity: 0.8,
-            padding: "8px",
-            borderRadius: "8px",
-            cursor: "pointer"
-          }}
-          >
-            <input type="checkbox" id={el.name} name={el.name} value={el.name} checked={el.selected} onClick={handleFilter} style={{cursor: "pointer"}}/>
-            <label htmlFor={el.name} style={{cursor: "pointer"}}><IconReplacer text={el.name} />{el.name.toUpperCase()} ({el.recurrence})</label>
-          </div>
-        ))}
-      </div>
+      <Filter filters={filters} handleFilter={handleFilter} />
       <GridContainer
         dataTestId={dataTestId}
         columnGap={3}
