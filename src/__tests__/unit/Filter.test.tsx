@@ -22,16 +22,17 @@ test('verify if component returns the children components correctly', async () =
   expect(inputLabels).toHaveLength(13);
 
   await waitFor(() => {
-    const isCheckedArray = Array.from(inputCheckBoxes.values()).map(el => (el as HTMLInputElement).checked);
-    expect(isCheckedArray.some(el => !el)).not.toStrictEqual(true);
+    const isCheckedArray = Array.from(inputCheckBoxes.values()).map((el) => (el as HTMLInputElement).checked);
+    expect(isCheckedArray.some((el) => !el)).not.toStrictEqual(true);
   });
 
-  const inputLabelRest = inputLabels.filter((_,i) => i !== 0)
-  
+  const inputLabelRest = inputLabels.filter((_, i) => i !== 0);
+
   for (const [i, el] of inputLabelRest.entries()) {
-    const nameCondition = filtersMock[i].name === "archive" ? 
-      `ARQUIVO (${filtersMock[i].recurrence})` :
-      `${filtersMock[i].name.toUpperCase()} (${filtersMock[i].recurrence})`;
+    const nameCondition =
+      filtersMock[i].name === 'archive'
+        ? `ARQUIVO (${filtersMock[i].recurrence})`
+        : `${filtersMock[i].name.toUpperCase()} (${filtersMock[i].recurrence})`;
     expect(el).toHaveTextContent(nameCondition);
   }
 });
