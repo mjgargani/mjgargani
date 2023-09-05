@@ -1,24 +1,25 @@
 import camelcase from 'camelcase';
 import { useEffect, useState } from 'react';
 
-type LocalStorage = Record<string, any>;
+type GenericObject = Record<string, unknown>;
 
-function useLocalStorage<T>() {
-  const [data, setData] = useState<LocalStorage>();
+function useLocalStorage<T>(): T | false {
+  const [data, setData] = useState<GenericObject | false>(false);
 
   useEffect(() => {
-    if (!data) {
-      let newData: LocalStorage = {};
+    if (Boolean(localStorage.length) && data === false) {
+      let newData: GenericObject | false = false;
 
-      Object.entries(localStorage).forEach((el) => {
+      Object.entries(localStorage).forEach(([key, value]: [key: string, value: string]) => {
         let item;
+
         try {
-          item = JSON.parse(el[1] as string) as Record<string, unknown>;
+          item = JSON.parse(value) as GenericObject;
         } catch (error) {
-          item = el[1] as string;
-        } finally {
-          newData = Object.assign(newData, { [camelcase(el[0])]: item });
+          item = value;
         }
+
+        newData = Object.assign(newData, { [camelcase(key)]: item });
       });
 
       setData(newData);

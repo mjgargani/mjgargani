@@ -18,8 +18,14 @@ export type GitHubRepoItem = {
   homepage: string;
 };
 
+export type TechDetail = {
+  recurrence: number;
+  name: string;
+};
+
 export type GitHubData = {
   loading: boolean;
-  profile: Partial<GitHubProfile>;
-  repos: Partial<GitHubRepoItem[]>;
+  profile: GitHubProfile;
+  repos: GitHubRepoItem[];
+  techs: TechDetail[];
 };

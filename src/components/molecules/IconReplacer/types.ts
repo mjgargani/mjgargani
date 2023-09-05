@@ -3,6 +3,8 @@ import type React from 'react';
 
 export type IconReplacerProps = {
   text: string;
+  color?: Color;
+  brighter?: boolean;
   darker?: boolean;
   style?: React.CSSProperties;
 } & CommonProps;

@@ -8,21 +8,23 @@ afterEach(cleanup);
 
 test('verify if component receives `children` correctly', () => {
   const currentDataTestId = 'card-title_rtl';
-  const repoItem = repos[0] as Partial<GitHubRepoItem>;
+  const projectName = repos[0].name; // > archive-nodejs-typescript-reactjs-styledcomp_color-diff-test
 
-  render(<CardTitle dataTestId={currentDataTestId}>{repoItem.name}</CardTitle>);
+  render(<CardTitle dataTestId={currentDataTestId}>{projectName}</CardTitle>);
 
   const cardTitle = screen.getByTestId(currentDataTestId);
   const iconReplacer = screen.getByTestId(/^icon-replacer_\d+/);
   const archiveIcon = screen.getByTestId(/^icon-archive_\d+/);
-  const phpIcon = screen.getByTestId(/^icon-php_\d+/);
-  const wpIcon = screen.getByTestId(/^icon-wp_\d+/);
+  const njsIcon = screen.getByTestId(/^icon-nodejs_\d+/);
+  const tsIcon = screen.getByTestId(/^icon-typescript_\d+/);
+  const rjsIcon = screen.getByTestId(/^icon-reactjs_\d+/);
 
   expect(cardTitle).toBeInTheDocument();
   expect(iconReplacer).toBeInTheDocument();
   expect(archiveIcon).toBeInTheDocument();
-  expect(phpIcon).toBeInTheDocument();
-  expect(wpIcon).toBeInTheDocument();
+  expect(njsIcon).toBeInTheDocument();
+  expect(tsIcon).toBeInTheDocument();
+  expect(rjsIcon).toBeInTheDocument();
 
-  expect(cardTitle).toHaveTextContent('2018 portfolio');
+  expect(cardTitle).toHaveTextContent('color diff test');
 });

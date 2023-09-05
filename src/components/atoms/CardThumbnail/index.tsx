@@ -32,7 +32,7 @@ const CardThumbnail: React.FC<CardThumbnailProps> = ({
       >
         <p>
           <a href={homePage} target="_blank" rel="noreferrer">
-            <IconReplacer text="globe-externallink" />
+            <IconReplacer text="globe-extlink" />
           </a>
         </p>
       </HomePage>

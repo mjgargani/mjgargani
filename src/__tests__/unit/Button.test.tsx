@@ -25,7 +25,7 @@ test('verify if component receive the `onClick` and `children` prop correctly', 
 });
 
 test.each([
-  [false, '.1'],
+  [false, '.25'],
   [true, '.7'],
 ])(
   'verify if component receive the `active` prop correctly (state: %p, expectedOpacity: %p)',

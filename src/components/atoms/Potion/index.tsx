@@ -15,11 +15,11 @@ const Potion: React.FC<PropsWithChildren<Partial<PotionProps>>> = ({
   useEffect(() => {
     if (!isLoaded) {
       imgLoader([potion])
-        .then(() => {
-          setIsLoaded(true);
-        })
         .catch((err) => {
           console.error(err);
+        })
+        .finally(() => {
+          setIsLoaded(true);
         });
     }
   }, [isLoaded]);

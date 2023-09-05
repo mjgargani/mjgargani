@@ -6,12 +6,12 @@ test('verify if util works correctly', async () => {
   cleanup();
   const resultA = mdParser(repos[0].description) as JSX.Element;
   render(resultA);
-  expect(screen.getByText(/Portfolio/)).toHaveTextContent('WordPress');
+  expect(screen.getByText(/Teste de percepção de cores/)).toContainHTML('<code>ReactJS</code>');
 
   cleanup();
-  const resultB = mdParser(repos[0].description, ['WordPress', '(', ')']) as JSX.Element;
+  const resultB = mdParser(repos[0].description, ['<code>ReactJS</code>']) as JSX.Element;
   render(resultB);
-  expect(screen.getByText(/Portfolio/)).not.toHaveTextContent('WordPress');
+  expect(screen.getByText(/Teste de percepção de cores/)).not.toContainHTML('<code>ReactJS</code>');
 
   cleanup();
   const resultC = mdParser('');
