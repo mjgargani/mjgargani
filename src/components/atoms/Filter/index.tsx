@@ -39,11 +39,7 @@ const Filter: React.FC<PropsWithChildren<FilterProps>> = ({
             style={{ cursor: 'pointer' }}
             checked={!filters.some((el) => !el.selected)}
           />
-          <label 
-            htmlFor="all" 
-            style={{ cursor: 'pointer' }}
-            data-testid={randomId(`filter_label_all`)}
-          >
+          <label htmlFor="all" style={{ cursor: 'pointer' }} data-testid={randomId(`filter_label_all`)}>
             TODOS
           </label>
         </FilterBox>
@@ -59,11 +55,7 @@ const Filter: React.FC<PropsWithChildren<FilterProps>> = ({
               onChange={handleFilter}
               style={{ cursor: 'pointer' }}
             />
-            <label 
-              htmlFor={el.name} 
-              style={{ cursor: 'pointer' }}
-              data-testid={randomId(`filter_label_${el.name}`)}
-            >
+            <label htmlFor={el.name} style={{ cursor: 'pointer' }} data-testid={randomId(`filter_label_${el.name}`)}>
               <IconReplacer text={el.name} brighter={true} />
               {el.name === 'archive' ? 'ARQUIVO' : el.name.toUpperCase()} ({el.recurrence})
             </label>
