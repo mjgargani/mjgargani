@@ -13,11 +13,12 @@ export const Container = styled.div<Partial<FilterProps>>`
 export const FilterBox = styled.div`
   display: flex;
   flex: column;
+  align-items: center;
   gap: 8px;
   background-color: black;
   color: white;
-  opacity: 0.8;
+  opacity: 0.75;
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
-`
+`;

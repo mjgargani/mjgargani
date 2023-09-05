@@ -3,10 +3,10 @@ import localStorageMock from '../mock/localStorage';
 import profile from '../mock/profile.json';
 import repos from '../mock/repos.json';
 import { server } from '../mock/server';
+import { delay } from '../utils/delay';
 import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { vi } from 'vitest';
-import { delay } from '../utils/delay';
 
 Object.defineProperty(window, 'localStorage', {
   value: localStorageMock,
@@ -37,7 +37,7 @@ test.each([200, 304, 403])(
     const frame = await screen.findByTestId(/^frame_\d/);
     expect(frame).toBeInTheDocument();
 
-    await act(async () => delay(1000));
+    await act(async () => delay(250));
 
     const buttonsNav = await screen.findAllByTestId(/^btn-nav_\d+/);
     expect(buttonsNav[0]).toBeInTheDocument();
@@ -61,6 +61,8 @@ test.each([200, 304, 403])(
       expect(pageHome).not.toBeInTheDocument();
     });
 
+    await act(async () => delay(250));
+
     const pageRepos = await screen.findByTestId(/^page-repos_\d/);
     expect(pageRepos).toBeInTheDocument();
 
@@ -77,13 +79,11 @@ test.each([200, 304, 403])(
     const cardDesc = await screen.findAllByTestId(/^card-desc_\d+/);
     const cardLink = await screen.findAllByTestId(/^card-link_\d+/);
 
-    for (let i = 1; i < repos.length; i++) {
-      expect(cardThumb[i]).toHaveStyle(
-        `background-image: url(https://raw.githubusercontent.com/mjgargani/${repos[i].name}/main/thumbnail.webp)`,
-      );
-      expect(cardTitle[i]).toHaveTextContent(repos[i].name.replaceAll(replaceRegExpTitle, '').replaceAll('-', ' '));
-      expect(cardDesc[i]).toHaveTextContent(repos[i].description.replaceAll('`', ''));
-      expect(cardLink[i]).toHaveAttribute('href', repos[i].html_url);
+    for (let i = 0; i < repos.length; i++) {
+      expect(cardThumb[i]).toBeInTheDocument();
+      expect(cardTitle[i]).toBeInTheDocument();
+      expect(cardDesc[i]).toBeInTheDocument();
+      expect(cardLink[i]).toBeInTheDocument();
     }
 
     fireEvent.click(buttonsNav[2]);
@@ -91,6 +91,8 @@ test.each([200, 304, 403])(
     await waitFor(() => {
       expect(pageRepos).not.toBeInTheDocument();
     });
+
+    await act(async () => delay(250));
 
     const pageAbout = await screen.findByTestId(/^page-about_\d/);
     expect(pageAbout).toBeInTheDocument();

@@ -12,9 +12,9 @@ test('verify if component returns the content correctly', () => {
   const footerInfo = screen.getByTestId(currentDataTestId);
   const iconReplacer = screen.getAllByTestId(/^icon-replacer_\d+/);
   const nodeIcon = screen.getByTestId(/^icon-nodejs_\d+/);
-  const tsIcon = screen.getByTestId(/^icon-ts_\d+/);
+  const tsIcon = screen.getByTestId(/^icon-typescript_\d+/);
   const reactIcon = screen.getByTestId(/^icon-reactjs_\d+/);
-  const scIcon = screen.getByTestId(/^icon-styledcomponents_\d+/);
+  const scIcon = screen.getByTestId(/^icon-styledcomp_\d+/);
   const heartIcon = screen.getByTestId(/^icon-heart_\d+/);
 
   expect(footerInfo).toBeInTheDocument();

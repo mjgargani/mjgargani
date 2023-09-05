@@ -23,11 +23,11 @@ const About: React.FC<CommonProps> = ({ dataTestId = randomId('page-about') }) =
   useEffect(() => {
     if (Boolean(profile?.avatar_url) && !isLoaded) {
       imgLoader([profile!.avatar_url, QrCodePadrim])
-        .then(() => {
-          setIsLoaded(true);
-        })
         .catch((err) => {
           console.error(err);
+        })
+        .finally(() => {
+          setIsLoaded(true);
         });
     }
   }, [profile, isLoaded]);

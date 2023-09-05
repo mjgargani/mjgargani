@@ -19,9 +19,9 @@ export type GitHubRepoItem = {
 };
 
 export type TechDetail = {
-  recurrence: number,
-  name: string
-}
+  recurrence: number;
+  name: string;
+};
 
 export type GitHubData = {
   loading: boolean;

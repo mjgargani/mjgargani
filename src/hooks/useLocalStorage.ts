@@ -10,15 +10,15 @@ function useLocalStorage<T>(): T | false {
     if (Boolean(localStorage.length) && data === false) {
       let newData: GenericObject | false = false;
 
-      Object.entries(localStorage).forEach(([key, value]:[key: string, value: string]) => {
+      Object.entries(localStorage).forEach(([key, value]: [key: string, value: string]) => {
         let item;
-        
+
         try {
           item = JSON.parse(value) as GenericObject;
         } catch (error) {
-          item = value ;
-        } 
-        
+          item = value;
+        }
+
         newData = Object.assign(newData, { [camelcase(key)]: item });
       });
 
