@@ -12,10 +12,10 @@ const IconReplacer: React.FC<IconReplacerProps> = ({
   styledCss,
 }) => (
   <Container data-testid={dataTestId} color={color} brighter={brighter} darker={darker} styledCss={styledCss}>
-    {
-      text.split('-').map(tech => {
-        if(Object.keys(iconList).some(el => el === tech)){
-          return (<span
+    {text.split('-').map((tech) => {
+      if (Object.keys(iconList).some((el) => el === tech)) {
+        return (
+          <span
             data-testid={randomId(`icon-${tech}`)}
             style={{
               color: iconList[tech][0],
@@ -24,12 +24,12 @@ const IconReplacer: React.FC<IconReplacerProps> = ({
             key={randomId(`icon-item-${tech}`, true)}
           >
             {iconList[tech][1]}
-          </span>)
-        }
+          </span>
+        );
+      }
 
-        return <></>
-      })
-    }
+      return <></>;
+    })}
   </Container>
 );
 

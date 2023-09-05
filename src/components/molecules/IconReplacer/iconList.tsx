@@ -50,8 +50,8 @@ export const iconList: IconList = {
   rocketseat: [
     '#8257e6',
     <span title="Rocketseat" key={randomId('ReactJS', true)}>
-      <GiRocketThruster style={{ transform: 'rotate(45deg)' }}/>
-      <MdOutlineAirlineSeatReclineExtra/>
+      <GiRocketThruster style={{ transform: 'rotate(45deg)' }} />
+      <MdOutlineAirlineSeatReclineExtra />
     </span>,
   ],
   socketio: ['#444444', <SiSocketdotio key={randomId('Socket.IO', true)} title="Socket.IO" />],
