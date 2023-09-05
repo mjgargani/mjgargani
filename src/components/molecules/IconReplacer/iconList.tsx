@@ -49,10 +49,10 @@ export const iconList: IconList = {
   reactjs: ['#5ED3F3', <RiReactjsLine key={randomId('ReactJS', true)} title="ReactJS" />],
   rocketseat: [
     '#8257e6',
-    <div key={randomId('ReactJS', true)}>
-      <GiRocketThruster style={{ transform: 'rotate(45deg)' }} title="Rocketseat" />
-      <MdOutlineAirlineSeatReclineExtra title="Rocketseat" />
-    </div>,
+    <span title="Rocketseat" key={randomId('ReactJS', true)}>
+      <GiRocketThruster style={{ transform: 'rotate(45deg)' }}/>
+      <MdOutlineAirlineSeatReclineExtra/>
+    </span>,
   ],
   socketio: ['#444444', <SiSocketdotio key={randomId('Socket.IO', true)} title="Socket.IO" />],
   star: ['#e6ff82', <AiFillStar key={randomId('Estrelas dadas', true)} title="Estrelas dadas" />],

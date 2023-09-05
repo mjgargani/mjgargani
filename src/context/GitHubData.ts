@@ -64,7 +64,7 @@ export const useGitHubDataValues = (): GitHubData => {
           const profile: GitHubProfile = responses[1].body?.name?.trim() ? responses[1].body : data.profile;
 
           const newRepos = repos.map((el) =>
-            el.name === 'mjgargani' ? { ...el, name: 'nodejs-typescript-reactjs-vite-styledcomp_2023-portfolio' } : el,
+            el.name === 'mjgargani' ? { ...el, name: 'nodejs-typescript-vite-vitest-reactjs-styledcomp_2023-portfolio' } : el,
           );
 
           const newData = {
