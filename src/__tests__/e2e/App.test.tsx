@@ -102,13 +102,13 @@ test.each([200, 304, 403])(
     const cardAboutBio = await screen.findByTestId(/^card-about-bio_\d+/);
     const cardAboutContacts = await screen.findByTestId(/^card-about-contacts_\d+/);
     const cardAboutDesc = await screen.findByTestId(/^card-about-desc_\d+/);
-    const imgQrCodePadrim = await screen.findByTestId(/^img-qr-code-padrim_\d+/);
+    const imgQrCodeDonate = await screen.findByTestId(/^img-qr-code-donate_\d+/);
     expect(cardAbout).toBeInTheDocument();
     expect(cardAvatar).toBeInTheDocument();
     expect(cardAboutBio).toBeInTheDocument();
     expect(cardAboutContacts).toBeInTheDocument();
     expect(cardAboutDesc).toBeInTheDocument();
-    expect(imgQrCodePadrim).toBeInTheDocument();
+    expect(imgQrCodeDonate).toBeInTheDocument();
 
     expect(cardAboutBio).toHaveTextContent(profile.bio.replaceAll('`', ''));
 

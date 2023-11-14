@@ -1,11 +1,12 @@
 {
   "name": "mjgarganis-lab_portfolio",
-  "version": "1.5.3",
+  "version": "1.5.5",
   "author": {
     "name": "Rodrigo G. Oliveira",
     "email": "mjgargani@gmail.com",
     "url": "https://gargani.dev"
   },
+  "license": "MIT",
   "homepage": "https://gargani.dev",
   "private": true,
   "dependencies": {

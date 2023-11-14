@@ -1,4 +1,5 @@
 import filters from '../mock/filters.json';
+import repos from '../mock/repos.json';
 import { render } from '../utils/render';
 import Filter from '@/components/atoms/Filter';
 import { type FilterItem } from '@/components/atoms/Filter/types';
@@ -11,7 +12,15 @@ const filtersMock: FilterItem[] = [...filters];
 test('verify if component returns the children components correctly', async () => {
   const currentDataTestId = 'filter_rtl';
 
-  render(<Filter filters={filtersMock} handleFilter={() => true} dataTestId={currentDataTestId} />);
+  render(
+    <Filter
+      repoLength={repos.length}
+      filteredLength={10}
+      filters={filtersMock}
+      handleFilter={() => true}
+      dataTestId={currentDataTestId}
+    />,
+  );
 
   const filterInfo = screen.getByTestId(currentDataTestId);
   const inputCheckBoxes = screen.getAllByTestId(/^filter_check_\w+_\d+/);

@@ -5,9 +5,13 @@ import { type FilterProps } from './types';
 import IconReplacer from '@/components/molecules/IconReplacer';
 import React, { useState, type PropsWithChildren } from 'react';
 import { BsFilter } from 'react-icons/bs';
+import { FaEyeSlash } from 'react-icons/fa';
+import { FaEye } from 'react-icons/fa';
 
 const Filter: React.FC<PropsWithChildren<FilterProps>> = ({
   dataTestId = randomId('filter'),
+  repoLength,
+  filteredLength,
   filters,
   handleFilter,
   styledCss,
@@ -39,8 +43,9 @@ const Filter: React.FC<PropsWithChildren<FilterProps>> = ({
             style={{ cursor: 'pointer' }}
             checked={!filters.some((el) => !el.selected)}
           />
-          <label htmlFor="all" style={{ cursor: 'pointer' }} data-testid={randomId(`filter_label_all`)}>
-            TODOS
+          <label htmlFor="all" style={{ cursor: 'pointer', padding: '4px' }} data-testid={randomId(`filter_label_all`)}>
+            <IconReplacer text="all" brighter={true} />
+            TODOS ({repoLength})
           </label>
         </FilterBox>
         {filters?.map((el) => (
@@ -55,9 +60,13 @@ const Filter: React.FC<PropsWithChildren<FilterProps>> = ({
               onChange={handleFilter}
               style={{ cursor: 'pointer' }}
             />
-            <label htmlFor={el.name} style={{ cursor: 'pointer' }} data-testid={randomId(`filter_label_${el.name}`)}>
+            <label
+              htmlFor={el.name}
+              style={{ cursor: 'pointer', padding: '4px' }}
+              data-testid={randomId(`filter_label_${el.name}`)}
+            >
               <IconReplacer text={el.name} brighter={true} />
-              {el.name === 'archive' ? 'ARQUIVO' : el.name.toUpperCase()} ({el.recurrence})
+              {el.name.replace('archive', 'ARQUIVO').replace('lrn', 'APRENDIZAGEM').toUpperCase()} ({el.recurrence})
             </label>
           </FilterBox>
         ))}
@@ -76,7 +85,10 @@ const Filter: React.FC<PropsWithChildren<FilterProps>> = ({
           }}
           active={showFilter}
         >
-          {showFilter ? 'Ocultar' : 'Filtrar'}
+          {showFilter ? 'Ocultar' : 'Filtrar'}{' '}
+          <span>
+            ({filteredLength ? <FaEye /> : <FaEyeSlash />} {filteredLength})
+          </span>
         </Button>
       </div>
     </Container>

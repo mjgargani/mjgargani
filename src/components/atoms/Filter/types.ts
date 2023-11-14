@@ -7,6 +7,8 @@ export type FilterItem = {
 };
 
 export type FilterProps = {
+  repoLength: number;
+  filteredLength: number;
   filters: FilterItem[];
   handleFilter: (event: React.ChangeEvent<HTMLInputElement>) => void;
 } & CommonProps;
