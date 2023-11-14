@@ -48,10 +48,6 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
             setFilteredRepos(newFilteredRepos);
           });
       }
-
-      if (!filters.some((el) => el.selected)) {
-        setFilteredRepos([]);
-      }
     }
   }, [filters, repos, filteredRepos]);
 
@@ -75,9 +71,9 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
   );
 
   const handleFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
     const target = event.target as HTMLInputElement;
     let newFilter;
+
     if (target.value === 'all') {
       if (target.checked) {
         newFilter = filters.map((el) => ({ ...el, selected: true }));
