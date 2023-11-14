@@ -8,6 +8,7 @@ import { BsFilter } from 'react-icons/bs';
 
 const Filter: React.FC<PropsWithChildren<FilterProps>> = ({
   dataTestId = randomId('filter'),
+  repoLength,
   filters,
   handleFilter,
   styledCss,
@@ -40,7 +41,7 @@ const Filter: React.FC<PropsWithChildren<FilterProps>> = ({
             checked={!filters.some((el) => !el.selected)}
           />
           <label htmlFor="all" style={{ cursor: 'pointer', padding: '4px' }} data-testid={randomId(`filter_label_all`)}>
-            TODOS
+            TODOS ({repoLength})
           </label>
         </FilterBox>
         {filters?.map((el) => (
@@ -76,7 +77,7 @@ const Filter: React.FC<PropsWithChildren<FilterProps>> = ({
           }}
           active={showFilter}
         >
-          {showFilter ? 'Ocultar' : 'Filtrar'}
+          {showFilter ? 'Ocultar' : 'Filtrar'} <i>(Mostrando {} itens)</i>
         </Button>
       </div>
     </Container>

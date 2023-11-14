@@ -30,7 +30,7 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
 
   useEffect(() => {
     if (Boolean(repos?.length) && Boolean(filters?.length)) {
-      if (Boolean(repos?.length) && filters.some((el) => el.selected) && !filteredRepos.length) {
+      if (filters.some((el) => el.selected) && !filteredRepos.length) {
         const newOrdenedRepos = [
           ...repos!.filter((el) => el.pinned).sort(sortRepos),
           ...repos!.filter((el) => !el.pinned).sort(sortRepos),
@@ -47,6 +47,10 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
           .finally(() => {
             setFilteredRepos(newFilteredRepos);
           });
+      }
+
+      if (!filters.some((el) => el.selected) && filteredRepos.length) {
+        setFilteredRepos([]);
       }
     }
   }, [filters, repos, filteredRepos]);
@@ -90,7 +94,11 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
 
   return (
     <Page>
-      <Filter filters={filters} handleFilter={handleFilter} />
+      <Filter 
+        repoLength={repos?.length ?? 0} 
+        filters={filters} 
+        handleFilter={handleFilter} 
+      />
       <GridContainer
         dataTestId={dataTestId}
         columnGap={3}
