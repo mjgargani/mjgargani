@@ -74,7 +74,7 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
           stars: el!.stargazers_count,
           watchers: el!.watchers_count,
         }}
-        url={el!.html_url}
+        url={el!.html_url+"#readme"}
         title={el!.name}
         homePage={el!.homepage}
       >

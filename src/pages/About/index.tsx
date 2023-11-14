@@ -1,4 +1,4 @@
-import QrCodePadrim from '../../assets/qr-code-padrim.webp';
+import QrCodeDonate from '../../assets/qr-code-donate.webp';
 import Avatar from '../../components/atoms/Avatar';
 import CoinFountain from '../../components/atoms/CoinFountain';
 import GridCell from '../../components/atoms/GridCell';
@@ -22,7 +22,7 @@ const About: React.FC<CommonProps> = ({ dataTestId = randomId('page-about') }) =
 
   useEffect(() => {
     if (Boolean(profile?.avatar_url) && !isLoaded) {
-      imgLoader([profile!.avatar_url, QrCodePadrim])
+      imgLoader([profile!.avatar_url, QrCodeDonate])
         .catch((err) => {
           console.error(err);
         })
@@ -148,11 +148,10 @@ const About: React.FC<CommonProps> = ({ dataTestId = randomId('page-about') }) =
                 >
                   <p>
                     <span>
-                      🪙 Você contribui com meu trabalho divulgando-o e/ou sendo{' '}
-                      <a href="https://www.padrim.com.br/mjgargani" target="_blank" rel="noreferrer">
-                        meu Padrim ou Madrim
-                      </a>
-                      !
+                      🪙 Você contribui com meu trabalho divulgando-o e/ou{' '}
+                      <a href="https://nubank.com.br/cobrar/txmfc/6553c2c7-457e-4672-8ab9-08ee3e1fcc18" target="_blank" rel="noreferrer">
+                        fazendo uma doação!
+                      </a> <i style={{ fontSize: "smaller" }}>(PIX NuBank)</i>
                     </span>
                   </p>
                 </GridCell>
@@ -161,10 +160,10 @@ const About: React.FC<CommonProps> = ({ dataTestId = randomId('page-about') }) =
           </div>
         </GridCell>
 
-        <a href="https://www.padrim.com.br/mjgargani" target="_blank" rel="noreferrer">
+        <a href="https://nubank.com.br/cobrar/txmfc/6553c2c7-457e-4672-8ab9-08ee3e1fcc18" target="_blank" rel="noreferrer">
           <GridCell
-            dataTestId={randomId('img-qr-code-padrim')}
-            bgImg={{ source: QrCodePadrim, size: 'contain' }}
+            dataTestId={randomId('img-qr-code-donate')}
+            bgImg={{ source: QrCodeDonate, size: 'contain' }}
             styledCss={css`
               min-height: 100%;
             `}
