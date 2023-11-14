@@ -95,7 +95,8 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
   return (
     <Page>
       <Filter 
-        repoLength={repos?.length ?? 0} 
+        repoLength={repos?.length ?? 0}
+        filteredLength={filteredRepos.length} 
         filters={filters} 
         handleFilter={handleFilter} 
       />

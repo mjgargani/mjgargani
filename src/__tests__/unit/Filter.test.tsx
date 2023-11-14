@@ -13,7 +13,8 @@ test('verify if component returns the children components correctly', async () =
   const currentDataTestId = 'filter_rtl';
 
   render(<Filter 
-    repoLength={repos.length} 
+    repoLength={repos.length}
+    filteredLength={10} 
     filters={filtersMock} 
     handleFilter={() => true} 
     dataTestId={currentDataTestId} 

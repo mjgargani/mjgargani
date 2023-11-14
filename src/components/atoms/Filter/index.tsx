@@ -5,10 +5,13 @@ import { type FilterProps } from './types';
 import IconReplacer from '@/components/molecules/IconReplacer';
 import React, { useState, type PropsWithChildren } from 'react';
 import { BsFilter } from 'react-icons/bs';
+import { FaEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 
 const Filter: React.FC<PropsWithChildren<FilterProps>> = ({
   dataTestId = randomId('filter'),
   repoLength,
+  filteredLength,
   filters,
   handleFilter,
   styledCss,
@@ -77,7 +80,11 @@ const Filter: React.FC<PropsWithChildren<FilterProps>> = ({
           }}
           active={showFilter}
         >
-          {showFilter ? 'Ocultar' : 'Filtrar'} <i>(Mostrando {} itens)</i>
+          {showFilter ? 'Ocultar' : 'Filtrar'}{" "}
+          <span>
+            ({filteredLength ? <FaEye/> : <FaEyeSlash/>}{" "}
+            {filteredLength})
+          </span>
         </Button>
       </div>
     </Container>
