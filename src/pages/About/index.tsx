@@ -149,9 +149,14 @@ const About: React.FC<CommonProps> = ({ dataTestId = randomId('page-about') }) =
                   <p>
                     <span>
                       🪙 Você contribui com meu trabalho divulgando-o e/ou{' '}
-                      <a href="https://nubank.com.br/cobrar/txmfc/6553c2c7-457e-4672-8ab9-08ee3e1fcc18" target="_blank" rel="noreferrer">
+                      <a
+                        href="https://nubank.com.br/cobrar/txmfc/6553c2c7-457e-4672-8ab9-08ee3e1fcc18"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         fazendo uma doação!
-                      </a> <i style={{ fontSize: "smaller" }}>(PIX NuBank)</i>
+                      </a>{' '}
+                      <i style={{ fontSize: 'smaller' }}>(PIX NuBank)</i>
                     </span>
                   </p>
                 </GridCell>
@@ -160,7 +165,11 @@ const About: React.FC<CommonProps> = ({ dataTestId = randomId('page-about') }) =
           </div>
         </GridCell>
 
-        <a href="https://nubank.com.br/cobrar/txmfc/6553c2c7-457e-4672-8ab9-08ee3e1fcc18" target="_blank" rel="noreferrer">
+        <a
+          href="https://nubank.com.br/cobrar/txmfc/6553c2c7-457e-4672-8ab9-08ee3e1fcc18"
+          target="_blank"
+          rel="noreferrer"
+        >
           <GridCell
             dataTestId={randomId('img-qr-code-donate')}
             bgImg={{ source: QrCodeDonate, size: 'contain' }}

@@ -12,13 +12,15 @@ const filtersMock: FilterItem[] = [...filters];
 test('verify if component returns the children components correctly', async () => {
   const currentDataTestId = 'filter_rtl';
 
-  render(<Filter 
-    repoLength={repos.length}
-    filteredLength={10} 
-    filters={filtersMock} 
-    handleFilter={() => true} 
-    dataTestId={currentDataTestId} 
-  />);
+  render(
+    <Filter
+      repoLength={repos.length}
+      filteredLength={10}
+      filters={filtersMock}
+      handleFilter={() => true}
+      dataTestId={currentDataTestId}
+    />,
+  );
 
   const filterInfo = screen.getByTestId(currentDataTestId);
   const inputCheckBoxes = screen.getAllByTestId(/^filter_check_\w+_\d+/);

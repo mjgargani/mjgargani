@@ -1,4 +1,3 @@
-import useQuery from '@/hooks/useQuery';
 import GridCell from '../../components/atoms/GridCell';
 import GridContainer from '../../components/atoms/GridContainer';
 import Card from '../../components/molecules/Card';
@@ -12,9 +11,10 @@ import mdParser from '../../utils/mdParser';
 import randomId from '../../utils/randomId';
 import Filter from '@/components/atoms/Filter';
 import { type FilterItem } from '@/components/atoms/Filter/types';
+import useQuery from '@/hooks/useQuery';
 import React, { useContext, useEffect, useState } from 'react';
-import { css } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { css } from 'styled-components';
 
 const sortRepos = (a: GitHubRepoItem, b: GitHubRepoItem) => (a.id < b.id ? 1 : -1);
 
@@ -28,9 +28,11 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
 
   useEffect(() => {
     if (techs?.length && !filters.length) {
-      const qFilters = query.get("f")?.split('-');
-      if(qFilters?.length){
-        setFilters(techs.map((el) => qFilters.includes(el.name) ? ({ selected: true, ...el }) : ({ selected: false, ...el })))
+      const qFilters = query.get('f')?.split('-');
+      if (qFilters?.length) {
+        setFilters(
+          techs.map((el) => (qFilters.includes(el.name) ? { selected: true, ...el } : { selected: false, ...el })),
+        );
       } else {
         setFilters(techs.map((el) => ({ selected: true, ...el })));
       }
@@ -74,7 +76,7 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
           stars: el!.stargazers_count,
           watchers: el!.watchers_count,
         }}
-        url={el!.html_url+"#readme"}
+        url={el!.html_url + '#readme'}
         title={el!.name}
         homePage={el!.homepage}
       >
@@ -97,8 +99,11 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
       navigate('');
     } else {
       newFilter = filters.map((el) => (el.name === target.name ? { ...el, selected: !el.selected } : el));
-      const filterQuery = newFilter.filter(el => Boolean(el.selected)).map(el => el.name).join('-')
-      navigate('?f='+filterQuery);
+      const filterQuery = newFilter
+        .filter((el) => Boolean(el.selected))
+        .map((el) => el.name)
+        .join('-');
+      navigate('?f=' + filterQuery);
     }
 
     setFilters(newFilter);
@@ -107,11 +112,11 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
 
   return (
     <Page>
-      <Filter 
+      <Filter
         repoLength={repos?.length ?? 0}
-        filteredLength={filteredRepos.length} 
-        filters={filters} 
-        handleFilter={handleFilter} 
+        filteredLength={filteredRepos.length}
+        filters={filters}
+        handleFilter={handleFilter}
       />
       <GridContainer
         dataTestId={dataTestId}

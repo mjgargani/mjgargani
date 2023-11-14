@@ -4,9 +4,16 @@ import { AiFillStar, AiFillEye } from 'react-icons/ai';
 import { BsGithub, BsPinFill, BsGlobe } from 'react-icons/bs';
 import { DiWordpress } from 'react-icons/di';
 import { FaArchive, FaLinkedin } from 'react-icons/fa';
+import { FaBookOpen } from 'react-icons/fa6';
 import { GiHeartOrgan, GiRocketThruster } from 'react-icons/gi';
 import { IoLogoNodejs } from 'react-icons/io';
-import { MdEmail, MdGTranslate, MdFiberNew, MdOutlineAirlineSeatReclineExtra, MdOutlineLibraryAddCheck } from 'react-icons/md';
+import {
+  MdEmail,
+  MdGTranslate,
+  MdFiberNew,
+  MdOutlineAirlineSeatReclineExtra,
+  MdOutlineLibraryAddCheck,
+} from 'react-icons/md';
 import { RiReactjsLine, RiExternalLinkLine } from 'react-icons/ri';
 import {
   SiJest,
@@ -25,10 +32,9 @@ import {
   SiVitest,
   SiPuppeteer,
   SiGithubactions,
-  SiConstruct3
+  SiConstruct3,
 } from 'react-icons/si';
-import { TbApi } from "react-icons/tb";
-import { FaBookOpen } from "react-icons/fa6";
+import { TbApi } from 'react-icons/tb';
 
 export const iconList: IconList = {
   all: ['#ffffff', <MdOutlineLibraryAddCheck key={randomId('Todos', true)} title="Todos" />],
