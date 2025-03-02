@@ -1,8 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Sono:wght@400;700&display=swap');
 @import "tailwindcss";
 
-@theme {
-  --color-primary: 140 25 210;
-  --color-secondary: 30 30 30;
+@font-face {
+  font-family: "mjgarganis Lab";
+  src: url(/fonts/mjgarganis_lab.woff2) format('woff2');
+  font-display: swap;
+}
 
-  --font-family-sans: 'Inter', system-ui, sans-serif;
+@layer base {
+  h1 {
+    font-family: "mjgarganis Lab", system-ui;
+    @apply text-3xl md:text-4xl font-bold;
+  }
+
+  h2 {
+    font-family: "Sono", monospace;
+    @apply text-2xl font-semibold;
+  }
 }
