@@ -1,18 +1,18 @@
-import FooterInfo from './components/molecules/FooterInfo';
+// import FooterInfo from './components/molecules/FooterInfo';
 import Frame from './components/molecules/Frame';
-import GitHubButtons from './components/molecules/GitHubButtons';
-import Navigation from './components/molecules/Navigation';
-import TranslateBtn from './components/molecules/TranslateBtn';
+// import GitHubButtons from './components/molecules/GitHubButtons';
+// import Navigation from './components/molecules/Navigation';
+// import TranslateBtn from './components/molecules/TranslateBtn';
 import { GitHubDataContext, useGitHubDataValues } from './context/GitHubData';
 import { type PageEndPoints } from './globals';
 import usePrevious from './hooks/usePrevious';
-import About from './pages/About';
-import Home from './pages/Home';
-import Repos from './pages/Repos';
-import { ContainerBase, ContainerFooter, ContainerNavigation, ContainerPage, ContainerTop } from './styles';
-import { defaultTheme } from './styles/defaults/defaultTheme';
+// import About from './pages/About';
+// import Home from './pages/Home';
+// import Repos from './pages/Repos';
+// import { ContainerBase, ContainerFooter, ContainerNavigation, ContainerPage, ContainerTop } from './styles';
+// import { defaultTheme } from './styles/defaults/defaultTheme';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
+// import { ThemeProvider } from 'styled-components';
 
 function App() {
   const { pathname } = useLocation();
@@ -20,11 +20,11 @@ function App() {
   const prevPage = usePrevious<PageEndPoints>(page);
   const appData = useGitHubDataValues();
 
-  return (
+  return (<>
     <GitHubDataContext.Provider value={appData}>
-      <ThemeProvider theme={defaultTheme}>
+      {/* <ThemeProvider theme={defaultTheme}> */}
         <Frame page={page} prevPage={prevPage} />
-        <ContainerBase isLoading={Boolean(appData.loading)}>
+        {/* <ContainerBase isLoading={Boolean(appData.loading)}>
           <ContainerTop>
             <TranslateBtn />
             <GitHubButtons />
@@ -44,9 +44,9 @@ function App() {
             <FooterInfo />
           </ContainerFooter>
         </ContainerBase>
-      </ThemeProvider>
+      </ThemeProvider> */}
     </GitHubDataContext.Provider>
-  );
+  </>);
 }
 
 export default App;
