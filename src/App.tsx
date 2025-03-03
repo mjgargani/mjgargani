@@ -11,7 +11,6 @@ import Home from './pages/Home';
 import Repos from './pages/Repos';
 import { ContainerBase, ContainerFooter, ContainerNavigation, ContainerPage, ContainerTop } from './styles';
 import { defaultTheme } from './styles/defaults/defaultTheme';
-import 'normalize.css';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
