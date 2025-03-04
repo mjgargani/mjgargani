@@ -1,17 +1,32 @@
-@keyframes bgMove {
+@keyframes bgMov {
   0% {
-    background-position: 0% 0%;
+    transform: rotate(0deg);
   }
 
   50% {
-    background-position: 100% 100%;
+    transform: rotate(180deg);
   }
 
   100% {
-    background-position: 0% 0%;
+    transform: rotate(360deg);
+  }
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 
 .animate-bgMove {
   animation: bgMove 15s ease infinite;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 2s ease;
 }
