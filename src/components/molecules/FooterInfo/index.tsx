@@ -1,4 +1,4 @@
-import Icon from '../Icon';
+import Icon from '../../atoms/Icon';
 import React from 'react';
 
 const FooterInfo: React.FC = () => (

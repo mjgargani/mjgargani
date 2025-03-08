@@ -10,11 +10,11 @@ const MainTemplate: React.FC<PropsWithChildren> = ({ children }) => {
     </div>
 
     <div className="flex-2 p-4 bg-gray-200">
-      {/* <Navigation page={'/'}/> */}
+      <Navigation />
     </div>
 
-    <div className="flex-1 p-4 bg-gray-800 text-white pointer-events-none">
-      <FooterInfo />
+    <div className="flex-1 p-4 bg-gray-800 text-white">
+      {/* <FooterInfo /> */}
     </div>
   </div>);
 };

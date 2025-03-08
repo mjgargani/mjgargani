@@ -1,6 +1,6 @@
 // import FooterInfo from './components/molecules/FooterInfo';
 import Frame from './components/molecules/Frame';
-import MainTemplate from './components/templates/Page/Main';
+import MainTemplate from './components/templates/Main';
 // import GitHubButtons from './components/molecules/GitHubButtons';
 // import Navigation from './components/molecules/Navigation';
 // import TranslateBtn from './components/molecules/TranslateBtn';
