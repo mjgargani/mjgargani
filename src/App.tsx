@@ -15,17 +15,23 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 function App() {
-  const { pathname } = useLocation();
-  const page = pathname as PageEndPoints;
-  const prevPage = usePrevious<PageEndPoints>(page);
+  // const { pathname } = useLocation();
+  // const page = pathname as PageEndPoints;
+  // const prevPage = usePrevious<PageEndPoints>(page);
   const appData = useGitHubDataValues();
 
   return (<>
     <GitHubDataContext.Provider value={appData}>
-      <ThemeProvider theme={defaultTheme}>
-        <Frame />
-        <MainTemplate />
-      </ThemeProvider>
+      <Frame />
+      <MainTemplate>
+        <Home />
+        {/* <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Repos />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/*" element={<Navigate to="/" replace />} />
+        </Routes> */}
+      </MainTemplate>
     </GitHubDataContext.Provider>
   </>);
 }
