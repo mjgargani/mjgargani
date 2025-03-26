@@ -1,55 +1,13 @@
-// Mocking localStorage with FS, this will not be used in the final project
-// Yes, I am a savage, and a f*cking cowboy in testing, sorry senpai
-
-import * as fs from 'fs';
-import * as path from 'path';
-
-const storageFilePath = path.join(__dirname, 'localStorage.json');
-
-function readData(): Record<string, string> {
-  if (!fs.existsSync(storageFilePath)) return {};
-  try {
-    const content = fs.readFileSync(storageFilePath, 'utf8');
-    return JSON.parse(content);
-  } catch (error) {
-    console.error('Erro ao ler o localStorage:', error);
-    return {};
-  }
-}
-
-function writeData(data: Record<string, string>) {
-  try {
-    fs.writeFileSync(storageFilePath, JSON.stringify(data, null, 2), 'utf8');
-  } catch (error) {
-    console.error('Erro ao escrever no localStorage:', error);
-  }
-}
-
-(global as any).localStorage = {
-  _data: readData(),
-  setItem(key: string, value: string) {
-    this._data[key] = value;
-    writeData(this._data);
-  },
-  getItem(key: string) {
-    return this._data.hasOwnProperty(key) ? this._data[key] : null;
-  },
-  removeItem(key: string) {
-    delete this._data[key];
-    writeData(this._data);
-  },
-  clear() {
-    this._data = {};
-    writeData(this._data);
-  },
-};
-
-// Real code (will be used in the final project)
-
 import * as axios from 'axios';
 import * as cheerio from 'cheerio';
 
-const github = 'https://github.com/mjgargani';
+function getGithubUsernameFromHost(host?: string): string | null {
+  const match = host?.match(/^([^.]+)\.github\.io$/);
+  return match ? match[1] : 'mjgargani';
+}
+
+const username = getGithubUsernameFromHost(window?.location?.host);
+const github = `https://github.com/${username}`;
 
 async function getNewEtag(url: string): Promise<string | null> {
   try {
@@ -143,14 +101,3 @@ export async function getRepositoriesOrdered(): Promise<any[]> {
     return 0;
   });
 }
-
-
-// Testing, ignore this block
-// AAAAAAGUENTA COLCHÃO VÉIO
-
-(async () => {
-  const repositories = await getRepositoriesOrdered();
-  console.log({
-    repositories,
-  });
-})();
