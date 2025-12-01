@@ -221,7 +221,8 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
             <LoadingCards />
           )
         ) : (
-          <div /> // Empty state when no filters selected
+          // Empty placeholder when no filters selected (maintains grid layout)
+          <span />
         )}
       </GridContainer>
     </Page>

@@ -19,7 +19,7 @@ type GitHubRequest<T> = {
     data?: string; // Previous ETag value for cache validation
   };
   content?: T; // Cached content to return if not modified
-  callback?: (response: T) => Promise<T>; // Optional transform function
+  callback?: (response: T) => T | Promise<T>; // Optional transform function
 };
 
 /**

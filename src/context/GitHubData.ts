@@ -71,7 +71,8 @@ export const useGitHubDataValues = (): GitHubData => {
 
   // Restore cached data on mount (only once)
   useEffect(() => {
-    if (cachedData !== false) {
+    // useLocalStorage returns false when localStorage is empty
+    if (cachedData !== false && typeof cachedData === 'object') {
       setData({ updated: false, ...cachedData });
     }
   }, [cachedData]);
