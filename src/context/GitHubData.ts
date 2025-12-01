@@ -1,99 +1,142 @@
- 
+/**
+ * Repository Data Context
+ * 
+ * This context manages the application's repository and profile data by:
+ * 1. Fetching data from GitHub API for a specific user
+ * 2. Caching responses in localStorage to minimize API calls
+ * 3. Using ETags for efficient cache validation (HTTP 304 Not Modified)
+ * 4. Providing centralized state for all components
+ * 
+ * Cache Strategy:
+ * - First load: Fetch from GitHub API and store in localStorage
+ * - Subsequent loads: Load from localStorage and validate with ETags
+ * - If data unchanged (304): Use cached version
+ * - If data changed (200): Update cache with new data
+ */
+
 import useLocalStorage from '../hooks/useLocalStorage';
 import { gitHubRequest, pinnedRepos } from '../utils/fetch';
 import { type TechDetail, type GitHubData, type GitHubProfile, type GitHubRepoItem } from './types';
 import { filterList } from '@/utils/filterList';
 import { createContext, useEffect, useState } from 'react';
 
+// Context provides repository data to all child components
 export const GitHubDataContext = createContext<Partial<GitHubData>>({});
 
-type ContextDataFormat = {
-  updated?: boolean;
-  etagRepos: string;
-  etagProfile: string;
-  repos: GitHubRepoItem[];
-  profile: GitHubProfile;
+// GitHub username to fetch data for (configurable)
+const GITHUB_USERNAME = 'mjgargani';
+
+// Default profile data to show while loading
+const DEFAULT_PROFILE: GitHubProfile = {
+  name: 'Rodrigo Gargani Oliveira',
+  avatar_url: 'https://avatars.githubusercontent.com/u/46717827?v=4',
+  bio: '',
 };
 
+// Internal cache format stored in localStorage
+type CachedRepositoryData = {
+  updated?: boolean; // Flag to track if data has been fetched
+  etagRepos: string; // ETag for repository list caching
+  etagProfile: string; // ETag for profile caching
+  repos: GitHubRepoItem[]; // Cached repository list
+  profile: GitHubProfile; // Cached profile data
+};
+
+/**
+ * Hook that fetches and manages GitHub repository data
+ * 
+ * Flow:
+ * 1. Initialize with default/cached data
+ * 2. Load from localStorage if available
+ * 3. Fetch from GitHub API using ETags for cache validation
+ * 4. Extract technology tags from repository names
+ * 5. Update cache and return data to context consumers
+ * 
+ * @returns GitHubData containing profile, repos, techs, and loading state
+ */
 export const useGitHubDataValues = (): GitHubData => {
   const [loading, setLoading] = useState<boolean>(true);
   const [techs, setTechs] = useState<TechDetail[]>([]);
-
-  const [data, setData] = useState<ContextDataFormat>({
+  
+  // Initialize with default data structure
+  const [data, setData] = useState<CachedRepositoryData>({
     etagRepos: '',
     etagProfile: '',
     repos: [],
-    profile: {
-      name: 'Rodrigo Gargani Oliveira',
-      avatar_url: 'https://avatars.githubusercontent.com/u/46717827?v=4',
-      bio: '',
-    },
+    profile: DEFAULT_PROFILE,
   });
 
-  const contextData = useLocalStorage<ContextDataFormat>();
+  // Load cached data from localStorage
+  const cachedData = useLocalStorage<CachedRepositoryData>();
 
+  // Restore cached data on mount (only once)
   useEffect(() => {
-    let newData = { updated: false, ...data };
+    if (cachedData !== false) {
+      setData({ updated: false, ...cachedData });
+    }
+  }, [cachedData]);
 
-    if (contextData !== false) {
-      newData = { updated: false, ...contextData };
+  // Fetch data from GitHub API when not yet updated
+  useEffect(() => {
+    // Skip if data already fetched
+    if (data?.updated === true) {
+      setLoading(false);
+      return;
     }
 
-    setData(newData);
-  }, [contextData]);
-
-  useEffect(() => {
     if (data?.updated === false) {
+      // Fetch both repositories and profile in parallel
       Promise.all([
         gitHubRequest<GitHubRepoItem[]>({
-          endPoint: 'users/mjgargani/repos',
+          endPoint: `users/${GITHUB_USERNAME}/repos`,
           etag: { name: 'repos', data: data.etagRepos },
           content: data?.repos,
-          callback: pinnedRepos,
+          callback: pinnedRepos, // Enrich with pinned status
         }),
         gitHubRequest<GitHubProfile>({
-          endPoint: 'users/mjgargani',
+          endPoint: `users/${GITHUB_USERNAME}`,
           etag: { name: 'profile', data: data.etagProfile },
           content: data?.profile,
         }),
       ])
         .then((responses) => {
-          const etagRepos: string = responses[0]?.newEtag?.trim() ? responses[0].newEtag : data.etagRepos;
-          const etagProfile: string = responses[1]?.newEtag?.trim() ? responses[1].newEtag : data.etagProfile;
-          const repos: GitHubRepoItem[] = responses[0].body?.length ? responses[0].body : data.repos;
-          const profile: GitHubProfile = responses[1].body?.name?.trim() ? responses[1].body : data.profile;
+          // Extract ETags (use existing if not modified)
+          const etagRepos = responses[0]?.newEtag?.trim() || data.etagRepos;
+          const etagProfile = responses[1]?.newEtag?.trim() || data.etagProfile;
+          
+          // Extract bodies (use cached if not modified)
+          const repos = responses[0].body?.length ? responses[0].body : data.repos;
+          const profile = responses[1].body?.name?.trim() ? responses[1].body : data.profile;
 
-          const newRepos = repos.map((el) =>
-            el.name === 'mjgargani'
-              ? { ...el, name: 'nodejs-typescript-vite-vitest-reactjs-styledcomp-docker_2023-portfolio' }
-              : el,
+          // Handle special case: rename main portfolio repo for display
+          const processedRepos = repos.map((repo) =>
+            repo.name === 'mjgargani'
+              ? { ...repo, name: 'nodejs-typescript-vite-vitest-reactjs-styledcomp-docker_2023-portfolio' }
+              : repo,
           );
 
-          const newData = {
+          // Update state with fetched data
+          setData({
             updated: true,
             etagRepos,
             etagProfile,
-            repos: newRepos,
+            repos: processedRepos,
             profile,
-          };
+          });
 
-          setData(newData);
-
-          const repoNames: string[] = newRepos.map((el) => el.name);
-          const newTechs = filterList(repoNames);
-
-          setTechs(newTechs);
+          // Extract technology tags from repository names for filtering
+          const repoNames = processedRepos.map((repo) => repo.name);
+          setTechs(filterList(repoNames));
         })
         .catch((err) => {
-          console.error(err);
+          console.error('Failed to fetch GitHub data:', err);
+          // Keep using cached/default data on error
+          setLoading(false);
         });
-    }
-
-    if (data?.updated === true) {
-      setLoading(false);
     }
   }, [data]);
 
+  // Return data for context consumers
   return {
     loading,
     profile: data.profile,
