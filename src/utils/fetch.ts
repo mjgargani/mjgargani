@@ -56,12 +56,12 @@ export async function gitHubRequest<T>({
 // 6 months in milliseconds (used to determine "new" repositories)
 const SIX_MONTHS_MS = 15778800000;
 
-const rawMetadataRequest = async (username: string, repo: GitHubRepoItem): Promise<RepoMetadata> =>
-  Promise.all([
-    fetch(`https://raw.githubusercontent.com/${username}/${repo.name}/refs/heads/main/.lab.json`),
-    fetch(`https://raw.githubusercontent.com/${username}/${repo.name}/refs/heads/master/.lab.json`),
-    fetch(`https://raw.githubusercontent.com/${username}/${repo.name}/refs/heads/main/lab.md`),
-    fetch(`https://raw.githubusercontent.com/${username}/${repo.name}/refs/heads/master/lab.md`),
+const rawMetadataRequest = async (username: string, repo: GitHubRepoItem): Promise<RepoMetadata> => {
+  const rawBaseUrl = `https://raw.githubusercontent.com/${username}/${repo.name}/refs/heads/main/`;
+
+  return Promise.all([
+    fetch(`${rawBaseUrl}.lab.json`),
+    fetch(`${rawBaseUrl}lab.md`),
   ])
     .then(async (responses) => {
       let data: Partial<RepoMetadata> | null = null;
@@ -77,6 +77,13 @@ const rawMetadataRequest = async (username: string, repo: GitHubRepoItem): Promi
         }
       }
 
+      data = {
+        ...data,
+        gallery: ['thumbnail.webp', ...(data?.gallery || [])]
+      }
+      
+      const galleryRawListURL = data.gallery!.map((img) => `${rawBaseUrl}${img}`) || [];
+
       const newMetadata: RepoMetadata = {
         new: new Date(repo.created_at).getTime() > (Date.now() - SIX_MONTHS_MS),
         pinned: data?.pinned || false,
@@ -84,7 +91,7 @@ const rawMetadataRequest = async (username: string, repo: GitHubRepoItem): Promi
         description: data?.description || repo.description || '',
         homepage: data?.homepage || repo.homepage || '',
         stack: data?.stack || [],
-        gallery: ['thumbnail.webp', ...(data?.gallery || [])],
+        gallery: galleryRawListURL,
         fullDescription: fullDescription || data?.fullDescription || '',
       };
 
@@ -93,6 +100,7 @@ const rawMetadataRequest = async (username: string, repo: GitHubRepoItem): Promi
     .catch(() => {
       return {} as RepoMetadata;
     });
+  }
   
   
 

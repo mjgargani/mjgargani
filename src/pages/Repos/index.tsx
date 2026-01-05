@@ -28,11 +28,11 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
 
   /**
    * Initialize filters from URL query params or select all by default
-   * Query format: ?f=tech1,tech2,tech3
+   * Query format: ?f=tech1&tech2&tech3
    */
   useEffect(() => {
     if (techs?.length && !filters.length) {
-      const queryFilters = query.get('f')?.split(',') || [];
+      const queryFilters = query.get('f')?.split('&') || [];
       
       if (queryFilters.length) {
         // Restore filter state from URL
@@ -49,15 +49,9 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
     }
   }, [techs, filters.length, query]);
 
-  /**
-   * Apply filters and sort repositories
-   * - Pinned repos shown first
-   * - Then sorted by ID (newer first)
-   * - Preload images before displaying
-   */
   useEffect(() => {
-    const hasRepos = Boolean(repos?.length);
-    const hasFilters = Boolean(filters?.length);
+    const hasRepos = !!repos?.length;
+    const hasFilters = !!filters?.length;
     const hasSelection = filters.some((f) => f.selected);
 
     if (!hasRepos || !hasFilters) return;
@@ -72,30 +66,27 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
     if (hasSelection && !filteredRepos.length) {
       // Sort: pinned first, then by ID
       const sortedRepos = [
-        ...repos!.filter((r) => r.pinned).sort(sortRepos),
-        ...repos!.filter((r) => !r.pinned).sort(sortRepos),
+        ...repos!.filter((r) => r.metaData!.pinned).sort(sortRepos),
+        ...repos!.filter((r) => !r.metaData!.pinned).sort(sortRepos),
       ];
 
+
       // Filter by selected technologies
-      const filtered = sortedRepos.filter((repo) =>
-        filters.some((filter) => 
-          repo.name.includes(filter.name) && filter.selected
-        ),
-      );
+      // const filtered = sortedRepos.filter((repo) =>
+      //   filters.some((filter) => 
+      //     repo.name.includes(filter.name) && filter.selected
+      //   ),
+      // );
+
+      console.log({ sortedRepos })
 
       // Preload thumbnails before displaying
-      imgLoader(filtered.map((r) => r.thumbnail))
+      imgLoader(sortedRepos.map((r) => r.metaData!.gallery[0]!))
         .catch((err) => console.error('Failed to preload images:', err))
-        .finally(() => setFilteredRepos(filtered));
+        .finally(() => setFilteredRepos(sortedRepos));
     }
   }, [filters, repos, filteredRepos.length]);
 
-  /**
-   * Handle filter checkbox changes
-   * - Updates filter state
-   * - Persists selection to URL query params
-   * - Resets filtered repos to trigger re-filtering
-   */
   const handleFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
     let updatedFilters: FilterItem[];
@@ -133,9 +124,9 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
     <GridCell key={randomId('repo-item', true)}>
       <Card
         bgImg={{
-          source: repo.thumbnail,
-          new: repo.new,
-          pinned: repo.pinned,
+          source: repo.metaData!.gallery[0]!,
+          new: repo.metaData!.new,
+          pinned: repo.metaData!.pinned,
           stars: repo.stargazers_count,
           watchers: repo.watchers_count,
         }}
