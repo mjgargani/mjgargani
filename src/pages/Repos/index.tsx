@@ -1,14 +1,3 @@
-/**
- * Repos (Projects) Page
- * 
- * Displays a filterable grid of GitHub repositories with:
- * - Technology-based filtering (extracted from repo names)
- * - URL query persistence (?f=tech1-tech2)
- * - Pinned repos shown first
- * - Lazy loading of repository thumbnails
- * - Responsive grid layout
- */
-
 import GridCell from '../../components/atoms/GridCell';
 import GridContainer from '../../components/atoms/GridContainer';
 import Card from '../../components/molecules/Card';
@@ -27,10 +16,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { css } from 'styled-components';
 
-/**
- * Sort repositories by ID (descending - newer first)
- */
-const sortRepos = (a: GitHubRepoItem, b: GitHubRepoItem) => (a.id < b.id ? 1 : -1);
+const sortRepos = (a: GitHubRepoItem, b: GitHubRepoItem) => (a.id < b.id ? 1 : -1); // Newer repos first
 
 const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) => {
   const { repos, techs } = useContext(GitHubDataContext);
@@ -42,11 +28,11 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
 
   /**
    * Initialize filters from URL query params or select all by default
-   * Query format: ?f=tech1-tech2-tech3
+   * Query format: ?f=tech1,tech2,tech3
    */
   useEffect(() => {
     if (techs?.length && !filters.length) {
-      const queryFilters = query.get('f')?.split('-') || [];
+      const queryFilters = query.get('f')?.split(',') || [];
       
       if (queryFilters.length) {
         // Restore filter state from URL

@@ -15,25 +15,21 @@
  */
 
 import useLocalStorage from '../hooks/useLocalStorage';
-import { gitHubRequest, pinnedRepos } from '../utils/fetch';
+import { gitHubRepoMetadata, gitHubRequest } from '../utils/fetch';
 import { type TechDetail, type GitHubData, type GitHubProfile, type GitHubRepoItem } from './types';
 import { filterList } from '@/utils/filterList';
 import { createContext, useEffect, useState } from 'react';
 
-// Context provides repository data to all child components
 export const GitHubDataContext = createContext<Partial<GitHubData>>({});
 
-// GitHub username to fetch data for (configurable)
 const GITHUB_USERNAME = 'mjgargani';
 
-// Default profile data to show while loading
 const DEFAULT_PROFILE: GitHubProfile = {
   name: 'Rodrigo Gargani Oliveira',
   avatar_url: 'https://avatars.githubusercontent.com/u/46717827?v=4',
-  bio: '',
+  bio: "If you can read this, GitHub API is not reachable :'(",
 };
 
-// Internal cache format stored in localStorage
 type CachedRepositoryData = {
   updated?: boolean; // Flag to track if data has been fetched
   etagRepos: string; // ETag for repository list caching
@@ -42,23 +38,10 @@ type CachedRepositoryData = {
   profile: GitHubProfile; // Cached profile data
 };
 
-/**
- * Hook that fetches and manages GitHub repository data
- * 
- * Flow:
- * 1. Initialize with default/cached data
- * 2. Load from localStorage if available
- * 3. Fetch from GitHub API using ETags for cache validation
- * 4. Extract technology tags from repository names
- * 5. Update cache and return data to context consumers
- * 
- * @returns GitHubData containing profile, repos, techs, and loading state
- */
 export const useGitHubDataValues = (): GitHubData => {
   const [loading, setLoading] = useState<boolean>(true);
   const [techs, setTechs] = useState<TechDetail[]>([]);
   
-  // Initialize with default data structure
   const [data, setData] = useState<CachedRepositoryData>({
     etagRepos: '',
     etagProfile: '',
@@ -66,12 +49,10 @@ export const useGitHubDataValues = (): GitHubData => {
     profile: DEFAULT_PROFILE,
   });
 
-  // Load cached data from localStorage
   const cachedData = useLocalStorage<CachedRepositoryData>();
 
   // Restore cached data on mount (only once)
   useEffect(() => {
-    // useLocalStorage returns false when localStorage is empty
     if (cachedData !== false && typeof cachedData === 'object') {
       setData({ updated: false, ...cachedData });
     }
@@ -92,7 +73,7 @@ export const useGitHubDataValues = (): GitHubData => {
           endPoint: `users/${GITHUB_USERNAME}/repos`,
           etag: { name: 'repos', data: data.etagRepos },
           content: data?.repos,
-          callback: pinnedRepos, // Enrich with pinned status
+          callback: (repos) => gitHubRepoMetadata(GITHUB_USERNAME, repos), // Enrich with metadata
         }),
         gitHubRequest<GitHubProfile>({
           endPoint: `users/${GITHUB_USERNAME}`,
@@ -109,24 +90,17 @@ export const useGitHubDataValues = (): GitHubData => {
           const repos = responses[0].body?.length ? responses[0].body : data.repos;
           const profile = responses[1].body?.name?.trim() ? responses[1].body : data.profile;
 
-          // Handle special case: rename main portfolio repo for display
-          const processedRepos = repos.map((repo) =>
-            repo.name === 'mjgargani'
-              ? { ...repo, name: 'nodejs-typescript-vite-vitest-reactjs-styledcomp-docker_2023-portfolio' }
-              : repo,
-          );
-
-          // Update state with fetched data
+          // Process repositories to ensure metadata fields are set
           setData({
             updated: true,
             etagRepos,
             etagProfile,
-            repos: processedRepos,
+            repos,
             profile,
           });
 
           // Extract technology tags from repository names for filtering
-          const repoNames = processedRepos.map((repo) => repo.name);
+          const repoNames = repos.map((item) => item.name);
           setTechs(filterList(repoNames));
         })
         .catch((err) => {
@@ -136,6 +110,13 @@ export const useGitHubDataValues = (): GitHubData => {
         });
     }
   }, [data]);
+
+  console.log({
+    loading,
+    profile: data.profile,
+    repos: data.repos,
+    techs,
+  });
 
   // Return data for context consumers
   return {
