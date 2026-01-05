@@ -100,25 +100,17 @@ export const useGitHubDataValues = (): GitHubData => {
           });
 
           // Extract technology tags from repository names for filtering
-          const repoNames = repos.map((item) => item.name);
-          setTechs(filterList(repoNames));
+          // New Data structure: repos[].metaData.stack[]
+          const newTechList = filterList(repos);
+          setTechs(newTechList);
         })
         .catch((err) => {
           console.error('Failed to fetch GitHub data:', err);
-          // Keep using cached/default data on error
           setLoading(false);
         });
     }
   }, [data]);
 
-  console.log({
-    loading,
-    profile: data.profile,
-    repos: data.repos,
-    techs,
-  });
-
-  // Return data for context consumers
   return {
     loading,
     profile: data.profile,

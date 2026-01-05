@@ -1,19 +1,17 @@
-import { type TechDetail } from '@/context/types';
+import { GitHubRepoItem, type TechDetail } from '@/context/types';
 
-const replaceRegExpTitle = /_(.+)/gi;
+// This function will runs through a list of repository names and extract technology tags
+export function filterList(repos: GitHubRepoItem[]): TechDetail[] {
+  const list: TechDetail[] = [];
 
-export function filterList(techList: string[]): TechDetail[] {
-  let list = new Array<TechDetail>();
-
-  for (const row of techList) {
-    const techs = row.replaceAll(replaceRegExpTitle, '');
-    const splitted = techs.split('-');
-    for (const item of splitted) {
-      if (list.some((el) => el.name === item)) {
-        const newList = list.map((el) => (el.name === item ? { ...el, recurrence: el.recurrence + 1 } : el));
-        list = newList;
+  for (const repo of repos) {
+    const stack = repo.metaData?.stack || [];
+    for (const tech of stack) {
+      const existingTech = list.find((item) => item.name === tech);
+      if (existingTech) {
+        existingTech.recurrence += 1;
       } else {
-        list.push({ name: item, recurrence: 1 });
+        list.push({ name: tech, recurrence: 1 });
       }
     }
   }
