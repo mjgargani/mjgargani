@@ -9,7 +9,7 @@ const Card: React.FC<CardProps> = ({
   repo
 }) => {
   return (
-    <div className='m-4'>
+    <>
       {repo?.name ? (
         <a
           data-testid={dataTestId}
@@ -40,7 +40,7 @@ const Card: React.FC<CardProps> = ({
       ) : (
         <div>...</div>
       )}
-    </div>
+    </>
   );
 };
 

@@ -49,9 +49,15 @@
   },
   {
     "alias": "eye",
-    "name": "View",
-    "color": "#FFF",
+    "name": "Ver",
+    "color": "#000",
     "class": "fa-solid fa-eye"
+  },
+  {
+    "alias": "eye2",
+    "name": "Ocultar",
+    "color": "#000",
+    "class": "fa-regular fa-eye"
   },
   {
     "alias": "github",

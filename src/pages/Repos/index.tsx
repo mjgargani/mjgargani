@@ -107,7 +107,7 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
   );
 
   return (
-    <div data-testid={dataTestId} className='overflow-y-scroll h-1/2'>
+    <div data-testid={dataTestId} className='overflow-y-scroll h-1/2 gap-4'>
       <Filter
         repoLength={repos?.length ?? 0}
         filteredLength={filteredRepos.length}
