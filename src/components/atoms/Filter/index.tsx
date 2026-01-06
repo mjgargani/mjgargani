@@ -3,8 +3,6 @@ import Button from '../Button';
 import Icon from '../Icon';
 import { type FilterProps } from './types';
 import React, { useState, type PropsWithChildren } from 'react';
-import { FaEyeSlash } from 'react-icons/fa';
-import { FaEye } from 'react-icons/fa';
 
 const Filter: React.FC<PropsWithChildren<FilterProps>> = ({
   dataTestId = randomId('filter'),
@@ -15,8 +13,8 @@ const Filter: React.FC<PropsWithChildren<FilterProps>> = ({
 }) => {
   const [showFilter, setShowFilter] = useState<boolean>(false);
   return (
-    <div data-testid={dataTestId}>
-      <div className='inline-block mr-2 mb-2'>
+    <div data-testid={dataTestId} className='container flex flex-col md:flex-row'>
+      <div className='item flex-1 mb-2 mr-2'>
         <Button
           onClick={() => {
             setShowFilter(!showFilter);
@@ -29,7 +27,7 @@ const Filter: React.FC<PropsWithChildren<FilterProps>> = ({
           </span>
         </Button>
       </div>
-      <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" hidden={!showFilter}>
+      <div className="item container flex gap-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" hidden={!showFilter}>
         <input
           data-testid={randomId('filter_check_all')}
           type="checkbox"
@@ -37,15 +35,13 @@ const Filter: React.FC<PropsWithChildren<FilterProps>> = ({
           name="all"
           value="all"
           onChange={handleFilter}
-          style={{ cursor: 'pointer' }}
           checked={!filters.some((el) => !el.selected)}
         />
-        <label htmlFor="all" style={{ cursor: 'pointer', padding: '4px' }} data-testid={randomId(`filter_label_all`)}>
-          <Icon i={"all"} />
-          TODOS ({repoLength})
+        <label htmlFor="all" data-testid={randomId(`filter_label_all`)}>
+          <Icon i={"all"} /> TODOS ({repoLength})
         </label>
       </div>
-      <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" hidden={!showFilter}>
+      <div className="item container flex gap-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 cursor-pointer" hidden={!showFilter}>
         {filters?.map((el) => (
           <>
             <input
@@ -56,15 +52,12 @@ const Filter: React.FC<PropsWithChildren<FilterProps>> = ({
               value={el.name}
               checked={el.selected}
               onChange={handleFilter}
-              style={{ cursor: 'pointer' }}
             />
             <label
               htmlFor={el.name}
-              style={{ cursor: 'pointer', padding: '4px' }}
               data-testid={randomId(`filter_label_${el.name}`)}
             >
-              <Icon i={el.name} />
-              {el.name.replace('archive', 'ARQUIVO').replace('lrn', 'APRENDIZAGEM').toUpperCase()} ({el.recurrence})
+              <Icon i={el.name}/> {el.name.replace('archive', 'ARQUIVO').replace('lrn', 'APRENDIZAGEM').toUpperCase()} ({el.recurrence})
             </label>
           </>
         ))}

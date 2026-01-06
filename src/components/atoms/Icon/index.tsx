@@ -1,10 +1,11 @@
 import iconList from './list.json'; 
 
 interface IconProps {
-  i?: string | string[]; 
+  i?: string | string[];
+  color?:  string;
 }
 
-const Icon: React.FC<IconProps> = ({ i }) => {
+const Icon: React.FC<IconProps> = ({ i, color }) => {
   const icons = Array.isArray(i) ? i : [i]; 
   return (
     <>
@@ -15,7 +16,7 @@ const Icon: React.FC<IconProps> = ({ i }) => {
             <i
               key={index}
               className={`m-0.5 ${icon?.class || 'fa-solid fa-code'}`} 
-              style={{ color: icon?.color || 'black' }}
+              style={{ color: color || icon?.color || 'black' }}
               title={icon?.name || iconAlias} 
             />
           );

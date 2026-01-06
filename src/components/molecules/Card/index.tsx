@@ -9,7 +9,7 @@ const Card: React.FC<CardProps> = ({
   repo
 }) => {
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg bg-gray-200 m-2 flex-1/4">
+    <div className="item max-w-sm rounded overflow-hidden shadow-lg bg-gray-200">
       {repo?.name ? (
         <a
           data-testid={dataTestId}

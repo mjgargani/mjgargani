@@ -114,7 +114,7 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
         filters={filters}
         handleFilter={handleFilter}
       />
-      <div className='container flex flex-wrap'>
+      <div className='container flex flex-wrap flex-col justify-center gap-4 md:flex-row'>
         {filters.some((f) => f.selected) ? (
           filteredRepos?.length ? (
             filteredRepos.map(el => (<Card repo={el} />))

@@ -1,5 +1,11 @@
 [
   {
+    "alias": "about",
+    "name": "Sobre",
+    "color": "#000",
+    "class": "fa-solid fa-address-card"
+  },
+  {
     "alias": "archive",
     "name": "Archive Projects",
     "color": "#575100",
@@ -90,6 +96,12 @@
     "class": "fa-solid fa-heart"
   },
   {
+    "alias": "home",
+    "name": "Incío",
+    "color": "#000",
+    "class": "fa-solid fa-house"
+  },
+  {
     "alias": "javascript",
     "name": "JavaScript",
     "color": "#2F74C0",
@@ -118,6 +130,12 @@
     "name": "LinkedIn",
     "color": "#0A66C2",
     "class": "fa-brands fa-linkedin"
+  },
+  {
+    "alias": "linkedin2",
+    "name": "LinkedIn",
+    "color": "#000",
+    "class": "fa-brands fa-linkedin-in"
   },
   {
     "alias": "lua",
