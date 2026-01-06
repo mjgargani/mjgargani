@@ -55,19 +55,19 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
         ...repos!.filter((r) => !r.metaData!.pinned).sort(sortRepos),
       ];
 
+      console.log({filters});
 
-      // Filter by selected technologies
-      // const filtered = sortedRepos.filter((repo) =>
-      //   filters.some((filter) => 
-      //     repo.name.includes(filter.name) && filter.selected
-      //   ),
-      // );
+      const filtered = sortedRepos.filter((repo) =>
+        filters.some((filter) => 
+          repo.metaData?.stack.includes(filter.name) && filter.selected
+        ),
+      );
 
       console.log({ sortedRepos })
 
       imgLoader(sortedRepos.map((r) => r.metaData!.gallery[0]!))
         .catch((err) => console.error('Failed to preload images:', err))
-        .finally(() => setFilteredRepos(sortedRepos));
+        .finally(() => setFilteredRepos(filtered));
     }
   }, [filters, repos, filteredRepos.length]);
 
@@ -107,7 +107,7 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
   );
 
   return (
-    <div data-testid={dataTestId} className='overflow-y-scroll h-1/2 gap-4'>
+    <div data-testid={dataTestId} className=''>
       <Filter
         repoLength={repos?.length ?? 0}
         filteredLength={filteredRepos.length}

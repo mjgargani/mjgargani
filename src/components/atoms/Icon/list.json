@@ -102,6 +102,12 @@
     "class": "fa-brands fa-js"
   },
   {
+    "alias": "loading",
+    "name": "Carregando",
+    "color": "#000",
+    "class": "fa-solid fa-arrows-rotate fa-spin"
+  },
+  {
     "alias": "lrn",
     "name": "Learning",
     "color": "#48c018",

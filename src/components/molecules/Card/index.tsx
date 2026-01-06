@@ -9,7 +9,7 @@ const Card: React.FC<CardProps> = ({
   repo
 }) => {
   return (
-    <>
+    <div className="max-w-sm rounded overflow-hidden shadow-lg bg-gray-200 m-2 flex-1/4">
       {repo?.name ? (
         <a
           data-testid={dataTestId}
@@ -22,7 +22,7 @@ const Card: React.FC<CardProps> = ({
           }}
           rel="noreferrer"
         >
-          <div className="max-w-sm rounded overflow-hidden shadow-lg bg-gray-200">
+          <>
             <img className="w-full" src={repo.metaData?.gallery[0]} alt={`Thumbnail do projeto '${repo.name}'`} />
             <div className="px-6 pt-4 pb-2">
               <Icon i={repo.metaData?.stack}/>
@@ -35,12 +35,12 @@ const Card: React.FC<CardProps> = ({
                 {mdParser(repo.description)}
               </p>
             </div>
-          </div>
+          </>
         </a>
       ) : (
-        <div>...</div>
+        <span className='m-4'><Icon i={"loading"} /></span>
       )}
-    </>
+    </div>
   );
 };
 
