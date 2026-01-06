@@ -108,6 +108,12 @@
     "class": "fa-brands fa-linkedin"
   },
   {
+    "alias": "lua",
+    "name": "LUA",
+    "color": "#00017d",
+    "class": "fa-solid fa-moon"
+  },
+  {
     "alias": "new",
     "name": "New",
     "color": "#e6ff82",

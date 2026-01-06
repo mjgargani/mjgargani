@@ -1,49 +1,20 @@
+import Icon from '@/components/atoms/Icon';
 import randomId from '../../../utils/randomId';
-import CardDescription from '../../atoms/CardDescription';
-import CardThumbnail from '../../atoms/CardThumbnail';
-import Loading from '../../atoms/Loading';
-import CardTitle from '../CardTitle';
-import { Container, ContainerBottom, ContainerTop, InnerContent } from './styles';
 import { type CardProps } from './types';
-import React, { type PropsWithChildren } from 'react';
+import React from 'react';
+import mdParser from '../../../utils/mdParser';
 
-const Card: React.FC<PropsWithChildren<CardProps>> = ({
+const Card: React.FC<CardProps> = ({
   dataTestId = randomId('card'),
-  bgImg,
-  homePage,
-  url,
-  title = '',
-  isContent = false,
-  isLoading = false,
-  styledCss,
-  children,
+  repo
 }) => {
-  const cardContent = (isLoading: boolean) => (
-    <InnerContent>
-      {isLoading && <Loading isCard={true} />}
-      {!isContent && bgImg && (
-        <ContainerTop bgImg={bgImg}>
-          <CardThumbnail bgImg={bgImg} homePage={homePage} />
-        </ContainerTop>
-      )}
-      <ContainerBottom bgImg={bgImg}>
-        <CardTitle isContent={isContent} bgImg={bgImg?.source}>
-          {title}
-        </CardTitle>
-        <CardDescription isContent={isContent} bgImg={bgImg?.source}>
-          {children}
-        </CardDescription>
-      </ContainerBottom>
-    </InnerContent>
-  );
-
   return (
-    <Container data-testid={dataTestId} isContent={isContent} isLoading={isLoading} styledCss={styledCss}>
-      {url ? (
+    <div className='m-4'>
+      {repo?.name ? (
         <a
-          data-testid={randomId('card-link')}
+          data-testid={dataTestId}
           className="card-link"
-          href={url}
+          href={`${repo.html_url}/#README.md`}
           target="_blank"
           style={{
             color: 'black',
@@ -51,12 +22,25 @@ const Card: React.FC<PropsWithChildren<CardProps>> = ({
           }}
           rel="noreferrer"
         >
-          {cardContent(isLoading)}
+          <div className="max-w-sm rounded overflow-hidden shadow-lg bg-gray-200">
+            <img className="w-full" src={repo.metaData?.gallery[0]} alt={`Thumbnail do projeto '${repo.name}'`} />
+            <div className="px-6 pt-4 pb-2">
+              <Icon i={repo.metaData?.stack}/>
+            </div>
+            <div className="px-6 py-4">
+              <div className="font-bold text-xl mb-2">
+                {repo.name.replace("-"," ").replace("_"," ").toLocaleUpperCase()}
+              </div>
+              <p className="text-gray-700 text-base">
+                {mdParser(repo.description)}
+              </p>
+            </div>
+          </div>
         </a>
       ) : (
-        cardContent(isLoading)
+        <div>...</div>
       )}
-    </Container>
+    </div>
   );
 };
 
