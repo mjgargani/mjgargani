@@ -1,3 +1,4 @@
+import { GitHubRepoItem } from '@/context/types';
 import { type CommonProps } from '../../../globals';
 
 export type BgImg = {
@@ -9,11 +10,5 @@ export type BgImg = {
 };
 
 export type CardProps = {
-  bgImg?: BgImg;
-  homePage?: string;
-  isLoading?: boolean;
-  url?: string;
-  title?: string;
-  isContent?: boolean;
-  style?: React.CSSProperties;
+  repo?: GitHubRepoItem
 } & CommonProps;

@@ -1,22 +1,16 @@
-import GridCell from '../../components/atoms/GridCell';
-import GridContainer from '../../components/atoms/GridContainer';
 import Card from '../../components/molecules/Card';
-import Page from '../../components/templates/Page';
 import { GitHubDataContext } from '../../context/GitHubData';
 import { type GitHubRepoItem } from '../../context/types';
 import { type CommonProps } from '../../globals';
-import { device, size } from '../../utils/devices';
 import imgLoader from '../../utils/imgLoader';
-import mdParser from '../../utils/mdParser';
 import randomId from '../../utils/randomId';
 import Filter from '@/components/atoms/Filter';
 import { type FilterItem } from '@/components/atoms/Filter/types';
 import useQuery from '@/hooks/useQuery';
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { css } from 'styled-components';
 
-const sortRepos = (a: GitHubRepoItem, b: GitHubRepoItem) => (a.id < b.id ? 1 : -1);
+const sortRepos = (a: GitHubRepoItem, b: GitHubRepoItem) => (a.id < b.id ? 1 : -1); // Newer repos first
 
 const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) => {
   const { repos, techs } = useContext(GitHubDataContext);
@@ -28,134 +22,110 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
 
   useEffect(() => {
     if (techs?.length && !filters.length) {
-      const qFilters = query.get('f')?.split('-');
-      if (qFilters?.length) {
+      const queryFilters = query.get('f')?.split('&') || [];
+      
+      if (queryFilters.length) {
         setFilters(
-          techs.map((el) => (qFilters.includes(el.name) ? { selected: true, ...el } : { selected: false, ...el })),
+          techs.map((tech) => ({
+            ...tech,
+            selected: queryFilters.includes(tech.name),
+          })),
         );
       } else {
-        setFilters(techs.map((el) => ({ selected: true, ...el })));
+        setFilters(techs.map((tech) => ({ ...tech, selected: true })));
       }
     }
-  }, [techs]);
+  }, [techs, filters.length, query]);
 
   useEffect(() => {
-    if (Boolean(repos?.length) && Boolean(filters?.length)) {
-      if (filters.some((el) => el.selected) && !filteredRepos.length) {
-        const newOrdenedRepos = [
-          ...repos!.filter((el) => el.pinned).sort(sortRepos),
-          ...repos!.filter((el) => !el.pinned).sort(sortRepos),
-        ];
+    const hasRepos = !!repos?.length;
+    const hasFilters = !!filters?.length;
+    const hasSelection = filters.some((f) => f.selected);
 
-        const newFilteredRepos = newOrdenedRepos.filter((repo) =>
-          filters.some((filter) => repo.name.includes(filter.name) && filter.selected),
-        );
+    if (!hasRepos || !hasFilters) return;
 
-        imgLoader(newFilteredRepos.map((el) => el.thumbnail))
-          .catch((err) => {
-            console.error(err);
-          })
-          .finally(() => {
-            setFilteredRepos(newFilteredRepos);
-          });
-      }
-
-      if (!filters.some((el) => el.selected) && filteredRepos.length) {
-        setFilteredRepos([]);
-      }
+    if (!hasSelection && filteredRepos.length) {
+      setFilteredRepos([]);
+      return;
     }
-  }, [filters, repos, filteredRepos]);
 
-  const RepoItem = (el: GitHubRepoItem | undefined) => (
-    <GridCell key={randomId('repo-item', true)}>
-      <Card
-        bgImg={{
-          source: el!.thumbnail,
-          new: el!.new,
-          pinned: el!.pinned,
-          stars: el!.stargazers_count,
-          watchers: el!.watchers_count,
-        }}
-        url={el!.html_url + '#readme'}
-        title={el!.name}
-        homePage={el!.homepage}
-      >
-        {mdParser(el!.description)}
-      </Card>
-    </GridCell>
-  );
+    if (hasSelection && !filteredRepos.length) {
+      const sortedRepos = [
+        ...repos!.filter((r) => r.metaData!.pinned).sort(sortRepos),
+        ...repos!.filter((r) => !r.metaData!.pinned).sort(sortRepos),
+      ];
+
+      console.log({filters});
+
+      const filtered = sortedRepos.filter((repo) =>
+        filters.some((filter) => 
+          repo.metaData?.stack.includes(filter.name) && filter.selected
+        ),
+      );
+
+      console.log({ sortedRepos })
+
+      imgLoader(sortedRepos.map((r) => r.metaData!.gallery[0]!))
+        .catch((err) => console.error('Failed to preload images:', err))
+        .finally(() => setFilteredRepos(filtered));
+    }
+  }, [filters, repos, filteredRepos.length]);
 
   const handleFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
-    let newFilter;
+    let updatedFilters: FilterItem[];
 
     if (target.value === 'all') {
-      if (target.checked) {
-        newFilter = filters.map((el) => ({ ...el, selected: true }));
-      } else {
-        newFilter = filters.map((el) => ({ ...el, selected: false }));
-      }
-
-      navigate('');
+      updatedFilters = filters.map((f) => ({ 
+        ...f, 
+        selected: target.checked 
+      }));
+      navigate(''); // Clear query params
     } else {
-      newFilter = filters.map((el) => (el.name === target.name ? { ...el, selected: !el.selected } : el));
-      const filterQuery = newFilter
-        .filter((el) => Boolean(el.selected))
-        .map((el) => el.name)
+      updatedFilters = filters.map((f) =>
+        f.name === target.name ? { ...f, selected: !f.selected } : f,
+      );
+      
+      const selectedTechs = updatedFilters
+        .filter((f) => f.selected)
+        .map((f) => f.name)
         .join('-');
-      navigate('?f=' + filterQuery);
+      
+      navigate(selectedTechs ? `?f=${selectedTechs}` : '');
     }
 
-    setFilters(newFilter);
-    setFilteredRepos([]);
+    setFilters(updatedFilters);
+    setFilteredRepos([]); // Trigger re-filtering
   };
 
+  const LoadingCards = () => (
+    <>
+      {repos?.map((_, i) => (
+        <Card key={randomId(`card-item-${i}`, true)} />
+      ))}
+    </>
+  );
+
   return (
-    <Page>
+    <div data-testid={dataTestId} className=''>
       <Filter
         repoLength={repos?.length ?? 0}
         filteredLength={filteredRepos.length}
         filters={filters}
         handleFilter={handleFilter}
       />
-      <GridContainer
-        dataTestId={dataTestId}
-        columnGap={3}
-        rowGap={3}
-        styledCss={css`
-          position: absolute;
-          height: 100% !important;
-          grid-template-columns: repeat(2, 1fr) !important;
-
-          @media ${device.tablet} and (orientation: landscape) {
-            @media (min-aspect-ratio: 4/3), (min-aspect-ratio: 16/9), (min-aspect-ratio: 16/10) {
-              grid-template-columns: repeat(3, 1fr) !important;
-            }
-            @media (min-aspect-ratio: 23/9), (min-aspect-ratio: 23/10) {
-              grid-template-columns: repeat(4, 1fr) !important;
-            }
-          }
-          @media ${device.tablet} and (orientation: portrait) {
-            grid-template-columns: repeat(2, 1fr) !important;
-            grid-template-rows: repeat(3, 1fr) !important;
-          }
-          @media (max-width: ${size.tablet}px) and (orientation: portrait) {
-            grid-template-columns: repeat(1, 1fr) !important;
-            grid-template-rows: auto !important;
-          }
-        `}
-      >
-        {filters.some((el) => el.selected) ? (
+      <div className='container flex flex-wrap flex-col justify-center gap-4 md:flex-row'>
+        {filters.some((f) => f.selected) ? (
           filteredRepos?.length ? (
-            filteredRepos.map(RepoItem)
+            filteredRepos.map(el => (<Card repo={el} />))
           ) : (
-            repos?.length && repos.map((el, i) => <Card key={randomId(`card-item-${i}`, true)} isLoading={true} />)
+            <LoadingCards />
           )
         ) : (
-          <div />
+          <span />
         )}
-      </GridContainer>
-    </Page>
+      </div>
+    </div>
   );
 };
 
