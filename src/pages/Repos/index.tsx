@@ -1,3 +1,4 @@
+import Icon from '@/components/atoms/Icon';
 import Card from '../../components/molecules/Card';
 import { GitHubDataContext } from '../../context/GitHubData';
 import { type GitHubRepoItem } from '../../context/types';
@@ -21,6 +22,7 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log({ techs })
     if (techs?.length && !filters.length) {
       const queryFilters = query.get('f')?.split('&') || [];
       
@@ -55,17 +57,13 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
         ...repos!.filter((r) => !r.metaData!.pinned).sort(sortRepos),
       ];
 
-      console.log({filters});
-
       const filtered = sortedRepos.filter((repo) =>
         filters.some((filter) => 
-          repo.metaData?.stack.includes(filter.name) && filter.selected
+          repo.metaData?.stack?.includes(filter.name) && filter.selected
         ),
       );
 
-      console.log({ sortedRepos })
-
-      imgLoader(sortedRepos.map((r) => r.metaData!.gallery[0]!))
+      imgLoader(filtered.map((r) => r.metaData?.gallery?.[0] || "thumbnail.webp"))
         .catch((err) => console.error('Failed to preload images:', err))
         .finally(() => setFilteredRepos(filtered));
     }
@@ -98,14 +96,6 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
     setFilteredRepos([]); // Trigger re-filtering
   };
 
-  const LoadingCards = () => (
-    <>
-      {repos?.map((_, i) => (
-        <Card key={randomId(`card-item-${i}`, true)} />
-      ))}
-    </>
-  );
-
   return (
     <div data-testid={dataTestId} className=''>
       <Filter
@@ -117,9 +107,9 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
       <div className='container flex flex-wrap flex-col justify-center gap-4 md:flex-row'>
         {filters.some((f) => f.selected) ? (
           filteredRepos?.length ? (
-            filteredRepos.map(el => (<Card repo={el} />))
+            filteredRepos.map((el, i) => (<Card key={`card_${i}`} repo={el} />))
           ) : (
-            <LoadingCards />
+            <span className='m-4'><Icon i={"loading"} /></span>
           )
         ) : (
           <span />

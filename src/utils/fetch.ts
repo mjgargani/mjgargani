@@ -28,6 +28,8 @@ export async function gitHubRequest<T>({
     },
   })
     .then(async (res) => {
+      console.log({isInLocalStorage, etag: etag.data})
+      
       const newEtag = res.headers.get('etag') ?? '';
       localStorage.setItem(`etag-${etag.name}`, newEtag);
 
@@ -41,6 +43,7 @@ export async function gitHubRequest<T>({
       const body = callback ? await callback(response) : response;
       
       localStorage.setItem(etag.name, JSON.stringify(body));
+
 
       return { newEtag, body };
     })
@@ -58,6 +61,7 @@ const SIX_MONTHS_MS = 15778800000;
 
 const rawMetadataRequest = async (username: string, repo: GitHubRepoItem): Promise<RepoMetadata> => {
   const rawBaseUrl = `https://raw.githubusercontent.com/${username}/${repo.name}/refs/heads/main/`;
+  console.log({ username, repo })
 
   return Promise.all([
     fetch(`${rawBaseUrl}.lab.json`),
@@ -94,6 +98,8 @@ const rawMetadataRequest = async (username: string, repo: GitHubRepoItem): Promi
         gallery: galleryRawListURL,
         fullDescription: fullDescription || data?.fullDescription || '',
       };
+
+      console.log({ name: repo.name, newMetadata })
 
       return newMetadata;
     })

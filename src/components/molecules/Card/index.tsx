@@ -31,9 +31,7 @@ const Card: React.FC<CardProps> = ({
               <div className="font-bold text-xl mb-2">
                 {repo.name.replace("-"," ").replace("_"," ").toLocaleUpperCase()}
               </div>
-              <p className="text-gray-700 text-base">
-                {mdParser(repo.description)}
-              </p>
+              {mdParser(repo.description)}
             </div>
           </>
         </a>

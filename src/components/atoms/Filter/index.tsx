@@ -42,8 +42,8 @@ const Filter: React.FC<PropsWithChildren<FilterProps>> = ({
         </label>
       </div>
       <div className="item container flex gap-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 cursor-pointer" hidden={!showFilter}>
-        {filters?.map((el) => (
-          <>
+        {filters?.map((el, i) => (
+          <div key={i}>
             <input
               data-testid={randomId(`filter_check_${el.name}`)}
               type="checkbox"
@@ -59,7 +59,7 @@ const Filter: React.FC<PropsWithChildren<FilterProps>> = ({
             >
               <Icon i={el.name}/> {el.name.replace('archive', 'ARQUIVO').replace('lrn', 'APRENDIZAGEM').toUpperCase()} ({el.recurrence})
             </label>
-          </>
+          </div>
         ))}
       </div>
     </div>

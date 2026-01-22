@@ -5,7 +5,6 @@ export const handleExtLink = (e: React.MouseEvent | React.FocusEvent | React.For
   const el = e.currentTarget as HTMLAnchorElement;
   const url = el.href || el.dataset['href'];
   const target = el.target || el.dataset['target'];
-  console.log({ url, target })
   const newWindow = window.open(url, target || "_blank");
   newWindow?.focus();
 }

@@ -1,24 +1,8 @@
-/**
- * Repository Data Context
- * 
- * This context manages the application's repository and profile data by:
- * 1. Fetching data from GitHub API for a specific user
- * 2. Caching responses in localStorage to minimize API calls
- * 3. Using ETags for efficient cache validation (HTTP 304 Not Modified)
- * 4. Providing centralized state for all components
- * 
- * Cache Strategy:
- * - First load: Fetch from GitHub API and store in localStorage
- * - Subsequent loads: Load from localStorage and validate with ETags
- * - If data unchanged (304): Use cached version
- * - If data changed (200): Update cache with new data
- */
-
 import useLocalStorage from '../hooks/useLocalStorage';
 import { gitHubRepoMetadata, gitHubRequest } from '../utils/fetch';
 import { type TechDetail, type GitHubData, type GitHubProfile, type GitHubRepoItem } from './types';
 import { filterList } from '@/utils/filterList';
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useRef, useState } from 'react';
 
 export const GitHubDataContext = createContext<Partial<GitHubData>>({});
 
@@ -31,11 +15,11 @@ const DEFAULT_PROFILE: GitHubProfile = {
 };
 
 type CachedRepositoryData = {
-  updated?: boolean; // Flag to track if data has been fetched
-  etagRepos: string; // ETag for repository list caching
-  etagProfile: string; // ETag for profile caching
-  repos: GitHubRepoItem[]; // Cached repository list
-  profile: GitHubProfile; // Cached profile data
+  updated?: boolean;
+  etagRepos: string;
+  etagProfile: string;
+  repos: GitHubRepoItem[];
+  profile: GitHubProfile;
 };
 
 export const useGitHubDataValues = (): GitHubData => {
@@ -51,23 +35,25 @@ export const useGitHubDataValues = (): GitHubData => {
 
   const cachedData = useLocalStorage<CachedRepositoryData>();
 
-  // Restore cached data on mount (only once)
+  const isFetching = useRef(false);
+
   useEffect(() => {
     if (cachedData !== false && typeof cachedData === 'object') {
       setData({ updated: false, ...cachedData });
     }
   }, [cachedData]);
 
-  // Fetch data from GitHub API when not yet updated
   useEffect(() => {
-    // Skip if data already fetched
-    if (data?.updated === true) {
+    if (data?.updated === true || isFetching.current === true) {
       setLoading(false);
+      const newTechList = filterList(data.repos);
+      setTechs(newTechList);
       return;
     }
 
-    if (data?.updated === false) {
-      // Fetch both repositories and profile in parallel
+    isFetching.current = true;
+
+    if (true) {
       Promise.all([
         gitHubRequest<GitHubRepoItem[]>({
           endPoint: `users/${GITHUB_USERNAME}/repos`,
@@ -82,15 +68,12 @@ export const useGitHubDataValues = (): GitHubData => {
         }),
       ])
         .then((responses) => {
-          // Extract ETags (use existing if not modified)
           const etagRepos = responses[0]?.newEtag?.trim() || data.etagRepos;
           const etagProfile = responses[1]?.newEtag?.trim() || data.etagProfile;
           
-          // Extract bodies (use cached if not modified)
           const repos = responses[0].body?.length ? responses[0].body : data.repos;
           const profile = responses[1].body?.name?.trim() ? responses[1].body : data.profile;
 
-          // Process repositories to ensure metadata fields are set
           setData({
             updated: true,
             etagRepos,
@@ -99,22 +82,23 @@ export const useGitHubDataValues = (): GitHubData => {
             profile,
           });
 
-          // Extract technology tags from repository names for filtering
-          // New Data structure: repos[].metaData.stack[]
           const newTechList = filterList(repos);
           setTechs(newTechList);
         })
         .catch((err) => {
           console.error('Failed to fetch GitHub data:', err);
+          isFetching.current = false;
           setLoading(false);
         });
     }
   }, [data]);
 
-  return {
+  const contextData = {
     loading,
     profile: data.profile,
     repos: data.repos,
     techs,
   };
+
+  return contextData;
 };
