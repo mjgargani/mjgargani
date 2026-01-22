@@ -1,13 +1,20 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import useLocalStorage from '../hooks/useLocalStorage';
-import { gitHubRequest, pinnedRepos } from '../utils/fetch';
+import { gitHubRepoMetadata, gitHubRequest } from '../utils/fetch';
 import { type TechDetail, type GitHubData, type GitHubProfile, type GitHubRepoItem } from './types';
 import { filterList } from '@/utils/filterList';
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useRef, useState } from 'react';
 
 export const GitHubDataContext = createContext<Partial<GitHubData>>({});
 
-type ContextDataFormat = {
+const GITHUB_USERNAME = 'mjgargani';
+
+const DEFAULT_PROFILE: GitHubProfile = {
+  name: 'Rodrigo Gargani Oliveira',
+  avatar_url: 'https://avatars.githubusercontent.com/u/46717827?v=4',
+  bio: "If you can read this, GitHub API is not reachable :'(",
+};
+
+type CachedRepositoryData = {
   updated?: boolean;
   etagRepos: string;
   etagProfile: string;
@@ -18,86 +25,80 @@ type ContextDataFormat = {
 export const useGitHubDataValues = (): GitHubData => {
   const [loading, setLoading] = useState<boolean>(true);
   const [techs, setTechs] = useState<TechDetail[]>([]);
-
-  const [data, setData] = useState<ContextDataFormat>({
+  
+  const [data, setData] = useState<CachedRepositoryData>({
     etagRepos: '',
     etagProfile: '',
     repos: [],
-    profile: {
-      name: 'Rodrigo Gargani Oliveira',
-      avatar_url: 'https://avatars.githubusercontent.com/u/46717827?v=4',
-      bio: '',
-    },
+    profile: DEFAULT_PROFILE,
   });
 
-  const contextData = useLocalStorage<ContextDataFormat>();
+  const cachedData = useLocalStorage<CachedRepositoryData>();
+
+  const isFetching = useRef(false);
 
   useEffect(() => {
-    let newData = { updated: false, ...data };
+    if (cachedData !== false && typeof cachedData === 'object') {
+      setData({ updated: false, ...cachedData });
+    }
+  }, [cachedData]);
 
-    if (contextData !== false) {
-      newData = { updated: false, ...contextData };
+  useEffect(() => {
+    if (data?.updated === true || isFetching.current === true) {
+      setLoading(false);
+      const newTechList = filterList(data.repos);
+      setTechs(newTechList);
+      return;
     }
 
-    setData(newData);
-  }, [contextData]);
+    isFetching.current = true;
 
-  useEffect(() => {
-    if (data?.updated === false) {
+    if (true) {
       Promise.all([
         gitHubRequest<GitHubRepoItem[]>({
-          endPoint: 'users/mjgargani/repos',
+          endPoint: `users/${GITHUB_USERNAME}/repos`,
           etag: { name: 'repos', data: data.etagRepos },
           content: data?.repos,
-          callback: pinnedRepos,
+          callback: (repos) => gitHubRepoMetadata(GITHUB_USERNAME, repos), // Enrich with metadata
         }),
         gitHubRequest<GitHubProfile>({
-          endPoint: 'users/mjgargani',
+          endPoint: `users/${GITHUB_USERNAME}`,
           etag: { name: 'profile', data: data.etagProfile },
           content: data?.profile,
         }),
       ])
         .then((responses) => {
-          const etagRepos: string = responses[0]?.newEtag?.trim() ? responses[0].newEtag : data.etagRepos;
-          const etagProfile: string = responses[1]?.newEtag?.trim() ? responses[1].newEtag : data.etagProfile;
-          const repos: GitHubRepoItem[] = responses[0].body?.length ? responses[0].body : data.repos;
-          const profile: GitHubProfile = responses[1].body?.name?.trim() ? responses[1].body : data.profile;
+          const etagRepos = responses[0]?.newEtag?.trim() || data.etagRepos;
+          const etagProfile = responses[1]?.newEtag?.trim() || data.etagProfile;
+          
+          const repos = responses[0].body?.length ? responses[0].body : data.repos;
+          const profile = responses[1].body?.name?.trim() ? responses[1].body : data.profile;
 
-          const newRepos = repos.map((el) =>
-            el.name === 'mjgargani'
-              ? { ...el, name: 'nodejs-typescript-vite-vitest-reactjs-styledcomp-docker_2023-portfolio' }
-              : el,
-          );
-
-          const newData = {
+          setData({
             updated: true,
             etagRepos,
             etagProfile,
-            repos: newRepos,
+            repos,
             profile,
-          };
+          });
 
-          setData(newData);
-
-          const repoNames: string[] = newRepos.map((el) => el.name);
-          const newTechs = filterList(repoNames);
-
-          setTechs(newTechs);
+          const newTechList = filterList(repos);
+          setTechs(newTechList);
         })
         .catch((err) => {
-          console.error(err);
+          console.error('Failed to fetch GitHub data:', err);
+          isFetching.current = false;
+          setLoading(false);
         });
-    }
-
-    if (data?.updated === true) {
-      setLoading(false);
     }
   }, [data]);
 
-  return {
+  const contextData = {
     loading,
     profile: data.profile,
     repos: data.repos,
     techs,
   };
+
+  return contextData;
 };
