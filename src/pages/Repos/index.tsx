@@ -96,14 +96,14 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
   };
 
   return (
-    <div data-testid={dataTestId} className=''>
+    <div data-testid={dataTestId} className='min-h-full flex flex-col'>
       <Filter
         repoLength={repos?.length ?? 0}
         filteredLength={filteredRepos.length}
         filters={filters}
         handleFilter={handleFilter}
       />
-      <div className='container flex flex-wrap flex-col justify-center gap-4 md:flex-row'>
+      <div className='flex flex-wrap flex-1 justify-center gap-4'>
         {filters.some((f) => f.selected) ? (
           filteredRepos?.length ? (
             filteredRepos.map((el, i) => (<Card key={`card_${i}`} repo={el} />))

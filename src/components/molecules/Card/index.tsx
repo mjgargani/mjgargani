@@ -22,18 +22,28 @@ const Card: React.FC<CardProps> = ({
           }}
           rel="noreferrer"
         >
-          <>
-            <img className="w-full" src={repo.metaData?.gallery[0]} alt={`Thumbnail do projeto '${repo.name}'`} />
-            <div className="px-6 pt-4 pb-2">
-              <Icon i={repo.metaData?.stack}/>
-            </div>
-            <div className="px-6 py-4">
-              <div className="font-bold text-xl mb-2">
-                {repo.name.replace("-"," ").replace("_"," ").toLocaleUpperCase()}
+          <div className='flex flex-col h-full min-h-72'>
+            <div
+              className='min-h-1/2 bg-cover bg-no-repeat bg-center shadow-lg'
+              style={{
+              backgroundImage: `url(${repo.metaData?.gallery[0]})`,
+              userSelect: 'none',
+              }}
+              role="img"
+              aria-label={`Thumbnail do projeto '${repo.name}'`}
+            />
+            <div className='min-h-1/2'>
+              <div className="min-h-1/12 p-3 flex gap-2 justify-center">
+                <Icon i={repo.metaData?.stack}/>
               </div>
-              {mdParser(repo.description)}
+              <div className="min-h-11/12 px-3 pb-3">
+                <div className="font-bold text-xl mb-2">
+                {repo.name.replace("-"," ").replace("_"," ").toLocaleUpperCase()}
+                </div>
+                {mdParser(repo.description)}
+              </div>
             </div>
-          </>
+          </div>
         </a>
       ) : (
         <span className='m-4'><Icon i={"loading"} /></span>
