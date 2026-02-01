@@ -98,9 +98,7 @@ const rawMetadataRequest = async (username: string, repo: GitHubRepoItem): Promi
     console.error((error as Error).message);
     return {} as RepoMetadata;
   }
-}
-  
-  
+}  
 
 const rawMetadataHandle = async (username: string, repo: GitHubRepoItem): Promise<GitHubRepoItem> => {
   const metaData = await rawMetadataRequest(username, repo);
