@@ -1,0 +1,7 @@
+@font-face {
+  font-family: "mjgarganis Lab";
+  font-style: bold;
+  font-weight: 600;
+  src: url(/fonts/mjgarganis_lab.woff2) format('woff2');
+  font-display: swap;
+}

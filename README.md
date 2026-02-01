@@ -1,13 +1,5 @@
 # mjgargani's Lab
 
-![thumbnail](./thumbnail.webp)
-
-> 🌐 [https://gargani.dev/](https://gargani.dev/)
-
-![latest-version](https://img.shields.io/github/package-json/v/mjgargani/mjgargani) ![action-check](https://github.com/mjgargani/mjgargani/actions/workflows/node-ci.yml/badge.svg) ![deploy-check](https://github.com/mjgargani/mjgargani/actions/workflows/static.yml/badge.svg)
-
-![coverage-statements](badges/badge-statements.svg) ![coverage-branches](badges/badge-branches.svg) ![coverage-functions](badges/badge-functions.svg) ![coverage-lines](badges/badge-lines.svg)
-
 ## Descrição / Description
 
 Portfolio desenvolvido com `ReactJS` (`Vite`) + `TypeScript` ([Saiba como](https://pt.vitejs.dev/guide/)), no ano de 2023. A aplicação é uma interface que consome, modela e armazena em cache, recursos da [API do GitHub](https://docs.github.com/pt/rest/guides/getting-started-with-the-rest-api?apiVersion=2022-11-28).

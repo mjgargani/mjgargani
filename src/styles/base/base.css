@@ -1,0 +1,9 @@
+@layer base {
+  h1 {
+    font-family: "mjgarganis Lab", monospace, sans-serif;
+  }
+
+  h2 {
+    font-family: "Sono", monospace, sans-serif;
+  }
+}
