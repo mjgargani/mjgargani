@@ -8,6 +8,7 @@ const Card: React.FC<CardProps> = ({
   dataTestId = randomId('card'),
   repo
 }) => {
+  const thumbnail = `https://github.com/mjgargani/${repo?.name}/blob/main/thumbnail.webp?raw=true`
   return (
     <div className="item max-w-sm rounded overflow-hidden shadow-lg bg-gray-200">
       {repo?.name ? (
@@ -26,7 +27,7 @@ const Card: React.FC<CardProps> = ({
             <div
               className='min-h-1/2 bg-cover bg-no-repeat bg-center shadow-lg'
               style={{
-              backgroundImage: `url(${repo.metaData?.gallery[0]})`,
+              backgroundImage: `url(${thumbnail})`,
               userSelect: 'none',
               }}
               role="img"
@@ -34,7 +35,7 @@ const Card: React.FC<CardProps> = ({
             />
             <div className='min-h-1/2'>
               <div className="min-h-1/12 p-3 flex gap-2 justify-center">
-                <Icon i={repo.metaData?.stack}/>
+                <Icon i={repo.topics}/>
               </div>
               <div className="min-h-11/12 px-3 pb-3">
                 <div className="font-bold text-xl mb-2">

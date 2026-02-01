@@ -1,8 +1,8 @@
 import useLocalStorage from '../hooks/useLocalStorage';
-import { gitHubRepoMetadata, gitHubRequest } from '../utils/fetch';
-import { type TechDetail, type GitHubData, type GitHubProfile, type GitHubRepoItem } from './types';
+import { gitHubRequest } from '../utils/fetch';
+import { type Topic, type GitHubData, type GitHubProfile, type GitHubRepoItem } from './types';
 import { filterList } from '@/utils/filterList';
-import { createContext, useEffect, useRef, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 export const GitHubDataContext = createContext<Partial<GitHubData>>({});
 
@@ -24,7 +24,7 @@ type CachedRepositoryData = {
 
 export const useGitHubDataValues = (): GitHubData => {
   const [loading, setLoading] = useState<boolean>(true);
-  const [techs, setTechs] = useState<TechDetail[]>([]);
+  const [topics, setTopics] = useState<Topic[]>([]);
   
   const [data, setData] = useState<CachedRepositoryData>({
     etagRepos: '',
@@ -35,8 +35,6 @@ export const useGitHubDataValues = (): GitHubData => {
 
   const cachedData = useLocalStorage<CachedRepositoryData>();
 
-  const isFetching = useRef(false);
-
   useEffect(() => {
     if (cachedData !== false && typeof cachedData === 'object') {
       setData({ updated: false, ...cachedData });
@@ -44,60 +42,54 @@ export const useGitHubDataValues = (): GitHubData => {
   }, [cachedData]);
 
   useEffect(() => {
-    if (data?.updated === true || isFetching.current === true) {
+    if (data?.updated === true) {
       setLoading(false);
-      const newTechList = filterList(data.repos);
-      setTechs(newTechList);
+      const newTopicList = filterList(data.repos);
+      setTopics(newTopicList);
       return;
     }
 
-    isFetching.current = true;
+    Promise.all([
+      gitHubRequest<GitHubRepoItem[]>({
+        endPoint: `users/${GITHUB_USERNAME}/repos`,
+        etag: { name: 'repos', data: data.etagRepos },
+        content: data?.repos,
+      }),
+      gitHubRequest<GitHubProfile>({
+        endPoint: `users/${GITHUB_USERNAME}`,
+        etag: { name: 'profile', data: data.etagProfile },
+        content: data?.profile,
+      }),
+    ])
+      .then((responses) => {
+        const etagRepos = responses[0]?.newEtag?.trim() || data.etagRepos;
+        const etagProfile = responses[1]?.newEtag?.trim() || data.etagProfile;
+        
+        const repos = responses[0].body?.length ? responses[0].body : data.repos;
+        const profile = responses[1].body?.name?.trim() ? responses[1].body : data.profile;
 
-    if (true) {
-      Promise.all([
-        gitHubRequest<GitHubRepoItem[]>({
-          endPoint: `users/${GITHUB_USERNAME}/repos`,
-          etag: { name: 'repos', data: data.etagRepos },
-          content: data?.repos,
-          callback: (repos) => gitHubRepoMetadata(GITHUB_USERNAME, repos), // Enrich with metadata
-        }),
-        gitHubRequest<GitHubProfile>({
-          endPoint: `users/${GITHUB_USERNAME}`,
-          etag: { name: 'profile', data: data.etagProfile },
-          content: data?.profile,
-        }),
-      ])
-        .then((responses) => {
-          const etagRepos = responses[0]?.newEtag?.trim() || data.etagRepos;
-          const etagProfile = responses[1]?.newEtag?.trim() || data.etagProfile;
-          
-          const repos = responses[0].body?.length ? responses[0].body : data.repos;
-          const profile = responses[1].body?.name?.trim() ? responses[1].body : data.profile;
-
-          setData({
-            updated: true,
-            etagRepos,
-            etagProfile,
-            repos,
-            profile,
-          });
-
-          const newTechList = filterList(repos);
-          setTechs(newTechList);
-        })
-        .catch((err) => {
-          console.error('Failed to fetch GitHub data:', err);
-          isFetching.current = false;
-          setLoading(false);
+        setData({
+          updated: true,
+          etagRepos,
+          etagProfile,
+          repos,
+          profile,
         });
-    }
+
+        const newTopicList = filterList(repos);
+        setTopics(newTopicList);
+      })
+      .catch((err) => {
+        console.error('Failed to fetch GitHub data:', err);
+        setLoading(false);
+      });
   }, [data]);
 
   const contextData = {
     loading,
     profile: data.profile,
     repos: data.repos,
-    techs,
+    topics,
   };
 
   return contextData;

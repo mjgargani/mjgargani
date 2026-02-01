@@ -1,4 +1,3 @@
-import { GitHubRepoItem, RepoMetadata } from '../context/types';
 import { StatusCodes } from 'http-status-codes';
 
 type GitHubRequest<T> = {
@@ -48,70 +47,4 @@ export async function gitHubRequest<T>({
     .catch(() => {
       return {};
     });
-}
-
-/**
- * Return repository metadata from .lab.json
- */
-
-// 6 months in milliseconds (used to determine "new" repositories)
-const SIX_MONTHS_MS = 15778800000;
-
-const rawMetadataRequest = async (username: string, repo: GitHubRepoItem): Promise<RepoMetadata> => {
-  const rawBaseUrl = `https://raw.githubusercontent.com/${username}/${repo.name}/refs/heads/main/`;
-  
-  try {
-    const [resJson, resMd] = await Promise.all([
-      fetch(`${rawBaseUrl}.lab.json`),
-      fetch(`${rawBaseUrl}lab.md`),
-    ]);
-
-    let data: Partial<RepoMetadata> = {};
-    let fullDescription: string = "";
-
-    if (resJson.ok) {
-      const jsonText = await resJson.text();
-      data = JSON.parse(jsonText) as Partial<RepoMetadata>;
-    }
-
-    if (resMd.ok) {
-      fullDescription = await resMd.text();
-    }
-
-    const galleryItems = data?.gallery || [];
-    const galleryRawListURL = ['thumbnail.webp', ...galleryItems].map(img => `${rawBaseUrl}${img}`);
-
-    const newMetadata: RepoMetadata = {
-      new: new Date(repo.created_at).getTime() > (Date.now() - SIX_MONTHS_MS),
-      pinned: data?.pinned || false,
-      title: data?.title || repo.name,
-      description: data?.description || repo.description || '',
-      homepage: data?.homepage || repo.homepage || '',
-      stack: data?.stack || [],
-      gallery: galleryRawListURL,
-      fullDescription: fullDescription || data?.fullDescription || '',
-    };
-
-    return newMetadata;
-
-  } catch (error) {
-    console.error((error as Error).message);
-    return {} as RepoMetadata;
-  }
-}  
-
-const rawMetadataHandle = async (username: string, repo: GitHubRepoItem): Promise<GitHubRepoItem> => {
-  const metaData = await rawMetadataRequest(username, repo);
- 
-  const enrichedRepo: GitHubRepoItem = {
-    ...repo,
-    metaData,
-  }; 
-  return enrichedRepo;
-}
-
-export const gitHubRepoMetadata = async (username: string, repos: GitHubRepoItem[]): Promise<GitHubRepoItem[]> => {
-  const promises = repos.map((repo) => rawMetadataHandle(username, repo));
-  const results = await Promise.all(promises);
-  return results;
 }

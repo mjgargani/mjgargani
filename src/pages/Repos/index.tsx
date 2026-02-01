@@ -3,7 +3,7 @@ import Card from '../../components/molecules/Card';
 import { GitHubDataContext } from '../../context/GitHubData';
 import { type GitHubRepoItem } from '../../context/types';
 import { type CommonProps } from '../../globals';
-import imgLoader from '../../utils/imgLoader';
+// import imgLoader from '../../utils/imgLoader';
 import randomId from '../../utils/randomId';
 import Filter from '@/components/atoms/Filter';
 import { type FilterItem } from '@/components/atoms/Filter/types';
@@ -14,7 +14,7 @@ import { useNavigate } from 'react-router-dom';
 const sortRepos = (a: GitHubRepoItem, b: GitHubRepoItem) => (a.id < b.id ? 1 : -1); // Newer repos first
 
 const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) => {
-  const { repos, techs } = useContext(GitHubDataContext);
+  const { repos, topics } = useContext(GitHubDataContext);
   const [filteredRepos, setFilteredRepos] = useState<GitHubRepoItem[]>([]);
   const [filters, setFilters] = useState<FilterItem[]>([]);
 
@@ -22,21 +22,21 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (techs?.length && !filters.length) {
+    if (topics?.length && !filters.length) {
       const queryFilters = query.get('f')?.split('&') || [];
       
       if (queryFilters.length) {
         setFilters(
-          techs.map((tech) => ({
-            ...tech,
-            selected: queryFilters.includes(tech.name),
+          topics.map((topic) => ({
+            ...topic,
+            selected: queryFilters.includes(topic.name),
           })),
         );
       } else {
-        setFilters(techs.map((tech) => ({ ...tech, selected: true })));
+        setFilters(topics.map((topic) => ({ ...topic, selected: true })));
       }
     }
-  }, [techs, filters.length, query]);
+  }, [topics, filters.length, query]);
 
   useEffect(() => {
     const hasRepos = !!repos?.length;
@@ -52,19 +52,21 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
 
     if (hasSelection && !filteredRepos.length) {
       const sortedRepos = [
-        ...repos!.filter((r) => r.metaData!.pinned).sort(sortRepos),
-        ...repos!.filter((r) => !r.metaData!.pinned).sort(sortRepos),
+        ...repos!.filter((r) => r.topics!.includes("pinned")).sort(sortRepos),
+        ...repos!.filter((r) => !r.topics!.includes("pinned")).sort(sortRepos),
       ];
 
       const filtered = sortedRepos.filter((repo) =>
         filters.some((filter) => 
-          repo.metaData?.stack?.includes(filter.name) && filter.selected
+          repo.topics?.includes(filter.name) && filter.selected
         ),
       );
 
-      imgLoader(filtered.map((r) => r.metaData?.gallery?.[0] || "thumbnail.webp"))
-        .catch((err) => console.error('Failed to preload images:', err))
-        .finally(() => setFilteredRepos(filtered));
+      setFilteredRepos(filtered);
+
+      // imgLoader(filtered.map(() => "thumbnail.webp"))
+      //   .catch((err) => console.error('Failed to preload images:', err))
+      //   .finally(() => );
     }
   }, [filters, repos, filteredRepos.length]);
 
