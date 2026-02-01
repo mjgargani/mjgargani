@@ -3,7 +3,7 @@ import Card from '../../components/molecules/Card';
 import { GitHubDataContext } from '../../context/GitHubData';
 import { type GitHubRepoItem } from '../../context/types';
 import { type CommonProps } from '../../globals';
-// import imgLoader from '../../utils/imgLoader';
+import imgLoader from '../../utils/imgLoader';
 import randomId from '../../utils/randomId';
 import Filter from '@/components/atoms/Filter';
 import { type FilterItem } from '@/components/atoms/Filter/types';
@@ -62,11 +62,9 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
         ),
       );
 
-      setFilteredRepos(filtered);
-
-      // imgLoader(filtered.map(() => "thumbnail.webp"))
-      //   .catch((err) => console.error('Failed to preload images:', err))
-      //   .finally(() => );
+      imgLoader(filtered.map((repo) => `https://github.com/mjgargani/${repo?.name}/blob/main/thumbnail.webp?raw=true`))
+        .catch((err) => console.error('Failed to preload images:', err))
+        .finally(() => setFilteredRepos(filtered));
     }
   }, [filters, repos, filteredRepos.length]);
 
