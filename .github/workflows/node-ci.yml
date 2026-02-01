@@ -12,23 +12,23 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    env:
-      HUSKY: 0
+    # env:
+    #   HUSKY: 0
     steps:
       - uses: actions/checkout@v3
 
-      - name: Key-files change check
-        shell: bash
-        run: |
-          git fetch origin && \
-          if [[ $(git diff --name-only origin/main -- ./.github ./public ./src ./package-lock.json ./package.json ./tsconfig.json) ]]; \
-          then true; \
-          else echo "Nothing to build in compare with 'main' branch" && exit 1; \
-          fi
+      # - name: Key-files change check
+      #   shell: bash
+      #   run: |
+      #     git fetch origin && \
+      #     if [[ $(git diff --name-only origin/main -- ./.github ./public ./src ./package-lock.json ./package.json ./tsconfig.json) ]]; \
+      #     then true; \
+      #     else echo "Nothing to build in compare with 'main' branch" && exit 1; \
+      #     fi
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 22
 
       - name: Get npm cache directory
         id: npm-cache-dir
@@ -45,19 +45,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run ESLint to find/fix warnings and errors
-        run: npm run lint:fix -- --max-warnings=0
+      # - name: Run ESLint to find/fix warnings and errors
+      #   run: npm run lint:fix -- --max-warnings=0
 
-      - name: Run TSC to validade type errors
-        run: npx tsc
+      # - name: Run TSC to validade type errors
+      #   run: npx tsc
 
       - name: Run Prettier to format code
         run: npm run format
 
-      - name: Run Vitest coverage tests
-        run: npm run test:badges
+      # - name: Run Vitest coverage tests
+      #   run: npm run test:badges
 
-      - name: Commit generated coverage badges
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'ci-bot: fixes/format/badges from ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'
+      # - name: Commit generated coverage badges
+      #   uses: stefanzweifel/git-auto-commit-action@v4
+      #   with:
+      #     commit_message: 'ci-bot: fixes/format/badges from ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'

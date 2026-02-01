@@ -3,7 +3,7 @@ run-name: Deploy static content to Pages
 
 on:
   push:
-    branches: ['main']
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -12,7 +12,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: 'pages'
+  group: "pages"
   cancel-in-progress: false
 
 jobs:
@@ -20,15 +20,15 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    env:  
-      HUSKY: 0
+    # env:
+    #   HUSKY: 0
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 22
 
       - name: Get npm cache directory
         id: npm-cache-dir
@@ -54,7 +54,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: './dist'
+          path: "./dist"
 
       - name: Deploy to GitHub Pages
         id: deployment
