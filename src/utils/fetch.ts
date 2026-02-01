@@ -28,8 +28,6 @@ export async function gitHubRequest<T>({
     },
   })
     .then(async (res) => {
-      console.log({isInLocalStorage, etag: etag.data})
-      
       const newEtag = res.headers.get('etag') ?? '';
       localStorage.setItem(`etag-${etag.name}`, newEtag);
 
@@ -61,52 +59,46 @@ const SIX_MONTHS_MS = 15778800000;
 
 const rawMetadataRequest = async (username: string, repo: GitHubRepoItem): Promise<RepoMetadata> => {
   const rawBaseUrl = `https://raw.githubusercontent.com/${username}/${repo.name}/refs/heads/main/`;
-  console.log({ username, repo })
+  
+  try {
+    const [resJson, resMd] = await Promise.all([
+      fetch(`${rawBaseUrl}.lab.json`),
+      fetch(`${rawBaseUrl}lab.md`),
+    ]);
 
-  return Promise.all([
-    fetch(`${rawBaseUrl}.lab.json`),
-    fetch(`${rawBaseUrl}lab.md`),
-  ])
-    .then(async (responses) => {
-      let data: Partial<RepoMetadata> | null = null;
-      let fullDescription: string | null = null;
+    let data: Partial<RepoMetadata> = {};
+    let fullDescription: string = "";
 
-      for (const res of responses) {
-        if (res.ok) {  
-          if (res.url.endsWith('.json')) {
-            data = (await res.json()) as Partial<RepoMetadata>;
-          } else if (res.url.endsWith('lab.md')) {
-            fullDescription = await res.text();
-          }
-        }
-      }
+    if (resJson.ok) {
+      const jsonText = await resJson.text();
+      data = JSON.parse(jsonText) as Partial<RepoMetadata>;
+    }
 
-      data = {
-        ...data,
-        gallery: ['thumbnail.webp', ...(data?.gallery || [])]
-      }
-      
-      const galleryRawListURL = data.gallery!.map((img) => `${rawBaseUrl}${img}`) || [];
+    if (resMd.ok) {
+      fullDescription = await resMd.text();
+    }
 
-      const newMetadata: RepoMetadata = {
-        new: new Date(repo.created_at).getTime() > (Date.now() - SIX_MONTHS_MS),
-        pinned: data?.pinned || false,
-        title: data?.title || repo.name,
-        description: data?.description || repo.description || '',
-        homepage: data?.homepage || repo.homepage || '',
-        stack: data?.stack || [],
-        gallery: galleryRawListURL,
-        fullDescription: fullDescription || data?.fullDescription || '',
-      };
+    const galleryItems = data?.gallery || [];
+    const galleryRawListURL = ['thumbnail.webp', ...galleryItems].map(img => `${rawBaseUrl}${img}`);
 
-      console.log({ name: repo.name, newMetadata })
+    const newMetadata: RepoMetadata = {
+      new: new Date(repo.created_at).getTime() > (Date.now() - SIX_MONTHS_MS),
+      pinned: data?.pinned || false,
+      title: data?.title || repo.name,
+      description: data?.description || repo.description || '',
+      homepage: data?.homepage || repo.homepage || '',
+      stack: data?.stack || [],
+      gallery: galleryRawListURL,
+      fullDescription: fullDescription || data?.fullDescription || '',
+    };
 
-      return newMetadata;
-    })
-    .catch(() => {
-      return {} as RepoMetadata;
-    });
+    return newMetadata;
+
+  } catch (error) {
+    console.error((error as Error).message);
+    return {} as RepoMetadata;
   }
+}
   
   
 

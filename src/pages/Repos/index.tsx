@@ -22,7 +22,6 @@ const Repos: React.FC<CommonProps> = ({ dataTestId = randomId('page-repos') }) =
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log({ techs })
     if (techs?.length && !filters.length) {
       const queryFilters = query.get('f')?.split('&') || [];
       
