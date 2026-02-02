@@ -6,18 +6,6 @@ Portfolio desenvolvido com `ReactJS` (`Vite`) + `TypeScript` ([Saiba como](https
 
 Portfolio developed with `ReactJS` (`Vite`) + `TypeScript` ([Learn how](https://vitejs.dev/guide/)), in the year 2023. The application is an interface that consumes, models and caches [GitHub API](https://docs.github.com/en/rest/guides/getting-started-with-the-rest-api?apiVersion=2022-11-28) resources.
 
-> ⚠️ Anteriormente, o projeto usava o [CRA](https://create--react--app-dev.translate.goog/docs/adding-typescript/?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt-BR&_x_tr_pto=wapp) para desenvolvimento e geração de builds. Porém, o [Vite](https://pt.vitejs.dev/) torna o desenvolvimento muito mais rápido e otimizado, a medida que ultrapassa limitações que os empacotadores tradicionais possuem ([Saiba mais](https://pt.vitejs.dev/guide/why.html)).
->
-> ⚠️ Previously, the project used [CRA](https://create-react-app.dev/docs/adding-typescript/) to development and generation of builds. However, [Vite](https://vitejs.dev/) makes development much faster and more optimized, as it overcomes limitations that traditional bundlers have ([Learn more](https://vitejs.dev/guide/why.html)).
-
-> ⭐ O projeto é publicado através do [GitHub Pages](https://docs.github.com/pt/pages/getting-started-with-github-pages/about-github-pages). O `CI/CD` é feito com o apoio do [GitHub Actions](https://docs.github.com/pt/actions/learn-github-actions/understanding-github-actions).
->
-> ⭐ The project is published through [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages). `CI/CD` is powered by [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions).
-
-O projeto também conta com uso de [styled-components](https://styled-components.com/) para criação e estilização dos componentes, o [Marked](https://marked.js.org/) para interpretação de texto no formato `Markdown` e o [React Icons](https://react-icons.github.io/react-icons/).
-
-The project also uses [styled-components](https://styled-components.com/) to create and style components, [Marked](https://marked.js.org/) to interpret text in `Markdown` format and [React Icons](https://react-icons.github.io/react-icons/).
-
 ## Como rodar / How to run
 
 > ⚠️ Necessita de um [navegador web](https://www.mozilla.org/pt-BR/firefox/download/thanks/) e do [NodeJS](https://nodejs.org/pt-br/). O projeto foi testado utilizando a versão `18.15.0`.
@@ -43,7 +31,7 @@ After compilation takes place, use the browser to access the address `http://loc
 > ⚠️ Requires [Docker](https://docs.docker.com/engine/install/) installed on the host to work.
 
 ```bash
-docker run -it --rm -v $(pwd):/app -p 5173:5173 node:18.15.0-alpine sh -c "npm --prefix=/app i && npm --prefix=/app run dev -- --host"
+docker run -it --rm -v $(pwd):/app -p 5173:5173 node:22-alpine sh -c "npm --prefix=/app i && npm --prefix=/app run dev -- --host"
 ```
 
 Após a compilação ocorrer, use o navegador para acessar o endereço `http://localhost:5173/`.
